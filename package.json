@@ -1,14 +1,25 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3005",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "next": "latest",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "@heroicons/react": "2.0.0",
+    "@sanity/client": "^2.23.2",
+    "embla-carousel-react": "^7.0.5",
+    "framer-motion": "^7.6.19",
+    "next": "12.1.6",
+    "next-sanity": "^0.4.0",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-intersection-observer": "9.4.1",
+    "react-scroll": "^1.8.2",
+    "react-simple-typewriter": "^3.0.1",
+    "react-social-icons": "^5.15.0",
+    "tailwind-scrollbar": "^2.0.1",
+    "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
     "@types/node": "18.11.3",

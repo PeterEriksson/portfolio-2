@@ -1,0 +1,82 @@
+.animateEmoji {
+  animation-duration: 4.5s;
+  animation-name: rocket;
+
+  /* For the rocket -> make it stay disappeared */
+  animation-fill-mode: forwards;
+}
+
+.test {
+  color: red;
+}
+
+@keyframes rocket {
+  0% {
+    transform: scale(1) rotate(10deg);
+  }
+  5% {
+    transform: scale(1.25) rotate(-15deg);
+  }
+  10% {
+    transform: scale(1.5) rotate(5deg);
+  }
+  15% {
+    transform: scale(1.75) rotate(-10deg);
+  }
+  20% {
+    transform: scale(2) rotate(0);
+  }
+  100% {
+    /* in parent div-container of Contact apply: overflow-hidden */
+    /* transform: scale(20) translate3D(100vw, -100vh, 0) rotate(0); decrease scale(rocket looks "suddig") */
+    transform: scale(6) translate3D(100vw, -100vh, 0) rotate(0);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20%,
+  60% {
+    transform: rotate(6deg);
+  }
+  40%,
+  80% {
+    transform: rotate(-6deg);
+  }
+}
+/* ------------------------------------------- */
+/* SHAPE DIVIDER */
+
+.customShapeDividerTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.customShapeDividerTop svg {
+  position: relative;
+  display: block;
+  width: calc(120% + 1.3px);
+  height: 38px;
+}
+
+.shapeFill {
+  fill: white;
+}
+
+.customShapeDividerTop > path {
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+  .customShapeDividerTop svg {
+    width: calc(137% + 1.3px);
+    height: 38px;
+  }
+}

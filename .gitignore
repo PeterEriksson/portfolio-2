@@ -12,6 +12,8 @@
 /.next/
 /out/
 
+sanity/node_modules
+
 # production
 /build
 
@@ -34,3 +36,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.vscode/settings.json
+notes.md
+sanityportf-2/node_modules/.bin/acorn
+sanityportf-2/node_modules/.bin/ansi-html
+sanityportf-2/node_modules/.bin/atob
+sanityportf-2/node_modules/.bin/autoprefixer-info

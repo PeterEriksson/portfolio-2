@@ -1,86 +1,139 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import type { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
+import Stack from "../components/Stack";
+import Work from "../components/Work";
 
-const Home: NextPage = () => {
+import dummyData from "../dummyData.json";
+import { PageInfo, Project, Skill, SkillDescription, Social } from "../typings";
+import { fetchProjects } from "../utils/fetchProjects";
+import { fetchSkillDescription } from "../utils/fetchSkillDescription";
+import { fetchSkills } from "../utils/fetchSkills";
+import { fetchSocials } from "../utils/fetchSocials";
+import { fetchPageInfo } from "../utils/fetchPageInfo";
+import Contact from "../components/Contact";
+
+import { EmblaOptionsType } from "embla-carousel-react";
+import About from "../components/About";
+
+/* TEST TEMP */
+import { motion, useScroll, useSpring } from "framer-motion";
+import { Link as ScrollLink } from "react-scroll";
+import { useEffect, useState } from "react";
+
+type Props = {
+  pageInfo: PageInfo;
+  skills: Skill[];
+  skillDescription: SkillDescription;
+  projects: Project[];
+  socials: Social[];
+};
+
+const OPTIONS: EmblaOptionsType = {};
+
+export default function Home({
+  pageInfo,
+  skills,
+  skillDescription,
+  projects,
+  socials,
+}: Props) {
+  /* TEST TEMP */
+  const { scrollYProgress } = useScroll();
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    scrollYProgress.onChange((number) => setScrollY(number));
+  }, [scrollYProgress, scrollY]);
+  const testScrollYBp = 0.26;
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className={` `}>
       <Head>
-        <title>Create Next App</title>
+        <title>Portfolio 2 Pete</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+      <Navbar />
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
+      <Header />
 
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      {/* TEST TEMP use scroll vertical implementation with profileImg on top (prince inspiration) */}
+      <div
+        className={`top-52 fixed z-30 hidden lg:flex flex-col items-center  ${
+          scrollY < testScrollYBp ? "opacity-0" : "opacity-70////"
+        } ${
+          scrollY > 0.8 && "!opacity-0"
+        }   transition duration-300 ease-in   ml-[94px] xl:ml-[120px]       `}
+      >
+        <ScrollLink
+          to={scrollY > testScrollYBp ? "header" : ""}
+          smooth="true"
+          spy={true}
+          offset={-40}
+          className={`${
+            scrollY >= testScrollYBp && "cursor-pointer"
+          }         transform transition duration-150 hover:scale-105 ease-in`}
         >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
+          <img
+            src="https://user-images.githubusercontent.com/17027312/121216942-a638aa80-c881-11eb-8ea2-dc0d44815731.png"
+            alt=""
+            className="h-14 w-14 rounded-full object-cover p-[1.5px] border-red-500/70 border-2    opacity-80  "
+          />
+        </ScrollLink>
+        <div className="h-60 bg-red-200 ">
+          <motion.div
+            className={`origin-top h-full bg-red-500/50  p-0.5 z-10       `}
+            style={{ scaleY }}
+          />
+        </div>
+      </div>
+
+      {/* TESTING ABOUT component */}
+      <About
+        pageInfo={dummyData.backgroundInformation}
+        backgroundInformation={dummyData.backgroundInformation}
+      />
+
+      <Stack
+        skillDescription={dummyData.skillDescription}
+        skills={dummyData.skills} //skillDescription={skillDescription} skills={skills}
+      />
+
+      <Work
+        options={OPTIONS}
+        projects={dummyData.projects} //projects={projects}
+      />
+
+      <Contact pageInfo={dummyData.contact} />
     </div>
-  )
+  );
 }
 
-export default Home
+/* export const getStaticProps: GetStaticProps<Props> = async () => {
+  const pageInfo: PageInfo = await fetchPageInfo();
+  const skills: Skill[] = await fetchSkills();
+  const skillDescription: SkillDescription = await fetchSkillDescription();
+  const projects: Project[] = await fetchProjects();
+  const socials: Social[] = await fetchSocials();
+
+  return {
+    props: {
+      pageInfo,
+      skills,
+      skillDescription,
+      projects,
+      socials,
+    },
+    //Next.js will attempt tp re-generate the page:
+    // - When a reques comes in
+    // - At most once every 10 seconds
+    revalidate: 10,
+  };
+}; */
