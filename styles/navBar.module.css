@@ -7,3 +7,64 @@
   background: white;
   transform-origin: 0%;
 }
+
+.menuBtn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 28px; */ /* 80 */
+  /* height: 28px; */ /* 80 */
+  width: 25px;
+  height: 21px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  /*   border: 2px solid #fff; */
+}
+
+.burger {
+  /* width: 20px; */ /* 50 */
+  width: 25px;
+  height: 5px; /* 6 */
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+
+.burger::before,
+.burger::after {
+  content: "";
+  position: absolute;
+  /* width: 20px; */
+  width: 25px;
+  height: 5px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+
+.burger::before {
+  transform: translateY(-10px);
+}
+
+.burger::after {
+  transform: translateY(10px);
+}
+
+/* ANIMATION */
+.burgerAnimation {
+  transform: translateX(-20px); /* -50 */
+  /* transform: translateX(-25px); */
+  background: transparent;
+  box-shadow: none;
+}
+
+.burgerAnimation::before {
+  transform: rotate(45deg) translate(15px, -15px); /* 35,-35 */
+}
+
+.burgerAnimation::after {
+  transform: rotate(-45deg) translate(15px, 15px); /* 35,-35 */
+}

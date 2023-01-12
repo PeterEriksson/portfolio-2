@@ -42,7 +42,7 @@ export default function Contact({}: Props) {
         </svg>
       </div>
 
-      <div className="w-10/12 bg-red-300/  flex items-center justify-between     ">
+      <div className="w-10/12/// xs:w-10/12 w-[88%] flex items-center justify-between     ">
         <motion.div
           initial={{
             x: -100,
@@ -56,6 +56,8 @@ export default function Contact({}: Props) {
           }}
           transition={{ duration: 1 }}
           //transition={transition}
+
+          className=" lg:pl-[72px] pl-0"
         >
           <div
             className={` sm:text-5xl text-3xl text-white font-bold mb-2 xs:mb-3   flex `}
@@ -71,7 +73,7 @@ export default function Contact({}: Props) {
                   ref={myEmojiRef}
                   className={` ${
                     myEmojiElementIsVisible ? styles.animateEmoji : ""
-                  }  for-mobile-need-to-declare h+w: h-0.5 w-0.5 text-4xl   z-10 relative`}
+                  }  for-mobile-need-to-declare h+w: h-0.5 w-0.5 text-4xl   !z-20 relative`}
                 >
                   🚀
                 </p>

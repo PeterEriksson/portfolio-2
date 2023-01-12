@@ -10,7 +10,7 @@ type Props = {
 
 export default function Skill({ skill, directionLeft }: Props) {
   return (
-    <div className="group relative flex cursor-pointer  rounded-full ">
+    <div className={`group relative flex cursor-pointer  rounded-full `}>
       {/* temp solution for avoiding horizontal to break on mobile: render two motion.img tags and utilize hidden */}
       {/* Try overflow hidden instead */}
       <motion.img

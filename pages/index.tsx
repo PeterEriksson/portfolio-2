@@ -50,8 +50,10 @@ export default function Home({
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
     scrollYProgress.onChange((number) => setScrollY(number));
-  }, [scrollYProgress, scrollY]);
-  const testScrollYBp = 0.26;
+    console.log(scrollY);
+    //is Performance ok? Do we need debounce?
+  }, [scrollYProgress /* , scrollY */]);
+  const testScrollYBp = 0.2;
 
   return (
     <div className={` `}>
@@ -67,10 +69,8 @@ export default function Home({
       {/* TEST TEMP use scroll vertical implementation with profileImg on top (prince inspiration) */}
       <div
         className={`top-52 fixed z-30 hidden lg:flex flex-col items-center  ${
-          scrollY < testScrollYBp ? "opacity-0" : "opacity-70////"
-        } ${
-          scrollY > 0.8 && "!opacity-0"
-        }   transition duration-300 ease-in   ml-[94px] xl:ml-[120px]       `}
+          scrollY < testScrollYBp ? "opacity-0" : "opacity-70"
+        }    transition duration-300 ease-in   ml-[92px] xl:ml-[120px]       `}
       >
         <ScrollLink
           to={scrollY > testScrollYBp ? "header" : ""}
@@ -79,23 +79,22 @@ export default function Home({
           offset={-40}
           className={`${
             scrollY >= testScrollYBp && "cursor-pointer"
-          }         transform transition duration-150 hover:scale-105 ease-in`}
+          }  border-red-500/70 border-2 rounded-full     hover:!bg-red-500 transition duration-150 ease-in`}
         >
           <img
             src="https://user-images.githubusercontent.com/17027312/121216942-a638aa80-c881-11eb-8ea2-dc0d44815731.png"
             alt=""
-            className="h-14 w-14 rounded-full object-cover p-[1.5px] border-red-500/70 border-2    opacity-80  "
+            className="h-14 w-14 rounded-full object-cover transition duration-150 ease-in filter brightness-50 hover:brightness-100     "
           />
         </ScrollLink>
         <div className="h-60 bg-red-200 ">
           <motion.div
-            className={`origin-top h-full bg-red-500/50  p-0.5 z-10       `}
+            className={`origin-top h-full bg-red-500/60  p-0.5 z-10       `}
             style={{ scaleY }}
           />
         </div>
       </div>
 
-      {/* TESTING ABOUT component */}
       <About
         pageInfo={dummyData.backgroundInformation}
         backgroundInformation={dummyData.backgroundInformation}

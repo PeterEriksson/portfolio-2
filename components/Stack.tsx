@@ -11,6 +11,7 @@ type Props = {
 function Stack({ skills, skillDescription }: Props) {
   //console.log(skillDescription);
 
+  //for skillDescription text
   const transition = {
     type: "spring",
     bounce: 0.35,
@@ -26,7 +27,7 @@ function Stack({ skills, skillDescription }: Props) {
       <h4 className="sm:text-xl text-base font-extralight mb-3">
         Hover for current proficiency
       </h4>
-      <div className="grid grid-cols-3 sm:grid-cols-4 gap-4    lg:grid-cols-5/   ">
+      <div className={`grid grid-cols-3 sm:grid-cols-4 gap-4  md:gap-x-10   `}>
         {/* sort by progress */}
         {skills
           ?.sort((a, b) => a.progress - b.progress)

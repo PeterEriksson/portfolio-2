@@ -31,7 +31,7 @@ export default function Header({}: Props) {
       id="header"
       className="min-h-screen flex items-center justify-center bg-[#091c29]"
     >
-      <div className="w-10/12 flex flex-col md:flex-row-reverse items-center justify-between ">
+      <div className="w-10/12/// xs:w-10/12 w-[88%] flex flex-col md:flex-row-reverse items-center justify-between ">
         <div className="md:w-2/5 w-full">
           <img
             src="https://user-images.githubusercontent.com/17027312/134349999-06919dce-11f2-42b9-9c0c-2b27d8dcce51.jpeg"

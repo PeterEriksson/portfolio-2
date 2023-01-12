@@ -82,10 +82,13 @@ export default function Work({ projects, slides, options }: Props) {
       <div
         className={`${styles.embla} sm:mx-auto  sm:max-w-[640px]  bg-blue-700//   `}
       >
-        <div className={`${styles.embla__viewport}    `} ref={emblaRef}>
-          <div className={`${styles.embla__container}  `}>
+        <div className={`${styles.embla__viewport}   `} ref={emblaRef}>
+          <div className={`${styles.embla__container}   `}>
             {projects.map((project, index) => (
-              <div className={`${styles.embla__slide}  px-4   `} key={index}>
+              <div
+                className={`${styles.embla__slide}  px-4        `}
+                key={index}
+              >
                 {/* Number of Project. Skip?? */}
                 {/* <div className={styles.embla__slide__number}>
                   <span>{index + 1}</span>
@@ -102,7 +105,7 @@ export default function Work({ projects, slides, options }: Props) {
                   }}
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
-                  className={`${styles.embla__slide__img} rounded-lg   xs:!h-[300px]  !h-56  max-w-[640px]          `}
+                  className={`${styles.embla__slide__img} rounded-lg   xs:!h-[300px]  !h-56  max-w-[640px]      `}
                   src={project.image}
                   alt="Your alt text"
                 />
@@ -118,7 +121,7 @@ export default function Work({ projects, slides, options }: Props) {
                   viewport={{ once: true }}
                   className="flex flex-col "
                 >
-                  <h3 className="text-xl sm:text-2xl font-bold mx-auto  underline decoration-[#091c29]/90 opacity-[0.88]">
+                  <h3 className="text-xl sm:text-2xl font-bold mx-auto  underline/ decoration-red-500 opacity-[0.88]">
                     {project.title}
                   </h3>
 
