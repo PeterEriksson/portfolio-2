@@ -26,8 +26,8 @@ export default function About({ backgroundInformation }: Props) {
 
           className="space-y-1.5          lg:pl-[72px] pl-0  bg-green-500//"
         >
-          <h1 className="text-5xl font-bold ">About</h1>
-          <h4 className="text-3xl font-semibold    xs:inline hidden">
+          <h1 className="text-5xl/// font-bold  sm:text-5xl text-3xl">About</h1>
+          <h4 className="text-3xl/// sm:text-3xl text-xl    font-semibold    xs:inline hidden">
             Here is a{" "}
             <span className="underline decoration-red-500">little</span>{" "}
             background

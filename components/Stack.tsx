@@ -27,8 +27,10 @@ function Stack({ skills, skillDescription }: Props) {
       <h4 className="sm:text-xl text-base font-extralight mb-3">
         Hover for current proficiency
       </h4>
-      <div className={`grid grid-cols-3 sm:grid-cols-4 gap-4  md:gap-x-10   `}>
-        {/* sort by progress */}
+      {/* SKILLS - sort by progress */}
+      <div
+        className={`grid grid-cols-3/bugissue?progress-not-centered// grid-cols-4 sm:grid-cols-4 gap-4/// gap-3  md:gap-x-10   `}
+      >
         {skills
           ?.sort((a, b) => a.progress - b.progress)
           .map((skill, i) => {
@@ -56,7 +58,7 @@ function Stack({ skills, skillDescription }: Props) {
         }}
         viewport={{ once: true }}
       >
-        <p className="px-7 xs:px-0 max-w-[350px]   sm:max-w-[600px] text-center font-light mt-4 mb-2 text-[12px] sm:text-base   ">
+        <p className="px-7/// px-2 xs:px-0 max-w-[350px]   sm:max-w-[600px] text-center font-light mt-4 mb-2 text-[12px] sm:text-base   ">
           {/* {skillDescription?.text} */}
           {skillDescription}
         </p>

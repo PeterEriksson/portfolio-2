@@ -86,7 +86,7 @@ export default function Work({ projects, slides, options }: Props) {
           <div className={`${styles.embla__container}   `}>
             {projects.map((project, index) => (
               <div
-                className={`${styles.embla__slide}  px-4        `}
+                className={`${styles.embla__slide}  px-4///        xs:px-4 px-5  `}
                 key={index}
               >
                 {/* Number of Project. Skip?? */}

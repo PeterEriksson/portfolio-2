@@ -68,3 +68,7 @@
 .burgerAnimation::after {
   transform: rotate(-45deg) translate(15px, 15px); /* 35,-35 */
 }
+
+.navSectionActive {
+  opacity: 1;
+}

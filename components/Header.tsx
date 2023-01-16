@@ -62,7 +62,7 @@ export default function Header({}: Props) {
             {typeWriterText}
             <Cursor />
           </h2>
-          <ScrollLink to="About" smooth="true">
+          <ScrollLink to="About" smooth="true" offset={-40}>
             <button className=" group relative hover:bg-indigo-600 bg-indigo-700 transition duration-300 transform hover:scale-105 py-3 px-10 text-lg/ uppercase/ rounded-xl mt-5 mb-3 focus:outline-none">
               {/* {resumeData.header.btnText} */}
               <p className=" text-lg uppercase">discover more</p>

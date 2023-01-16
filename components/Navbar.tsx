@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 
 /* TEST TEMP */
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import styles from "../styles/navBar.module.css";
 
 type Props = {};
 
 export default function Navbar({}: Props) {
-  /* TEST TEMP (now testing y solution in index.js....)*/
-  const { scrollYProgress } = useScroll();
+  /* TEST TEMP (now testing y solution in index.js instead....)*/
+  /*  const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
-  });
+  }); */
 
   const navData = ["About", "Skills", "Work", "Contact"];
 
@@ -25,12 +25,30 @@ export default function Navbar({}: Props) {
     //console.log(linkActive);
   };
 
-  const [isMenuComponentVisible, setIsMenuComponentVisible] =
-    useState<boolean>(false);
+  /* const [isMenuComponentVisible, setIsMenuComponentVisible] =
+    useState<boolean>(false); */
+
+  // TEST TEMP framer nav
+  //https://github.com/devamitjha/framer_motion_animated_nav
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  //lets start animation
+  const item = {
+    exit: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        ease: "easeInOut",
+        duration: 0.35,
+        //delay: 1,
+      },
+    },
+  };
 
   return (
-    <nav className={`fixed top-0 w-screen z-50  bg-[#091c29]    `}>
-      <section className="flex items-center  text-white justify-between  mx-auto   py-3 flex-col/  md:flex md:flex-row          xs:w-10/12 w-[88%] ">
+    <nav
+      className={`fixed top-0 w-screen z-50  bg-[#091c29]    flex flex-col  `}
+    >
+      <section className="flex items-center  text-white justify-between mx-auto py-3  xs:w-10/12 w-[88%]       !z-30 ">
         {/* LEFT div  (PE-logo) */}
         <section className="flex items-center w-full">
           {/* PE-logo */}
@@ -47,11 +65,11 @@ export default function Navbar({}: Props) {
             className={`relative  group  transform transition duration-300 ease-in-out  cursor-pointer`}
           >
             <h1
-              className={` text-3xl font-bold  opacity-[0.81] hover:opacity-100    ${
+              className={` text-3xl font-bold  opacity-[0.81] hover:opacity-100  tracking-[4px]  ${
                 "header" == linkActive && "!opacity-100"
               }  transform transition duration-300 ease-in-out`}
             >
-              PORT2(PE)
+              PE
               <span
                 className={` w-2 h-2 bg-red-500 inline-block rounded-full ml-2 mb-1.5`}
               ></span>
@@ -101,22 +119,61 @@ export default function Navbar({}: Props) {
         </section>
         {/* HAMBURGER. Toggle between hamburger and cross  */}
         <section
-          onClick={() => setIsMenuComponentVisible((prev) => !prev)}
-          className={`md:!hidden  ${styles.menuBtn}   opacity-80 hover:opacity-100    `}
+          //onClick={() => setIsMenuComponentVisible((prev) => !prev)}
+          onClick={() => setIsOpen((prev) => !prev)}
+          className={`md:!hidden //xl:!hidden  ${styles.menuBtn}   opacity-80 hover:opacity-100    z-40`}
         >
+          {/* CROSS */}
           <section
-            className={`md:hidden  ${
-              isMenuComponentVisible && styles.burgerAnimation
+            className={`md:hidden //xl:hidden  ${
+              isOpen && styles.burgerAnimation
             } ${styles.burger}`}
           ></section>
         </section>
       </section>
 
-      {/* TEST TEMP. Looks ok. Maybe use only on mobile screen? */}
-      <motion.div
+      {/* TEST TEMP horizontal scroll indicator. Looks ok. Maybe use only on mobile screen?...or not. */}
+      {/* <motion.div
         className={`${styles.progressBar} md:hidden`}
         style={{ scaleX }}
-      />
+      /> */}
+
+      {/* MOBILE MENU  */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.nav
+            variants={item}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "70vh", opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            exit="exit"
+            className={`md:hidden  flex flex-col items-center justify-center bg-mainDarkBlue text-white space-y-12 `}
+          >
+            {navData.map((section, i) => (
+              <motion.a
+                key={i}
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1 - i * (0.1 * 1.5) }}
+                className={`cursor-pointer text-lg/ text-2xl font-semibold uppercase tracking-[5px] 
+            `}
+              >
+                <ScrollLink
+                  onClick={() => setIsOpen((prev) => !prev)}
+                  key={i}
+                  to={section}
+                  smooth="true"
+                  activeClass={styles.navSectionActive}
+                  spy={true}
+                  className=" opacity-80 hover:opacity-100  transition duration-200 ease-in"
+                >
+                  {section}
+                </ScrollLink>
+              </motion.a>
+            ))}
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

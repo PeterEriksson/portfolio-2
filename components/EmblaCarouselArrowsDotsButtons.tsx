@@ -16,7 +16,7 @@ export const DotButton: React.FC<DotButtonPropType> = (props) => {
       className={`  ${styles.embla__dot} ${
         selected
           ? styles.embla__dot__selected
-          : " transition duration-150 ease-in xs:hover:scale-x-110 transform"
+          : " transition duration-150 ease-in md:hover:scale-x-110 transform"
       }     w-12  bg-red-600/`}
       type="button"
       onClick={onClick}
