@@ -50,10 +50,13 @@ export default function Home({
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
     scrollYProgress.onChange((number) => setScrollY(number));
-    console.log(scrollY);
+    //console.log(scrollY);
     //is Performance ok? Do we need debounce?
   }, [scrollYProgress /* , scrollY */]);
   const testScrollYBp = 0.2;
+
+  /* test, isOpen live here instead */
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
     <div className={` `}>
@@ -62,13 +65,13 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
+      <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
-      <Header />
+      <Header isMenuOpen={isMenuOpen} />
 
       {/* TEST TEMP use scroll vertical implementation with profileImg on top (prince inspiration) */}
       <div
-        className={`top-52 fixed z-30 hidden lg:flex flex-col items-center  ${
+        className={`top-52// top-56 fixed z-30 hidden lg:flex flex-col items-center  ${
           scrollY < testScrollYBp ? "opacity-0" : "opacity-70"
         }    transition duration-300 ease-in   ml-[92px] xl:ml-[120px]       `}
       >
@@ -98,19 +101,22 @@ export default function Home({
       <About
         pageInfo={dummyData.backgroundInformation}
         backgroundInformation={dummyData.backgroundInformation}
+        isMenuOpen={isMenuOpen}
       />
 
       <Stack
         skillDescription={dummyData.skillDescription}
         skills={dummyData.skills} //skillDescription={skillDescription} skills={skills}
+        isMenuOpen={isMenuOpen}
       />
 
       <Work
         options={OPTIONS}
         projects={dummyData.projects} //projects={projects}
+        isMenuOpen={isMenuOpen}
       />
 
-      <Contact pageInfo={dummyData.contact} />
+      <Contact pageInfo={dummyData.contact} isMenuOpen={isMenuOpen} />
     </div>
   );
 }

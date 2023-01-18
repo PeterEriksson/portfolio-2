@@ -1,13 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { Dispatch, SetStateAction, useRef, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 
 /* TEST TEMP */
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import styles from "../styles/navBar.module.css";
 
-type Props = {};
+type Props = {
+  isMenuOpen?: boolean;
+  setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
+};
 
-export default function Navbar({}: Props) {
+export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
   /* TEST TEMP (now testing y solution in index.js instead....)*/
   /*  const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -24,9 +27,6 @@ export default function Navbar({}: Props) {
     setLinkActive(to);
     //console.log(linkActive);
   };
-
-  /* const [isMenuComponentVisible, setIsMenuComponentVisible] =
-    useState<boolean>(false); */
 
   // TEST TEMP framer nav
   //https://github.com/devamitjha/framer_motion_animated_nav
@@ -53,32 +53,32 @@ export default function Navbar({}: Props) {
         <section className="flex items-center w-full">
           {/* PE-logo */}
           <ScrollLink
+            onClick={() => setIsMenuOpen(false)}
             to="header"
             smooth="true"
-            /* activeClass={styles._active} */
+            activeClass={styles.navSectionActive}
             spy={true}
             offset={-40}
             onSetActive={handleSetActive}
             /* for some space between link and border -> */
             /* className="pb-1" */
             /* avoid navbar changing height -> have an "invinsible" bottom border -> */
-            className={`relative  group  transform transition duration-300 ease-in-out  cursor-pointer`}
+            className={`relative  border-b border-transparent group ${styles.hoverAnimation}  transform transition duration-300 ease-in-out  cursor-pointer`}
           >
             <h1
-              className={` text-3xl font-bold  opacity-[0.81] hover:opacity-100  tracking-[4px]  ${
-                "header" == linkActive && "!opacity-100"
-              }  transform transition duration-300 ease-in-out`}
+              className={` text-3xl font-bold  opacity-[0.81] hover:opacity-100 ${
+                linkActive == "header" && "opacity-100"
+              }  tracking-[4px]    transform transition duration-300 ease-in-out`}
             >
               PE
               <span
                 className={` w-2 h-2 bg-red-500 inline-block rounded-full ml-2 mb-1.5`}
               ></span>
-              {/* UNDERLYING BORDER for when active */}
-              <div
+              {/* <div
                 className={`${
                   "header" === linkActive && "!opacity-100"
                 }    absolute  md:border-b-2 opacity-0 group-hover:opacity-100   w-full transform transition duration-300 ease-in-out`}
-              />
+              /> */}
             </h1>
           </ScrollLink>
         </section>
@@ -90,8 +90,7 @@ export default function Navbar({}: Props) {
               to={section}
               smooth="true"
               key={i}
-              /* activeClass={styles._active} */
-
+              activeClass={styles.navSectionActive}
               /* TEST TEMP */
               offset={section !== "Contact" ? -40 : 0}
               /* ---- */
@@ -100,33 +99,33 @@ export default function Navbar({}: Props) {
               onSetActive={handleSetActive}
               /* for some space between link and border -> */
               /* className="pb-1" */
-              className={`relative  group ${
-                section === linkActive && "!opacity-100"
-              }  opacity-[0.81] hover:opacity-100    transition duration-300 ease-in-out cursor-pointer`}
+              className={` ${
+                linkActive !== section && styles.hoverAnimation
+              }      border-b border-transparent  relative group opacity-[0.81] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
             >
               <span
                 className={` text-xl    transition duration-300 ease-in-out`}
               >
                 {section}
               </span>
-              <div
+              {/* <div
                 className={`${
                   section === linkActive && "!opacity-100"
                 }  absolute border-b-2 opacity-0 group-hover:opacity-100  w-full  transition duration-300 ease-in-out`}
-              />
+              /> */}
             </ScrollLink>
           ))}
         </section>
         {/* HAMBURGER. Toggle between hamburger and cross  */}
         <section
-          //onClick={() => setIsMenuComponentVisible((prev) => !prev)}
-          onClick={() => setIsOpen((prev) => !prev)}
+          //onClick={() => setIsOpen((prev) => !prev)}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
           className={`md:!hidden //xl:!hidden  ${styles.menuBtn}   opacity-80 hover:opacity-100    z-40`}
         >
           {/* CROSS */}
           <section
             className={`md:hidden //xl:hidden  ${
-              isOpen && styles.burgerAnimation
+              isMenuOpen && styles.burgerAnimation
             } ${styles.burger}`}
           ></section>
         </section>
@@ -140,7 +139,7 @@ export default function Navbar({}: Props) {
 
       {/* MOBILE MENU  */}
       <AnimatePresence>
-        {isOpen && (
+        {isMenuOpen && (
           <motion.nav
             variants={item}
             initial={{ height: 0, opacity: 0 }}
@@ -150,26 +149,29 @@ export default function Navbar({}: Props) {
             className={`md:hidden  flex flex-col items-center justify-center bg-mainDarkBlue text-white space-y-12 `}
           >
             {navData.map((section, i) => (
-              <motion.a
+              <motion.h2
                 key={i}
-                initial={{ y: 30, opacity: 0 }}
+                initial={{ y: 45, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1 - i * (0.1 * 1.5) }}
+                transition={{ delay: 1 - i * (0.1 * 1.7) }}
                 className={`cursor-pointer text-lg/ text-2xl font-semibold uppercase tracking-[5px] 
             `}
               >
                 <ScrollLink
-                  onClick={() => setIsOpen((prev) => !prev)}
+                  onClick={() => setIsMenuOpen((prev) => !prev)}
                   key={i}
                   to={section}
                   smooth="true"
                   activeClass={styles.navSectionActive}
                   spy={true}
-                  className=" opacity-80 hover:opacity-100  transition duration-200 ease-in"
+                  onSetActive={handleSetActive}
+                  className={` ${
+                    linkActive !== section && styles.hoverAnimation
+                  } border-b-[1px]  border-transparent     opacity-80 hover:opacity-100  transition duration-200 ease-in`}
                 >
                   {section}
                 </ScrollLink>
-              </motion.a>
+              </motion.h2>
             ))}
           </motion.nav>
         )}

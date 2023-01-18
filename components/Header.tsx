@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 
-type Props = {};
+type Props = {
+  isMenuOpen: boolean;
+};
 
-export default function Header({}: Props) {
+export default function Header({ isMenuOpen }: Props) {
   const [animated, setAnimated] = useState<boolean>(false);
 
   useEffect(() => {
@@ -29,7 +31,9 @@ export default function Header({}: Props) {
   return (
     <header
       id="header"
-      className="min-h-screen flex items-center justify-center bg-[#091c29]"
+      className={`${
+        isMenuOpen ? "opacity-50" : "opacity-100"
+      } transition duration-200 ease-in   min-h-screen flex items-center justify-center bg-[#091c29]`}
     >
       <div className="w-10/12/// xs:w-10/12 w-[88%] flex flex-col md:flex-row-reverse items-center justify-between ">
         <div className="md:w-2/5 w-full">

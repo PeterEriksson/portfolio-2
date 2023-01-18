@@ -6,9 +6,10 @@ import { motion, useInView } from "framer-motion";
 type Props = {
   skills: SkillType[];
   skillDescription: SkillDescription;
+  isMenuOpen: boolean;
 };
 
-function Stack({ skills, skillDescription }: Props) {
+function Stack({ skills, skillDescription, isMenuOpen }: Props) {
   //console.log(skillDescription);
 
   //for skillDescription text
@@ -21,7 +22,9 @@ function Stack({ skills, skillDescription }: Props) {
   return (
     <div
       id="Skills"
-      className="h-screen bg-gray-200/// bg-white flex flex-col items-center justify-center    overflow-x-hidden"
+      className={`${
+        isMenuOpen ? "opacity-50" : "opacity-100"
+      } transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden`}
     >
       <h1 className="text-3xl sm:text-5xl font-bold pt-4 mb-1.5">Tech I use</h1>
       <h4 className="sm:text-xl text-base font-extralight mb-3">

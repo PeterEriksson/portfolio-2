@@ -5,13 +5,16 @@ import { motion } from "framer-motion";
 type Props = {
   pageInfo?: PageInfo;
   backgroundInformation?: string;
+  isMenuOpen: boolean;
 };
 
-export default function About({ backgroundInformation }: Props) {
+export default function About({ backgroundInformation, isMenuOpen }: Props) {
   return (
     <div
       id="About"
-      className="bg-gray-200 h-screen flex justify-center                      for-shape:-> relative ForRocket: overflow-hidden "
+      className={` ${
+        isMenuOpen ? "opacity-50" : "opacity-100"
+      } transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center             `}
     >
       {/* <div className="absolute space-y-2  text-center">
         <h1 className="text-5xl font-bold   mt-4">About</h1>
@@ -19,26 +22,55 @@ export default function About({ backgroundInformation }: Props) {
           Some info on me
         </h4>
       </div> */}
-      <div className="w-10/12/// xs:w-10/12 w-[88%]   flex items-center justify-between    ">
+      <div className="w-10/12/// xs:w-10/12 w-[88%]  flex items-center justify-between     //xs:justify-between //flex-col //xs:flex-row ">
         {/* LEFT SIDE (TEXT) */}
-        <motion.div
-          /* find effect for one line at a time presentation(prince..) */
-
+        <div
+          /* find effect for one line at a time presentation(prince..)...ok? */
           className="space-y-1.5          lg:pl-[72px] pl-0  bg-green-500//"
         >
-          <h1 className="text-5xl/// font-bold  sm:text-5xl text-3xl">About</h1>
-          <h4 className="text-3xl/// sm:text-3xl text-xl    font-semibold    xs:inline hidden">
+          <motion.h1
+            initial={{ y: 200, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0, duration: 0.5 }}
+            className="text-5xl/// font-bold  sm:text-5xl text-3xl"
+          >
+            About
+          </motion.h1>
+          <motion.h4
+            initial={{ y: 0, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="text-3xl/// sm:text-3xl text-xl    font-semibold    xs:inline hidden"
+          >
             Here is a{" "}
-            <span className="underline decoration-red-500">little</span>{" "}
+            <motion.span
+              initial={{ y: 0, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.15, duration: 0.7 }}
+              className="underline decoration-red-500"
+            >
+              little
+            </motion.span>{" "}
             background
-          </h4>
+          </motion.h4>
           <article className="space-y-1">
-            <p className="text-black sm:w-2/3 w-3/4 sm:text-base text-sm">
+            <motion.p
+              initial={{ y: 0, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.7 }}
+              className="text-black sm:w-2/3 w-3/4 sm:text-base text-sm"
+            >
               {backgroundInformation}
-            </p>
-            <p>For some additional info check my cv(link..)</p>
+            </motion.p>
+            <motion.p
+              initial={{ y: 0, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.7 }}
+            >
+              For some additional info check my cv(link..)
+            </motion.p>
           </article>
-        </motion.div>
+        </div>
         {/* RIGHT SIDE - containing profile pic */}
         <motion.img
           initial={{

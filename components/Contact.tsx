@@ -11,9 +11,11 @@ import { PageInfo } from "../typings";
 import dummyData from "../dummyData.json";
 import { SocialIcon } from "react-social-icons";
 
-type Props = {};
+type Props = {
+  isMenuOpen: boolean;
+};
 
-export default function Contact({}: Props) {
+export default function Contact({ isMenuOpen }: Props) {
   const { ref: myEmojiRef, inView: myEmojiElementIsVisible } = useInView();
   useInView();
 
@@ -25,7 +27,9 @@ export default function Contact({}: Props) {
   return (
     <div
       id="Contact"
-      className="bg-mainDarkBlue h-screen flex justify-center                     for-shape:-> relative ForRocket: overflow-hidden "
+      className={`${
+        isMenuOpen ? "opacity-50" : "opacity-100"
+      } transition duration-200 ease-in   bg-mainDarkBlue h-screen flex justify-center                     for-shape:-> relative ForRocket: overflow-hidden `}
     >
       {/* SHAPE DIVIDER */}
       <div className={`${styles.customShapeDividerTop}`}>

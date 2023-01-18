@@ -26,9 +26,10 @@ type Props = {
   projects: ProjectType[];
   slides?: number[];
   options?: EmblaOptionsType;
+  isMenuOpen: boolean;
 };
 
-export default function Work({ projects, slides, options }: Props) {
+export default function Work({ projects, slides, options, isMenuOpen }: Props) {
   //console.log(projects);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
@@ -68,7 +69,12 @@ export default function Work({ projects, slides, options }: Props) {
   //console.log(scrollSnaps); ok.
 
   return (
-    <div id="Work" className="h-screen flex flex-col      bg-gray-100">
+    <div
+      id="Work"
+      className={`${
+        isMenuOpen ? "opacity-50" : "opacity-100"
+      } transition duration-200 ease-in  h-screen flex flex-col  bg-gray-100`}
+    >
       <div
         aria-label="PROJECTS + Some of my work"
         className="flex flex-col items-center space-y-1     pt-14   pb-3"

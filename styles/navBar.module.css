@@ -71,4 +71,34 @@
 
 .navSectionActive {
   opacity: 1;
+  border-color: white;
 }
+
+/* cool hover effect...use? */
+.hoverAnimation {
+  display: inline-block;
+  position: relative;
+  color: white;
+}
+
+.hoverAnimation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  bottom: -1px;
+  /* height: 1.5px; */
+  height: 1px;
+
+  left: 0;
+  background-color: white;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hoverAnimation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* ----- */
