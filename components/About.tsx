@@ -22,11 +22,11 @@ export default function About({ backgroundInformation, isMenuOpen }: Props) {
           Some info on me
         </h4>
       </div> */}
-      <div className="w-10/12/// xs:w-10/12 w-[88%]  flex items-center justify-between     //xs:justify-between //flex-col //xs:flex-row ">
+      <div className="w-10/12/// xs:w-10/12 w-[88%]  flex items-center justify-between/     xs:justify-between flex-col xs:flex-row justify-center ">
         {/* LEFT SIDE (TEXT) */}
         <div
           /* find effect for one line at a time presentation(prince..)...ok? */
-          className="space-y-1.5          lg:pl-[72px] pl-0  bg-green-500//"
+          className="space-y-1  lg:pl-[72px] pl-0  bg-green-500//                   text-center xs:text-start "
         >
           <motion.h1
             initial={{ y: 200, opacity: 0 }}
@@ -40,7 +40,7 @@ export default function About({ backgroundInformation, isMenuOpen }: Props) {
             initial={{ y: 0, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="text-3xl/// sm:text-3xl text-xl    font-semibold    xs:inline hidden"
+            className="text-3xl/// sm:text-3xl text-xl    font-semibold    xs:inline //hidden"
           >
             Here is a{" "}
             <motion.span
@@ -53,12 +53,12 @@ export default function About({ backgroundInformation, isMenuOpen }: Props) {
             </motion.span>{" "}
             background
           </motion.h4>
-          <article className="space-y-1">
+          <article className="space-y-0.5           ">
             <motion.p
               initial={{ y: 0, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.7 }}
-              className="text-black sm:w-2/3 w-3/4 sm:text-base text-sm"
+              className="text-black sm:text-base text-sm/ sm:w-2/3// w-3/4//           text-base  sm:w-2/3 xs:w-3/4 w-full"
             >
               {backgroundInformation}
             </motion.p>
@@ -67,11 +67,12 @@ export default function About({ backgroundInformation, isMenuOpen }: Props) {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.9, duration: 0.7 }}
             >
-              For some additional info check my cv(link..)
+              For some additional info check cv(link..)
             </motion.p>
           </article>
         </div>
         {/* RIGHT SIDE - containing profile pic */}
+
         <motion.img
           initial={{
             opacity: 0,
@@ -82,7 +83,7 @@ export default function About({ backgroundInformation, isMenuOpen }: Props) {
           whileInView={{
             opacity: 1,
           }}
-          className=" sm:w-2/5  w-1/2    rounded-lg  max-w-xs       "
+          className="rounded-lg max-w-xs  sm:w-2/5//  w-1/2//       w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
           src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
           alt=""
         />

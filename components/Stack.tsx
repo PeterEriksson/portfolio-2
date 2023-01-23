@@ -26,14 +26,15 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
         isMenuOpen ? "opacity-50" : "opacity-100"
       } transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden`}
     >
-      <h1 className="text-3xl sm:text-5xl font-bold pt-4 mb-1.5">Tech I use</h1>
-      <h4 className="sm:text-xl text-base font-extralight mb-3">
+      <h1 className="text-3xl sm:text-5xl font-bold pt-10 xs:pt-4 mb-0.5  ">
+        Tech I use
+      </h1>
+      <h4 className="sm:text-xl text-base font-extralight mb-2 ">
         Hover for current proficiency
       </h4>
       {/* SKILLS - sort by progress */}
-      <div
-        className={`grid grid-cols-3/bugissue?progress-not-centered// grid-cols-4 sm:grid-cols-4 gap-4/// gap-3  md:gap-x-10   `}
-      >
+      {/* between sm and md - BUG. progress not centered. */}
+      <div className={`grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4    `}>
         {skills
           ?.sort((a, b) => a.progress - b.progress)
           .map((skill, i) => {
@@ -61,7 +62,7 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
         }}
         viewport={{ once: true }}
       >
-        <p className="px-7/// px-2 xs:px-0 max-w-[350px]   sm:max-w-[600px] text-center font-light mt-4 mb-2 text-[12px] sm:text-base   ">
+        <p className=" px-2 xs:px-0 max-w-[350px]   sm:max-w-[600px] text-center font-light mt-3 mb-2   sm:text-base text-sm  ">
           {/* {skillDescription?.text} */}
           {skillDescription}
         </p>

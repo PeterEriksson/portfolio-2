@@ -68,7 +68,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
             <h1
               className={` text-3xl font-bold  opacity-[0.81] hover:opacity-100 ${
                 linkActive == "header" && "opacity-100"
-              }  tracking-[4px]    transform transition duration-300 ease-in-out`}
+              }  tracking-[2px]    transform transition duration-300 ease-in-out`}
             >
               PE
               <span
