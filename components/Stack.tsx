@@ -34,7 +34,7 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
       </h4>
       {/* SKILLS - sort by progress */}
       {/* between sm and md - BUG. progress not centered. */}
-      <div className={`grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4    `}>
+      <div className={`grid grid-cols-3  xs:grid-cols-4 gap-2 sm:gap-4    `}>
         {skills
           ?.sort((a, b) => a.progress - b.progress)
           .map((skill, i) => {
@@ -62,7 +62,7 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
         }}
         viewport={{ once: true }}
       >
-        <p className=" px-2 xs:px-0 max-w-[350px]   sm:max-w-[600px] text-center font-light mt-3 mb-2   sm:text-base text-sm  ">
+        <p className=" px-2 xs:px-0 max-w-[350px] xs:max-w-[400px]   sm:max-w-[600px] text-center font-light mt-3 mb-2   sm:text-base text-sm  ">
           {/* {skillDescription?.text} */}
           {skillDescription}
         </p>

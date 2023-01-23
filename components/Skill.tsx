@@ -30,11 +30,11 @@ export default function Skill({ skill, directionLeft }: Props) {
         /* src="https://avatars.githubusercontent.com/u/17177659?s=280&v=4" */
         /* src={urlFor(skill?.image).url()} */
         src={skill?.image}
-        className="  rounded-full border  border-gray-500 object-cover h-20 w-20 md:w-28/ md:h-28/ sm:w-28 sm:h-28  xl:h-32 xl:w-32 filter group-hover:grayscale transition duration-300 ease-in-out"
+        className="  rounded-full border  border-gray-500 object-cover h-20 w-20 xs:h-24 xs:w-24 sm:w-28 sm:h-28 filter group-hover:grayscale transition duration-300 ease-in-out"
       />
 
       {/* skill info - showing on hover */}
-      <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white h-20 w-20 md:w-28 md:h-28  xl:h-32 xl:w-32 rounded-full">
+      <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white h-20 w-20 xs:h-24 xs:w-24 sm:w-28 sm:h-28   rounded-full">
         <div className="flex items-center justify-center h-full relative">
           <p className="absolute mb-10 text-xs sm:text-sm truncate ">
             {skill?.title}
