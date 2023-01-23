@@ -73,7 +73,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
       id="Work"
       className={`${
         isMenuOpen ? "opacity-50" : "opacity-100"
-      } transition duration-200 ease-in  h-screen flex flex-col  bg-gray-100`}
+      } md:!opacity-100 transition duration-200 ease-in  h-screen flex flex-col  bg-gray-100`}
     >
       <div
         aria-label="PROJECTS + Some of my work"

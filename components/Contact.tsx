@@ -29,7 +29,7 @@ export default function Contact({ isMenuOpen }: Props) {
       id="Contact"
       className={`${
         isMenuOpen ? "opacity-50" : "opacity-100"
-      } transition duration-200 ease-in   bg-mainDarkBlue h-screen flex justify-center                     for-shape:-> relative ForRocket: overflow-hidden `}
+      } md:!opacity-100 transition duration-200 ease-in   bg-mainDarkBlue h-screen flex justify-center                     for-shape:-> relative ForRocket: overflow-hidden `}
     >
       {/* SHAPE DIVIDER */}
       <div className={`${styles.customShapeDividerTop}`}>

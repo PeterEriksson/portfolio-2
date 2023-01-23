@@ -24,7 +24,7 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
       id="Skills"
       className={`${
         isMenuOpen ? "opacity-50" : "opacity-100"
-      } transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden`}
+      } md:!opacity-100 transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden`}
     >
       <h1 className="text-3xl sm:text-5xl font-bold pt-10 xs:pt-4 mb-0.5  ">
         Tech I use

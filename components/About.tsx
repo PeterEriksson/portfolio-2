@@ -14,7 +14,7 @@ export default function About({ backgroundInformation, isMenuOpen }: Props) {
       id="About"
       className={` ${
         isMenuOpen ? "opacity-50" : "opacity-100"
-      } transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center             `}
+      } md:!opacity-100 transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center             `}
     >
       {/* <div className="absolute space-y-2  text-center">
         <h1 className="text-5xl font-bold   mt-4">About</h1>
