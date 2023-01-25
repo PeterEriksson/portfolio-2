@@ -11,6 +11,7 @@ module.exports = {
         mainDarkBlue: "#091c29",
       },
       screens: {
+        xxs: "442px",
         xs: "500px",
         test: "630px",
       },

@@ -86,13 +86,13 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
       </div>
 
       <div
-        className={`${styles.embla} sm:mx-auto  sm:max-w-[640px]  bg-blue-700//   `}
+        className={`${styles.embla} sm:mx-auto  sm:max-w-[640px]  bg-blue-700   `}
       >
         <div className={`${styles.embla__viewport}   `} ref={emblaRef}>
           <div className={`${styles.embla__container}   `}>
             {projects.map((project, index) => (
               <div
-                className={`${styles.embla__slide}  px-4///        xs:px-4 px-5  `}
+                className={`${styles.embla__slide}  px-4///     xs:px-4 px-5  `}
                 key={index}
               >
                 {/* Number of Project. Skip?? */}
@@ -111,7 +111,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                   }}
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
-                  className={`${styles.embla__slide__img} rounded-lg   xs:!h-[300px]  !h-56  max-w-[640px]      `}
+                  className={`${styles.embla__slide__img} rounded-lg   xs:!h-[300px]//notDoing??  !h-56// !h-72  max-w-[640px]      `}
                   src={project.image}
                   alt="Your alt text"
                 />
