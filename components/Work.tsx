@@ -86,7 +86,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
       </div>
 
       <div
-        className={`${styles.embla} sm:mx-auto  sm:max-w-[640px]  bg-blue-700   `}
+        className={`${styles.embla} sm:mx-auto  sm:max-w-[640px]  bg-blue-700//   `}
       >
         <div className={`${styles.embla__viewport}   `} ref={emblaRef}>
           <div className={`${styles.embla__container}   `}>
@@ -111,7 +111,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                   }}
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
-                  className={`${styles.embla__slide__img} rounded-lg   xs:!h-[300px]//notDoing??  !h-56// !h-72  max-w-[640px]      `}
+                  className={`${styles.embla__slide__img} rounded-lg   !h-64 xs:!h-[330px]  //!h-56  max-w-[640px]      `}
                   src={project.image}
                   alt="Your alt text"
                 />
@@ -172,7 +172,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
 
         {/* DOTS DIV */}
         <div
-          className={`${styles.embla__dots}  bg-red-500// max-w-[500px] mx-auto    xs:-mt-[226px]  -mt-[236px] space-x-4  opacity-70  `}
+          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto            //transform -translate-y-[240px] xxs:-translate-y-[210px] smaller:-translate-y-[180px] sm:-translate-y-[225px]   `}
         >
           {scrollSnaps.map((_, index) => (
             <DotButton
