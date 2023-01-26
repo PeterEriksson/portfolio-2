@@ -40,7 +40,6 @@ export default function Home({
   projects,
   socials,
 }: Props) {
-  /* TEST TEMP */
   const { scrollYProgress } = useScroll();
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -69,7 +68,7 @@ export default function Home({
 
       <Header isMenuOpen={isMenuOpen} />
 
-      {/* TEST TEMP use scroll vertical implementation with profileImg on top (prince inspiration) */}
+      {/* USE SCROLL VERTICAL implementation with profileImg on top (prince inspiration) */}
       <div
         className={`top-52// top-56 fixed z-30 hidden lg:flex flex-col items-center  ${
           scrollY < testScrollYBp ? "opacity-0" : "opacity-70"

@@ -24,9 +24,9 @@
 .embla__slide__img {
   /* display: block;  what does it do? */
   /* height: var(--slide-height);  try write tailwind instead*/
-  width: 100%;
+  /*   width: 100%;
 
-  object-fit: cover;
+  object-fit: cover; */
 }
 
 .embla__dot,

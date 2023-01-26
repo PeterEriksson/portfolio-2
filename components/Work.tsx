@@ -111,8 +111,8 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                   }}
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
-                  className={`${styles.embla__slide__img} rounded-lg   !h-64 xs:!h-[330px]  //!h-56  max-w-[640px]      `}
-                  src={project.image}
+                  className={` w-full object-cover rounded-lg      !h-64/ h-[248px] xs:!h-[330px]  max-w-[640px]      `}
+                  src={project?.image}
                   alt="Your alt text"
                 />
 

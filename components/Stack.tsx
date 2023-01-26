@@ -16,7 +16,7 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
   const transition = {
     type: "spring",
     bounce: 0.35,
-    duration: 1.2,
+    duration: 1.5,
   };
 
   return (
@@ -33,8 +33,8 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
         Hover for current proficiency
       </h4>
       {/* SKILLS - sort by progress */}
-      {/* between sm and md - BUG. progress not centered. */}
-      <div className={`grid grid-cols-3  xs:grid-cols-4 gap-2 sm:gap-4    `}>
+
+      <div className={`grid grid-cols-3  xs:grid-cols-4 gap-2 sm:gap-4   `}>
         {skills
           ?.sort((a, b) => a.progress - b.progress)
           .map((skill, i) => {
@@ -47,26 +47,22 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
 
       {/* SKILL DESCRIPTION */}
       {/* use p-tag or article-tag? or section-tag? */}
-      <motion.div
+      <motion.p
         initial={{
           y: -100,
           opacity: 0,
         }}
-        /* transition={{
-          duration: 1,
-        }} */
         transition={transition}
         whileInView={{
           opacity: 1,
           y: 0,
         }}
         viewport={{ once: true }}
+        className="  max-w-[322px] xs:max-w-[400px]   sm:max-w-[600px] text-center font-light mt-3 mb-2   sm:text-base text-sm  "
       >
-        <p className=" px-2 xs:px-0 max-w-[350px] xs:max-w-[400px]   sm:max-w-[600px] text-center font-light mt-3 mb-2   sm:text-base text-sm  ">
-          {/* {skillDescription?.text} */}
-          {skillDescription}
-        </p>
-      </motion.div>
+        {/* {skillDescription?.text} */}
+        {skillDescription}
+      </motion.p>
     </div>
   );
 }
