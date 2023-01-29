@@ -114,7 +114,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                   viewport={{ once: true }}
                   className={` w-full object-cover rounded-lg      !h-64/ h-[248px] xs:!h-[330px]  max-w-[640px]      `}
                   //src={project?.image}
-                  src={urlFor(project?.image).url()}
+                  src={urlFor(project?.image).url() || undefined}
                   alt="Your alt text"
                 />
 

@@ -91,7 +91,7 @@ export default function About({
           }}
           className="rounded-lg max-w-xs  sm:w-2/5//  w-1/2//       w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
-          src={urlFor(pageInfo?.profilePic).url()}
+          src={urlFor(pageInfo?.profilePic).url() || undefined}
           alt=""
         />
       </div>

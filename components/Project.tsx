@@ -1,3 +1,4 @@
+/* NOT IN USE. Refactor Later and create new Project (Rendered in Work) */
 import React, {
   Dispatch,
   SetStateAction,
@@ -80,7 +81,7 @@ const Project = (
 
         /* src={urlFor(project?.image).height(300).width(400).url()} */
         /* src={urlFor(project?.image).url()} */
-        src={project?.image}
+        /*  src={project?.image} */
         alt=""
         className="h-[65%]/ h-[55%] bg-red-500  cursor-pointer   rounded-xl    object-cover//   "
       />
