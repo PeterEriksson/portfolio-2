@@ -11,6 +11,7 @@ Website: [Peter resume](https://petere-portfolio-2.vercel.app/) <br />
 #### Project is created with:
 
 - React
+- Typescript
 - Next.js
 - Sanity CMS
 - Tailwind CSS
