@@ -174,7 +174,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
 
         {/* DOTS DIV */}
         <div
-          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto           -translate-y-[200px] xxs:-translate-y-[180px] smaller:-translate-y-[160px] sm:-translate-y-[205px]  `}
+          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto           -translate-y-[212px] xxs:-translate-y-[180px] smaller:-translate-y-[170px] sm:-translate-y-[205px]  `}
         >
           {scrollSnaps.map((_, index) => (
             <DotButton
