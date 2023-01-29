@@ -19,6 +19,7 @@ Website: [Peter resume](https://petere-portfolio-2.vercel.app/) <br />
 - react-intersection-observer
 - react-scroll
 - react-simple-typewriter
+- react-social-icons
 - Hero Icons
 - Vercel
 
