@@ -55,7 +55,7 @@ export default function Header({ isMenuOpen }: Props) {
           >
             Hi!
             <br />
-            It's me Peter!!!!
+            It's me Peter!!
           </h1>
           <h2
             className={`${
