@@ -19,17 +19,18 @@ export interface Skill extends SanityBody {
   title: string;
   progress: number;
   image: Image;
-  /*   image: string;
-   */
+  /* using dummyData... */
+  /*   image: string; */
 }
 
 export interface Project extends SanityBody {
   _type: "project";
   title: string;
   image: Image;
+  /* using dummyData... */
+  /*   image: string; */
 
-  /*   image: string;
-   */ linkToBuild: string;
+  linkToBuild: string;
   linkToGithub: string;
   summary: string;
   technologies: Skill[];
@@ -44,6 +45,7 @@ export interface PageInfo extends SanityBody {
   heroImage: Image;
   profilePic: Image;
 
+  /* using dummyData... */
   /* profilePic: string;
   heroImage: string; */
 
