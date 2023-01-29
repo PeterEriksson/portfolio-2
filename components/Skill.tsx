@@ -28,7 +28,7 @@ export default function Skill({ skill, directionLeft }: Props) {
         }}
         viewport={{ once: true }}
         /* src="https://avatars.githubusercontent.com/u/17177659?s=280&v=4" */
-        src={urlFor(skill?.image).url()}
+        src={urlFor(skill?.image).url() || undefined}
         //src={skill?.image}
         className="  rounded-full border  border-gray-500 object-cover h-20 w-20 xs:h-24 xs:w-24 sm:w-28 sm:h-28 filter group-hover:grayscale transition duration-300 ease-in-out"
       />
