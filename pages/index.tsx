@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from "next";
+import type { GetStaticProps /* , NextPage */ } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Header";
@@ -18,7 +18,6 @@ import Contact from "../components/Contact";
 import { EmblaOptionsType } from "embla-carousel-react";
 import About from "../components/About";
 
-/* TEST TEMP */
 import { motion, useScroll, useSpring } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 import { useEffect, useState } from "react";
@@ -98,29 +97,37 @@ export default function Home({
       </div>
 
       <About
-        pageInfo={dummyData.backgroundInformation}
-        backgroundInformation={dummyData.backgroundInformation}
+        pageInfo={pageInfo}
+        //backgroundInformation={dummyData.backgroundInformation}
         isMenuOpen={isMenuOpen}
       />
 
       <Stack
-        skillDescription={dummyData.skillDescription}
-        skills={dummyData.skills} //skillDescription={skillDescription} skills={skills}
+        //skillDescription={dummyData.skillDescription}
+        //skills={dummyData.skills}
+        skillDescription={skillDescription}
+        skills={skills}
         isMenuOpen={isMenuOpen}
       />
 
       <Work
         options={OPTIONS}
-        projects={dummyData.projects} //projects={projects}
+        //projects={dummyData.projects}
+        projects={projects}
         isMenuOpen={isMenuOpen}
       />
 
-      <Contact pageInfo={dummyData.contact} isMenuOpen={isMenuOpen} />
+      <Contact
+        //pageInfo={dummyData.contact}
+        pageInfo={pageInfo}
+        socials={socials}
+        isMenuOpen={isMenuOpen}
+      />
     </div>
   );
 }
 
-/* export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo: PageInfo = await fetchPageInfo();
   const skills: Skill[] = await fetchSkills();
   const skillDescription: SkillDescription = await fetchSkillDescription();
@@ -140,4 +147,4 @@ export default function Home({
     // - At most once every 10 seconds
     revalidate: 10,
   };
-}; */
+};

@@ -1,6 +1,7 @@
 import React from "react";
 import { PageInfo } from "../typings";
 import { motion } from "framer-motion";
+import { urlFor } from "../sanity";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -8,7 +9,11 @@ type Props = {
   isMenuOpen: boolean;
 };
 
-export default function About({ backgroundInformation, isMenuOpen }: Props) {
+export default function About({
+  backgroundInformation,
+  isMenuOpen,
+  pageInfo,
+}: Props) {
   return (
     <div
       id="About"
@@ -60,7 +65,8 @@ export default function About({ backgroundInformation, isMenuOpen }: Props) {
               transition={{ delay: 0.6, duration: 0.7 }}
               className="text-black sm:text-base text-sm/ sm:w-2/3// w-3/4//           text-base  sm:w-2/3 xs:w-3/4 w-full"
             >
-              {backgroundInformation}
+              {/* {backgroundInformation} */}
+              {pageInfo?.backgroundInformation}
             </motion.p>
             <motion.p
               initial={{ y: 0, opacity: 0 }}
@@ -84,7 +90,8 @@ export default function About({ backgroundInformation, isMenuOpen }: Props) {
             opacity: 1,
           }}
           className="rounded-lg max-w-xs  sm:w-2/5//  w-1/2//       w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
-          src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
+          //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
+          src={urlFor(pageInfo?.profilePic).url()}
           alt=""
         />
       </div>

@@ -7,15 +7,17 @@ import {
   EnvelopeIcon as MailIcon,
   PhoneIcon as PhoneIcon,
 } from "@heroicons/react/24/solid";
-import { PageInfo } from "../typings";
+import { PageInfo, Social } from "../typings";
 import dummyData from "../dummyData.json";
 import { SocialIcon } from "react-social-icons";
 
 type Props = {
+  pageInfo?: PageInfo;
+  socials?: Social[];
   isMenuOpen: boolean;
 };
 
-export default function Contact({ isMenuOpen }: Props) {
+export default function Contact({ isMenuOpen, pageInfo, socials }: Props) {
   const { ref: myEmojiRef, inView: myEmojiElementIsVisible } = useInView();
   useInView();
 
@@ -85,22 +87,32 @@ export default function Contact({ isMenuOpen }: Props) {
             </InView>
           </div>
           <p className="text-white sm:w-2/3 w-3/4 sm:text-base text-sm">
-            {dummyData.contact.contactText}
+            {/* {dummyData.contact.contactText} */}
+            If you have an opening or any project that I can contribute to, be
+            sure to reach out.
           </p>
           <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm">
             <PhoneIcon className="h-5 w-5 text-white" />
-            <p className="text-white">{dummyData.contact.phone}</p>
+            <p className="text-white">
+              {/* dummyData.contact.phone */}
+              {pageInfo?.phoneNumber}
+            </p>
           </div>
           <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm">
             <MailIcon className="h-5 w-5 text-white" />
-            <p className="text-white">{dummyData.contact.mail}</p>
+            <p className="text-white">
+              {/* dummyData.contact.mail */}
+              {pageInfo?.email}
+            </p>
           </div>
 
-          {dummyData.contact.socials.map((social, i) => (
+          {/* {dummyData.contact.socials.map((social, i) => ( */}
+          {socials?.map((social, i) => (
             <SocialIcon
               key={i}
               target="_blank"
-              url={social}
+              //url={social}
+              url={social.url}
               bgColor="transparent"
               fgColor="white"
               className="hover:opacity-70 !h-10 !w-10  (not interfere with scrollY:->) z-40"

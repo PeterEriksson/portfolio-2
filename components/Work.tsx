@@ -21,6 +21,7 @@ import {
 import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
 import styles from "../styles/embla.module.css";
 import Link from "next/link";
+import { urlFor } from "../sanity";
 
 type Props = {
   projects: ProjectType[];
@@ -112,7 +113,8 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
                   className={` w-full object-cover rounded-lg      !h-64/ h-[248px] xs:!h-[330px]  max-w-[640px]      `}
-                  src={project?.image}
+                  //src={project?.image}
+                  src={urlFor(project?.image).url()}
                   alt="Your alt text"
                 />
 
@@ -128,17 +130,17 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                   className="flex flex-col "
                 >
                   <h3 className="text-xl sm:text-2xl font-bold mx-auto  underline/ decoration-red-500 opacity-[0.88]">
-                    {project.title}
+                    {project?.title}
                   </h3>
 
                   <p className="font-light text-center mx-3 sm:text-base text-sm       sm:mx-12">
-                    {project.summary}
+                    {project?.summary}
                   </p>
                   {/* TECH USED ON PROJECT. */}
                   <div className="  flex  space-x-1 mt-1 justify-center flex-wrap   bg-yellow-600// mb-0.5 mx-2 ">
                     {project?.technologies?.map((tech, i) => (
                       <p className="italic text-xs font-extralight    " key={i}>
-                        #{tech.title}
+                        #{tech?.title}
                       </p>
                     ))}
                   </div>
@@ -172,7 +174,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
 
         {/* DOTS DIV */}
         <div
-          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto            //transform -translate-y-[240px] xxs:-translate-y-[210px] smaller:-translate-y-[180px] sm:-translate-y-[225px]   `}
+          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto           -translate-y-[200px] xxs:-translate-y-[180px] smaller:-translate-y-[160px] sm:-translate-y-[205px]  `}
         >
           {scrollSnaps.map((_, index) => (
             <DotButton

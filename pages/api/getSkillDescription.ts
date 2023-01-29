@@ -1,4 +1,4 @@
-/* import type { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 import { groq } from "next-sanity";
 import { sanityClient } from "../../sanity";
 import { SkillDescription } from "../../typings";
@@ -18,4 +18,3 @@ export default async function handler(
 
   res.status(200).json({ skillDescription });
 }
- */

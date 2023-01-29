@@ -24,7 +24,7 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
       id="Skills"
       className={`${
         isMenuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden`}
+      } md:!opacity-100 transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden    overflow-hidden`}
     >
       <h1 className="text-3xl sm:text-5xl font-bold pt-10 xs:pt-4 mb-0.5  ">
         Tech I use
@@ -61,7 +61,7 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
         className="  max-w-[322px] xs:max-w-[400px]   sm:max-w-[600px] text-center font-light mt-3 mb-2   sm:text-base text-sm  "
       >
         {/* {skillDescription?.text} */}
-        {skillDescription}
+        {skillDescription?.text}
       </motion.p>
     </div>
   );
