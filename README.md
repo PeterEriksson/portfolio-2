@@ -21,7 +21,7 @@ Website: [Peter resume](https://petere-portfolio-2.vercel.app/) <br />
 - react-simple-typewriter
 - react-social-icons
 - Hero Icons
-- Vercel
+- Vercel (hosting)
 
 ## Screenshots
 #### Intro page 
