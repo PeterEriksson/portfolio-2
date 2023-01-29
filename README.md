@@ -1,1 +1,27 @@
-Summary of project coming soon...
+# 💼 Resume/Portfolio website - 2nd version
+A single page portfolio/presentation project. Brief introduction of myself and my skills + some work presented Responsive layout for both desktop and mobile sizes. Built in React with Tailwind css. Content is powered by Sanity and fetched with Next.js. Embla Carousel is used for displaying projects. 
+
+## Author
+
+Created by Peter<br />
+Website: [Peter resume](https://petere-portfolio-2.vercel.app/) <br />
+[Instagram](https://www.instagram.com/petee_10/)<br />
+[Linkedin](https://www.linkedin.com/in/peter-eriksson-13b8b1120/)
+
+#### Project is created with:
+
+- React
+- Next.js
+- Sanity CMS
+- Tailwind CSS
+- Framer Motion
+- react-intersection-observer
+- react-scroll
+- react-simple-typewriter
+- Hero Icons
+- Vercel
+
+## Screenshots
+#### Intro page 
+
+.........
