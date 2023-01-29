@@ -25,4 +25,4 @@ Website: [Peter resume](https://petere-portfolio-2.vercel.app/) <br />
 ## Screenshots
 #### Intro page 
 
-.........
+....todo
