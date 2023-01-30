@@ -78,7 +78,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
     >
       <div
         aria-label="PROJECTS + Some of my work"
-        className="flex flex-col items-center space-y-1     pt-16 xxs:pt-7  pb-2"
+        className="flex flex-col items-center space-y-1     mt-14  mb-2"
       >
         <h1 className="sm:text-5xl text-3xl font-bold  ">Projects</h1>
         <h3 className="sm:text-xl text-base font-extralight  ">
@@ -133,7 +133,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                     {project?.title}
                   </h3>
 
-                  <p className="font-light text-center mx-3 sm:text-base text-sm       sm:mx-12">
+                  <p className="font-light text-center mx-3 sm:text-base text-sm/       sm:mx-12">
                     {project?.summary}
                   </p>
                   {/* TECH USED ON PROJECT. */}
@@ -174,7 +174,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
 
         {/* DOTS DIV */}
         <div
-          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto           -translate-y-[212px] xxs:-translate-y-[180px] smaller:-translate-y-[170px] sm:-translate-y-[205px]  `}
+          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto           -translate-y-[262px] xxs:-translate-y-[235px] xs:-translate-y-[210px] smaller:-translate-y-[190px] sm:-translate-y-[205px]  `}
         >
           {scrollSnaps.map((_, index) => (
             <DotButton

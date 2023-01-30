@@ -57,7 +57,7 @@ export default function Home({
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
-    <div className={`bg-mainDarkBlue `}>
+    <div className={`  `}>
       <Head>
         <title>Portfolio 2 Pete</title>
         <link rel="icon" href="/favicon.ico" />
