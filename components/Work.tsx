@@ -78,7 +78,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
     >
       <div
         aria-label="PROJECTS + Some of my work"
-        className="flex flex-col items-center space-y-1     pt-14   pb-3"
+        className="flex flex-col items-center space-y-1     pt-16 xxs:pt-7  pb-2"
       >
         <h1 className="sm:text-5xl text-3xl font-bold  ">Projects</h1>
         <h3 className="sm:text-xl text-base font-extralight  ">
