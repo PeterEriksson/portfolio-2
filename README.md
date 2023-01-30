@@ -1,5 +1,5 @@
 # 💼 Resume/Portfolio website - 2nd version
-A single page portfolio/presentation project. Brief introduction of myself and my skills + some work presented Responsive layout for both desktop and mobile sizes. Built in React with Tailwind css. Content is powered by Sanity and fetched with Next.js. Embla Carousel is used for displaying projects. 
+A single page portfolio/presentation project. Brief introduction of myself and my skills + some work presented Responsive layout for both desktop and mobile sizes. Built in React with Tailwind css. Content is powered by Sanity and fetched with Next.js. Embla Carousel-library is used for displaying projects. Framer-Motion for cool effects.
 
 ## Author
 
