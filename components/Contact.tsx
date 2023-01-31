@@ -62,8 +62,8 @@ export default function Contact({ isMenuOpen, pageInfo, socials }: Props) {
           }}
           transition={{ duration: 1 }}
           //transition={transition}
-
-          className=" lg:pl-[72px] pl-0"
+          viewport={{ once: true }}
+          className=" lg:pl-[72px] pl-0   !z-30"
         >
           <div
             className={` sm:text-5xl text-3xl text-white font-bold mb-2 xs:mb-3   flex `}
@@ -79,7 +79,7 @@ export default function Contact({ isMenuOpen, pageInfo, socials }: Props) {
                   ref={myEmojiRef}
                   className={` ${
                     myEmojiElementIsVisible ? styles.animateEmoji : ""
-                  }  for-mobile-need-to-declare h+w: h-0.5 w-0.5 text-4xl   !z-20 relative`}
+                  }  for-mobile-need-to-declare h+w: h-0.5 w-0.5 text-4xl    /relative`}
                 >
                   🚀
                 </p>

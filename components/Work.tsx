@@ -103,15 +103,15 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
 
                 <motion.img
                   initial={{
-                    y: -100,
+                    /*  y: -100, */
                     opacity: 0,
                   }}
                   whileInView={{
-                    y: 0,
+                    /*  y: 0, */
                     opacity: 1,
                   }}
                   transition={{ duration: 1 }}
-                  viewport={{ once: true }}
+                  /* viewport={{ once: true }} */
                   className={` w-full object-cover rounded-lg      !h-64/ h-[248px] xs:!h-[330px]  max-w-[640px]      `}
                   //src={project?.image}
                   src={urlFor(project?.image).url() || undefined}
@@ -126,7 +126,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                     opacity: 1,
                   }}
                   transition={{ duration: 1 }}
-                  viewport={{ once: true }}
+                  /* viewport={{ once: true }} */
                   className="flex flex-col "
                 >
                   <h3 className="text-xl sm:text-2xl font-bold mx-auto  underline/ decoration-red-500 opacity-[0.88]">

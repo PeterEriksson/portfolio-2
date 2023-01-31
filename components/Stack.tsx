@@ -46,7 +46,6 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
       </div>
 
       {/* SKILL DESCRIPTION */}
-      {/* use p-tag or article-tag? or section-tag? */}
       <motion.p
         initial={{
           y: -100,
@@ -58,7 +57,7 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
           y: 0,
         }}
         viewport={{ once: true }}
-        className="  max-w-[322px] xs:max-w-[400px]   sm:max-w-[600px] text-center font-light mt-3 mb-2   sm:text-base text-sm  "
+        className="  max-w-[335px] xs:max-w-[400px]   sm:max-w-[600px] text-center font-light mt-2 mb-1   sm:text-base text-sm  "
       >
         {/* {skillDescription?.text} */}
         {skillDescription?.text}

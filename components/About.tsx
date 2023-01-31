@@ -37,6 +37,7 @@ export default function About({
             initial={{ y: 200, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0, duration: 0.5 }}
+            viewport={{ once: true }}
             className="text-5xl/// font-bold  sm:text-5xl text-3xl"
           >
             About
@@ -45,6 +46,7 @@ export default function About({
             initial={{ y: 0, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.7 }}
+            viewport={{ once: true }}
             className="text-3xl/// sm:text-3xl text-xl    font-semibold    xs:inline //hidden"
           >
             Here is a{" "}
@@ -52,6 +54,7 @@ export default function About({
               initial={{ y: 0, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.7 }}
+              viewport={{ once: true }}
               className="underline decoration-red-500"
             >
               little
@@ -63,6 +66,7 @@ export default function About({
               initial={{ y: 0, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.7 }}
+              viewport={{ once: true }}
               className="text-black sm:text-base text-sm/ sm:w-2/3// w-3/4//           text-base  sm:w-2/3 xs:w-3/4 w-full"
             >
               {/* {backgroundInformation} */}
@@ -72,6 +76,7 @@ export default function About({
               initial={{ y: 0, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.9, duration: 0.7 }}
+              viewport={{ once: true }}
             >
               For some additional info check cv(link..)
             </motion.p>
