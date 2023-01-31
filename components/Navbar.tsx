@@ -46,7 +46,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
 
   return (
     <nav
-      className={`fixed top-0 w-screen z-50  bg-[#091c29]    flex flex-col  `}
+      className={`!fixed !top-0 w-screen !z-50  bg-[#091c29]    flex flex-col  `}
     >
       <section className="flex items-center  text-white justify-between mx-auto py-3  xs:w-10/12 w-[88%]       !z-30 ">
         {/* LEFT div  (PE-logo) */}
