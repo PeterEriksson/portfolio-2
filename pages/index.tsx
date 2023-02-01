@@ -69,7 +69,7 @@ export default function Home({
 
       {/* USE SCROLL VERTICAL implementation with profileImg on top (prince inspiration) */}
       <div
-        className={`top-52// top-56 fixed z-30 hidden lg:flex flex-col items-center  ${
+        className={`top-52// top-56 fixed z-[39] hidden lg:flex flex-col items-center  ${
           scrollY < testScrollYBp ? "opacity-0" : "opacity-70"
         }    transition duration-300 ease-in   ml-[92px] xl:ml-[120px]       `}
       >
