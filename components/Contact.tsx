@@ -48,7 +48,7 @@ export default function Contact({ isMenuOpen, pageInfo, socials }: Props) {
         </svg>
       </div>
 
-      <div className="w-10/12/// xs:w-10/12 w-[88%] flex items-center justify-between     ">
+      <div className=" xs:w-10/12 w-[88%] flex items-center justify-between   ">
         <motion.div
           initial={{
             x: -100,

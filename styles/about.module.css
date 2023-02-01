@@ -1,0 +1,25 @@
+/* SHAPE DIVIDER */
+/* https://www.shapedivider.app/ */
+
+.customShapeDividerTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.customShapeDividerTop svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  /* height: 70px; */
+}
+
+.shapeFill {
+  fill: rgb(9, 28, 41);
+}
+
+.customShapeDividerTop > path {
+}

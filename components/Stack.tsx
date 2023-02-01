@@ -26,10 +26,10 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
         isMenuOpen ? "opacity-50" : "opacity-100"
       } md:!opacity-100 transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden    overflow-hidden`}
     >
-      <h1 className="mb-0.5 text-3xl sm:text-5xl font-bold pt-10 xs:pt-4  ">
+      <h1 className=" text-3xl sm:text-5xl font-bold pt-8 xs:pt-4  ">
         Tech I use
       </h1>
-      <h4 className=" sm:text-xl text-base font-extralight mb-2 ">
+      <h4 className=" sm:text-xl text-base font-extralight mb-1 xs:mb-2 ">
         Hover for current proficiency
       </h4>
       {/* SKILLS - sort by progress */}

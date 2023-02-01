@@ -17,7 +17,7 @@ export default function Header({ isMenuOpen }: Props) {
   const { text: typeWriterText } = useTypewriter({
     words: [
       " <FrontEndDeveloper ‍💻 />",
-      " <SelfTaught />",
+      " <SelfTaught 🤓 />",
       " <LookingForReactRole ⚛️ />",
       " Peter 😎",
     ],
@@ -39,7 +39,6 @@ export default function Header({ isMenuOpen }: Props) {
         <div className="md:w-2/5 w-full">
           <img
             src="https://user-images.githubusercontent.com/17027312/134349999-06919dce-11f2-42b9-9c0c-2b27d8dcce51.jpeg"
-            /* effect="blur" */
             className={`rounded-xl ${!animated && "opacity-0"}  ${
               animated && "transform transition duration-1000 ease-in-out"
             }`}

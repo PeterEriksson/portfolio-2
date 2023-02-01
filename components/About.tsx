@@ -2,6 +2,7 @@ import React from "react";
 import { PageInfo } from "../typings";
 import { motion } from "framer-motion";
 import { urlFor } from "../sanity";
+import styles from "../styles/about.module.css";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -19,14 +20,24 @@ export default function About({
       id="About"
       className={` ${
         isMenuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center             `}
+      } md:!opacity-100 transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center             for-shape:-> relative `}
     >
-      {/* <div className="absolute space-y-2  text-center">
-        <h1 className="text-5xl font-bold   mt-4">About</h1>
-        <h4 className="sm:text-xl text-base font-extralight mb-3 ">
-          Some info on me
-        </h4>
-      </div> */}
+      {/* SHAPE DIVIDER */}
+      <div className={`${styles.customShapeDividerTop}`}>
+        <svg
+          className={`h-10  xs:h-20 `}
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
+            className={`${styles.shapeFill}`}
+          ></path>
+        </svg>
+      </div>
+
       <div className="w-10/12/// xs:w-10/12 w-[88%]  flex items-center justify-between/     xs:justify-between flex-col xs:flex-row justify-center ">
         {/* LEFT SIDE (TEXT) */}
         <div
