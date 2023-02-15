@@ -5,7 +5,8 @@ import { InView, useInView } from "react-intersection-observer";
 /* import { MailIcon, PhoneIcon } from "@heroicons/react/solid"; */
 import {
   EnvelopeIcon as MailIcon,
-  PhoneIcon as PhoneIcon,
+  MapPinIcon,
+  PhoneIcon,
 } from "@heroicons/react/24/solid";
 import { PageInfo, Social } from "../typings";
 import dummyData from "../dummyData.json";
@@ -104,6 +105,10 @@ export default function Contact({ isMenuOpen, pageInfo, socials }: Props) {
               {/* dummyData.contact.mail */}
               {pageInfo?.email}
             </p>
+          </div>
+          <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm">
+            <MapPinIcon className="h-5 w-5 text-white" />
+            <p className="text-white">Stockholm, Sweden</p>
           </div>
 
           {/* {dummyData.contact.socials.map((social, i) => ( */}

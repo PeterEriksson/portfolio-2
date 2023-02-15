@@ -1,16 +1,8 @@
-import React, {
-  //createRef,
-  //useRef,
-  useState,
-  useEffect,
-  useCallback,
-} from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Project as ProjectType } from "../typings";
 import { motion } from "framer-motion";
 
-import {
-  /* HomeIcon */ ArrowTopRightOnSquareIcon as Test,
-} from "@heroicons/react/24/solid";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
 import { SocialIcon } from "react-social-icons";
 import Project from "./Project";
 import {
@@ -78,7 +70,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
     >
       <div
         aria-label="PROJECTS + Some of my work"
-        className="flex flex-col items-center space-y-1     mt-14  mb-2"
+        className="flex flex-col items-center space-y-1     xs:mt-8 mt-16  mb-2"
       >
         <h1 className="sm:text-5xl text-3xl font-bold  ">Projects</h1>
         <h3 className="sm:text-xl text-base font-extralight  ">
@@ -151,7 +143,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                       target="_blank"
                       className="hover:opacity-70  !z-40 text-[#555555] cursor-pointer !h-5 !w-5 sm:!h-6 sm:!w-6   transition duration-150 ease-in     "
                     >
-                      <Test className="  " />
+                      <ArrowTopRightOnSquareIcon className="  " />
                     </a>
                     <SocialIcon
                       target="_blank"

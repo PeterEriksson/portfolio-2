@@ -63,7 +63,8 @@
   position: relative;
   display: block;
   width: calc(120% + 1.3px);
-  height: 38px;
+  /* height: 38px; */
+  height: 25px;
 }
 
 .shapeFill {
