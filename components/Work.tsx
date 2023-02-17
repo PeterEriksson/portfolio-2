@@ -70,7 +70,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
     >
       <div
         aria-label="PROJECTS + Some of my work"
-        className="flex flex-col items-center space-y-1     xs:mt-8 mt-16  mb-2"
+        className="flex flex-col items-center xs:space-y-1 space-y-0.5     xs:mt-8 mt-[60px]  xs:mb-2 mb-1   "
       >
         <h1 className="sm:text-5xl text-3xl font-bold  ">Projects</h1>
         <h3 className="sm:text-xl text-base font-extralight  ">
@@ -121,23 +121,28 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                   /* viewport={{ once: true }} */
                   className="flex flex-col "
                 >
-                  <h3 className="text-xl sm:text-2xl font-bold mx-auto  underline/ decoration-red-500 opacity-[0.88]">
+                  <h3 className="text-xl sm:text-2xl font-bold mx-auto cursor-default  underline/ decoration-red-500 opacity-[0.88]">
                     {project?.title}
                   </h3>
 
-                  <p className="font-light text-center mx-3 sm:text-base text-sm/       sm:mx-12">
+                  <p className="font-light text-center mx-3 sm:text-base text-sm/  cursor-default     sm:mx-12">
                     {project?.summary}
                   </p>
-                  {/* TECH USED ON PROJECT. */}
-                  <div className="  flex  space-x-1 mt-1 justify-center flex-wrap   bg-yellow-600// mb-0.5 mx-2 ">
+                  {/* TECH USED ON PROJECT. TEST TEMP button design ... */}
+                  <div className=" bg-red-500// flex ///items-center justify-center space-x-1 space-y-1  flex-wrap  mx-2 ">
                     {project?.technologies?.map((tech, i) => (
-                      <p className="italic text-xs font-extralight    " key={i}>
-                        #{tech?.title}
-                      </p>
+                      <div
+                        key={i}
+                        className=" px-2 xs:py-1.5 py-1 weirdBug..-> mt-1 bg-gray-400/40  rounded-full cursor-default flex items-center"
+                      >
+                        <p className="italic/ text-xs font-extralight text-black/90   ">
+                          {tech?.title}
+                        </p>
+                      </div>
                     ))}
                   </div>
                   {/* HOMEPAGE + GITHUB ICON LINKS. */}
-                  <div className="flex space-x-2.5 items-center justify-center  bg-yellow-600//  -mt-1">
+                  <div className="flex space-x-2.5 items-center justify-center  bg-yellow-600//  /-mt-1">
                     <a
                       href={project?.linkToBuild}
                       target="_blank"
@@ -166,7 +171,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
 
         {/* DOTS DIV */}
         <div
-          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto           -translate-y-[262px] xxs:-translate-y-[235px] xs:-translate-y-[210px] smaller:-translate-y-[190px] sm:-translate-y-[205px]  `}
+          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto           -translate-y-[300px] xxxs:-translate-y-[280px] xxs:-translate-y-[255px] xs:-translate-y-[240px] smaller:-translate-y-[212px] sm:-translate-y-[220px]  `}
         >
           {scrollSnaps.map((_, index) => (
             <DotButton

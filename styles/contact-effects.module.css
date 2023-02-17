@@ -79,6 +79,6 @@
 @media (max-width: 767px) {
   .customShapeDividerTop svg {
     width: calc(137% + 1.3px);
-    height: 38px;
+    height: 28px;
   }
 }

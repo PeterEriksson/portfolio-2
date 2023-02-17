@@ -11,12 +11,15 @@ module.exports = {
         mainDarkBlue: "#091c29",
       },
       screens: {
-        xxs: "442px",
+        xxxs: "377px",
+        xxs: "398px",
         xs: "500px",
-        smaller: "547px",
+        smaller: "545px",
         /*  test: "630px", */
       },
     },
   },
-  plugins: [require("tailwind-scrollbar"), require("tailwind-scrollbar-hide")],
+  plugins: [
+    require("tailwind-scrollbar") /* require("tailwind-scrollbar-hide") */,
+  ],
 };
