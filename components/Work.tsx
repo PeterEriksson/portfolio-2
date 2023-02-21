@@ -85,7 +85,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
           <div className={`${styles.embla__container}   `}>
             {projects.map((project, index) => (
               <div
-                className={`${styles.embla__slide}  px-4///     xs:px-4 px-5  `}
+                className={`${styles.embla__slide}   xs:px-4 px-5  `}
                 key={index}
               >
                 {/* Number of Project. Skip?? */}
@@ -104,7 +104,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                   }}
                   transition={{ duration: 1 }}
                   /* viewport={{ once: true }} */
-                  className={` w-full object-cover rounded-lg      !h-64/ h-[248px] xs:!h-[330px]  max-w-[640px]      `}
+                  className={` w-full object-cover rounded-lg     h-[248px] xs:!h-[330px]  max-w-[640px]///unnecsry?  sm:object-right-top `}
                   //src={project?.image}
                   src={urlFor(project?.image).url() || undefined}
                   alt="Your alt text"
@@ -121,9 +121,27 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                   /* viewport={{ once: true }} */
                   className="flex flex-col "
                 >
-                  <h3 className="text-xl sm:text-2xl font-bold mx-auto cursor-default  underline/ decoration-red-500 opacity-[0.88]">
-                    {project?.title}
-                  </h3>
+                  <div className="flex space-x-2.5 items-center justify-center ">
+                    <h3 className="text-xl sm:text-2xl font-bold mx-auto cursor-default  underline/ decoration-red-500 opacity-[0.88]">
+                      {project?.title}
+                    </h3>
+                    <div className="absolute flex items-center space-x-2 justify-end w-[87%] xs:w-3/4 ">
+                      <a
+                        href={project?.linkToBuild}
+                        target="_blank"
+                        className="hover:opacity-70  !z-40 text-[#555555] cursor-pointer !h-6 !w-6 sm:!h-6 sm:!w-6   transition duration-150 ease-in     "
+                      >
+                        <ArrowTopRightOnSquareIcon className="  " />
+                      </a>
+                      <SocialIcon
+                        target="_blank"
+                        url={project?.linkToGithub}
+                        bgColor="transparent"
+                        fgColor="#555555"
+                        className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-10 sm:!h-10 transition duration-150 ease-in       "
+                      />
+                    </div>
+                  </div>
 
                   <p className="font-light text-center mx-3 sm:text-base text-sm/  cursor-default     sm:mx-12">
                     {project?.summary}
@@ -142,7 +160,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                     ))}
                   </div>
                   {/* HOMEPAGE + GITHUB ICON LINKS. */}
-                  <div className="flex space-x-2.5 items-center justify-center  bg-yellow-600//  /-mt-1">
+                  {/* <div className="flex space-x-2.5 items-center justify-center  bg-yellow-600//  /-mt-1">
                     <a
                       href={project?.linkToBuild}
                       target="_blank"
@@ -157,7 +175,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                       fgColor="#555555"
                       className="hover:opacity-70 cursor-pointer !h-8 !w-8 sm:!w-10 sm:!h-10 transition duration-150 ease-in       "
                     />
-                  </div>
+                  </div> */}
                 </motion.div>
               </div>
             ))}
@@ -171,7 +189,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
 
         {/* DOTS DIV */}
         <div
-          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto           -translate-y-[300px] xxxs:-translate-y-[280px] xxs:-translate-y-[255px] xs:-translate-y-[240px] smaller:-translate-y-[212px] sm:-translate-y-[220px]  `}
+          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto           -translate-y-[270px] xxxs:-translate-y-[250px] xxs:-translate-y-[218px] xs:-translate-y-[210px] smaller:-translate-y-[180px] //sm:-translate-y-[180px]  `}
         >
           {scrollSnaps.map((_, index) => (
             <DotButton

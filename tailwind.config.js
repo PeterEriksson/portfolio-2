@@ -14,7 +14,7 @@ module.exports = {
         xxxs: "377px",
         xxs: "398px",
         xs: "500px",
-        smaller: "545px",
+        smaller: "549px",
         /*  test: "630px", */
       },
     },
