@@ -104,7 +104,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                   }}
                   transition={{ duration: 1 }}
                   /* viewport={{ once: true }} */
-                  className={` w-full object-cover rounded-lg     h-[248px] xs:!h-[330px]  max-w-[640px]///unnecsry?  sm:object-right-top `}
+                  className={` w-full object-right-top// object-left-top sm:object-cover    rounded-lg  h-[248px] xs:!h-[330px]  max-w-[640px]///unnecsry?   `}
                   //src={project?.image}
                   src={urlFor(project?.image).url() || undefined}
                   alt="Your alt text"

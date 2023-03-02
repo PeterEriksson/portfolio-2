@@ -78,7 +78,7 @@ export default function About({
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.7 }}
               viewport={{ once: true }}
-              className="text-black sm:text-base text-sm/ sm:w-2/3// w-3/4//           text-base  sm:w-2/3 xs:w-3/4 w-full"
+              className="text-black sm:text-base  lg:text-lg       text-base  sm:w-2/3 xs:w-3/4 w-full"
             >
               {/* {backgroundInformation} */}
               {pageInfo?.backgroundInformation}
