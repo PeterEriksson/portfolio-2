@@ -63,11 +63,13 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
             /* for some space between link and border -> */
             /* className="pb-1" */
             /* avoid navbar changing height -> have an "invinsible" bottom border -> */
-            className={`relative  border-b border-transparent group ${styles.hoverAnimation}  transform transition duration-300 ease-in-out  cursor-pointer`}
+            className={`relative  border-b border-transparent group ${
+              linkActive !== "header" && styles.hoverAnimation
+            }  transform transition duration-300 ease-in-out  cursor-pointer`}
           >
             <h1
               className={` text-3xl font-bold  opacity-[0.81] hover:opacity-100 ${
-                linkActive == "header" && "opacity-100"
+                linkActive == "header" && "!opacity-100"
               }  tracking-[2px]    transform transition duration-300 ease-in-out`}
             >
               PE
