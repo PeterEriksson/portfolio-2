@@ -53,7 +53,6 @@ export default function Home({
   }, [scrollYProgress /* , scrollY */]);
   const testScrollYBp = 0.2;
 
-  /* test, isOpen live here instead */
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (

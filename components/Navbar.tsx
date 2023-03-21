@@ -11,14 +11,6 @@ type Props = {
 };
 
 export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
-  /* TEST TEMP (now testing y solution in index.js instead....)*/
-  /*  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  }); */
-
   const navData = ["About", "Skills", "Work", "Contact"];
 
   const [linkActive, setLinkActive] = useState<string>("");
@@ -44,6 +36,30 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
     },
   };
 
+  //CLICK OUTSIDE DETECTION
+  //https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
+  const ref = useRef<HTMLElement>(null);
+  React.useEffect(() => {
+    function handleClickOutside(event: MouseEvent): void {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        var element = event.target as HTMLElement;
+        //handle if user clicks on the top nav section that "sort of" belongs to hamburger menu
+        if (
+          element.tagName.toLowerCase() === "section" ||
+          element.tagName.toLowerCase() === "nav"
+        )
+          return;
+        setIsMenuOpen(false);
+      }
+    }
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
+
   return (
     <nav
       className={`!fixed !top-0 w-screen !z-50  bg-[#091c29]    flex flex-col  `}
@@ -63,7 +79,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
             /* for some space between link and border -> */
             /* className="pb-1" */
             /* avoid navbar changing height -> have an "invinsible" bottom border -> */
-            className={`relative  border-b border-transparent group ${
+            className={`relative  border-b border-transparent ///group ${
               linkActive !== "header" && styles.hoverAnimation
             }  transform transition duration-300 ease-in-out  cursor-pointer`}
           >
@@ -103,7 +119,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
               /* className="pb-1" */
               className={` ${
                 linkActive !== section && styles.hoverAnimation
-              }      border-b border-transparent  relative group opacity-[0.81] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
+              }      border-b border-transparent  relative ///group opacity-[0.81] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
             >
               <span
                 className={` text-xl    transition duration-300 ease-in-out`}
@@ -143,6 +159,8 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.nav
+            //TEST ref
+            ref={ref}
             variants={item}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "70vh", opacity: 1 }}
