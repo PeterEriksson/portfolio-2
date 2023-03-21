@@ -36,6 +36,7 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
 
       <div className={`grid grid-cols-3  xs:grid-cols-4 gap-2 sm:gap-4   `}>
         {skills
+          ?.filter((skill) => skill.progress > 0)
           ?.sort((a, b) => a.progress - b.progress)
           .map((skill, i) => {
             /* Make Skill Cards come from different directions */
