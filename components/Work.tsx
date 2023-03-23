@@ -61,6 +61,9 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
 
   //console.log(scrollSnaps); ok.
 
+  //TESTING
+  const projectsOrdered = projects?.slice(1).concat(projects[0]);
+
   return (
     <div
       id="Work"
@@ -83,16 +86,11 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
       >
         <div className={`${styles.embla__viewport}   `} ref={emblaRef}>
           <div className={`${styles.embla__container}   `}>
-            {projects.map((project, index) => (
+            {projectsOrdered?.map((project, index) => (
               <div
                 className={`${styles.embla__slide}   xs:px-4 px-5  `}
                 key={index}
               >
-                {/* Number of Project. Skip?? */}
-                {/* <div className={styles.embla__slide__number}>
-                  <span>{index + 1}</span>
-                </div> */}
-
                 <motion.img
                   initial={{
                     /*  y: -100, */
@@ -159,23 +157,6 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                       </div>
                     ))}
                   </div>
-                  {/* HOMEPAGE + GITHUB ICON LINKS. */}
-                  {/* <div className="flex space-x-2.5 items-center justify-center  bg-yellow-600//  /-mt-1">
-                    <a
-                      href={project?.linkToBuild}
-                      target="_blank"
-                      className="hover:opacity-70  !z-40 text-[#555555] cursor-pointer !h-5 !w-5 sm:!h-6 sm:!w-6   transition duration-150 ease-in     "
-                    >
-                      <ArrowTopRightOnSquareIcon className="  " />
-                    </a>
-                    <SocialIcon
-                      target="_blank"
-                      url={project?.linkToGithub}
-                      bgColor="transparent"
-                      fgColor="#555555"
-                      className="hover:opacity-70 cursor-pointer !h-8 !w-8 sm:!w-10 sm:!h-10 transition duration-150 ease-in       "
-                    />
-                  </div> */}
                 </motion.div>
               </div>
             ))}

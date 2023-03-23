@@ -42,13 +42,6 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
   React.useEffect(() => {
     function handleClickOutside(event: MouseEvent): void {
       if (ref.current && !ref.current.contains(event.target as Node)) {
-        var element = event.target as HTMLElement;
-        //handle if user clicks on the top nav section that "sort of" belongs to hamburger menu
-        if (
-          element.tagName.toLowerCase() === "section" ||
-          element.tagName.toLowerCase() === "nav"
-        )
-          return;
         setIsMenuOpen(false);
       }
     }
@@ -62,6 +55,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
 
   return (
     <nav
+      ref={ref}
       className={`!fixed !top-0 w-screen !z-50  bg-[#091c29]    flex flex-col  `}
     >
       <section className="flex items-center  text-white justify-between mx-auto py-3  xs:w-10/12 w-[88%]       !z-30 ">
@@ -136,7 +130,6 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
         </section>
         {/* HAMBURGER. Toggle between hamburger and cross  */}
         <section
-          //onClick={() => setIsOpen((prev) => !prev)}
           onClick={() => setIsMenuOpen((prev) => !prev)}
           className={`md:!hidden //xl:!hidden  ${styles.menuBtn}   opacity-80 hover:opacity-100    z-40`}
         >
@@ -159,8 +152,6 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.nav
-            //TEST ref
-            ref={ref}
             variants={item}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "70vh", opacity: 1 }}
