@@ -1,8 +1,7 @@
 import React, { Dispatch, SetStateAction, useRef, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 
-/* TEST TEMP */
-import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
+import { motion, useScroll, AnimatePresence } from "framer-motion";
 import styles from "../styles/navBar.module.css";
 
 type Props = {
@@ -20,10 +19,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
     //console.log(linkActive);
   };
 
-  // TEST TEMP framer nav
   //https://github.com/devamitjha/framer_motion_animated_nav
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  //lets start animation
   const item = {
     exit: {
       opacity: 0,
@@ -154,7 +150,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
           <motion.nav
             variants={item}
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "70vh", opacity: 1 }}
+            animate={{ height: "60vh", opacity: 1 }}
             transition={{ duration: 0.4 }}
             exit="exit"
             className={`md:hidden  flex flex-col items-center justify-center bg-mainDarkBlue text-white space-y-12 `}
