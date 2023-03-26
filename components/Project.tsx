@@ -1,144 +1,193 @@
-/* NOT IN USE. Refactor Later and create new Project (Rendered in Work) */
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { Project as ProjectType } from "../typings";
-import { motion, useInView } from "framer-motion";
-import { SocialIcon } from "react-social-icons";
+//Work.tsx pre testing
 
-import { forwardRef } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { Project as ProjectType } from "../typings";
+import { motion } from "framer-motion";
+
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
+import { SocialIcon } from "react-social-icons";
+import Project from "./Project";
+import {
+  DotButton,
+  PrevButton,
+  NextButton,
+} from "./EmblaCarouselArrowsDotsButtons";
+import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
+import styles from "../styles/embla.module.css";
+import Link from "next/link";
 import { urlFor } from "../sanity";
 
-/* NOT IN USE. Refactor Later and create new Project (Rendered in Work) */
-
 type Props = {
-  project: ProjectType;
-  i: number;
-  projectsLength: number;
   projects: ProjectType[];
-
-  currProjectInView?: number;
-  setCurrentProjectInView?: Dispatch<SetStateAction<number>>;
-  refs: any /* declare refs in ts? */;
+  slides?: number[];
+  options?: EmblaOptionsType;
+  isMenuOpen: boolean;
 };
 
-const Project = (
-  {
-    project,
-    i,
-    projects,
-    projectsLength,
+export default function Work({ projects, slides, options, isMenuOpen }: Props) {
+  //console.log(projects);
 
-    currProjectInView,
-    setCurrentProjectInView,
+  const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
-    refs,
-  }: Props,
+  const scrollPrev = useCallback(
+    () => emblaApi && emblaApi.scrollPrev(),
+    [emblaApi]
+  );
+  const scrollNext = useCallback(
+    () => emblaApi && emblaApi.scrollNext(),
+    [emblaApi]
+  );
+  const scrollTo = useCallback(
+    (index: number) => emblaApi && emblaApi.scrollTo(index),
+    [emblaApi]
+  );
 
-  ref: any
-) => {
-  const scrollRightTest = () => {
-    if (i + 1 == projects.length) return;
-    refs[i + 1].current?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-  const scrollLeftTest = () => {
-    if (i == 0) return;
-    refs[i - 1].current?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+    setPrevBtnEnabled(emblaApi.canScrollPrev());
+    setNextBtnEnabled(emblaApi.canScrollNext());
+  }, [emblaApi, setSelectedIndex]);
 
-  const handleDotClick = (ind: number) => {
-    refs[ind].current.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+  }, [emblaApi, setScrollSnaps, onSelect]);
+
+  //console.log(scrollSnaps); ok.
+
+  //TESTING
+  const projectsOrdered = projects?.slice(1).concat(projects[0]);
 
   return (
     <div
-      /* temp */
-      id={i.toLocaleString()}
-      ref={ref}
-      className=" bg-red-400/   w-screen h-[620px] flex-shrink-0 !snap-center flex flex-col space-y-2 !items-center justify-center/  pb-[74px]//  //px-1 /sm:px-0 "
+      id="Work"
+      className={`${
+        isMenuOpen ? "opacity-50" : "opacity-100"
+      } md:!opacity-100 transition duration-200 ease-in  h-screen flex flex-col  bg-gray-100`}
     >
-      {/*  <button onClick={scrollRightTest}>scroll r test</button>
-      <button onClick={scrollLeftTest}>scroll l test</button> */}
-
-      <motion.img
-        initial={{
-          y: -300,
-          opacity: 0,
-        }}
-        transition={{ duration: 1.2 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        //viewport={{once:true}}
-
-        /* src={urlFor(project?.image).height(300).width(400).url()} */
-        /* src={urlFor(project?.image).url()} */
-        /*  src={project?.image} */
-        alt=""
-        className="h-[65%]/ h-[55%] bg-red-500  cursor-pointer   rounded-xl    object-cover//   "
-      />
-
-      {/* DOTS */}
-      <div className="flex space-x-2  ">
-        {projects.map((_, ind) => (
-          <span
-            onClick={() => handleDotClick(ind)}
-            key={ind}
-            className={`${
-              ind == i ? "opacity-100" : "opacity-60 cursor-pointer "
-            } bg-gray-500 h-3 w-3 rounded-full transform transition duration-200 ease-in ${
-              ind !== i && "hover:scale-110 "
-            }  `}
-          />
-        ))}
-      </div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-        className="  space-y-1.5 px-0  max-w-6xl flex flex-col  !-mt-[1px]"
+      <div
+        aria-label="PROJECTS + Some of my work"
+        className="flex flex-col items-center xs:space-y-1 space-y-0.5     xs:mt-8 mt-[60px]  xs:mb-2 mb-1   "
       >
-        <div className=" flex   mx-auto font-semibold relative  -mb-1.5">
-          <p className="text-3xl cursor-default"> {project?.title} </p>
-          <div className="flex   -space-x-1.5  !absolute !left-full  pl-1">
-            <SocialIcon
-              target="_blank"
-              url={project?.linkToBuild}
-              bgColor="transparent"
-              fgColor="#555555"
-              className="hover:opacity-70 !h-10 !w-9   bg-red-500/"
-            />
-            <SocialIcon
-              target="_blank"
-              url={project?.linkToGithub}
-              bgColor="transparent"
-              fgColor="#555555"
-              className="hover:opacity-70  !h-10 !w-9  /bg-blue-400"
-            />
+        <h1 className="sm:text-5xl text-3xl font-bold  ">Projects</h1>
+        <h3 className="sm:text-xl text-base font-extralight  ">
+          Some of my work
+        </h3>
+      </div>
+
+      <div
+        className={`${styles.embla} sm:mx-auto  sm:max-w-[640px]  bg-blue-700//   `}
+      >
+        <div
+          className={`$//{styles.embla__viewport} overflow-hidden  `}
+          ref={emblaRef}
+        >
+          <div
+            className={`$//{styles.embla__container} flex flex-row h-auto  `}
+          >
+            {projectsOrdered?.map((project, index) => (
+              <div
+                className={`    ${styles.embla__slide}   xs:px-4 px-5       min-w-0 relative   `}
+                key={index}
+              >
+                <motion.img
+                  initial={{
+                    /*  y: -100, */
+                    opacity: 0,
+                  }}
+                  whileInView={{
+                    /*  y: 0, */
+                    opacity: 1,
+                  }}
+                  transition={{ duration: 1 }}
+                  /* viewport={{ once: true }} */
+                  className={` w-full object-right-top// object-left-top sm:object-cover    rounded-lg  h-[248px] xs:!h-[330px]  max-w-[640px]///unnecsry?   `}
+                  //src={project?.image}
+                  src={urlFor(project?.image).url() || undefined}
+                  alt="Your alt text"
+                />
+
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                  }}
+                  transition={{ duration: 1 }}
+                  /* viewport={{ once: true }} */
+                  className="flex flex-col "
+                >
+                  <div className="flex space-x-2.5 items-center justify-center ">
+                    <h3 className="text-xl sm:text-2xl font-bold mx-auto cursor-default  underline/ decoration-red-500 opacity-[0.88]">
+                      {project?.title}
+                    </h3>
+                    <div className="absolute flex items-center space-x-2 justify-end w-[87%] xs:w-3/4 ">
+                      <a
+                        href={project?.linkToBuild}
+                        target="_blank"
+                        className="hover:opacity-70  !z-40 text-[#555555] cursor-pointer !h-6 !w-6 sm:!h-6 sm:!w-6   transition duration-150 ease-in     "
+                      >
+                        <ArrowTopRightOnSquareIcon className="  " />
+                      </a>
+                      <SocialIcon
+                        target="_blank"
+                        url={project?.linkToGithub}
+                        bgColor="transparent"
+                        fgColor="#555555"
+                        className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-10 sm:!h-10 transition duration-150 ease-in       "
+                      />
+                    </div>
+                  </div>
+
+                  <p className="font-light text-center mx-3 sm:text-base text-sm/  cursor-default     sm:mx-12">
+                    {project?.summary}
+                  </p>
+                  {/* TECH USED ON PROJECT. TEST TEMP button design ... */}
+                  <div className=" bg-red-500// flex ///items-center justify-center space-x-1 space-y-1  flex-wrap  mx-2 ">
+                    {project?.technologies?.map((tech, i) => (
+                      <div
+                        key={i}
+                        className=" px-2 xs:py-1.5 py-1 weirdBug..-> mt-1 bg-gray-400/40  rounded-full cursor-default flex items-center"
+                      >
+                        <p className="italic/ text-xs font-extralight text-black/90   ">
+                          {tech?.title}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+          </div>
+          {/* NEXT/PREV ARROW-BUTTONS...OK. */}
+          <div className=" //bg-green-600  flex justify-between absolute z-30  sm:max-w-[640px]  w-full    px-1.5 ">
+            <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+            <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
           </div>
         </div>
 
-        <p className="text-sm text-center /md:text-left max-w-[450px]">
-          {project?.summary}
-        </p>
-        <div className="mx-auto flex space-x-1 ">
-          {project?.technologies?.map((tech, i) => (
-            <p className="italic text-xs font-extralight      " key={i}>
-              #{tech.title}
-            </p>
+        {/* DOTS DIV */}
+        <div
+          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto           -translate-y-[270px] xxxs:-translate-y-[250px] xxs:-translate-y-[218px] xs:-translate-y-[210px] smaller:-translate-y-[180px] //sm:-translate-y-[180px]  `}
+        >
+          {scrollSnaps.map((_, index) => (
+            <DotButton
+              key={index}
+              selected={index === selectedIndex}
+              onClick={() => scrollTo(index)}
+            />
           ))}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
-};
-
-export default forwardRef(Project);
+}

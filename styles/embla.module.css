@@ -45,12 +45,14 @@
 }
 .embla__dots {
   z-index: 30;
+  display: flex;
+  justify-content: center;
+
   /*  bottom: 1.2rem; */
   /* position: absolute; */
   /* left: 0;
   right: 0; */
-  display: flex;
-  justify-content: center;
+
   /* align-items: center; */
 }
 .embla__dot {
