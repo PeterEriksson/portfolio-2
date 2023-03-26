@@ -6,20 +6,22 @@
   /* padding: 1.6rem; */ /* .....? */
 }
 .embla__viewport {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .embla__container {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  height: auto;
+  height: auto; */
+
   /* margin-left: calc(var(--slide-spacing) * -1); */
 }
 .embla__slide {
   flex: 0 0 var(--slide-size);
 
-  min-width: 0;
+  /* min-width: 0;
+  position: relative; */
+
   /* padding-left: var(--slide-spacing); */
-  position: relative;
 }
 .embla__slide__img {
   /* display: block;  what does it do? */

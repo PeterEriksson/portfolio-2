@@ -84,11 +84,16 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
       <div
         className={`${styles.embla} sm:mx-auto  sm:max-w-[640px]  bg-blue-700//   `}
       >
-        <div className={`${styles.embla__viewport}   `} ref={emblaRef}>
-          <div className={`${styles.embla__container}   `}>
+        <div
+          className={`$//{styles.embla__viewport} overflow-hidden  `}
+          ref={emblaRef}
+        >
+          <div
+            className={`$//{styles.embla__container} flex flex-row h-auto  `}
+          >
             {projectsOrdered?.map((project, index) => (
               <div
-                className={`${styles.embla__slide}   xs:px-4 px-5  `}
+                className={`    ${styles.embla__slide}   xs:px-4 px-5       min-w-0 relative   `}
                 key={index}
               >
                 <motion.img
