@@ -62,7 +62,8 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
   //console.log(scrollSnaps); ok.
 
   //TESTING
-  const projectsOrdered = projects?.slice(1).concat(projects[0]);
+  const projectsModified = projects?.slice(2).concat(projects[1]);
+  const projectsOrdered = [...projectsModified, projects[0]];
 
   return (
     <div
@@ -85,29 +86,31 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
         className={`${styles.embla} sm:mx-auto  sm:max-w-[640px]  bg-blue-700//   `}
       >
         <div
-          className={`$//{styles.embla__viewport} overflow-hidden  `}
+          aria-label="styles.embla__viewport"
+          className={` overflow-hidden          `}
           ref={emblaRef}
         >
           <div
-            className={`$//{styles.embla__container} flex flex-row h-auto  `}
+            aria-label="styles.embla__container"
+            className={` flex flex-row h-auto  `}
           >
             {projectsOrdered?.map((project, index) => (
               <div
-                className={`    ${styles.embla__slide}   xs:px-4 px-5       min-w-0 relative   `}
+                className={`   ${styles.embla__slide}   xs:px-4 px-5       min-w-0 relative   `}
                 key={index}
               >
                 <motion.img
                   initial={{
-                    /*  y: -100, */
+                    y: -70,
                     opacity: 0,
                   }}
                   whileInView={{
-                    /*  y: 0, */
+                    y: 0,
                     opacity: 1,
                   }}
-                  transition={{ duration: 1 }}
+                  transition={{ duration: 0.8 }}
                   /* viewport={{ once: true }} */
-                  className={` w-full object-right-top// object-left-top sm:object-cover    rounded-lg  h-[248px] xs:!h-[330px]  max-w-[640px]///unnecsry?   `}
+                  className={` w-full object-right-top// object-left-top sm:object-cover    rounded-lg  h-[248px] xs:!h-[330px]  max-w-[640px]///unnecsry?         TEMP TESTING: md:max-w-full max-w-[88%] mx-auto  `}
                   //src={project?.image}
                   src={urlFor(project?.image).url() || undefined}
                   alt="Your alt text"
@@ -175,7 +178,8 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
 
         {/* DOTS DIV */}
         <div
-          className={`${styles.embla__dots} bg-red-400//  space-x-4 opacity-70 max-w-[500px] mx-auto           -translate-y-[270px] xxxs:-translate-y-[250px] xxs:-translate-y-[218px] xs:-translate-y-[210px] smaller:-translate-y-[180px] //sm:-translate-y-[180px]  `}
+          aria-label="EMBLA DOTS"
+          className={`//bg-gray-600/80 //p-2 //rounded-lg     z-30 flex   //opacity-70 space-x-4  max-w-fit mx-auto       -translate-y-[270px] xxxs:-translate-y-[250px] xxs:-translate-y-[218px] xs:-translate-y-[210px] smaller:-translate-y-[180px]  `}
         >
           {scrollSnaps.map((_, index) => (
             <DotButton

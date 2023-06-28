@@ -44,9 +44,10 @@
   margin: 0; */
 }
 .embla__dots {
-  z-index: 30;
-  display: flex;
-  justify-content: center;
+  /* z-index: 30;
+  display: flex; */
+
+  /*   justify-content: center; */
 
   /*  bottom: 1.2rem; */
   /* position: absolute; */
