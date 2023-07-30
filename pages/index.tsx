@@ -49,7 +49,6 @@ export default function Home({
   useEffect(() => {
     scrollYProgress.onChange((number) => setScrollY(number));
     //console.log(scrollY);
-    //is Performance ok? Do we need debounce?
   }, [scrollYProgress /* , scrollY */]);
   const testScrollYBp = 0.2;
 
@@ -66,7 +65,7 @@ export default function Home({
 
       <Header isMenuOpen={isMenuOpen} />
 
-      {/* USE SCROLL VERTICAL implementation with profileImg on top (prince inspiration) */}
+      {/* USE SCROLL VERTICAL implementation with profileImg on top */}
       <div
         className={`top-52// top-56 fixed z-[39] hidden lg:flex flex-col items-center  ${
           scrollY < testScrollYBp ? "opacity-0" : "opacity-70"

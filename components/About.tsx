@@ -1,6 +1,6 @@
 import React from "react";
 import { PageInfo } from "../typings";
-import { motion } from "framer-motion";
+import { motion, useTransform, useScroll } from "framer-motion";
 import { urlFor } from "../sanity";
 import styles from "../styles/about.module.css";
 
@@ -15,6 +15,11 @@ export default function About({
   isMenuOpen,
   pageInfo,
 }: Props) {
+  const { scrollYProgress } = useScroll();
+  //const scale = useTransform(scrollYProgress, [0, 1], [1, 2]);
+  const x = useTransform(scrollYProgress, [0, 0.22], ["80px", "0px"]);
+  const opacity = useTransform(scrollYProgress, [0.1, 0.2, 0.6], [0.2, 1, 1]);
+
   return (
     <div
       id="About"
@@ -96,7 +101,7 @@ export default function About({
         {/* RIGHT SIDE - containing profile pic */}
 
         <motion.img
-          initial={{
+          /* initial={{
             opacity: 0,
           }}
           transition={{
@@ -104,8 +109,10 @@ export default function About({
           }}
           whileInView={{
             opacity: 1,
-          }}
-          className="rounded-lg max-w-xs  sm:w-2/5//  w-1/2//       w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
+          }} */
+
+          style={{ x /* scale */, opacity }}
+          className="rounded-lg max-w-xs   w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
           src={urlFor(pageInfo?.profilePic).url() || undefined}
           alt=""
