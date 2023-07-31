@@ -18,7 +18,7 @@ export default function About({
   const { scrollYProgress } = useScroll();
   //const scale = useTransform(scrollYProgress, [0, 1], [1, 2]);
   const x = useTransform(scrollYProgress, [0, 0.22], ["80px", "0px"]);
-  const opacity = useTransform(scrollYProgress, [0.1, 0.2, 0.6], [0.2, 1, 1]);
+  const opacity = useTransform(scrollYProgress, [0.1, 0.25, 0.6], [0.2, 1, 1]);
 
   return (
     <div
@@ -98,10 +98,16 @@ export default function About({
             </motion.p>
           </article>
         </div>
-        {/* RIGHT SIDE - containing profile pic */}
-
+        {/* RIGHT SIDE - containing profile pic. useTransform(x + opacity) for larger screens, hide on mobile size. */}
         <motion.img
-          /* initial={{
+          style={{ x /* scale */, opacity }}
+          className="hidden xs:inline    rounded-lg max-w-xs w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
+          //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
+          src={urlFor(pageInfo?.profilePic).url() || undefined}
+          alt=""
+        />
+        <motion.img
+          initial={{
             opacity: 0,
           }}
           transition={{
@@ -109,11 +115,8 @@ export default function About({
           }}
           whileInView={{
             opacity: 1,
-          }} */
-
-          style={{ x /* scale */, opacity }}
-          className="rounded-lg max-w-xs   w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
-          //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
+          }}
+          className="xs:hidden   rounded-lg max-w-xs w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
           src={urlFor(pageInfo?.profilePic).url() || undefined}
           alt=""
         />
