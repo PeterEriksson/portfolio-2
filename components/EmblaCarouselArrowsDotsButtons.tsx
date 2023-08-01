@@ -35,7 +35,7 @@ export const PrevButton: React.FC<PrevNextButtonPropType> = (props) => {
   return (
     <button
       className={`${
-        enabled ? " cursor-pointer opacity-70 " : "!opacity-0 !cursor-default"
+        enabled ? " cursor-pointer opacity-90 " : "!opacity-0 !cursor-default"
       }       -translate-y-[385px] xxs:-translate-y-[355px] xs:-translate-y-[385px] smaller:-translate-y-[350px] sm:-translate-y-[350px]   transition duration-150 ease-in hover:opacity-[0.57]  text-black   z-30 flex items-center justify-center  cursor-pointer rounded-full bg-gray-500 opacity-70`}
       onClick={onClick}
       disabled={!enabled}
@@ -51,7 +51,7 @@ export const NextButton: React.FC<PrevNextButtonPropType> = (props) => {
   return (
     <button
       className={`${
-        enabled ? " cursor-pointer opacity-70 " : "!opacity-0 !cursor-default"
+        enabled ? " cursor-pointer opacity-90 " : "!opacity-0 !cursor-default"
       }     -translate-y-[385px] xxs:-translate-y-[355px] xs:-translate-y-[385px] smaller:-translate-y-[350px] sm:-translate-y-[350px]  transition duration-150 ease-in hover:opacity-[0.57]  text-black   z-30 flex items-center justify-center  cursor-pointer rounded-full bg-gray-500 opacity-70 `}
       onClick={onClick}
       disabled={!enabled}
