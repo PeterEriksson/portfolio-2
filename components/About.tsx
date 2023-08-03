@@ -77,7 +77,7 @@ export default function About({
             </motion.span>{" "}
             background
           </motion.h4>
-          <article className="space-y-0.5           ">
+          <article className="space-y-0.5  ">
             <motion.p
               initial={{ y: 0, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -94,7 +94,7 @@ export default function About({
               transition={{ delay: 0.9, duration: 0.7 }}
               viewport={{ once: true }}
             >
-              For some additional info check cv(link..)
+              {/*  For some additional info check cv(link..) */}
             </motion.p>
           </article>
         </div>
