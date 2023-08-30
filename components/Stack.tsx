@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Skill as SkillType, SkillDescription } from "../typings";
 import Skill from "./Skill";
-import { motion, useInView } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  //useIsPresent,
+  //usePresence,
+} from "framer-motion";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 type Props = {
   skills: SkillType[];
@@ -10,14 +17,30 @@ type Props = {
 };
 
 function Stack({ skills, skillDescription, isMenuOpen }: Props) {
+  //testing temp
+  const [showMore, setShowMore] = useState<boolean>(false);
+  const item = {
+    exit: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        ease: "easeInOut",
+        duration: 0.25,
+        //delay: 1,
+      },
+    },
+  };
+  //const isPresent = useIsPresent();
+  //const [isPresent, safeToRemove] = usePresence();
+
   //console.log(skillDescription);
 
   //for skillDescription text
-  const transition = {
+  /* const transition = {
     type: "spring",
     bounce: 0.35,
     duration: 1.5,
-  };
+  }; */
 
   return (
     <div
@@ -33,13 +56,12 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
         Hover for current proficiency
       </h4>
       {/* SKILLS - sort by progress */}
-
       <div className={`grid grid-cols-3  xs:grid-cols-4 gap-2 sm:gap-4   `}>
         {skills
           ?.filter((skill) => skill.progress > 0)
           ?.sort((a, b) => a.progress - b.progress)
           .map((skill, i) => {
-            /* Make Skill Cards come from different directions */
+            /* Make Skill Cards come in from different directions */
             if (i < skills.length / 2) {
               return <Skill skill={skill} key={i} directionLeft />;
             } else return <Skill skill={skill} key={i} />;
@@ -47,7 +69,7 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
       </div>
 
       {/* SKILL DESCRIPTION */}
-      <motion.p
+      {/* <motion.p
         initial={{
           y: -100,
           opacity: 0,
@@ -58,11 +80,34 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
           y: 0,
         }}
         viewport={{ once: true }}
-        className="  max-w-[335px] xs:max-w-[400px]   sm:max-w-[600px] text-center font-light mt-2 mb-1   sm:text-base text-sm  "
+        className="//hidden     max-w-[335px] xs:max-w-[400px]   sm:max-w-[600px] text-center font-light mt-2 mb-1   sm:text-base text-sm  "
       >
-        {/* {skillDescription?.text} */}
         {skillDescription?.text}
-      </motion.p>
+      </motion.p> */}
+
+      {/* SHOW MORE/LESS test temp */}
+      <ChevronDownIcon
+        onClick={() => setShowMore((prev) => !prev)}
+        className={` text-black h-5 w-5 sm:h-7 sm:w-7 cursor-pointer transform transition duration-300 ${
+          showMore ? "-rotate-180 hidden/" : "animate-pulse"
+        } `}
+      />
+      <AnimatePresence initial={false}>
+        {showMore && (
+          <motion.p
+            className="origin-top max-w-[335px] xs:max-w-[400px]  sm:max-w-[600px] text-center font-light /mt-2 /mb-1   sm:text-base text-sm"
+            variants={item}
+            style={{ originY: 0 }}
+            initial={{ height: 0, opacity: 0, scaleY: 0 }}
+            animate={{ height: "20%", scaleY: 1, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            exit="exit"
+            //className={`text-center sm:text-base text-sm font-light max-w-[335px] xs:max-w-[400px] sm:max-w-[600px] /transform /transition /duration-300 /ease-in-out   `}
+          >
+            {skillDescription?.text}
+          </motion.p>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -109,7 +109,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                     opacity: 1,
                   }}
                   transition={{ duration: 0.8 }}
-                  /* viewport={{ once: true }} */
+                  viewport={{ once: true }}
                   className={` w-full object-right-top// object-left-top sm:object-cover    rounded-lg  h-[248px] xs:!h-[330px]  max-w-[640px]///unnecsry?         TEMP TESTING: md:max-w-full max-w-[88%] mx-auto  `}
                   //src={project?.image}
                   src={urlFor(project?.image).url() || undefined}
