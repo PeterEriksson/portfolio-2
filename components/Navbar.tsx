@@ -145,7 +145,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
       /> */}
 
       {/* MOBILE MENU  */}
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {isMenuOpen && (
           <motion.nav
             variants={item}

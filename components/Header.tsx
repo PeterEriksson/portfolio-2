@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { Social } from "../typings";
+import { SocialIcon } from "react-social-icons";
 
 type Props = {
   isMenuOpen: boolean;
+  socials?: Social[];
 };
 
-export default function Header({ isMenuOpen }: Props) {
+export default function Header({ isMenuOpen, socials }: Props) {
   const [animated, setAnimated] = useState<boolean>(false);
 
   useEffect(() => {
@@ -65,8 +68,21 @@ export default function Header({ isMenuOpen }: Props) {
             {typeWriterText}
             <Cursor />
           </h2>
+          <div>
+            {socials?.map((social, i) => (
+              <SocialIcon
+                key={i}
+                target="_blank"
+                //url={social}
+                url={social.url}
+                bgColor="transparent"
+                fgColor="white"
+                className="hover:opacity-70 opacity-80 !h-9 !w-9 (not interfere with scrollY:->) z-40"
+              />
+            ))}
+          </div>
           <ScrollLink to="About" smooth="true" offset={-40}>
-            <button className=" group relative hover:bg-indigo-600 bg-indigo-700 transition duration-300 transform hover:scale-105 py-3 px-10 text-lg/ uppercase/ rounded-xl mt-5 mb-3 focus:outline-none">
+            <button className="mt-3.5 mb-3  group relative hover:bg-indigo-600 bg-indigo-700 transition duration-300 transform hover:scale-105 py-3 px-10 text-lg/ uppercase/ rounded-xl focus:outline-none">
               {/* {resumeData.header.btnText} */}
               <p className=" text-lg uppercase">discover more</p>
               <span

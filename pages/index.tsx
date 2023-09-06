@@ -63,7 +63,7 @@ export default function Home({
 
       <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
-      <Header isMenuOpen={isMenuOpen} />
+      <Header socials={socials} isMenuOpen={isMenuOpen} />
 
       {/* USE SCROLL VERTICAL implementation with profileImg on top */}
       <div

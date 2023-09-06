@@ -110,7 +110,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                   }}
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  className={` w-full object-right-top// object-left-top sm:object-cover    rounded-lg  h-[248px] xs:!h-[330px]  max-w-[640px]///unnecsry?         TEMP TESTING: md:max-w-full max-w-[88%] mx-auto  `}
+                  className={` w-full object-cover object-left-top/ sm:object-cover    rounded-lg  h-[248px] xs:!h-[330px]  max-w-[640px]///unnecsry?         TEMP TESTING: md:max-w-full max-w-[88%] mx-auto  `}
                   //src={project?.image}
                   src={urlFor(project?.image).url() || undefined}
                   alt="Your alt text"
@@ -169,8 +169,8 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
               </div>
             ))}
           </div>
-          {/* NEXT/PREV ARROW-BUTTONS...OK. */}
-          <div className=" //bg-green-600  flex justify-between absolute z-30  sm:max-w-[640px]  w-full    px-1.5 ">
+          {/* NEXT/PREV ARROW-BUTTONS */}
+          <div className=" //bg-green-600  flex justify-between absolute z-30  sm:max-w-[640px]  w-full    px-4 xxs:px-1.5 ">
             <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
             <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
           </div>
