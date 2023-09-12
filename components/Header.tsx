@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
-import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { Typewriter } from "react-simple-typewriter";
 import { Social } from "../typings";
 import { SocialIcon } from "react-social-icons";
 
@@ -17,19 +17,6 @@ export default function Header({ isMenuOpen, socials }: Props) {
   }, []);
 
   //typewriter (react emoji ⚛️ only one not bugging  ..| ..😎    )
-  const { text: typeWriterText } = useTypewriter({
-    words: [
-      " <FrontEndDeveloper ‍💻 />",
-      " <SelfTaught 🤓 />",
-      " <LookingForReactRole ⚛️ />",
-      " Peter 😎",
-    ],
-
-    loop: 0,
-    typeSpeed: 100,
-    deleteSpeed: 50,
-    delaySpeed: 1000,
-  });
 
   return (
     <header
@@ -59,16 +46,35 @@ export default function Header({ isMenuOpen, socials }: Props) {
             <br />
             It's me Peter.
           </h1>
+
           <h2
             className={`${
               !animated && "translate-y-10 opacity-0"
             }  text-2xl// text-xl xs:text-2xl      transform transition duration-1000 ease-in-out text-gray-500`}
           >
             I am
-            {typeWriterText}
-            <Cursor />
+            <Typewriter
+              words={[
+                " <FrontEndDeveloper ‍💻 />",
+                `<SelfTaught 🤓 />`,
+                " <LookingForReactRole ⚛️ />",
+                " Peter 😎",
+              ]}
+              //Control how many times to run. 0 | false to run infinitely
+              loop={false}
+              cursor
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
           </h2>
-          <div>
+          <div
+            className={`
+          ${
+            !animated && "translate-y-10 opacity-0"
+          } transform transition duration-1000 ease-in-out
+         `}
+          >
             {socials?.map((social, i) => (
               <SocialIcon
                 key={i}
