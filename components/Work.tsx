@@ -110,7 +110,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
                   }}
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  className={` w-full object-cover object-left-top/ sm:object-cover    rounded-lg  h-[248px] xs:!h-[330px]  max-w-[640px]///unnecsry?         TEMP TESTING: md:max-w-full max-w-[88%] mx-auto  `}
+                  className={` w-full   sm:object-cover/    rounded-lg  h-[248px] xs:!h-[330px]    TEMP TESTING: md:max-w-full max-w-[88%] mx-auto  `}
                   //src={project?.image}
                   src={urlFor(project?.image).url() || undefined}
                   alt="Your alt text"
