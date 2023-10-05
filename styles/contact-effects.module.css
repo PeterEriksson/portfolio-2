@@ -78,7 +78,10 @@
 /** For mobile devices **/
 @media (max-width: 767px) {
   .customShapeDividerTop svg {
-    width: calc(137% + 1.3px);
-    height: 28px;
+    /* width: calc(137% + 1.3px);
+    height: 28px; */
+
+    width: calc(120% + 1.3px);
+    height: 23px;
   }
 }

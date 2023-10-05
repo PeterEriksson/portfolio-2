@@ -28,7 +28,7 @@ export default function About({
       } md:!opacity-100 transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center             for-shape:-> relative `}
     >
       {/* SHAPE DIVIDER */}
-      <div className={`${styles.customShapeDividerTop}`}>
+      <div className={`${styles.customShapeDividerTop}  xxs:inline hidden`}>
         <svg
           className={`h-10  xs:h-20 `}
           data-name="Layer 1"
