@@ -123,7 +123,7 @@ export default function Contact({ isMenuOpen, pageInfo, socials }: Props) {
                 url={social.url}
                 bgColor="transparent"
                 fgColor="white"
-                className="hover:opacity-70 !h-10 !w-10  (not interfere with scrollY:->) z-40"
+                className="hover:opacity-70 !h-10 !w-10   "
               />
             ))}
           </div>

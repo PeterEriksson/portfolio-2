@@ -34,7 +34,7 @@ export default function Header({ isMenuOpen, socials }: Props) {
             }`}
           />
         </div>
-        <div className="text-white text-center md:text-left   pt-4 xs:pt-0       (not interf with Yscroll->) z-40">
+        <div className="text-white text-center md:text-left   pt-4 xs:pt-0  ">
           <h1
             className={`
           ${

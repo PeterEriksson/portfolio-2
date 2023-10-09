@@ -43,7 +43,7 @@ export default function About({
         </svg>
       </div>
 
-      <div className="w-10/12/// xs:w-10/12 w-[88%]  flex items-center justify-between/     xs:justify-between flex-col xs:flex-row justify-center ">
+      <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row ">
         {/* LEFT SIDE (TEXT) */}
         <div
           /* find effect for one line at a time presentation(prince..)...ok? */
@@ -83,7 +83,7 @@ export default function About({
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.7 }}
               viewport={{ once: true }}
-              className="text-black sm:text-base  lg:text-lg       text-base  sm:w-2/3 xs:w-3/4 w-full"
+              className="text-black  md:text-lg  text-base  sm:w-2/3 xs:w-3/4 w-full"
             >
               {/* {backgroundInformation} */}
               {pageInfo?.backgroundInformation}
@@ -106,6 +106,7 @@ export default function About({
           src={urlFor(pageInfo?.profilePic).url() || undefined}
           alt=""
         />
+
         <motion.img
           initial={{
             opacity: 0,
@@ -116,7 +117,7 @@ export default function About({
           whileInView={{
             opacity: 1,
           }}
-          className="xs:hidden   rounded-lg max-w-xs w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
+          className="xs:hidden rounded-lg max-w-xs// w-full max-h-64 object-cover xs:max-h-full "
           src={urlFor(pageInfo?.profilePic).url() || undefined}
           alt=""
         />
