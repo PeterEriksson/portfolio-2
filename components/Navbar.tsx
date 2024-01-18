@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default function Navbar({ isMenuOpen, setIsMenuOpen }: Props) {
-  const navData = ["About", "Skills", "Work", "Contact"];
+  const navData = ["Work", "Skills", "About", "Contact"];
 
   const [linkActive, setLinkActive] = useState<string>("");
 

@@ -27,8 +27,8 @@ export default function About({
         isMenuOpen ? "opacity-50" : "opacity-100"
       } md:!opacity-100 transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center             for-shape:-> relative `}
     >
-      {/* SHAPE DIVIDER */}
-      <div className={`${styles.customShapeDividerTop}  xxs:inline hidden`}>
+      {/* SHAPE DIVIDER ...comment out for now. */}
+      {/* <div className={`${styles.customShapeDividerTop}  xxs:inline hidden`}>
         <svg
           className={`h-10  xs:h-20 `}
           data-name="Layer 1"
@@ -41,7 +41,7 @@ export default function About({
             className={`${styles.shapeFill}`}
           ></path>
         </svg>
-      </div>
+      </div> */}
 
       <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row ">
         {/* LEFT SIDE (TEXT) */}

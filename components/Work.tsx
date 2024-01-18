@@ -59,9 +59,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, setScrollSnaps, onSelect]);
 
-  //console.log(scrollSnaps); ok.
-
-  //TESTING
+  //show projects in "right" order
   const projectsModified = projects?.slice(2).concat(projects[1]);
   const projectsOrdered = [...projectsModified, projects[0]];
 
@@ -70,7 +68,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
       id="Work"
       className={`${
         isMenuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in  h-screen flex flex-col  bg-gray-100`}
+      } md:!opacity-100 transition duration-200 ease-in  h-screen flex flex-col  bg-gray-100 `}
     >
       <div
         aria-label="PROJECTS + Some of my work"
@@ -101,14 +99,14 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
               >
                 <motion.img
                   initial={{
-                    y: -70,
+                    y: -50,
                     opacity: 0,
                   }}
                   whileInView={{
                     y: 0,
                     opacity: 1,
                   }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: 0.75 }}
                   viewport={{ once: true }}
                   className={` w-full   sm:object-cover/    rounded-lg  h-[248px] xs:!h-[330px]    TEMP TESTING: md:max-w-full max-w-[88%] mx-auto  `}
                   //src={project?.image}

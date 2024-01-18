@@ -69,7 +69,8 @@
 
 .shapeFill {
   /* fill: white; */
-  fill: rgb(243 244 246);
+  /* fill: rgb(243 244 246); */
+  fill: rgb(229 231 235);
 }
 
 .customShapeDividerTop > path {

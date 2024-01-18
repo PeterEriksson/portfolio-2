@@ -11,12 +11,11 @@ type Props = {
 
 export default function Header({ isMenuOpen, socials }: Props) {
   const [animated, setAnimated] = useState<boolean>(false);
+  const [buttonIsPressed, setButtonIsPressed] = useState<boolean>(false);
 
   useEffect(() => {
     setAnimated(true);
   }, []);
-
-  //typewriter (react emoji ⚛️ only one not bugging  ..| ..😎    )
 
   return (
     <header
@@ -56,9 +55,9 @@ export default function Header({ isMenuOpen, socials }: Props) {
             <Typewriter
               words={[
                 " <FrontEndDeveloper ‍💻 />",
-                `<SelfTaught 🤓 />`,
                 " <LookingForReactRole ⚛️ />",
-                " Peter 😎",
+                " <SelfTaught 🤓 />",
+                /* " Peter 😎", */
               ]}
               //Control how many times to run. 0 | false to run infinitely
               loop={false}
@@ -83,13 +82,19 @@ export default function Header({ isMenuOpen, socials }: Props) {
                 url={social.url}
                 bgColor="transparent"
                 fgColor="white"
-                className="hover:opacity-70 opacity-80 !h-9 !w-9 (not interfere with scrollY:->) z-40"
+                className="hover:opacity-70 opacity-80 !h-9 !w-9 "
               />
             ))}
           </div>
-          <ScrollLink to="About" smooth="true" offset={-40}>
-            <button className="mt-3.5 mb-3  group relative hover:bg-indigo-600 bg-indigo-700 transition duration-300 transform hover:scale-105 py-3 px-10 text-lg/ uppercase/ rounded-xl focus:outline-none">
-              {/* {resumeData.header.btnText} */}
+          <ScrollLink to="Work" smooth="true" offset={-40}>
+            <button
+              className={`${
+                buttonIsPressed && "!scale-[0.96] "
+              }  mt-3.5 mb-3  group relative hover:bg-indigo-600 bg-indigo-700 transition duration-300 transform /testingNewEffect.../hover:scale-105 py-3 px-10 text-lg/ uppercase/ rounded-xl focus:outline-none`}
+              onMouseDown={() => setButtonIsPressed(true)}
+              onMouseUpCapture={() => setButtonIsPressed(false)}
+              onMouseLeave={() => setButtonIsPressed(false)}
+            >
               <p className=" text-lg uppercase">discover more</p>
               <span
                 className={`absolute right-5 top-3  group-hover:opacity-100 group-hover:translate-x-2   sm:inline hidden opacity-0  !transition !duration-500 transform ease-in-out `}
