@@ -15,7 +15,6 @@ import { fetchPageInfo } from "../utils/fetchPageInfo";
 import Contact from "../components/Contact";
 import { EmblaOptionsType } from "embla-carousel-react";
 import About from "../components/About";
-import { useState } from "react";
 import VerticalScrollLine from "../components/VerticalScrollLine";
 
 type Props = {
@@ -35,8 +34,6 @@ export default function Home({
   projects,
   socials,
 }: Props) {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-
   return (
     <>
       <Head>
@@ -44,39 +41,13 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-
-      <Header socials={socials} isMenuOpen={isMenuOpen} />
-
+      <Navbar />
       <VerticalScrollLine />
-
-      <Work
-        options={OPTIONS}
-        //projects={dummyData.projects}
-        projects={projects}
-        isMenuOpen={isMenuOpen}
-      />
-
-      <Stack
-        //skillDescription={dummyData.skillDescription}
-        //skills={dummyData.skills}
-        skillDescription={skillDescription}
-        skills={skills}
-        isMenuOpen={isMenuOpen}
-      />
-
-      <About
-        pageInfo={pageInfo}
-        //backgroundInformation={dummyData.backgroundInformation}
-        isMenuOpen={isMenuOpen}
-      />
-
-      <Contact
-        //pageInfo={dummyData.contact}
-        pageInfo={pageInfo}
-        socials={socials}
-        isMenuOpen={isMenuOpen}
-      />
+      <Header socials={socials} />
+      <About pageInfo={pageInfo} />
+      <Work options={OPTIONS} projects={projects} />
+      <Stack skillDescription={skillDescription} skills={skills} />
+      <Contact pageInfo={pageInfo} socials={socials} />
     </>
   );
 }

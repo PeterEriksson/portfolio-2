@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../styles/contact-effects.module.css";
 import { motion } from "framer-motion";
 import { InView, useInView } from "react-intersection-observer";
-/* import { MailIcon, PhoneIcon } from "@heroicons/react/solid"; */
 import {
   EnvelopeIcon as MailIcon,
   MapPinIcon,
@@ -11,27 +10,23 @@ import {
 import { PageInfo, Social } from "../typings";
 import dummyData from "../dummyData.json";
 import { SocialIcon } from "react-social-icons";
+import { useMenuStore } from "../store/store";
 
 type Props = {
   pageInfo?: PageInfo;
   socials?: Social[];
-  isMenuOpen: boolean;
 };
 
-export default function Contact({ isMenuOpen, pageInfo, socials }: Props) {
+export default function Contact({ pageInfo, socials }: Props) {
   const { ref: myEmojiRef, inView: myEmojiElementIsVisible } = useInView();
-  useInView();
 
-  /* const transition = {
-    type: "spring",
-    bounce: 0.7,
-    duration: 1,
-  }; */
+  const { menuOpen } = useMenuStore();
+
   return (
     <div
       id="Contact"
       className={`${
-        isMenuOpen ? "opacity-50" : "opacity-100"
+        menuOpen ? "opacity-50" : "opacity-100"
       } md:!opacity-100 transition duration-200 ease-in   bg-mainDarkBlue h-screen flex justify-center             for-shape:-> relative ForRocket: overflow-hidden `}
     >
       {/* SHAPE DIVIDER */}
@@ -62,7 +57,6 @@ export default function Contact({ isMenuOpen, pageInfo, socials }: Props) {
             scale: 1,
           }}
           transition={{ duration: 1 }}
-          //transition={transition}
           viewport={{ once: true }}
           className=" lg:pl-[72px] pl-0 !z-30          /bg-red-400 flex flex-col items-center xxs:inline  "
         >

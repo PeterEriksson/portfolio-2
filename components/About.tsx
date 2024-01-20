@@ -3,28 +3,29 @@ import { PageInfo } from "../typings";
 import { motion, useTransform, useScroll } from "framer-motion";
 import { urlFor } from "../sanity";
 import styles from "../styles/about.module.css";
+import { useMenuStore } from "../store/store";
 
 type Props = {
   pageInfo?: PageInfo;
   backgroundInformation?: string;
-  isMenuOpen: boolean;
 };
 
 export default function About({
   backgroundInformation,
-  isMenuOpen,
+
   pageInfo,
 }: Props) {
   const { scrollYProgress } = useScroll();
   //const scale = useTransform(scrollYProgress, [0, 1], [1, 2]);
   const x = useTransform(scrollYProgress, [0, 0.22], ["80px", "0px"]);
   const opacity = useTransform(scrollYProgress, [0.1, 0.25, 0.6], [0.2, 1, 1]);
+  const { menuOpen } = useMenuStore();
 
   return (
     <div
       id="About"
       className={` ${
-        isMenuOpen ? "opacity-50" : "opacity-100"
+        menuOpen ? "opacity-50" : "opacity-100"
       } md:!opacity-100 transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center             for-shape:-> relative `}
     >
       {/* SHAPE DIVIDER ...comment out for now. */}
@@ -100,7 +101,7 @@ export default function About({
         </div>
         {/* RIGHT SIDE - containing profile pic. useTransform(x + opacity) for larger screens, hide on mobile size. */}
         <motion.img
-          style={{ x /* scale */, opacity }}
+          style={{ x, /* scale, */ opacity }}
           className="hidden xs:inline    rounded-lg max-w-xs w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
           src={urlFor(pageInfo?.profilePic).url() || undefined}

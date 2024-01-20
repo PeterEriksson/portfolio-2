@@ -1,24 +1,19 @@
 import React, { useState } from "react";
 import { Skill as SkillType, SkillDescription } from "../typings";
 import Skill from "./Skill";
-import {
-  AnimatePresence,
-  motion,
-  useInView,
-  //useIsPresent,
-  //usePresence,
-} from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import { useMenuStore } from "../store/store";
 
 type Props = {
   skills: SkillType[];
   skillDescription: SkillDescription;
-  isMenuOpen: boolean;
 };
 
-function Stack({ skills, skillDescription, isMenuOpen }: Props) {
-  //testing temp
+function Stack({ skills, skillDescription }: Props) {
   const [showMore, setShowMore] = useState<boolean>(false);
+  const { menuOpen } = useMenuStore();
+
   const item = {
     exit: {
       opacity: 0,
@@ -26,27 +21,15 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
       transition: {
         ease: "easeInOut",
         duration: 0.25,
-        //delay: 1,
       },
     },
   };
-  //const isPresent = useIsPresent();
-  //const [isPresent, safeToRemove] = usePresence();
-
-  //console.log(skillDescription);
-
-  //for skillDescription text
-  /* const transition = {
-    type: "spring",
-    bounce: 0.35,
-    duration: 1.5,
-  }; */
 
   return (
     <div
       id="Skills"
       className={`${
-        isMenuOpen ? "opacity-50" : "opacity-100"
+        menuOpen ? "opacity-50" : "opacity-100"
       } md:!opacity-100 transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden    overflow-hidden`}
     >
       <h1 className=" text-3xl sm:text-5xl font-bold pt-8 xs:pt-4  ">
@@ -68,23 +51,6 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
           })}
       </div>
 
-      {/* SKILL DESCRIPTION */}
-      {/* <motion.p
-        initial={{
-          y: -100,
-          opacity: 0,
-        }}
-        transition={transition}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{ once: true }}
-        className="//hidden     max-w-[335px] xs:max-w-[400px]   sm:max-w-[600px] text-center font-light mt-2 mb-1   sm:text-base text-sm  "
-      >
-        {skillDescription?.text}
-      </motion.p> */}
-
       {/* SHOW MORE/LESS test temp */}
       <ChevronDownIcon
         onClick={() => setShowMore((prev) => !prev)}
@@ -102,7 +68,6 @@ function Stack({ skills, skillDescription, isMenuOpen }: Props) {
             animate={{ height: "20%", scaleY: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
             exit="exit"
-            //className={`text-center sm:text-base text-sm font-light max-w-[335px] xs:max-w-[400px] sm:max-w-[600px] /transform /transition /duration-300 /ease-in-out   `}
           >
             {skillDescription?.text}
           </motion.p>

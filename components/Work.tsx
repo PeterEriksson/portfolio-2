@@ -14,15 +14,15 @@ import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
 import styles from "../styles/embla.module.css";
 import Link from "next/link";
 import { urlFor } from "../sanity";
+import { useMenuStore } from "../store/store";
 
 type Props = {
   projects: ProjectType[];
   slides?: number[];
   options?: EmblaOptionsType;
-  isMenuOpen: boolean;
 };
 
-export default function Work({ projects, slides, options, isMenuOpen }: Props) {
+export default function Work({ projects, slides, options }: Props) {
   //console.log(projects);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
@@ -30,6 +30,8 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const { menuOpen } = useMenuStore();
 
   const scrollPrev = useCallback(
     () => emblaApi && emblaApi.scrollPrev(),
@@ -67,7 +69,7 @@ export default function Work({ projects, slides, options, isMenuOpen }: Props) {
     <div
       id="Work"
       className={`${
-        isMenuOpen ? "opacity-50" : "opacity-100"
+        menuOpen ? "opacity-50" : "opacity-100"
       } md:!opacity-100 transition duration-200 ease-in  h-screen flex flex-col  bg-gray-100 `}
     >
       <div

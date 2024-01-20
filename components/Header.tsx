@@ -3,15 +3,16 @@ import { Link as ScrollLink } from "react-scroll";
 import { Typewriter } from "react-simple-typewriter";
 import { Social } from "../typings";
 import { SocialIcon } from "react-social-icons";
+import { useMenuStore } from "../store/store";
 
 type Props = {
-  isMenuOpen: boolean;
   socials?: Social[];
 };
 
-export default function Header({ isMenuOpen, socials }: Props) {
+export default function Header({ socials }: Props) {
   const [animated, setAnimated] = useState<boolean>(false);
   const [buttonIsPressed, setButtonIsPressed] = useState<boolean>(false);
+  const { menuOpen } = useMenuStore();
 
   useEffect(() => {
     setAnimated(true);
@@ -21,7 +22,7 @@ export default function Header({ isMenuOpen, socials }: Props) {
     <header
       id="header"
       className={`${
-        isMenuOpen ? "opacity-50" : "opacity-100"
+        menuOpen ? "opacity-50" : "opacity-100"
       } md:!opacity-100 transition duration-200 ease-in   min-h-screen flex items-center justify-center bg-[#091c29]`}
     >
       <div className=" xs:w-10/12 w-[88%] flex flex-col md:flex-row-reverse items-center justify-between ">
@@ -86,7 +87,7 @@ export default function Header({ isMenuOpen, socials }: Props) {
               />
             ))}
           </div>
-          <ScrollLink to="Work" smooth="true" offset={-40}>
+          <ScrollLink to="About" smooth="true" offset={-40}>
             <button
               className={`${
                 buttonIsPressed && "!scale-[0.96] "
