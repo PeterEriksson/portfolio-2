@@ -58,7 +58,7 @@ export default function Navbar() {
         <section className="flex items-center w-full">
           {/* PE-logo */}
           <ScrollLink
-            onClick={() => toggleMenu()}
+            onClick={() => setMenuClose()}
             to="header"
             smooth="true"
             activeClass={styles.navSectionActive}
