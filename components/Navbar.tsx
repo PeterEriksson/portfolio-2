@@ -6,7 +6,7 @@ import styles from "../styles/navBar.module.css";
 import { useMenuStore } from "../store/store";
 
 export default function Navbar() {
-  const navData = ["About", "Work", "Skills", "Contact"];
+  const navData = ["Work", "About", "Skills", "Contact"];
 
   const { menuOpen, toggleMenu, setMenuClose } = useMenuStore();
 

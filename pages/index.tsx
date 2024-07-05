@@ -44,8 +44,8 @@ export default function Home({
       <Navbar />
       <VerticalScrollLine />
       <Header socials={socials} />
-      <About pageInfo={pageInfo} />
       <Work options={OPTIONS} projects={projects} />
+      <About pageInfo={pageInfo} />
       <Stack skillDescription={skillDescription} skills={skills} />
       <Contact pageInfo={pageInfo} socials={socials} />
     </>

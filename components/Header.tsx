@@ -87,7 +87,7 @@ export default function Header({ socials }: Props) {
               />
             ))}
           </div>
-          <ScrollLink to="About" smooth="true" offset={-40}>
+          <ScrollLink to="Work" smooth="true" offset={-40}>
             <button
               className={`${
                 buttonIsPressed && "!scale-[0.96] "
