@@ -116,7 +116,7 @@ export default function About({
             opacity: 1,
           }}
           viewport={{ once: true }}
-          className="xs:hidden/// rounded-lg w-full max-h-64 object-cover xs:max-h-full "
+          className="xs:hidden/// rounded-lg xs:w-2/5 object-cover w-full max-h-64 xs:max-h-[80%] "
           src={urlFor(pageInfo?.profilePic).url() || undefined}
           alt=""
         />
