@@ -46,16 +46,13 @@ export default function About({
 
       <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row ">
         {/* LEFT SIDE (TEXT) */}
-        <div
-          /* find effect for one line at a time presentation(prince..)...ok? */
-          className="space-y-1  lg:pl-[72px] pl-0  bg-green-500//                   text-center xs:text-start "
-        >
+        <div className="space-y-1 lg:pl-[72px] pl-0   text-center xs:text-start ">
           <motion.h1
             initial={{ y: 200, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0, duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-5xl/// font-bold  sm:text-5xl text-3xl"
+            className="font-bold  sm:text-5xl text-3xl"
           >
             About
           </motion.h1>
@@ -99,10 +96,10 @@ export default function About({
             </motion.p>
           </article>
         </div>
-        {/* RIGHT SIDE - containing profile pic. useTransform(x + opacity) for larger screens, hide on mobile size. */}
+        {/* RIGHT SIDE - containing profile pic. useTransform(x + opacity) for larger screens, hide on mobile size....BUG when NOT below Header. */}
         <motion.img
           style={{ x, /* scale, */ opacity }}
-          className="hidden xs:inline    rounded-lg max-w-xs w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
+          className="hidden ///xs:inline    rounded-lg max-w-xs w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
           src={urlFor(pageInfo?.profilePic).url() || undefined}
           alt=""
@@ -118,7 +115,8 @@ export default function About({
           whileInView={{
             opacity: 1,
           }}
-          className="xs:hidden rounded-lg max-w-xs// w-full max-h-64 object-cover xs:max-h-full "
+          viewport={{ once: true }}
+          className="xs:hidden/// rounded-lg w-full max-h-64 object-cover xs:max-h-full "
           src={urlFor(pageInfo?.profilePic).url() || undefined}
           alt=""
         />
