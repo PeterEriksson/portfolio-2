@@ -37,7 +37,7 @@ export default function Home({
   return (
     <>
       <Head>
-        <title>Peter FrontendDev</title>
+        <title>Peter Eriksson</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
