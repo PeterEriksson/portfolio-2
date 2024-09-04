@@ -67,9 +67,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       projects,
       socials,
     },
-    //Next.js will attempt tp re-generate the page:
-    // - When a reques comes in
-    // - At most once every 10 seconds
-    revalidate: 10,
+
+    revalidate: 3600, // Revalidate the page every hour
   };
 };
