@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { GetServerSideProps } from "next";
+import type { GetStaticProps } from "next";
 import Head from "next/head";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
@@ -24,7 +24,7 @@ type Props = {
   socials: Social[];
 };
 
-/* calling data from server (getServerSideProps) */
+/* calling data from server (getStaticProps) */
 /* not in use */
 
 const Home = ({
@@ -64,7 +64,7 @@ const Home = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo: PageInfo = await fetchPageInfo();
   const skills: Skill[] = await fetchSkills();
   const skillDescription: SkillDescription = await fetchSkillDescription();
@@ -79,7 +79,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
       projects,
       socials,
     },
+
+    revalidate: 3600, // Revalidate the page every hour
   };
 };
-
-export default Home;

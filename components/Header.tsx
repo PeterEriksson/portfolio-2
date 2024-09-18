@@ -90,8 +90,8 @@ export default function Header({ socials }: Props) {
           <ScrollLink to="Work" smooth="true" offset={-40}>
             <button
               className={`${
-                buttonIsPressed && "!bg-indigo-700/70 "
-              } mt-3.5 mb-3 group relative hover:bg-indigo-600 bg-indigo-700 transition duration-300 ease-in py-3 px-10 rounded-xl focus:outline-none`}
+                buttonIsPressed && "!bg-indigo-700/80 "
+              } mt-3.5 mb-3 group relative hover:bg-indigo-600 bg-indigo-700 transition duration-200 ease-in py-3 px-10 rounded-xl focus:outline-none`}
               onMouseDown={() => setButtonIsPressed(true)}
               onMouseUpCapture={() => setButtonIsPressed(false)}
               onMouseLeave={() => setButtonIsPressed(false)}

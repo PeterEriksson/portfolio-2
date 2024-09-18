@@ -145,7 +145,8 @@ export default function Work({ projects, slides, options }: Props) {
                         fgColor="#555555"
                         className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-10 sm:!h-10 transition duration-150 ease-in       "
                       />
-                      <ArrowsPointingOutIcon className="h-6 w-6 text-[#555555] !z-40 hover:scale-105 cursor-pointer transform transition duration-150 ease-in " />
+                      {/* TODO */}
+                      {/* <ArrowsPointingOutIcon className="h-6 w-6 text-[#555555] !z-40 hover:scale-105 cursor-pointer transform transition duration-150 ease-in " /> */}
                     </div>
                   </div>
 
