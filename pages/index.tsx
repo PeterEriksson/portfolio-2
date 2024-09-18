@@ -1,75 +1,39 @@
-import type { GetStaticProps /* , NextPage */ } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import Header from "../components/Header";
 import Navbar from "../components/Navbar";
-import Stack from "../components/Stack";
+import Header from "../components/Header";
 import Work from "../components/Work";
-import dummyData from "../dummyData.json";
-import { PageInfo, Project, Skill, SkillDescription, Social } from "../typings";
-import { fetchProjects } from "../utils/fetchProjects";
-import { fetchSkillDescription } from "../utils/fetchSkillDescription";
-import { fetchSkills } from "../utils/fetchSkills";
-import { fetchSocials } from "../utils/fetchSocials";
-import { fetchPageInfo } from "../utils/fetchPageInfo";
-import Contact from "../components/Contact";
-import { EmblaOptionsType } from "embla-carousel-react";
 import About from "../components/About";
+import Stack from "../components/Stack";
+import Contact from "../components/Contact";
 import VerticalScrollLine from "../components/VerticalScrollLine";
+import { PageInfo, Project, Skill, SkillDescription, Social } from "../typings";
+import Loading from "../components/Loading";
+import useDataFetch from "../hooks/useDataFetch";
 
-type Props = {
-  pageInfo: PageInfo;
-  skills: Skill[];
-  skillDescription: SkillDescription;
-  projects: Project[];
-  socials: Social[];
-};
+const Home = () => {
+  /* calling data from client */
+  const { pageInfo, skills, skillDescription, projects, socials, isLoading } =
+    useDataFetch();
 
-const OPTIONS: EmblaOptionsType = {};
+  if (isLoading) {
+    return <Loading />;
+  }
 
-export default function Home({
-  pageInfo,
-  skills,
-  skillDescription,
-  projects,
-  socials,
-}: Props) {
   return (
     <>
       <Head>
         <title>Peter Eriksson</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Navbar />
       <VerticalScrollLine />
       <Header socials={socials} />
-      <Work options={OPTIONS} projects={projects} />
-      <About pageInfo={pageInfo} />
-      <Stack skillDescription={skillDescription} skills={skills} />
-      <Contact pageInfo={pageInfo} socials={socials} />
+      <Work projects={projects} />
+      <About pageInfo={pageInfo ?? undefined} />
+      <Stack skillDescription={skillDescription ?? undefined} skills={skills} />
+      <Contact pageInfo={pageInfo ?? undefined} socials={socials} />
     </>
   );
-}
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const pageInfo: PageInfo = await fetchPageInfo();
-  const skills: Skill[] = await fetchSkills();
-  const skillDescription: SkillDescription = await fetchSkillDescription();
-  const projects: Project[] = await fetchProjects();
-  const socials: Social[] = await fetchSocials();
-
-  return {
-    props: {
-      pageInfo,
-      skills,
-      skillDescription,
-      projects,
-      socials,
-    },
-    //Next.js will attempt tp re-generate the page:
-    // - When a reques comes in
-    // - At most once every 10 seconds
-    revalidate: 10,
-  };
 };
+
+export default Home;

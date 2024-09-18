@@ -80,7 +80,7 @@ export default function Header({ socials }: Props) {
                 key={i}
                 target="_blank"
                 //url={social}
-                url={social.url}
+                url={social?.url}
                 bgColor="transparent"
                 fgColor="white"
                 className="hover:opacity-70 opacity-80 !h-9 !w-9 "
@@ -90,8 +90,8 @@ export default function Header({ socials }: Props) {
           <ScrollLink to="Work" smooth="true" offset={-40}>
             <button
               className={`${
-                buttonIsPressed && "!scale-[0.96] "
-              }  mt-3.5 mb-3  group relative hover:bg-indigo-600 bg-indigo-700 transition duration-300 transform /testingNewEffect.../hover:scale-105 py-3 px-10 text-lg/ uppercase/ rounded-xl focus:outline-none`}
+                buttonIsPressed && "!bg-indigo-700/70 "
+              } mt-3.5 mb-3 group relative hover:bg-indigo-600 bg-indigo-700 transition duration-300 ease-in py-3 px-10 rounded-xl focus:outline-none`}
               onMouseDown={() => setButtonIsPressed(true)}
               onMouseUpCapture={() => setButtonIsPressed(false)}
               onMouseLeave={() => setButtonIsPressed(false)}

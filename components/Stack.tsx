@@ -7,7 +7,7 @@ import { useMenuStore } from "../store/store";
 
 type Props = {
   skills: SkillType[];
-  skillDescription: SkillDescription;
+  skillDescription?: SkillDescription;
 };
 
 function Stack({ skills, skillDescription }: Props) {

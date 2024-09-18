@@ -2,7 +2,10 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Project as ProjectType } from "../typings";
 import { motion } from "framer-motion";
 
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
+import {
+  ArrowsPointingOutIcon,
+  ArrowTopRightOnSquareIcon,
+} from "@heroicons/react/24/solid";
 import { SocialIcon } from "react-social-icons";
 import Project from "./Project";
 import {
@@ -61,10 +64,6 @@ export default function Work({ projects, slides, options }: Props) {
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, setScrollSnaps, onSelect]);
 
-  //show projects in "right" order
-  const projectsModified = projects?.slice(2).concat(projects[1]);
-  const projectsOrdered = [...projectsModified, projects[0]];
-
   return (
     <div
       id="Work"
@@ -94,7 +93,7 @@ export default function Work({ projects, slides, options }: Props) {
             aria-label="styles.embla__container"
             className={` flex flex-row h-auto  `}
           >
-            {projectsOrdered?.map((project, index) => (
+            {projects?.map((project, index) => (
               <div
                 className={`   ${styles.embla__slide}   xs:px-4 px-5       min-w-0 relative   `}
                 key={index}
@@ -146,6 +145,7 @@ export default function Work({ projects, slides, options }: Props) {
                         fgColor="#555555"
                         className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-10 sm:!h-10 transition duration-150 ease-in       "
                       />
+                      <ArrowsPointingOutIcon className="h-6 w-6 text-[#555555] !z-40 hover:scale-105 cursor-pointer transform transition duration-150 ease-in " />
                     </div>
                   </div>
 

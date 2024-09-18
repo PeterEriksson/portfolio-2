@@ -10,11 +10,7 @@ type Props = {
   backgroundInformation?: string;
 };
 
-export default function About({
-  backgroundInformation,
-
-  pageInfo,
-}: Props) {
+export default function About({ backgroundInformation, pageInfo }: Props) {
   const { scrollYProgress } = useScroll();
   //const scale = useTransform(scrollYProgress, [0, 1], [1, 2]);
   const x = useTransform(scrollYProgress, [0, 0.22], ["80px", "0px"]);
