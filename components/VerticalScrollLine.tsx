@@ -1,3 +1,4 @@
+import { ChevronUpIcon } from "@heroicons/react/24/solid";
 import { useScroll, useSpring, motion } from "framer-motion";
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
@@ -29,12 +30,17 @@ function VerticalScrollLine() {
         offset={-40}
         className={`${
           scrollY >= testScrollYBp && "cursor-pointer"
-        }  border-red-500/70 border-2 rounded-full     hover:!bg-red-500 transition duration-150 ease-in`}
+        } relative group  border-red-500/70 border-2 rounded-full hover:!bg-red-500 transition duration-200 ease-in`}
       >
+        <ChevronUpIcon
+          className={`${
+            scrollY > 0.9 && "text-white"
+          } hidden xs:inline pointer-events-none w-7 h-7 absolute opacity-0 group-hover:-translate-y-8 group-hover:opacity-70  duration-200 top-0 left-3.5  transform transition ease-in `}
+        />
         <img
           src="https://user-images.githubusercontent.com/17027312/121216942-a638aa80-c881-11eb-8ea2-dc0d44815731.png"
           alt=""
-          className="h-14 w-14 rounded-full object-cover transition duration-150 ease-in filter brightness-50 hover:brightness-100     "
+          className="h-14 w-14 rounded-full object-cover transition duration-200 ease-in filter brightness-50 hover:brightness-100     "
         />
       </ScrollLink>
       <div className="h-60 bg-red-200 ">

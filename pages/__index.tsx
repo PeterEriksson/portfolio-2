@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+/* import { useState, useEffect } from "react";
 import type { GetServerSideProps } from "next";
 import Head from "next/head";
 import Navbar from "../components/Navbar";
@@ -24,8 +24,8 @@ type Props = {
   socials: Social[];
 };
 
-/* calling data from server (getServerSideProps) */
-/* not in use */
+//calling data from server
+//not in use
 
 const Home = ({
   pageInfo,
@@ -83,3 +83,4 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 };
 
 export default Home;
+ */
