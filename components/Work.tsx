@@ -7,7 +7,6 @@ import {
   ArrowTopRightOnSquareIcon,
 } from "@heroicons/react/24/solid";
 import { SocialIcon } from "react-social-icons";
-import Project from "./Project";
 import {
   DotButton,
   PrevButton,
@@ -69,7 +68,7 @@ export default function Work({ projects, slides, options }: Props) {
       id="Work"
       className={`${
         menuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in  h-screen flex flex-col  bg-gray-100 `}
+      } md:!opacity-100 transition duration-200 ease-in  ///h-screen flex flex-col  bg-gray-100 `}
     >
       <div
         aria-label="PROJECTS + Some of my work"
@@ -95,7 +94,7 @@ export default function Work({ projects, slides, options }: Props) {
           >
             {projects?.map((project, index) => (
               <div
-                className={`   ${styles.embla__slide}   xs:px-4 px-5       min-w-0 relative   `}
+                className={` ${styles.embla__slide}  xs:px-4 px-5  min-w-0 relative   `}
                 key={index}
               >
                 <motion.img
@@ -123,7 +122,7 @@ export default function Work({ projects, slides, options }: Props) {
                     opacity: 1,
                   }}
                   transition={{ duration: 1 }}
-                  /* viewport={{ once: true }} */
+                  //viewport={{ once: true }}
                   className="flex flex-col "
                 >
                   <div className="flex space-x-2.5 items-center justify-center ">
@@ -145,15 +144,13 @@ export default function Work({ projects, slides, options }: Props) {
                         fgColor="#555555"
                         className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-10 sm:!h-10 transition duration-150 ease-in       "
                       />
-                      {/* TODO */}
-                      {/* <ArrowsPointingOutIcon className="h-6 w-6 text-[#555555] !z-40 hover:scale-105 cursor-pointer transform transition duration-150 ease-in " /> */}
                     </div>
                   </div>
 
                   <p className="font-light text-center mx-3 sm:text-base text-sm/  cursor-default     sm:mx-12">
                     {project?.summary}
                   </p>
-                  {/* TECH USED ON PROJECT. TEST TEMP button design ... */}
+
                   <div className=" bg-red-500// flex ///items-center justify-center space-x-1 space-y-1  flex-wrap  mx-2 ">
                     {project?.technologies?.map((tech, i) => (
                       <div
@@ -170,17 +167,19 @@ export default function Work({ projects, slides, options }: Props) {
               </div>
             ))}
           </div>
-          {/* NEXT/PREV ARROW-BUTTONS */}
-          <div className=" //bg-green-600  flex justify-between absolute z-30  sm:max-w-[640px]  w-full    px-4 xxs:px-1.5 ">
+
+          <div
+            aria-label="NEXT/PREV ARROW-BUTTONS"
+            className=" flex justify-between absolute z-30 sm:max-w-[640px] w-full px-4 xxs:px-1.5 "
+          >
             <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
             <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
           </div>
         </div>
 
-        {/* DOTS DIV */}
         <div
           aria-label="EMBLA DOTS"
-          className={`//bg-gray-600/80 //p-2 //rounded-lg     z-30 flex   //opacity-70 space-x-4  max-w-fit mx-auto       -translate-y-[270px] xxxs:-translate-y-[250px] xxs:-translate-y-[218px] xs:-translate-y-[210px] smaller:-translate-y-[180px]  `}
+          className={` z-30 flex space-x-4 max-w-fit mx-auto -translate-y-[270px] xxxs:-translate-y-[250px] xxs:-translate-y-[218px] xs:-translate-y-[210px] smaller:-translate-y-[180px]  `}
         >
           {scrollSnaps.map((_, index) => (
             <DotButton

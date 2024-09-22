@@ -56,9 +56,9 @@ export default function Header({ socials }: Props) {
             <Typewriter
               words={[
                 " <FrontEndDeveloper ‍💻 />",
-                " <LookingForReactRole ⚛️ />",
+                /* " <LookingForReactRole ⚛️ />", */
                 " <SelfTaught 🤓 />",
-                /* " Peter 😎", */
+                " Peter 😎",
               ]}
               //Control how many times to run. 0 | false to run infinitely
               loop={false}
