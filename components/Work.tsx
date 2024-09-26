@@ -25,8 +25,6 @@ type Props = {
 };
 
 export default function Work({ projects, slides, options }: Props) {
-  //console.log(projects);
-
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
@@ -80,9 +78,8 @@ export default function Work({ projects, slides, options }: Props) {
         </h3>
       </div>
 
-      <div
-        className={`${styles.embla} sm:mx-auto  sm:max-w-[640px]  bg-blue-700//   `}
-      >
+      {/* hello chatgpt, move this into seperate component (Project.tsx) please. */}
+      <div className={`${styles.embla} sm:mx-auto  sm:max-w-[640px]  `}>
         <div
           aria-label="styles.embla__viewport"
           className={` overflow-hidden          `}
@@ -108,8 +105,7 @@ export default function Work({ projects, slides, options }: Props) {
                   }}
                   transition={{ duration: 0.75 }}
                   viewport={{ once: true }}
-                  className={` w-full   sm:object-cover/    rounded-lg  h-[248px] xs:!h-[330px]    TEMP TESTING: md:max-w-full max-w-[88%] mx-auto  `}
-                  //src={project?.image}
+                  className={` w-full rounded-lg h-[248px] xs:!h-[330px] md:max-w-full max-w-[88%] mx-auto  `}
                   src={urlFor(project?.image).url() || undefined}
                   alt="Your alt text"
                 />
@@ -122,11 +118,10 @@ export default function Work({ projects, slides, options }: Props) {
                     opacity: 1,
                   }}
                   transition={{ duration: 1 }}
-                  //viewport={{ once: true }}
                   className="flex flex-col "
                 >
                   <div className="flex space-x-2.5 items-center justify-center ">
-                    <h3 className="text-xl sm:text-2xl font-bold mx-auto cursor-default  underline/ decoration-red-500 opacity-[0.88]">
+                    <h3 className="text-xl sm:text-2xl font-bold mx-auto cursor-default opacity-[0.88]">
                       {project?.title}
                     </h3>
                     <div className="absolute flex items-center space-x-2 justify-end w-[87%] xs:w-3/4 ">
@@ -142,7 +137,7 @@ export default function Work({ projects, slides, options }: Props) {
                         url={project?.linkToGithub}
                         bgColor="transparent"
                         fgColor="#555555"
-                        className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-10 sm:!h-10 transition duration-150 ease-in       "
+                        className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-10 sm:!h-10 transition duration-150 ease-in "
                       />
                     </div>
                   </div>
@@ -151,13 +146,13 @@ export default function Work({ projects, slides, options }: Props) {
                     {project?.summary}
                   </p>
 
-                  <div className=" bg-red-500// flex ///items-center justify-center space-x-1 space-y-1  flex-wrap  mx-2 ">
+                  <div className="flex justify-center space-x-1 space-y-1 flex-wrap  mx-2 ">
                     {project?.technologies?.map((tech, i) => (
                       <div
                         key={i}
-                        className=" px-2 xs:py-1.5 py-1 weirdBug..-> mt-1 bg-gray-400/40  rounded-full cursor-default flex items-center"
+                        className=" px-2 xs:py-1.5 py-1 mt-1 bg-gray-400/40 rounded-full cursor-default flex items-center"
                       >
-                        <p className="italic/ text-xs font-extralight text-black/90   ">
+                        <p className="text-xs font-extralight text-black/90   ">
                           {tech?.title}
                         </p>
                       </div>
