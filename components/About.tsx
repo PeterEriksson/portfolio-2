@@ -11,14 +11,27 @@ type Props = {
 };
 
 export default function About({ backgroundInformation, pageInfo }: Props) {
-  const { scrollYProgress } = useScroll();
-  //const scale = useTransform(scrollYProgress, [0, 1], [1, 2]);
-  const x = useTransform(scrollYProgress, [0, 0.22], ["80px", "0px"]);
-  const opacity = useTransform(scrollYProgress, [0.1, 0.25, 0.6], [0.2, 1, 1]);
   const { menuOpen } = useMenuStore();
+
+  const scrollRef = React.useRef(null);
+  // Track scroll progress of the target element (scrollRef)
+  // 'start end' triggers at the start of the target reaching the end of the viewport
+  // 'end start' triggers when the target's end reaches the top of the viewport
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Transform the value of x based on scroll progress (0 to 22% scroll moves from 80px to 0px)
+  const x = useTransform(scrollYProgress, [0, 0.22], ["80px", "0px"]);
+
+  // Animate opacity based on scroll progress. Starts at 0.2 opacity at 10% scroll, increases to 0.9 at 30%, and reaches full opacity (1) at 60% scroll progress.
+  const opacity = useTransform(scrollYProgress, [0.1, 0.3, 0.6], [0.2, 0.9, 1]);
 
   return (
     <div
+      /* introducing scrollRef got rid of weird bug (not working placing About below Projects. Now works.) */
+      ref={scrollRef}
       id="About"
       className={` ${
         menuOpen ? "opacity-50" : "opacity-100"
@@ -79,7 +92,9 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
               viewport={{ once: true }}
               className="text-black  md:text-lg  text-base  sm:w-2/3 xs:w-3/4 w-full"
             >
+              {/* testing -> */}
               {/* {backgroundInformation} */}
+
               {pageInfo?.backgroundInformation}
             </motion.p>
             <motion.p
@@ -92,15 +107,17 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
             </motion.p>
           </article>
         </div>
-        {/* RIGHT SIDE - containing profile pic. useTransform(x + opacity) for larger screens, hide on mobile size....BUG when NOT below Header. */}
+
         <motion.img
           style={{ x, /* scale, */ opacity }}
-          className="hidden ///xs:inline    rounded-lg max-w-xs w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
+          className="hidden xs:inline    rounded-lg max-w-xs w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
+          //for testing ->
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
           src={urlFor(pageInfo?.profilePic).url() || undefined}
           alt=""
         />
 
+        {/* mobile view, avoid slide in */}
         <motion.img
           initial={{
             opacity: 0,
@@ -112,8 +129,10 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
             opacity: 1,
           }}
           viewport={{ once: true }}
-          className="xs:hidden/// rounded-lg xs:w-2/5 object-cover w-full max-h-64 xs:max-h-[80%] "
+          className=" inline   xs:hidden   rounded-lg xs:w-2/5 object-cover w-full max-h-64 xs:max-h-[80%] "
           src={urlFor(pageInfo?.profilePic).url() || undefined}
+          //for testing ->
+          //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
           alt=""
         />
       </div>

@@ -1,12 +1,6 @@
+// Work.tsx
 import React, { useState, useEffect, useCallback } from "react";
 import { Project as ProjectType } from "../typings";
-import { motion } from "framer-motion";
-
-import {
-  ArrowsPointingOutIcon,
-  ArrowTopRightOnSquareIcon,
-} from "@heroicons/react/24/solid";
-import { SocialIcon } from "react-social-icons";
 import {
   DotButton,
   PrevButton,
@@ -14,9 +8,12 @@ import {
 } from "./EmblaCarouselArrowsDotsButtons";
 import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
 import styles from "../styles/embla.module.css";
-import Link from "next/link";
+import { useFullScreenStore, useMenuStore } from "../store/store";
+import Project from "./Project";
+import { setBodyScroll } from "../utils/helpers";
+import { stagger, useAnimate, motion } from "framer-motion";
+import workStyles from "../styles/work.module.css";
 import { urlFor } from "../sanity";
-import { useMenuStore } from "../store/store";
 
 type Props = {
   projects: ProjectType[];
@@ -25,15 +22,16 @@ type Props = {
 };
 
 export default function Work({ projects, slides, options }: Props) {
-  //console.log(projects);
-
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
-
   const { menuOpen } = useMenuStore();
+
+  const { isFullScreen, toggleFullScreen } = useFullScreenStore();
+
+  const [scope, animate] = useAnimate();
 
   const scrollPrev = useCallback(
     () => emblaApi && emblaApi.scrollPrev(),
@@ -50,6 +48,7 @@ export default function Work({ projects, slides, options }: Props) {
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
+
     setSelectedIndex(emblaApi.selectedScrollSnap());
     setPrevBtnEnabled(emblaApi.canScrollPrev());
     setNextBtnEnabled(emblaApi.canScrollNext());
@@ -57,120 +56,116 @@ export default function Work({ projects, slides, options }: Props) {
 
   useEffect(() => {
     if (!emblaApi) return;
+
     onSelect();
     setScrollSnaps(emblaApi.scrollSnapList());
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, setScrollSnaps, onSelect]);
 
+  //disable/enable scrolling+dragging while viewing demo
+  React.useEffect(() => {
+    //helper file
+    setBodyScroll(isFullScreen);
+    return () => {
+      setBodyScroll(false); // Reset scrolling when unmounting or when changing states
+    };
+  }, [isFullScreen]);
+
+  // TEST TEMP. Hide on pageload
+  const [show, setShow] = useState(false);
+  //clearer name ->
+  const [disableInitialEffect, setDisableInitialEffect] = useState(false);
+
+  const handleBack = () => {
+    if (scope.current) {
+      scope.current.scrollIntoView({
+        behavior: "smooth", // Smooth scrolling
+        block: "center", // Scroll to the center of the viewport
+      });
+    }
+    //handle elements in other components (Work headers, About etc)
+    toggleFullScreen();
+  };
+
+  //test ok. merge the two useEffects...(notes)
+  React.useEffect(() => {
+    if (!isFullScreen) {
+      animate([
+        [".demo", { opacity: 0, scale: 0.3 }, { duration: 0.2, at: 0 }],
+        [
+          ".project-info",
+          { opacity: 1, x: "-0px" },
+          { duration: 0.25, delay: stagger(0.05) },
+        ],
+        [".img", { opacity: 1, scale: 1 }, { at: "<" }],
+
+        [".show-btn", { opacity: 1, scale: 1 }, { at: ">" }],
+        [".back-btn", { opacity: 0, scale: 0 }, { at: 0 }],
+        [".header", { opacity: 1 }, { at: 0 }],
+      ]);
+    } else {
+      animate([
+        [
+          ".project-info",
+          { opacity: 0, x: "-120px" },
+          { duration: 0.2, delay: stagger(0.05), at: 0 },
+        ],
+        [
+          ".demo",
+          { opacity: 1, scale: 1, zIndex: 30 },
+          { duration: 0.25, at: 0.25 },
+        ],
+
+        [".img", { opacity: 0, scale: 0.5 }, { duration: 0.3, at: 0 }],
+
+        [".show-btn", { opacity: 0, scale: 0 }, { duration: 0.25, at: 0 }],
+        [".back-btn", { opacity: 1, scale: 1 }, { at: 0.1 }],
+        [".header", { opacity: 0 }, { at: 0 }],
+      ]);
+    }
+  }, [animate, isFullScreen]);
+
   return (
     <div
+      ref={scope}
       id="Work"
-      className={`${
-        menuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in  ///h-screen flex flex-col  bg-gray-100 `}
+      className={`${menuOpen ? "opacity-50" : "opacity-100"}
+       md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-screen flex flex-col relative   justify-center `}
     >
       <div
         aria-label="PROJECTS + Some of my work"
-        className="flex flex-col items-center xs:space-y-1 space-y-0.5     xs:mt-8 mt-[60px]  xs:mb-2 mb-1   "
+        className={` flex flex-col items-center  space-y-0.5 xs:mt-7 mt-[60px] mb-1`}
       >
-        <h1 className="sm:text-5xl text-3xl font-bold  ">Projects</h1>
-        <h3 className="sm:text-xl text-base font-extralight  ">
+        <h1 className="header sm:text-5xl text-3xl font-bold">Projects</h1>
+        <h2 className="header sm:text-xl text-base font-extralight">
           Some of my work
-        </h3>
+        </h2>
       </div>
 
       <div
-        className={`${styles.embla} sm:mx-auto  sm:max-w-[640px]  bg-blue-700//   `}
+        aria-label="styles.embla"
+        className={`${styles.embla} bg-red-500//        sm:mx-auto sm:max-w-[640px] lg:max-w-[680px] `}
       >
         <div
           aria-label="styles.embla__viewport"
-          className={` overflow-hidden          `}
+          className="overflow-hidden"
           ref={emblaRef}
         >
           <div
             aria-label="styles.embla__container"
-            className={` flex flex-row h-auto  `}
+            className="flex flex-row h-auto z-50"
           >
             {projects?.map((project, index) => (
-              <div
-                className={` ${styles.embla__slide}  xs:px-4 px-5  min-w-0 relative   `}
-                key={index}
-              >
-                <motion.img
-                  initial={{
-                    y: -50,
-                    opacity: 0,
-                  }}
-                  whileInView={{
-                    y: 0,
-                    opacity: 1,
-                  }}
-                  transition={{ duration: 0.75 }}
-                  viewport={{ once: true }}
-                  className={` w-full   sm:object-cover/    rounded-lg  h-[248px] xs:!h-[330px]    TEMP TESTING: md:max-w-full max-w-[88%] mx-auto  `}
-                  //src={project?.image}
-                  src={urlFor(project?.image).url() || undefined}
-                  alt="Your alt text"
-                />
-
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                  }}
-                  transition={{ duration: 1 }}
-                  //viewport={{ once: true }}
-                  className="flex flex-col "
-                >
-                  <div className="flex space-x-2.5 items-center justify-center ">
-                    <h3 className="text-xl sm:text-2xl font-bold mx-auto cursor-default  underline/ decoration-red-500 opacity-[0.88]">
-                      {project?.title}
-                    </h3>
-                    <div className="absolute flex items-center space-x-2 justify-end w-[87%] xs:w-3/4 ">
-                      <a
-                        href={project?.linkToBuild}
-                        target="_blank"
-                        className="hover:opacity-70  !z-40 text-[#555555] cursor-pointer !h-6 !w-6 sm:!h-6 sm:!w-6   transition duration-150 ease-in     "
-                      >
-                        <ArrowTopRightOnSquareIcon className="  " />
-                      </a>
-                      <SocialIcon
-                        target="_blank"
-                        url={project?.linkToGithub}
-                        bgColor="transparent"
-                        fgColor="#555555"
-                        className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-10 sm:!h-10 transition duration-150 ease-in       "
-                      />
-                    </div>
-                  </div>
-
-                  <p className="font-light text-center mx-3 sm:text-base text-sm/  cursor-default     sm:mx-12">
-                    {project?.summary}
-                  </p>
-
-                  <div className=" bg-red-500// flex ///items-center justify-center space-x-1 space-y-1  flex-wrap  mx-2 ">
-                    {project?.technologies?.map((tech, i) => (
-                      <div
-                        key={i}
-                        className=" px-2 xs:py-1.5 py-1 weirdBug..-> mt-1 bg-gray-400/40  rounded-full cursor-default flex items-center"
-                      >
-                        <p className="italic/ text-xs font-extralight text-black/90   ">
-                          {tech?.title}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              </div>
+              <Project setShow={setShow} key={index} project={project} />
             ))}
           </div>
 
           <div
             aria-label="NEXT/PREV ARROW-BUTTONS"
-            className=" flex justify-between absolute z-30 sm:max-w-[640px] w-full px-4 xxs:px-1.5 "
+            className={`${
+              isFullScreen && "hidden"
+            }  flex justify-between absolute z-30 sm:max-w-[640px] lg:max-w-[680px] w-full px-3 xxs:px-1.5  `}
           >
             <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
             <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
@@ -179,7 +174,9 @@ export default function Work({ projects, slides, options }: Props) {
 
         <div
           aria-label="EMBLA DOTS"
-          className={` z-30 flex space-x-4 max-w-fit mx-auto -translate-y-[270px] xxxs:-translate-y-[250px] xxs:-translate-y-[218px] xs:-translate-y-[210px] smaller:-translate-y-[180px]  `}
+          className={`${
+            isFullScreen && "hidden"
+          } header  test-sol-> sm:flex hidden  bg-black/60// //px-4 //rounded-2xl //py-1.5 space-x-4 max-w-fit mx-auto  smaller:-translate-y-[180px]   //-translate-y-[180px] //xxxs:-translate-y-[250px] //xxs:-translate-y-[218px] //xs:-translate-y-[210px]    `}
         >
           {scrollSnaps.map((_, index) => (
             <DotButton
@@ -189,6 +186,36 @@ export default function Work({ projects, slides, options }: Props) {
             />
           ))}
         </div>
+      </div>
+
+      {/* DEMO */}
+      <img
+        // fix for hiding on page load..(show)
+        //disable pointer events to avoid issue when swiping projects
+        className={`demo ${show ? "" : "invisible"}  ${
+          isFullScreen ? "" : "pointer-events-none "
+        } object-cover       fixed inset-0 mx-auto xs:rounded-md xs:mt-2    (move to useEffect?->) h-[100%] xs:h-[95%] ..experiment-further... `}
+        //src={projects[selectedIndex]?.demo}
+        src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
+        alt=""
+      />
+
+      <div
+        //use flex container to avoid positioning issue
+        className="w-full flex justify-center absolute bottom-0 z-50"
+      >
+        <button
+          onClick={handleBack}
+          //fix for hiding element-effect on page load..(show)
+          //when fullScreen, override setBodyScroll fcn-> !pointer-events-auto
+          className={`back-btn ${show ? "" : "invisible"}  ${
+            workStyles.shrinkEffect
+          } ${
+            isFullScreen ? "!pointer-events-auto " : "pointer-events-none"
+          } //border border-white/70 bg-black rounded-2xl text-sm px-3 py-2 font-semibold text-white `}
+        >
+          Back
+        </button>
       </div>
     </div>
   );

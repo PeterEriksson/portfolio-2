@@ -1,0 +1,35 @@
+@media (min-width: 400px) {
+  .enlargeEffect:hover {
+    animation: scaleInOut 0.4s ease-in-out forwards;
+  }
+}
+
+@keyframes scaleInOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (min-width: 400px) {
+  .shrinkEffect:hover {
+    animation: scaleOutIn 0.4s ease-in-out forwards;
+  }
+}
+
+@keyframes scaleOutIn {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.94);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

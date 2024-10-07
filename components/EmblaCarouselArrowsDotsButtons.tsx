@@ -13,11 +13,11 @@ export const DotButton: React.FC<DotButtonPropType> = (props) => {
 
   return (
     <button
-      className={`  ${styles.embla__dot} ${
+      className={`${styles.embla__dot} ${
         selected
           ? styles.embla__dot__selected
-          : " transition duration-150 ease-in md:hover:scale-x-110 transform"
-      }     w-12  bg-red-600/`}
+          : " transition duration-150 ease-in md:hover:scale-x-110/ hover:scale-110 transform"
+      }     w-[9px]   flex items-center  `}
       type="button"
       onClick={onClick}
     />
@@ -31,12 +31,18 @@ type PrevNextButtonPropType = {
 
 export const PrevButton: React.FC<PrevNextButtonPropType> = (props) => {
   const { enabled, onClick } = props;
+  const [buttonIsPressed, setButtonIsPressed] = React.useState<boolean>(false);
 
   return (
     <button
+      onMouseDown={() => setButtonIsPressed(true)}
+      onMouseUpCapture={() => setButtonIsPressed(false)}
+      onMouseLeave={() => setButtonIsPressed(false)}
       className={`${
         enabled ? " cursor-pointer opacity-90 " : "!opacity-0 !cursor-default"
-      }       -translate-y-[385px] xxs:-translate-y-[355px] xs:-translate-y-[385px] smaller:-translate-y-[350px] sm:-translate-y-[350px]   transition duration-150 ease-in hover:opacity-[0.57]  text-black   z-30 flex items-center justify-center  cursor-pointer rounded-full bg-gray-500 opacity-70`}
+      } ${
+        buttonIsPressed && "!opacity-40"
+      }      -translate-y-[300px] xxs:-translate-y-[355px] xs:-translate-y-[385px] smaller:-translate-y-[350px] sm:-translate-y-[340px] lg:-translate-y-[360px]   transition duration-150 ease-in hover:opacity-[0.57]  text-black   z-30 flex items-center justify-center  cursor-pointer rounded-full bg-gray-500 opacity-70`}
       onClick={onClick}
       disabled={!enabled}
     >
@@ -47,16 +53,22 @@ export const PrevButton: React.FC<PrevNextButtonPropType> = (props) => {
 
 export const NextButton: React.FC<PrevNextButtonPropType> = (props) => {
   const { enabled, onClick } = props;
+  const [buttonIsPressed, setButtonIsPressed] = React.useState<boolean>(false);
 
   return (
     <button
+      onMouseDown={() => setButtonIsPressed(true)}
+      onMouseUpCapture={() => setButtonIsPressed(false)}
+      onMouseLeave={() => setButtonIsPressed(false)}
       className={`${
         enabled ? " cursor-pointer opacity-90 " : "!opacity-0 !cursor-default"
-      }     -translate-y-[385px] xxs:-translate-y-[355px] xs:-translate-y-[385px] smaller:-translate-y-[350px] sm:-translate-y-[350px]  transition duration-150 ease-in hover:opacity-[0.57]  text-black   z-30 flex items-center justify-center  cursor-pointer rounded-full bg-gray-500 opacity-70 `}
+      } ${
+        buttonIsPressed && "!opacity-40"
+      }      -translate-y-[300px] xxs:-translate-y-[355px] xs:-translate-y-[385px] smaller:-translate-y-[350px] sm:-translate-y-[340px] lg:-translate-y-[360px]  transition duration-150 ease-in hover:opacity-[0.57]  text-black   z-30 flex items-center justify-center  cursor-pointer rounded-full bg-gray-500 opacity-70 `}
       onClick={onClick}
       disabled={!enabled}
     >
-      <ChevronRightIcon className=" text-white w-8 h-8     " />
+      <ChevronRightIcon className=" text-white w-8 h-8 " />
     </button>
   );
 };

@@ -64,92 +64,28 @@
   ],
   "projects": [
     {
-      "title": "Todo App",
-      "linkToBuild": "https://todo-app-by-peter.netlify.app/",
-      "linkToGithub": "https://github.com/PeterEriksson/todo-app-2",
-      "image": "https://i.pinimg.com/originals/6b/35/ba/6b35bab93300ab81746e454da1d8c7d6.jpg",
-      "summary": "A fun challenge from frontendmentor.io. Great project for rehearsing the basics. Responsive layout, filtering capabilities, drag n drop functionality, light/dark mode.",
+      "demo": "https://cdn.sanity.io/images/uoku61jk/production/0c5815f2f7e5465ec0bb5958c49d9030b20b8a2e-640x400.gif",
+      "title": "TrackTrends",
+      "linkToBuild": "https://tracktrends.vercel.app/",
+      "linkToGithub": "https://github.com/PeterEriksson/spotify-app-peter",
+      "image": "https://i.pinimg.com/1200x/24/e8/cb/24e8cb69157d9c503779896248119029.jpg",
+      "summary": "Personal Spotify stats, discover tracks, play previews & create playlists. Designed for desktop & mobile. Next.js features such as dynamic routing, middleware & auth utilised. Redux used for state managment. Login with Spotify.",
       "technologies": [
+        { "title": "Next.js" },
         {
-          "title": "React",
-          "progress": 80,
-          "image": "data:image/png;base64,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"
+          "title": "spotify-web-api"
         },
 
         {
-          "title": "TailwindCSS",
-          "progress": 90,
-          "image": "https://cdn.sanity.io/images/jnlncnhq/production/5926eda1c3e623d39cdb2998ebab069b49aeede7-900x500.png?w=1000&h=1000&fit=max"
+          "title": "TailwindCSS"
         },
-
-        { "title": "drag&drop" }
+        { "title": "Redux" }
       ]
     },
-
-    {
-      "title": "Simple retail site",
-      "linkToBuild": "https://picsome-onlinestore.netlify.app/",
-      "linkToGithub": "https://github.com/PeterEriksson/picsome",
-      "image": "https://cdn.sanity.io/images/jnlncnhq/production/045a0a19d6817d7dfecc7d3212ff6e4229a59689-919x669.png?w=1000&h=1000&fit=max",
-      "summary": "Retail site with checkout. Last challenge of the Scrimba react boot camp by Bob Ziroll. Rebuilt with Next.js and TailwindCss. Using Redux for state management. Masonry layout. ",
-      "technologies": [
-        {
-          "title": "React.js",
-          "progress": 80,
-          "image": "data:image/png;base64,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"
-        },
-        {
-          "title": "Redux",
-          "progress": 70,
-          "image": "https://cdn.sanity.io/images/jnlncnhq/production/3f20adc77f008fc3ac0c1db8adcdba2485eea64e-254x198.png?w=1000&h=1000&fit=max"
-        },
-        {
-          "title": "Next.js",
-          "progress": 60,
-          "image": "https://cdn.sanity.io/images/jnlncnhq/production/beb9f9c2c8e3dd2ea5396ce01e00033a0305e790-800x479.png?w=1000&h=1000&fit=max"
-        }
-      ]
-    },
-    {
-      "title": "Personal Portfolio",
-      "linkToBuild": "https://peter-portfolio-app.netlify.app/",
-      "linkToGithub": "https://github.com/PeterEriksson/resume-portfolio-p",
-      "image": "https://cdn.sanity.io/images/jnlncnhq/production/e07285ef343a1ab0a1079f02e9883c5ce7cac093-919x637.png?w=1000&h=1000&fit=max",
-      "summary": "Portfolio site built from scratch highlighting my skills and personal info. Content is powered by Sanity on the backend and fetched with Next.js. Responsive navbar reacting to how the user scrolls. Typescript used for robust code. Embla-Carousel library utilised for displaying projects.",
-      "technologies": [
-        {
-          "title": "TailwindCSS",
-          "progress": 90,
-          "image": "https://cdn.sanity.io/images/jnlncnhq/production/5926eda1c3e623d39cdb2998ebab069b49aeede7-900x500.png?w=1000&h=1000&fit=max"
-        },
-        {
-          "title": "Sanity",
-          "progress": 40,
-          "image": "https://cdn.sanity.io/images/jnlncnhq/production/3060b4bd93fdc37107d0df850d9c8e00a5ec9cdb-401x125.png?w=1000&h=1000&fit=max"
-        },
-        {
-          "title": "Next.js",
-          "progress": 60,
-          "image": "https://cdn.sanity.io/images/jnlncnhq/production/beb9f9c2c8e3dd2ea5396ce01e00033a0305e790-800x479.png?w=1000&h=1000&fit=max"
-        },
-        {
-          "title": "Typescript",
-          "progress": 50,
-          "image": "https://i.pinimg.com/564x/66/d5/23/66d5238900aab3d7b86dc5e53a77c817.jpg"
-        },
-        {
-          "title": "Framer-Motion",
-          "progress": 30,
-          "image": "data:image/png;base64,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"
-        },
-        {
-          "title": "Embla-Carousel"
-        }
-      ]
-    },
-
     {
       "title": "Social media site",
+      "demo": "https://user-images.githubusercontent.com/17027312/198875385-30ffc922-93be-4fe4-9b5a-74dc2198cacd.png",
+
       "linkToBuild": "https://dhgb-3.netlify.app/",
       "linkToGithub": "https://github.com/PeterEriksson/dugb-3",
       "image": "https://cdn.sanity.io/images/jnlncnhq/production/472268194afda95e2c5d5082482547cf3675851d-563x386.jpg?w=1000&h=1000&fit=max",
@@ -172,6 +108,32 @@
         },
         { "title": "drag&drop" },
         { "title": "TailwindCSS" }
+      ]
+    },
+    {
+      "title": "Simple retail site",
+      "demo": "https://user-images.githubusercontent.com/17027312/150189630-b5980b20-e140-47ec-b0a8-553cd79b2017.png",
+
+      "linkToBuild": "https://picsome-onlinestore.netlify.app/",
+      "linkToGithub": "https://github.com/PeterEriksson/picsome",
+      "image": "https://cdn.sanity.io/images/jnlncnhq/production/045a0a19d6817d7dfecc7d3212ff6e4229a59689-919x669.png?w=1000&h=1000&fit=max",
+      "summary": "Retail site with checkout. Last challenge of the Scrimba react boot camp by Bob Ziroll. Rebuilt with Next.js and TailwindCss. Using Redux for state management. Masonry layout. ",
+      "technologies": [
+        {
+          "title": "React.js",
+          "progress": 80,
+          "image": "data:image/png;base64,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"
+        },
+        {
+          "title": "Redux",
+          "progress": 70,
+          "image": "https://cdn.sanity.io/images/jnlncnhq/production/3f20adc77f008fc3ac0c1db8adcdba2485eea64e-254x198.png?w=1000&h=1000&fit=max"
+        },
+        {
+          "title": "Next.js",
+          "progress": 60,
+          "image": "https://cdn.sanity.io/images/jnlncnhq/production/beb9f9c2c8e3dd2ea5396ce01e00033a0305e790-800x479.png?w=1000&h=1000&fit=max"
+        }
       ]
     }
   ],

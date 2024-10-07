@@ -4,6 +4,7 @@ import { Typewriter } from "react-simple-typewriter";
 import { Social } from "../typings";
 import { SocialIcon } from "react-social-icons";
 import { useMenuStore } from "../store/store";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 type Props = {
   socials?: Social[];
@@ -90,18 +91,16 @@ export default function Header({ socials }: Props) {
           <ScrollLink to="Work" smooth="true" offset={-40}>
             <button
               className={`${
-                buttonIsPressed && "!bg-indigo-700/80 "
+                buttonIsPressed && "!bg-indigo-700/90 "
               } mt-3.5 mb-3 group relative hover:bg-indigo-600 bg-indigo-700 transition duration-200 ease-in py-3 px-10 rounded-xl focus:outline-none`}
               onMouseDown={() => setButtonIsPressed(true)}
               onMouseUpCapture={() => setButtonIsPressed(false)}
               onMouseLeave={() => setButtonIsPressed(false)}
             >
               <p className=" text-lg uppercase">discover more</p>
-              <span
-                className={`absolute right-5 top-3  group-hover:opacity-100 group-hover:translate-x-2   sm:inline hidden opacity-0  !transition !duration-500 transform ease-in-out `}
-              >
-                🔍
-              </span>
+              <ChevronDownIcon
+                className={`h-[22px] w-[22px] absolute top-0 right-2.5 group-hover:opacity-100 group-hover:translate-y-4 sm:inline hidden opacity-0  !transition !duration-500 transform ease-in-out `}
+              />
             </button>
           </ScrollLink>
         </div>

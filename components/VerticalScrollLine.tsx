@@ -2,8 +2,11 @@ import { ChevronUpIcon } from "@heroicons/react/24/solid";
 import { useScroll, useSpring, motion } from "framer-motion";
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
+import { useFullScreenStore } from "../store/store";
 
 function VerticalScrollLine() {
+  const { isFullScreen } = useFullScreenStore();
+
   const { scrollYProgress } = useScroll();
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -19,8 +22,10 @@ function VerticalScrollLine() {
 
   return (
     <div
-      className={`top-56 fixed z-[39] hidden lg:flex flex-col items-center  ${
-        scrollY < testScrollYBp ? "opacity-0 pointer-events-none" : "opacity-70"
+      className={` top-56 fixed z-[39] hidden lg:flex flex-col items-center  ${
+        scrollY < testScrollYBp || isFullScreen
+          ? "opacity-0 pointer-events-none"
+          : "opacity-70"
       }    transition duration-300 ease-in   ml-[92px] xl:ml-[120px]       `}
     >
       <ScrollLink

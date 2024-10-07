@@ -18,6 +18,9 @@ module.exports = {
         smaller: "549px",
         /*  test: "630px", */
       },
+      fontSize: {
+        xxs: "0.625rem", // 10px, typically small for mobile like Facebook
+      },
     },
   },
   plugins: [

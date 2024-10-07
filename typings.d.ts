@@ -27,8 +27,10 @@ export interface Project extends SanityBody {
   _type: "project";
   title: string;
   image: Image;
-  /* using dummyData... */
-  /*   image: string; */
+  demo?: Image;
+  // using dummyData...
+  /* image: string;
+  demo: string; */
 
   linkToBuild: string;
   linkToGithub: string;

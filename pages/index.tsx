@@ -9,9 +9,12 @@ import VerticalScrollLine from "../components/VerticalScrollLine";
 import { PageInfo, Project, Skill, SkillDescription, Social } from "../typings";
 import Loading from "../components/Loading";
 import useDataFetch from "../hooks/useDataFetch";
+import React from "react";
+
+import dummdyData from "../dummyData.json";
 
 const Home = () => {
-  /* calling data from client */
+  // calling data from client
   const { pageInfo, skills, skillDescription, projects, socials, isLoading } =
     useDataFetch();
 
@@ -22,7 +25,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Peter Eriksson</title>
+        <title>testing Peter Eriksson</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
@@ -32,6 +35,18 @@ const Home = () => {
       <About pageInfo={pageInfo ?? undefined} />
       <Stack skillDescription={skillDescription ?? undefined} skills={skills} />
       <Contact pageInfo={pageInfo ?? undefined} socials={socials} />
+
+      {/* testing‚ using dummyData */}
+      {/* <Head>
+        <title>testing Peter Eriksson</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <Navbar />
+      <Header />
+
+      <Work projects={dummdyData.projects} />
+      <About backgroundInformation={dummdyData.backgroundInformation} />   */}
     </>
   );
 };

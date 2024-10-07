@@ -18,7 +18,16 @@ export default {
       },
     },
     {
-      /* add condition, max amount of words. See skillDescription */
+      name: "demo",
+      title: "Demo",
+      type: "image",
+      description: "Preferably a gif showcasing the project",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      /* add condition(?), max amount of words. See skillDescription */
       name: "summary",
       title: "Summary",
       type: "text",
