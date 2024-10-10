@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>testing Peter Eriksson</title>
+        <title>Peter Eriksson</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
@@ -35,18 +35,6 @@ const Home = () => {
       <About pageInfo={pageInfo ?? undefined} />
       <Stack skillDescription={skillDescription ?? undefined} skills={skills} />
       <Contact pageInfo={pageInfo ?? undefined} socials={socials} />
-
-      {/* testing‚ using dummyData */}
-      {/* <Head>
-        <title>testing Peter Eriksson</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Navbar />
-      <Header />
-
-      <Work projects={dummdyData.projects} />
-      <About backgroundInformation={dummdyData.backgroundInformation} />   */}
     </>
   );
 };

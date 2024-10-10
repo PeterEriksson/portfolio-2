@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Skill as SkillType, SkillDescription } from "../typings";
 import Skill from "./Skill";
 import { AnimatePresence, motion, useInView } from "framer-motion";
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+
 import { useMenuStore } from "../store/store";
 
 type Props = {
@@ -32,10 +33,8 @@ function Stack({ skills, skillDescription }: Props) {
         menuOpen ? "opacity-50" : "opacity-100"
       } md:!opacity-100 transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden    overflow-hidden`}
     >
-      <h1 className=" text-3xl sm:text-5xl font-bold pt-8 xs:pt-4  ">
-        Tech I use
-      </h1>
-      <h4 className=" sm:text-xl text-base font-extralight mb-1 xs:mb-2 ">
+      <h1 className="text-3xl sm:text-5xl font-bold  ">Tech I use</h1>
+      <h4 className="text-lg font-semibold text-black/60 xs:text-black  sm:text-xl xs:text-base xs:font-extralight  mb-2 ">
         Hover for current proficiency
       </h4>
       {/* SKILLS - sort by progress */}
@@ -51,17 +50,18 @@ function Stack({ skills, skillDescription }: Props) {
           })}
       </div>
 
-      {/* SHOW MORE/LESS test temp */}
-      <ChevronDownIcon
+      {/* show info */}
+      <ChevronRightIcon
         onClick={() => setShowMore((prev) => !prev)}
-        className={` text-black h-5 w-5 sm:h-7 sm:w-7 cursor-pointer transform transition duration-300 ${
-          showMore ? "-rotate-180 hidden/" : "animate-pulse"
+        className={`h-5 w-5 transform transition duration-150 ease-in opacity-50 cursor-pointer ${
+          showMore && "rotate-90"
         } `}
       />
+
       <AnimatePresence initial={false}>
         {showMore && (
           <motion.p
-            className="origin-top max-w-[335px] xs:max-w-[400px]  sm:max-w-[600px] text-center font-light /mt-2 /mb-1   sm:text-base text-sm"
+            className="origin-top max-w-[335px] xs:max-w-[400px]  sm:max-w-[600px] text-center  sm:text-lg text-mobile-base"
             variants={item}
             style={{ originY: 0 }}
             initial={{ height: 0, opacity: 0, scaleY: 0 }}

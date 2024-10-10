@@ -36,7 +36,7 @@ export default function Navbar() {
       ref={ref}
       className={`${
         isFullScreen && " -translate-y-full pointer-events-none "
-      } transition transform duration-200 ease-in   !fixed !top-0 w-screen !z-50  bg-mainDarkBlue    flex flex-col       `}
+      } transition transform duration-200 ease-in   !fixed !top-0 w-screen z-[60]  bg-mainDarkBlue    flex flex-col       `}
     >
       <section className="flex items-center  text-white justify-between mx-auto py-3  xs:w-10/12 w-[88%]       !z-30 ">
         {/* LEFT div  (PE-logo) */}

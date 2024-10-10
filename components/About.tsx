@@ -55,7 +55,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
 
       <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row ">
         {/* LEFT SIDE (TEXT) */}
-        <div className="space-y-1 lg:pl-[72px] pl-0   text-center xs:text-start ">
+        <div className="tempfix(verticalscrollline) xl:pl-[72px]     space-y-1 pl-0   text-center xs:text-start ">
           <motion.h1
             initial={{ y: 200, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -70,7 +70,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.7 }}
             viewport={{ once: true }}
-            className="text-3xl/// sm:text-3xl text-xl    font-semibold    xs:inline //hidden"
+            className=" sm:text-2xl text-lg font-semibold xs:font-bold xs:inline  text-black/60 xs:text-black"
           >
             Here is a{" "}
             <motion.span
@@ -78,34 +78,25 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.7 }}
               viewport={{ once: true }}
-              className="underline decoration-red-500"
+              className="xs:underline  xs:decoration-red-500"
             >
               little
             </motion.span>{" "}
             background
           </motion.h4>
-          <article className="space-y-0.5  ">
-            <motion.p
-              initial={{ y: 0, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.7 }}
-              viewport={{ once: true }}
-              className="text-black  md:text-lg  text-base  sm:w-2/3 xs:w-3/4 w-full"
-            >
-              {/* testing -> */}
-              {/* {backgroundInformation} */}
 
-              {pageInfo?.backgroundInformation}
-            </motion.p>
-            <motion.p
-              initial={{ y: 0, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.9, duration: 0.7 }}
-              viewport={{ once: true }}
-            >
-              {/*  For some additional info check cv(link..) */}
-            </motion.p>
-          </article>
+          <motion.p
+            initial={{ y: 0, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.7 }}
+            viewport={{ once: true }}
+            className="text-black sm:!mt-1  text-mobile-base xs:text-base md:text-lg  sm:w-2/3 xs:w-3/4 w-full"
+          >
+            {/* (for testing) -> */}
+            {/* {backgroundInformation} */}
+
+            {pageInfo?.backgroundInformation}
+          </motion.p>
         </div>
 
         <motion.img
@@ -117,7 +108,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
           alt=""
         />
 
-        {/* mobile view, avoid slide in */}
+        {/* mobile view, (avoid slide in, breaks page..) */}
         <motion.img
           initial={{
             opacity: 0,
@@ -129,7 +120,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
             opacity: 1,
           }}
           viewport={{ once: true }}
-          className=" inline   xs:hidden   rounded-lg xs:w-2/5 object-cover w-full max-h-64 xs:max-h-[80%] "
+          className=" inline   xs:hidden   rounded-lg xs:w-2/5 object-cover w-full max-h-72   "
           src={urlFor(pageInfo?.profilePic).url() || undefined}
           //for testing ->
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"

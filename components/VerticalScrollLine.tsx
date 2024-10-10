@@ -22,7 +22,7 @@ function VerticalScrollLine() {
 
   return (
     <div
-      className={` top-56 fixed z-[39] hidden lg:flex flex-col items-center  ${
+      className={` top-56 fixed z-[39] hidden xl:flex flex-col items-center  ${
         scrollY < testScrollYBp || isFullScreen
           ? "opacity-0 pointer-events-none"
           : "opacity-70"

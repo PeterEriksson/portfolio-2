@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion, stagger, useAnimate } from "framer-motion";
+import { motion } from "framer-motion";
 import { SocialIcon } from "react-social-icons";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
 import { Project as ProjectType } from "../typings";
@@ -10,16 +10,18 @@ import workStyles from "../styles/work.module.css";
 
 type ProjectProps = {
   project: ProjectType;
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+  setEffect: React.Dispatch<React.SetStateAction<boolean>>;
+  index: number;
 };
 
-export default function Project({ project, setShow }: ProjectProps) {
+export default function Project({ project, setEffect, index }: ProjectProps) {
   const { toggleFullScreen, isFullScreen } = useFullScreenStore();
 
   const ref = useRef<HTMLDivElement>(null);
 
   const handleShowMe = () => {
-    setShow(true);
+    //enable effect(invinsible on page load)
+    setEffect(true);
 
     if (ref.current) {
       ref.current.scrollIntoView({
@@ -44,7 +46,7 @@ export default function Project({ project, setShow }: ProjectProps) {
         className="relative "
       >
         <img
-          className={`img w-full  lg:h-[360px]   h-[248px] xs:h-[330px] md:max-w-full xs:max-w-[88%] mx-auto xs:rounded-md "
+          className={`img w-full h-[300px]   lg:h-[330px]     md:max-w-full xs:max-w-[88%] mx-auto xs:rounded-md "
           }`}
           src={urlFor(project?.image).url() || undefined}
           //src={project.image} //testing
@@ -53,7 +55,7 @@ export default function Project({ project, setShow }: ProjectProps) {
 
         <div
           //use flex container to avoid positioning issue (-translate-x-1/2 bug..)
-          className={` flex absolute bottom-7 w-full justify-center   bg-transparent text-white`}
+          className={` flex absolute bottom-6 w-full justify-center   bg-transparent text-white`}
         >
           <button
             onClick={handleShowMe}
@@ -71,9 +73,11 @@ export default function Project({ project, setShow }: ProjectProps) {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.75 }}
-        className="flex flex-col"
+        className={`flex flex-col  `}
       >
-        <div className="project-info  flex space-x-2.5 items-center justify-center   ">
+        <div
+          className={`project-info${index}    flex space-x-2.5 items-center justify-center   `}
+        >
           <h3 className=" text-xl sm:text-2xl font-bold mx-auto cursor-default opacity-[0.88]">
             {project?.title}
           </h3>
@@ -95,17 +99,21 @@ export default function Project({ project, setShow }: ProjectProps) {
           </div>
         </div>
 
-        <p className="  project-info  font-light text-center mx-3 sm:text-base text-sm cursor-default sm:mx-12">
+        <p
+          className={`project-info${index}     text-mobile-base xs:text-base md:text-lg   text-center mx-1  cursor-default sm:mx-12`}
+        >
           {project?.summary}
         </p>
 
-        <div className="project-info  flex justify-center space-x-1 space-y-1 flex-wrap mx-2">
+        <div
+          className={`project-info${index}  flex justify-center space-x-1 space-y-1 flex-wrap mx-1`}
+        >
           {project?.technologies?.map((tech, i) => (
             <div
               key={i}
               className="  px-2 xs:py-1.5 py-1 mt-1 bg-gray-400/40 rounded-full cursor-default flex items-center"
             >
-              <p className="text-xs font-extralight text-black/90">
+              <p className="text-mobile-small font-extralight text-black/90">
                 {tech?.title}
               </p>
             </div>

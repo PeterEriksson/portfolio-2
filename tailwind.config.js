@@ -20,6 +20,33 @@ module.exports = {
       },
       fontSize: {
         xxs: "0.625rem", // 10px, typically small for mobile like Facebook
+        "mobile-small": [
+          "0.875rem",
+          {
+            // 14px
+            lineHeight: "1.25rem", // 20px
+          },
+        ],
+        "mobile-base": [
+          "1.1rem",
+          {
+            lineHeight: "1.7rem",
+          },
+        ],
+        "mobile-medium": [
+          "1.125rem",
+          {
+            // 18px
+            lineHeight: "1.75rem", // 28px
+          },
+        ],
+        "mobile-large": [
+          "1.25rem",
+          {
+            // 20px
+            lineHeight: "1.75rem", // 28px
+          },
+        ],
       },
     },
   },

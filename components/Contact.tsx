@@ -58,7 +58,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className=" lg:pl-[72px] pl-0 !z-30          /bg-red-400 flex flex-col items-center xxs:inline  "
+          className="tempfix(veticalscrollline) xl:pl-[72px] pl-0 !z-30          /bg-red-400 flex flex-col items-center xxs:inline  "
         >
           <div
             className={` sm:text-5xl text-3xl text-white font-bold mb-2 xs:mb-3 flex         mr-auto xxs:mr-0 mt-3 xxs:mt-0`}
