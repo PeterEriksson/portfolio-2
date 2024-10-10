@@ -53,7 +53,7 @@ function Stack({ skills, skillDescription }: Props) {
       {/* show info */}
       <ChevronRightIcon
         onClick={() => setShowMore((prev) => !prev)}
-        className={`h-5 w-5 transform transition duration-150 ease-in opacity-50 cursor-pointer ${
+        className={`hidden xs:inline h-5 w-5 transform transition duration-150 ease-in opacity-50 cursor-pointer ${
           showMore && "rotate-90"
         } `}
       />

@@ -70,7 +70,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.7 }}
             viewport={{ once: true }}
-            className=" sm:text-2xl text-lg font-semibold xs:font-bold xs:inline  text-black/60 xs:text-black"
+            className="hidden xs:inline  sm:text-2xl text-lg font-semibold xs:font-bold text-black/60 xs:text-black"
           >
             Here is a{" "}
             <motion.span

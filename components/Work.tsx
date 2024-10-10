@@ -131,12 +131,11 @@ export default function Work({ projects, slides, options }: Props) {
        md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-screen flex flex-col relative items-center  justify-center `}
     >
       <div
-        onClick={() => console.log("clicked header")}
         aria-label="PROJECTS + Some of my work"
-        className={` flex flex-col items-center space-y-0.5 mb-1`}
+        className={` flex flex-col items-center space-y-0.5   xs:mb-1 mb-3`}
       >
         <h1 className="header sm:text-5xl text-3xl font-bold">Projects</h1>
-        <h2 className="header sm:text-xl text-lg xs:font-extralight font-semibold text-black/60 xs:text-black ">
+        <h2 className="header hidden xs:inline sm:text-xl text-lg xs:font-extralight font-semibold text-black/60 xs:text-black ">
           Some of my work
         </h2>
       </div>
@@ -188,6 +187,7 @@ export default function Work({ projects, slides, options }: Props) {
         alt=""
       />
 
+      {/* BACK button */}
       <div
         //use flex container to avoid positioning issue for button
         className="w-full flex justify-center absolute bottom-0 z-50"
@@ -200,7 +200,7 @@ export default function Work({ projects, slides, options }: Props) {
             workStyles.shrinkEffect
           } ${
             isFullScreen ? "!pointer-events-auto " : "pointer-events-none"
-          } //border border-white/70 bg-black rounded-2xl text-sm px-3 py-2 font-semibold text-white `}
+          }  absolute bottom-12 xs:bottom-16  bg-black rounded-2xl text-sm px-3 py-2 font-semibold text-white `}
         >
           Back
         </button>
@@ -210,8 +210,8 @@ export default function Work({ projects, slides, options }: Props) {
       <div
         //add zIndex so that dot can be clickable
         className={`z-[50] ${
-          isFullScreen && "hidden"
-        }   flex mt-5 space-x-4 max-w-fit mx-auto    box-> bg-black/60// //px-4 //rounded-2xl //py-1.5 `}
+          isFullScreen && "!hidden"
+        } hidden xs:flex mt-5 space-x-4 max-w-fit mx-auto    box-> bg-black/60// //px-4 //rounded-2xl //py-1.5 `}
       >
         {scrollSnaps.map((_, index) => (
           <DotButton
