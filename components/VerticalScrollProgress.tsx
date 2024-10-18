@@ -4,7 +4,7 @@ import React from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { useFullScreenStore } from "../store/store";
 
-function VerticalScrollLine() {
+function VerticalScrollProgress() {
   const { isFullScreen } = useFullScreenStore();
 
   const { scrollYProgress } = useScroll();
@@ -58,4 +58,4 @@ function VerticalScrollLine() {
   );
 }
 
-export default VerticalScrollLine;
+export default VerticalScrollProgress;

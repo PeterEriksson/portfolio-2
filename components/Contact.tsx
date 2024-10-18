@@ -11,6 +11,7 @@ import { PageInfo, Social } from "../typings";
 import dummyData from "../dummyData.json";
 import { SocialIcon } from "react-social-icons";
 import { useMenuStore } from "../store/store";
+import { urlFor } from "../sanity";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -30,7 +31,7 @@ export default function Contact({ pageInfo, socials }: Props) {
       } md:!opacity-100 transition duration-200 ease-in   bg-mainDarkBlue h-screen flex justify-center             for-shape:-> relative ForRocket: overflow-hidden `}
     >
       {/* SHAPE DIVIDER */}
-      <div className={`${styles.customShapeDividerTop}`}>
+      {/* <div className={`${styles.customShapeDividerTop}`}>
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -42,9 +43,9 @@ export default function Contact({ pageInfo, socials }: Props) {
             className={`${styles.shapeFill}`}
           ></path>
         </svg>
-      </div>
+      </div> */}
 
-      <div className=" xs:w-10/12 w-[88%] flex items-center justify-between//            xxs:flex-row flex-col-reverse justify-center   xxs:justify-between ">
+      <div className=" xs:w-10/12 w-[88%] flex items-center justify-between//            xs:flex-row flex-col-reverse justify-center   xxs:justify-between ">
         <motion.div
           initial={{
             x: -100,
@@ -108,7 +109,6 @@ export default function Contact({ pageInfo, socials }: Props) {
               <p className="text-white">Stockholm, Sweden</p>
             </div>
 
-            {/* {dummyData.contact.socials.map((social, i) => ( */}
             {socials?.map((social, i) => (
               <SocialIcon
                 key={i}
@@ -133,8 +133,8 @@ export default function Contact({ pageInfo, socials }: Props) {
           whileInView={{
             opacity: 1,
           }}
-          className="rounded-lg xs:max-w-xs w-full xs:w-2/5  max-h-60 object-cover xs:max-h-full xs:object-contain "
-          src="https://cdn.sanity.io/images/uoku61jk/production/e259ed793cb4471b615f408b9d83aac157975f03-471x603.png?w=2000&fit=max&auto=format"
+          className="rounded-md xs:max-w-xs w-full xs:w-2/5  max-h-60 object-cover xs:max-h-full xs:object-contain "
+          src={urlFor(pageInfo?.heroImage).url() || undefined}
           alt=""
         />
       </div>

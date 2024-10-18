@@ -5,16 +5,12 @@ import Work from "../components/Work";
 import About from "../components/About";
 import Stack from "../components/Stack";
 import Contact from "../components/Contact";
-import VerticalScrollLine from "../components/VerticalScrollLine";
+import VerticalScrollProgress from "../components/VerticalScrollProgress";
 import { PageInfo, Project, Skill, SkillDescription, Social } from "../typings";
 import Loading from "../components/Loading";
 import useDataFetch from "../hooks/useDataFetch";
-import React from "react";
-
-import dummdyData from "../dummyData.json";
 
 const Home = () => {
-  // calling data from client
   const { pageInfo, skills, skillDescription, projects, socials, isLoading } =
     useDataFetch();
 
@@ -29,7 +25,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <VerticalScrollLine />
+      <VerticalScrollProgress />
       <Header socials={socials} />
       <Work projects={projects} />
       <About pageInfo={pageInfo ?? undefined} />
@@ -38,4 +34,5 @@ const Home = () => {
     </>
   );
 };
+
 export default Home;

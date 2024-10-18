@@ -50,7 +50,7 @@ export default function Navbar() {
             spy={true}
             offset={-40}
             onSetActive={handleSetActive}
-            className={`relative  border-b border-transparent  ${
+            className={`relative  border-b border-transparent    ${
               linkActive !== "header" && styles.hoverAnimation
             }  transform transition duration-300 ease-in-out  cursor-pointer`}
           >

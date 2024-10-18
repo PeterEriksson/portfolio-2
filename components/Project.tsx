@@ -113,7 +113,7 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
               key={i}
               className="  px-2 xs:py-1.5 py-1 mt-1 bg-gray-400/40 rounded-full cursor-default flex items-center"
             >
-              <p className="text-mobile-small font-extralight text-black/90">
+              <p className="text-mobile-small font-medium xs:font-extralight text-black/60 xs:text-black/90">
                 {tech?.title}
               </p>
             </div>

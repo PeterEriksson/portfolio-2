@@ -131,13 +131,25 @@ export default function Work({ projects, slides, options }: Props) {
        md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-screen flex flex-col relative items-center  justify-center `}
     >
       <div
-        aria-label="PROJECTS + Some of my work"
-        className={` flex flex-col items-center space-y-0.5   xs:mb-1 mb-3`}
+        aria-label="PROJECTS + DOR"
+        className={` flex flex-col items-center space-y-2     mb-3`}
       >
         <h1 className="header sm:text-5xl text-3xl font-bold">Projects</h1>
-        <h2 className="header hidden xs:inline sm:text-xl text-lg xs:font-extralight font-semibold text-black/60 xs:text-black ">
-          Some of my work
-        </h2>
+
+        <div
+          //add zIndex so that dot can be clickable
+          className={`z-[50] ${
+            isFullScreen && "!hidden"
+          } flex   mt-5 space-x-4 max-w-fit mx-auto    box-> bg-black/60// //px-4 //rounded-2xl //py-1.5 `}
+        >
+          {scrollSnaps.map((_, index) => (
+            <DotButton
+              key={index}
+              selected={index === selectedIndex}
+              onClick={() => scrollTo(index)}
+            />
+          ))}
+        </div>
       </div>
 
       <div
@@ -154,6 +166,7 @@ export default function Work({ projects, slides, options }: Props) {
             className="flex flex-row h-auto z-50"
           >
             {projects?.map((project, index) => (
+              /* {projects?.slice(0, 2).map((project, index) => ( */
               <Project
                 key={index}
                 project={project}
@@ -181,7 +194,7 @@ export default function Work({ projects, slides, options }: Props) {
         //disable pointer events to avoid issue when swiping projects (isFullScreen)
         className={`demo ${effect ? "" : "invisible"}  ${
           isFullScreen ? "" : "pointer-events-none "
-        } object-cover       fixed inset-0 mx-auto xs:rounded-md xs:mt-2    (move to useEffect?->) h-[100%] xs:h-[95%] ..experiment-further... `}
+        } object-cover       fixed inset-0 mx-auto lg:rounded-md xs:mt-2    (move to useEffect?->) h-[100%] xs:h-[95%] ..experiment-further... `}
         //src={projects[selectedIndex]?.demo}
         src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
         alt=""
@@ -204,22 +217,6 @@ export default function Work({ projects, slides, options }: Props) {
         >
           Back
         </button>
-      </div>
-
-      {/* DOTS  */}
-      <div
-        //add zIndex so that dot can be clickable
-        className={`z-[50] ${
-          isFullScreen && "!hidden"
-        } hidden xs:flex mt-5 space-x-4 max-w-fit mx-auto    box-> bg-black/60// //px-4 //rounded-2xl //py-1.5 `}
-      >
-        {scrollSnaps.map((_, index) => (
-          <DotButton
-            key={index}
-            selected={index === selectedIndex}
-            onClick={() => scrollTo(index)}
-          />
-        ))}
       </div>
     </div>
   );

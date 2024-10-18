@@ -90,7 +90,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.7 }}
             viewport={{ once: true }}
-            className="text-black sm:!mt-1  text-mobile-base xs:text-base md:text-lg  sm:w-2/3 xs:w-3/4 w-full"
+            className="text-black sm:!mt-1 text-mobile-base xs:text-base sm:text-lg lg:text-xl sm:w-2/3 xs:w-3/4 w-full"
           >
             {/* (for testing) -> */}
             {/* {backgroundInformation} */}
@@ -120,7 +120,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
             opacity: 1,
           }}
           viewport={{ once: true }}
-          className=" inline   xs:hidden   rounded-lg xs:w-2/5 object-cover w-full max-h-72   "
+          className=" inline   xs:hidden   rounded-md xs:w-2/5 object-cover w-full max-h-72   "
           src={urlFor(pageInfo?.profilePic).url() || undefined}
           //for testing ->
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"

@@ -12,7 +12,7 @@ export const DotButton: React.FC<DotButtonPropType> = (props) => {
   const { selected, onClick } = props;
   return (
     <button
-      className={`relative// w-[12px] h-[12px] rounded-full flex items-center 
+      className={` h-[10px] w-[10px] xs:w-[12px] xs:h-[12px] rounded-full flex items-center 
         ${selected ? "bg-black cursor-default" : "bg-gray-300 hover:scale-110"}
         transition duration-200 ease-in transform `}
       type="button"

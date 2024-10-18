@@ -74,7 +74,6 @@
   border-color: white;
 }
 
-/* cool hover effect...use? */
 .hoverAnimation {
   display: inline-block;
   position: relative;
@@ -100,5 +99,3 @@
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-
-/* ----- */

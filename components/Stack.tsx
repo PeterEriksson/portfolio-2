@@ -34,9 +34,13 @@ function Stack({ skills, skillDescription }: Props) {
       } md:!opacity-100 transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden    overflow-hidden`}
     >
       <h1 className="text-3xl sm:text-5xl font-bold  ">Tech I use</h1>
-      <h4 className="text-lg font-semibold text-black/60 xs:text-black  sm:text-xl xs:text-base xs:font-extralight  mb-2 ">
+      <h4 className="xs:hidden text-lg font-semibold text-black/60  mb-2 ">
+        Tap for current proficiency
+      </h4>
+      <h4 className="hidden xs:inline sm:text-xl text-base font-extralight mb-2 ">
         Hover for current proficiency
       </h4>
+
       {/* SKILLS - sort by progress */}
       <div className={`grid grid-cols-3  xs:grid-cols-4 gap-2 sm:gap-4   `}>
         {skills
@@ -61,13 +65,13 @@ function Stack({ skills, skillDescription }: Props) {
       <AnimatePresence initial={false}>
         {showMore && (
           <motion.p
-            className="origin-top max-w-[335px] xs:max-w-[400px]  sm:max-w-[600px] text-center  sm:text-lg text-mobile-base"
+            className="origin-top max-w-[75%] md:max-w-2xl text-center sm:text-lg text-mobile-base"
             variants={item}
             style={{ originY: 0 }}
-            initial={{ height: 0, opacity: 0, scaleY: 0 }}
-            animate={{ height: "20%", scaleY: 1, opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            exit="exit"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            exit={{ height: 0, opacity: 0 }}
           >
             {skillDescription?.text}
           </motion.p>

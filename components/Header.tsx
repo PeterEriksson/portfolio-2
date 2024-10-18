@@ -5,6 +5,7 @@ import { Social } from "../typings";
 import { SocialIcon } from "react-social-icons";
 import { useMenuStore } from "../store/store";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import { motion } from "framer-motion";
 
 type Props = {
   socials?: Social[];
@@ -28,11 +29,18 @@ export default function Header({ socials }: Props) {
     >
       <div className=" xs:w-10/12 w-[88%] flex flex-col md:flex-row-reverse items-center justify-between ">
         <div className="md:w-2/5 w-full">
-          <img
+          <motion.img
+            initial={{
+              opacity: 0,
+            }}
+            transition={{
+              duration: 1.2,
+            }}
+            whileInView={{
+              opacity: 1,
+            }}
             src="https://user-images.githubusercontent.com/17027312/134349999-06919dce-11f2-42b9-9c0c-2b27d8dcce51.jpeg"
-            className={`rounded-xl ${!animated && "opacity-0"}  ${
-              animated && "transform transition duration-1000 ease-in-out"
-            }`}
+            className={`xs:rounded-xl rounded-md    `}
           />
         </div>
         <div className="text-white text-center md:text-left   pt-4 xs:pt-0  ">
