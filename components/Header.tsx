@@ -40,7 +40,9 @@ export default function Header({ socials }: Props) {
               opacity: 1,
             }}
             src="https://user-images.githubusercontent.com/17027312/134349999-06919dce-11f2-42b9-9c0c-2b27d8dcce51.jpeg"
-            className={`xs:rounded-xl rounded-md    `}
+            className={`xs:rounded-xl rounded-md  ${
+              !animated && "opacity-0"
+            }  `}
           />
         </div>
         <div className="text-white text-center md:text-left   pt-4 xs:pt-0  ">

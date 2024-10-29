@@ -11,13 +11,10 @@ type Props = {
 export default function Skill({ skill, directionLeft }: Props) {
   return (
     <div className={`group relative flex cursor-pointer  rounded-full `}>
-      {/* temp solution for avoiding horizontal to break on mobile: render two motion.img tags and utilize hidden */}
-      {/* Try overflow hidden instead */}
       <motion.img
         initial={{
-          /* x: directionLeft ? -200 : 200, */
           x: directionLeft ? -100 : 100,
-          opacity: 0,
+          opacity: 0.3,
         }}
         transition={{
           duration: 1,
@@ -27,10 +24,24 @@ export default function Skill({ skill, directionLeft }: Props) {
           x: 0,
         }}
         viewport={{ once: true }}
-        /* src="https://avatars.githubusercontent.com/u/17177659?s=280&v=4" */
         src={urlFor(skill?.image).url() || undefined}
-        //src={skill?.image}
-        className="  rounded-full border  border-gray-500 object-cover h-24 w-24   sm:w-28 sm:h-28 md:w-[136px] md:h-[136px] filter group-hover:grayscale transition duration-300 ease-in-out"
+        className="hidden xs:inline     rounded-full border  border-gray-500 object-cover h-24 w-24   sm:w-28 sm:h-28 md:w-[136px] md:h-[136px] filter group-hover:grayscale transition duration-300 ease-in-out"
+      />
+
+      {/* mobile view, only opacity effect */}
+      <motion.img
+        initial={{
+          opacity: 0,
+        }}
+        transition={{
+          duration: 1,
+        }}
+        whileInView={{
+          opacity: 1,
+        }}
+        viewport={{ once: true }}
+        src={urlFor(skill?.image).url() || undefined}
+        className="xs:hidden     rounded-full border  border-gray-500 object-cover h-24 w-24   sm:w-28 sm:h-28 md:w-[136px] md:h-[136px] filter group-hover:grayscale transition duration-300 ease-in-out"
       />
 
       {/* skill info - showing on hover */}
