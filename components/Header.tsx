@@ -29,18 +29,9 @@ export default function Header({ socials }: Props) {
     >
       <div className=" xs:w-10/12 w-[88%] flex flex-col md:flex-row-reverse items-center justify-between ">
         <div className="md:w-2/5 w-full">
-          <motion.img
-            initial={{
-              opacity: 0,
-            }}
-            transition={{
-              duration: 1.2,
-            }}
-            whileInView={{
-              opacity: 1,
-            }}
+          <img
             src="https://user-images.githubusercontent.com/17027312/134349999-06919dce-11f2-42b9-9c0c-2b27d8dcce51.jpeg"
-            className={`xs:rounded-xl rounded-md  ${
+            className={`xs:rounded-xl rounded-md transition duration-1000 ease-in-out ${
               !animated && "opacity-0"
             }  `}
           />
