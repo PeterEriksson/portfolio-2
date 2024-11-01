@@ -46,7 +46,7 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
         className="relative "
       >
         <img
-          className={`img w-full h-[300px]   lg:h-[330px]     md:max-w-full xs:max-w-[88%] mx-auto xs:rounded-md "
+          className={`img w-full h-[300px]   lg:h-[330px]     md:max-w-full xs:max-w-[88%] mx-auto xs:rounded-sm "
           }`}
           src={urlFor(project?.image).url() || undefined}
           //src={project.image} //testing
@@ -100,7 +100,7 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
         </div>
 
         <p
-          className={`project-info${index}     text-mobile-base xs:text-base md:text-lg   text-center mx-1  cursor-default sm:mx-12`}
+          className={`project-info${index}     text-mobile-base xs:text-base md:text-lg   text-center mx-1 sm:mx-3 cursor-default /sm:mx-12`}
         >
           {project?.summary}
         </p>
