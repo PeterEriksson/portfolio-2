@@ -72,7 +72,7 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.75 }}
+        transition={{ duration: 0.95 }}
         className={`flex flex-col  `}
       >
         <div
