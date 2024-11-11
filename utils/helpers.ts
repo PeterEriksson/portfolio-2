@@ -20,7 +20,7 @@ export const handleClickOutsideMenu = (
   });
 };
 
-// Function to prevent touch-based scrolling (for mobile devices) (testing)
+// Function to prevent touch-based scrolling (for mobile devices)
 const preventScroll = (event: TouchEvent) => {
   event.preventDefault();
 };
@@ -28,12 +28,10 @@ const preventScroll = (event: TouchEvent) => {
 //when fullScreen(user viewing demo), disable scrolling
 export const setBodyScroll = (isFullScreen: boolean) => {
   if (typeof document !== "undefined") {
-    // Apply overflow based on isFullScreen (disable/enable scroll)
+    // Apply overflow based on isFullScreen (disable/enable scrolling down/up the page)
     document.body.style.overflow = isFullScreen ? "hidden" : "auto";
-    //disable swiping projects
-    document.body.style.pointerEvents = isFullScreen ? "none" : "auto";
 
-    // mobile touch scrolling (testing)
+    // mobile touch scrolling
     if (isFullScreen) {
       // Disable touch-based scrolling by adding 'touchmove' listener
       document.addEventListener("touchmove", preventScroll, { passive: false });

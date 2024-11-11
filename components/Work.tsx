@@ -14,6 +14,7 @@ import { setBodyScroll } from "../utils/helpers";
 import { stagger, useAnimate, motion } from "framer-motion";
 import workStyles from "../styles/work.module.css";
 import { urlFor } from "../sanity";
+import { XCircleIcon } from "@heroicons/react/24/solid";
 
 type Props = {
   projects: ProjectType[];
@@ -82,18 +83,21 @@ export default function Work({ projects, slides, options }: Props) {
         block: "center", // Scroll to the center of the viewport
       });
     }
-    //handle elements in other components (Work headers, About etc)
     toggleFullScreen();
   };
 
   React.useEffect(() => {
     if (!isFullScreen) {
       animate([
-        [".demo", { opacity: 0, scale: 0.3 }, { duration: 0.2, at: 0 }],
+        [
+          ".demo",
+          { opacity: 0, scale: 0.3 },
+          { /* duration: 0.2 */ duration: 0.35, at: 0 },
+        ],
         [
           `.project-info${selectedIndex}`,
           { opacity: 1, x: "-0px" },
-          { duration: 0.25, delay: stagger(0.05), at: 0 },
+          { duration: 0.25, delay: stagger(0.05), /* at: 0 */ at: 0.2 },
         ],
         [".img", { opacity: 1, scale: 1 }, { at: 0.2 }],
 
@@ -194,7 +198,7 @@ export default function Work({ projects, slides, options }: Props) {
         //disable pointer events to avoid issue when swiping projects (isFullScreen)
         className={`demo ${effect ? "" : "invisible"}  ${
           isFullScreen ? "" : "pointer-events-none "
-        } object-cover       fixed inset-0 mx-auto lg:rounded-md xs:mt-2    (move to useEffect?->) h-[100%] xs:h-[95%] ..experiment-further... `}
+        } object-cover fixed inset-0 mx-auto    h-[100%]  `}
         //src={projects[selectedIndex]?.demo}
         src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
         alt=""
@@ -203,19 +207,21 @@ export default function Work({ projects, slides, options }: Props) {
       {/* BACK button */}
       <div
         //use flex container to avoid positioning issue for button
-        className="w-full flex justify-center absolute bottom-0 z-50"
+        className="w-full flex justify-center absolute z-50    bottom-24 xs:bottom-12"
       >
         <button
           onClick={handleBack}
           //fix for hiding element-effect on page load..(effect)
-          //when fullScreen, override setBodyScroll fcn-> !pointer-events-auto
           className={`back-btn ${effect ? "" : "invisible"}  ${
             workStyles.shrinkEffect
-          } ${
-            isFullScreen ? "!pointer-events-auto " : "pointer-events-none"
-          }  absolute bottom-12 xs:bottom-16  bg-black rounded-2xl text-sm px-3 py-2 font-semibold text-white `}
+          } 
+          ${
+            //scale down effect isn't interrupted by hover
+            isFullScreen ? "" : "pointer-events-none"
+          } flex items-center     bg-black rounded-2xl text-sm px-3 py-2 font-semibold text-white `}
         >
           Back
+          <XCircleIcon className="w-4 h-4 text-white ml-1" />
         </button>
       </div>
     </div>
