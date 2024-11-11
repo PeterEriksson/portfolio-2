@@ -1,4 +1,3 @@
-// Work.tsx
 import React, { useState, useEffect, useCallback } from "react";
 import { Project as ProjectType } from "../typings";
 import {
@@ -14,7 +13,7 @@ import { setBodyScroll } from "../utils/helpers";
 import { stagger, useAnimate, motion } from "framer-motion";
 import workStyles from "../styles/work.module.css";
 import { urlFor } from "../sanity";
-import { XCircleIcon } from "@heroicons/react/24/solid";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 type Props = {
   projects: ProjectType[];
@@ -220,8 +219,8 @@ export default function Work({ projects, slides, options }: Props) {
             isFullScreen ? "" : "pointer-events-none"
           } flex items-center     bg-black rounded-2xl text-sm px-3 py-2 font-semibold text-white `}
         >
-          Back
-          <XCircleIcon className="w-4 h-4 text-white ml-1" />
+          Close
+          <XMarkIcon className="w-4 h-4 text-white ml-1" />
         </button>
       </div>
     </div>
