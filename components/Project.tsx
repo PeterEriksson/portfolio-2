@@ -111,8 +111,14 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
           {project?.technologies?.map((tech, i) => (
             <div
               key={i}
-              className="  px-2 xs:py-1.5 py-1 mt-1 bg-gray-400/40 rounded-full cursor-default flex items-center"
+              className="xs:space-x-1 bg-gray-400/20 xs:bg-transparent xs:py-1.5 px-2 py-1 mt-1  rounded-full cursor-default flex items-center"
             >
+              {/* TEST */}
+              <img
+                className="h-7 w-7 object-cover hidden xs:inline rounded-lg"
+                src={urlFor(tech?.image).url() || undefined}
+                alt=""
+              />
               <p className="text-mobile-small font-medium xs:font-extralight text-black/60 xs:text-black/90">
                 {tech?.title}
               </p>
