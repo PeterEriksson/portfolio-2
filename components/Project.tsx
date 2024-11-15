@@ -108,14 +108,14 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
         <div
           className={`project-info${index}  flex justify-center space-x-1 space-y-1 flex-wrap mx-1`}
         >
+          {/* TECH used */}
           {project?.technologies?.map((tech, i) => (
             <div
               key={i}
-              className="xs:space-x-1 bg-gray-400/20 xs:bg-transparent xs:py-1.5 px-2 py-1 mt-1  rounded-full cursor-default flex items-center"
+              className="space-x-1 xs:py-1.5 px-2 py-1 mt-1  rounded-full cursor-default flex items-center"
             >
-              {/* TEST */}
               <img
-                className="h-7 w-7 object-cover hidden xs:inline rounded-lg"
+                className="xs:h-7 xs:w-7 h-6 w-6 object-cover rounded-lg"
                 src={urlFor(tech?.image).url() || undefined}
                 alt=""
               />

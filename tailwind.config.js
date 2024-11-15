@@ -13,10 +13,9 @@ module.exports = {
       },
       screens: {
         xxxs: "377px",
-        xxs: "398px",
+        xxs: "420px",
         xs: "500px",
         smaller: "549px",
-        /*  test: "630px", */
       },
       fontSize: {
         xxs: "0.625rem", // 10px, typically small for mobile like Facebook
