@@ -13,7 +13,11 @@ import { setBodyScroll } from "../utils/helpers";
 import { stagger, useAnimate, motion } from "framer-motion";
 import workStyles from "../styles/work.module.css";
 import { urlFor } from "../sanity";
-import { XMarkIcon } from "@heroicons/react/24/solid";
+import {
+  ComputerDesktopIcon,
+  DevicePhoneMobileIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/solid";
 
 type Props = {
   projects: ProjectType[];
@@ -28,10 +32,13 @@ export default function Work({ projects, slides, options }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
   const { menuOpen } = useMenuStore();
-
+  // Hide demo-effect on pageload
+  const [effect, setEffect] = useState(false);
   const { isFullScreen, toggleFullScreen } = useFullScreenStore();
-
   const [scope, animate] = useAnimate();
+
+  /* testing desktop+mobile icons */
+  const [isDemoDesktopView, setIsDemoDesktopView] = useState<boolean>(true);
 
   const scrollPrev = useCallback(
     () => emblaApi && emblaApi.scrollPrev(),
@@ -63,17 +70,14 @@ export default function Work({ projects, slides, options }: Props) {
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, setScrollSnaps, onSelect]);
 
-  //disable/enable scrolling+dragging while viewing demo
+  //turn off scroll while viewing demo
   React.useEffect(() => {
-    //helper file
+    //helper file (also handles mobile-touch-scroll)
     setBodyScroll(isFullScreen);
     return () => {
       setBodyScroll(false); // Reset scrolling when unmounting or when changing states
     };
   }, [isFullScreen]);
-
-  // Hide demo-effect on pageload
-  const [effect, setEffect] = useState(false);
 
   const handleBack = () => {
     if (scope.current) {
@@ -131,7 +135,7 @@ export default function Work({ projects, slides, options }: Props) {
       ref={scope}
       id="Work"
       className={`${menuOpen ? "opacity-50" : "opacity-100"}
-       md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-screen flex flex-col relative items-center  justify-center `}
+       md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-screen// h-[105vh] flex flex-col relative items-center  justify-center `}
     >
       <div
         aria-label="PROJECTS + DOR"
@@ -143,7 +147,7 @@ export default function Work({ projects, slides, options }: Props) {
           //add zIndex so that dot can be clickable
           className={`z-[50] ${
             isFullScreen && "!hidden"
-          } flex   mt-5 space-x-4 max-w-fit mx-auto    box-> bg-black/60// //px-4 //rounded-2xl //py-1.5 `}
+          } flex   mt-5 space-x-4 max-w-fit mx-auto    `}
         >
           {scrollSnaps.map((_, index) => (
             <DotButton
@@ -157,7 +161,7 @@ export default function Work({ projects, slides, options }: Props) {
 
       <div
         aria-label="styles.embla"
-        className={`${styles.embla} sm:mx-auto sm:max-w-[640px] lg:max-w-[680px]       `}
+        className={`${styles.embla} sm:mx-auto sm:max-w-[640px] lg:max-w-[680px]     xs:w-[88%] w-full      `}
       >
         <div
           aria-label="styles.embla__viewport"
@@ -183,7 +187,7 @@ export default function Work({ projects, slides, options }: Props) {
           <div
             className={`${
               isFullScreen && "hidden"
-            }  flex justify-between absolute z-30 sm:max-w-[640px] lg:max-w-[680px] w-full px-3 xxs:px-1.5  `}
+            }  flex justify-between absolute z-30 sm:max-w-[640px] lg:max-w-[680px]        xs:w-[88%] w-full      `}
           >
             <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
             <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
@@ -191,7 +195,7 @@ export default function Work({ projects, slides, options }: Props) {
         </div>
       </div>
 
-      {/* DEMO. */}
+      {/* DEMO. placed here in Work instead of Project in order to avoid max-w constraints */}
       <img
         // fix for hiding on page load..(effect)
         //disable pointer events to avoid issue when swiping projects (isFullScreen)
@@ -206,7 +210,7 @@ export default function Work({ projects, slides, options }: Props) {
       {/* BACK button */}
       <div
         //use flex container to avoid positioning issue for button
-        className="w-full flex justify-center absolute z-50    bottom-24 xs:bottom-12"
+        className="    w-full flex justify-center absolute z-50    bottom-24 xs:bottom-12"
       >
         <button
           onClick={handleBack}
@@ -222,6 +226,22 @@ export default function Work({ projects, slides, options }: Props) {
           Close
           <XMarkIcon className="w-4 h-4 text-white ml-1" />
         </button>
+
+        {/* Testing dekstop+mobile icons */}
+        {/* <div
+          className={`flex absolute top-12 space-x-4 mt-6 p-3 bg-gray-100 rounded-2xl ${
+            !isFullScreen && "hidden"
+          }  ${effect ? "" : "invisible"} `}
+        >
+          <ComputerDesktopIcon
+            onClick={() => setIsDemoDesktopView(true)}
+            className={`h-6 w-6 cursor-pointer `}
+          />
+          <DevicePhoneMobileIcon
+            onClick={() => setIsDemoDesktopView(false)}
+            className={`h-6 w-6 cursor-pointer opacity-60 `}
+          />
+        </div> */}
       </div>
     </div>
   );

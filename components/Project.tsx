@@ -36,17 +36,17 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
   return (
     <div
       ref={ref}
-      className={` ${styles.embla__slide}   xs:px-4 min-w-0 relative`}
+      className={` ${styles.embla__slide}  px-2 xs:px-4 min-w-0 relative`}
     >
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.75 }}
+        transition={{ duration: 1.1 }}
         className="relative "
       >
         <img
-          className={`img w-full h-[300px]   lg:h-[330px]     md:max-w-full xs:max-w-[88%] mx-auto xs:rounded-sm "
+          className={`img w-full h-[300px]   lg:h-[330px]   xs:rounded-sm "
           }`}
           src={urlFor(project?.image).url() || undefined}
           //src={project.image} //testing
@@ -72,59 +72,63 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.95 }}
+        transition={{ duration: 1.1 }}
         className={`flex flex-col  `}
       >
         <div
-          className={`project-info${index}    flex space-x-2.5 items-center justify-center   `}
+          className={`project-info${index}  flex space-x-2.5 items-center justify-between   `}
         >
-          <h3 className=" text-xl sm:text-2xl font-bold mx-auto cursor-default opacity-[0.88]">
+          <h3 className=" text-xl sm:text-2xl font-bold cursor-default opacity-[0.88]">
             {project?.title}
           </h3>
-          <div className=" absolute flex items-center space-x-2 justify-end w-[87%] xs:w-3/4">
-            <a
-              href={project?.linkToBuild}
-              target="_blank"
-              className="hover:opacity-70 !z-40 text-[#555555] cursor-pointer !h-6 !w-6 sm:!h-6 sm:!w-6 transition duration-150 ease-in"
-            >
-              <ArrowTopRightOnSquareIcon />
-            </a>
+          <div className=" flex items-center space-x-1.5  ">
             <SocialIcon
               target="_blank"
               url={project?.linkToGithub}
               bgColor="transparent"
               fgColor="#555555"
-              className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-10 sm:!h-10 transition duration-150 ease-in"
+              className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-11 sm:!h-11 transition duration-150 ease-in"
             />
+            <a
+              href={project?.linkToBuild}
+              target="_blank"
+              className="hover:opacity-70 !z-40 text-[#555555] cursor-pointer !h-6 !w-6 sm:!h-7 sm:!w-7 transition duration-150 ease-in"
+            >
+              <ArrowTopRightOnSquareIcon />
+            </a>
           </div>
         </div>
 
-        <p
-          className={`project-info${index}     text-mobile-base xs:text-base md:text-lg   text-center mx-1 sm:mx-3 cursor-default /sm:mx-12`}
-        >
-          {project?.summary}
-        </p>
-
+        {/* TECH used test */}
         <div
-          className={`project-info${index}  flex justify-center space-x-1 space-y-1 flex-wrap mx-1`}
+          className={`project-info${index} xs:space-x-4 flex -mt-1.5 flex-wrap gap-2 `}
         >
-          {/* TECH used */}
           {project?.technologies?.map((tech, i) => (
             <div
               key={i}
-              className="space-x-1 xs:py-1.5 px-2 py-1 mt-1  rounded-full cursor-default flex items-center"
+              className="space-x-1 mt-1  rounded-full cursor-default flex items-center"
             >
               <img
                 className="xs:h-7 xs:w-7 h-6 w-6 object-cover rounded-lg"
                 src={urlFor(tech?.image).url() || undefined}
                 alt=""
               />
-              <p className="text-mobile-small font-medium xs:font-extralight text-black/60 xs:text-black/90">
+              <p className=" text-mobile-small font-medium xs:font-extralight text-black/60 xs:text-black/90">
                 {tech?.title}
               </p>
             </div>
           ))}
         </div>
+
+        <hr
+          className={`w-full mt-1 bg-gray-400/60 h-[3px] project-info${index} `}
+        />
+
+        <p
+          className={`project-info${index} mt-1.5    text-mobile-base xs:text-base md:text-lg   cursor-default `}
+        >
+          {project?.summary}
+        </p>
       </motion.div>
     </div>
   );
