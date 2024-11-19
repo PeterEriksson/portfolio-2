@@ -25,7 +25,7 @@ export default function Header({ socials }: Props) {
       id="header"
       className={`${
         menuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in   min-h-screen flex items-center justify-center bg-[#091c29]`}
+      } md:!opacity-100 transition duration-200 ease-in   min-h-screen flex items-center justify-center bg-mainDarkBlue `}
     >
       <div className=" xs:w-10/12 w-[88%] flex flex-col md:flex-row-reverse items-center justify-between ">
         <div className="md:w-2/5 w-full">

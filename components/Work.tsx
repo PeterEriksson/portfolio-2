@@ -135,7 +135,7 @@ export default function Work({ projects, slides, options }: Props) {
       ref={scope}
       id="Work"
       className={`${menuOpen ? "opacity-50" : "opacity-100"}
-       md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-screen// h-[105vh] flex flex-col relative items-center  justify-center `}
+       md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-[105vh] flex flex-col relative items-center  justify-center `}
     >
       <div
         aria-label="PROJECTS + DOR"
