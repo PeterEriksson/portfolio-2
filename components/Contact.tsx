@@ -12,6 +12,7 @@ import dummyData from "../dummyData.json";
 import { SocialIcon } from "react-social-icons";
 import { useMenuStore } from "../store/store";
 import { urlFor } from "../sanity";
+import Blob from "./Blob";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -28,7 +29,7 @@ export default function Contact({ pageInfo, socials }: Props) {
       id="Contact"
       className={`${
         menuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in   bg-mainDarkBlue h-screen flex justify-center             for-shape:-> relative ForRocket: overflow-hidden `}
+      } md:!opacity-100 transition duration-200 ease-in   bg-mainDarkBlue h-screen flex justify-center             for-shape(and blob):-> relative ForRocket: overflow-hidden `}
     >
       {/* SHAPE DIVIDER */}
       {/* <div className={`${styles.customShapeDividerTop}`}>
@@ -59,12 +60,20 @@ export default function Contact({ pageInfo, socials }: Props) {
           }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="tempfix(veticalscrollline) xl:pl-[72px] pl-0 !z-30          /bg-red-400 flex flex-col items-center xxs:inline  "
+          className="tempfix(veticalscrollline) xl:pl-[72px] pl-0 !z-30      flex flex-col items-center xxs:inline  "
         >
-          <div
-            className={` sm:text-5xl text-3xl text-white font-bold mb-2 xs:mb-3 flex         mr-auto xxs:mr-0 mt-3 xxs:mt-0`}
-          >
-            <h4> Ping me!&nbsp; </h4>
+          <div className={`mb-2 xs:mb-3 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
+            <h1 className="sm:text-5xl text-3xl text-white font-bold //text-shadow-glow">
+              {" "}
+              Ping me!&nbsp;{" "}
+            </h1>
+
+            {/* <h1 className="sm:text-5xl text-3xl text-white font-bold   relative inline-block -ml-4">
+              <div className="absolute  //-inset-px bg-[#1b3448] rounded-md blur-md opacity-100 inset-2 "></div>
+              <span className="relative inline-block px-4 py-2 text-4xl font-bold text-white/90  rounded-lg">
+                Ping me!
+              </span>
+            </h1> */}
             <InView triggerOnce>
               {({
                 inView: myEmojiElementIsVisible,
@@ -75,7 +84,7 @@ export default function Contact({ pageInfo, socials }: Props) {
                   ref={myEmojiRef}
                   className={` ${
                     myEmojiElementIsVisible ? styles.animateEmoji : ""
-                  }  for-mobile-need-to-declare h+w: h-0.5 w-0.5 text-4xl    /relative`}
+                  }  for-mobile-need-to-declare h+w: h-0.5 w-0.5 text-4xl    `}
                 >
                   🚀
                 </p>
@@ -139,6 +148,8 @@ export default function Contact({ pageInfo, socials }: Props) {
           alt=""
         />
       </div>
+
+      <Blob bottomCornerLeft />
     </div>
   );
 }

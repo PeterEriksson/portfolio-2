@@ -101,7 +101,7 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
 
         {/* TECH used test */}
         <div
-          className={`project-info${index} xs:space-x-4 flex -mt-1.5 flex-wrap gap-2 `}
+          className={`project-info${index} flex -mt-1.5 flex-wrap  gap-x-2.5 sm:gap-x-4 gap-y-1 `}
         >
           {project?.technologies?.map((tech, i) => (
             <div
@@ -121,7 +121,7 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
         </div>
 
         <hr
-          className={`w-full mt-1 bg-gray-400/60 h-[3px] project-info${index} `}
+          className={`w-full mt-1.5 bg-gray-400/60 h-[3px] project-info${index} `}
         />
 
         <p

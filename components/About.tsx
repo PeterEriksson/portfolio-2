@@ -35,7 +35,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
       id="About"
       className={` ${
         menuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center             for-shape:-> relative `}
+      } md:!opacity-100 transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center    overflow-x-hidden         for-shape:-> relative `}
     >
       {/* SHAPE DIVIDER ...comment out for now. */}
       {/* <div className={`${styles.customShapeDividerTop}  xxs:inline hidden`}>

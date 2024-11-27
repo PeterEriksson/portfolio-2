@@ -6,6 +6,7 @@ import { SocialIcon } from "react-social-icons";
 import { useMenuStore } from "../store/store";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
+import Blob from "./Blob";
 
 type Props = {
   socials?: Social[];
@@ -23,12 +24,12 @@ export default function Header({ socials }: Props) {
   return (
     <header
       id="header"
-      className={`${
+      className={`for-blurry-blob: relative  ${
         menuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in   min-h-screen flex items-center justify-center bg-mainDarkBlue `}
+      }   md:!opacity-100 transition duration-200 ease-in   min-h-screen flex items-center justify-center bg-mainDarkBlue       blob-no-interfere: !overflow-hidden `}
     >
       <div className=" xs:w-10/12 w-[88%] flex flex-col md:flex-row-reverse items-center justify-between ">
-        <div className="md:w-2/5 w-full">
+        <div className="md:w-2/5 w-full    above-blob: z-30">
           <img
             src="https://user-images.githubusercontent.com/17027312/134349999-06919dce-11f2-42b9-9c0c-2b27d8dcce51.jpeg"
             className={`xs:rounded-xl rounded-md transition duration-1000 ease-in-out ${
@@ -52,14 +53,13 @@ export default function Header({ socials }: Props) {
           <h2
             className={`${
               !animated && "translate-y-10 opacity-0"
-            }  text-2xl// text-xl xs:text-2xl      transform transition duration-1000 ease-in-out text-gray-500`}
+            }  text-xl xs:text-2xl  transform transition duration-1000 ease-in-out text-gray-500 `}
           >
             I am
             <Typewriter
               words={[
-                " <FrontEndDeveloper ‍💻 />",
-                " <ReactEnthusiast ⚛️ />",
-                /* " <SelfTaught 🤓 />", */
+                " <FrontEndDev ‍💻 />",
+                " <ReactEnthusiast⚛️/>",
                 " Peter 😎",
               ]}
               //Control how many times to run. 0 | false to run infinitely
@@ -81,24 +81,25 @@ export default function Header({ socials }: Props) {
               <SocialIcon
                 key={i}
                 target="_blank"
-                //url={social}
                 url={social?.url}
                 bgColor="transparent"
                 fgColor="white"
-                className="hover:opacity-70 opacity-80 !h-9 !w-9 "
+                className="hover:opacity-70 opacity-80 !h-9 !w-9    "
               />
             ))}
           </div>
           <ScrollLink to="Work" smooth="true" offset={-40}>
             <button
-              className={`${
+              className={`  ${
                 buttonIsPressed && "!bg-indigo-700/90 "
               } mt-3.5 mb-3 group relative hover:bg-indigo-600 bg-indigo-700 transition duration-200 ease-in py-3 px-10 rounded-xl focus:outline-none`}
               onMouseDown={() => setButtonIsPressed(true)}
               onMouseUpCapture={() => setButtonIsPressed(false)}
               onMouseLeave={() => setButtonIsPressed(false)}
             >
-              <p className=" text-lg uppercase">discover more</p>
+              <p className=" text-lg uppercase tracking-wide">
+                {/* discover more */} view projects
+              </p>
               <ChevronDownIcon
                 className={`h-[22px] w-[22px] absolute top-0 right-2.5 group-hover:opacity-100 group-hover:translate-y-4 sm:inline hidden opacity-0  !transition !duration-500 transform ease-in-out `}
               />
@@ -106,6 +107,8 @@ export default function Header({ socials }: Props) {
           </ScrollLink>
         </div>
       </div>
+      {/* SVG blurry blob (https://www.fffuel.co/bbblurry/)  */}
+      <Blob />
     </header>
   );
 }

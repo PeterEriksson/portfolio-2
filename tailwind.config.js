@@ -47,9 +47,11 @@ module.exports = {
           },
         ],
       },
+      textShadow: {
+        //test in Contact
+        glow: "0 0 6px rgba(255, 255, 255, 0.4), 0 0 12px rgba(255, 255, 255, 0.2), 0 0 18px rgba(0, 176, 255, 0.1)",
+      },
     },
   },
-  plugins: [
-    require("tailwind-scrollbar") /* require("tailwind-scrollbar-hide") */,
-  ],
+  plugins: [require("tailwind-scrollbar"), require("tailwindcss-textshadow")],
 };
