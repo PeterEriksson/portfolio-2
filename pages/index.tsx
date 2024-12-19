@@ -7,7 +7,7 @@ import Stack from "../components/Stack";
 import Contact from "../components/Contact";
 import VerticalScrollProgress from "../components/VerticalScrollProgress";
 import { PageInfo, Project, Skill, SkillDescription, Social } from "../typings";
-import Loading from "../components/Loading";
+import LoadingScreen from "../components/LoadingScreen";
 import useDataFetch from "../hooks/useDataFetch";
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
     useDataFetch();
 
   if (isLoading) {
-    return <Loading />;
+    return <LoadingScreen />;
   }
 
   return (

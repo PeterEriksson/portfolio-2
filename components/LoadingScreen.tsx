@@ -1,6 +1,6 @@
 import styles from "../styles/loading.module.css";
 
-function Loading() {
+function LoadingScreen() {
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-mainDarkBlue">
       <img src="/pe-icon.png" alt="pe-icon" className="w-56 h-56 " />
@@ -13,4 +13,4 @@ function Loading() {
   );
 }
 
-export default Loading;
+export default LoadingScreen;

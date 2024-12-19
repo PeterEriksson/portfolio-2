@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { Typewriter } from "react-simple-typewriter";
 import { Social } from "../typings";
@@ -13,13 +13,8 @@ type Props = {
 };
 
 export default function Header({ socials }: Props) {
-  const [animated, setAnimated] = useState<boolean>(false);
   const [buttonIsPressed, setButtonIsPressed] = useState<boolean>(false);
   const { menuOpen } = useMenuStore();
-
-  useEffect(() => {
-    setAnimated(true);
-  }, []);
 
   return (
     <header
@@ -30,30 +25,58 @@ export default function Header({ socials }: Props) {
     >
       <div className=" xs:w-10/12 w-[88%] flex flex-col md:flex-row-reverse items-center justify-between ">
         <div className="md:w-2/5 w-full    above-blob: z-30">
-          <img
+          <motion.img
+            initial={{
+              opacity: 0,
+            }}
+            transition={{
+              duration: 1.5,
+            }}
+            whileInView={{
+              opacity: 1,
+            }}
+            viewport={{ once: true }}
+            className={`xs:rounded-xl rounded-md     `}
+            /* TODO: update schema and fetch this img from sanity database instead. */
             src="https://user-images.githubusercontent.com/17027312/134349999-06919dce-11f2-42b9-9c0c-2b27d8dcce51.jpeg"
-            className={`xs:rounded-xl rounded-md transition duration-1000 ease-in-out ${
-              !animated && "opacity-0"
-            }  `}
+            alt=""
           />
         </div>
         <div className="text-white text-center md:text-left   pt-4 xs:pt-0  ">
-          <h1
-            className={`
-          ${
-            !animated && "translate-y-10 opacity-0"
-          } transform transition duration-1000 ease-in-out
-          text-3xl font-bold md:text-5xl`}
+          <motion.h1
+            initial={{
+              opacity: 0,
+              y: 40,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold md:text-5xl"
           >
             Hi!
             <br />
             It's me Peter.
-          </h1>
+          </motion.h1>
 
-          <h2
-            className={`${
-              !animated && "translate-y-10 opacity-0"
-            }  text-xl xs:text-2xl  transform transition duration-1000 ease-in-out text-gray-500 `}
+          <motion.h2
+            initial={{
+              opacity: 0,
+              y: 40,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{ once: true }}
+            className="text-gray-500 text-xl xs:text-2xl"
           >
             I am
             <Typewriter
@@ -69,13 +92,20 @@ export default function Header({ socials }: Props) {
               deleteSpeed={50}
               delaySpeed={1000}
             />
-          </h2>
-          <div
-            className={`
-          ${
-            !animated && "translate-y-10 opacity-0"
-          } transform transition duration-1000 ease-in-out
-         `}
+          </motion.h2>
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 40,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{ once: true }}
           >
             {socials?.map((social, i) => (
               <SocialIcon
@@ -87,7 +117,7 @@ export default function Header({ socials }: Props) {
                 className="hover:opacity-70 opacity-80 !h-9 !w-9    "
               />
             ))}
-          </div>
+          </motion.div>
           <ScrollLink to="Work" smooth="true" offset={-40}>
             <button
               className={`  ${
@@ -107,7 +137,7 @@ export default function Header({ socials }: Props) {
           </ScrollLink>
         </div>
       </div>
-      {/* SVG blurry blob (https://www.fffuel.co/bbblurry/)  */}
+
       <Blob />
     </header>
   );

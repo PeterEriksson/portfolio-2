@@ -16,11 +16,9 @@ export default function Blob({ bottomCornerLeft, bottomCornerRight }: Props) {
       version="1.1"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 800 800"
-      className={`pointer-events-none opacity-80 absolute top-1/2 transform    ${
+      className={`hidden md:inline pointer-events-none opacity-80 absolute top-1/2 transform  ${
         bottomCornerRight && "translate-x-1/2"
-      } ${
-        bottomCornerLeft && "-translate-x-1/2"
-      } hidden md:inline   //-translate-y-[60%]  //scale-x-[2]   //md:scale-[] //scale-y-[1.5] //md:scale-y-100  `}
+      } ${bottomCornerLeft && "-translate-x-1/2"}   `}
     >
       <defs>
         <filter

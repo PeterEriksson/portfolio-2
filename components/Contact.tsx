@@ -68,12 +68,6 @@ export default function Contact({ pageInfo, socials }: Props) {
               Ping me!&nbsp;{" "}
             </h1>
 
-            {/* <h1 className="sm:text-5xl text-3xl text-white font-bold   relative inline-block -ml-4">
-              <div className="absolute  //-inset-px bg-[#1b3448] rounded-md blur-md opacity-100 inset-2 "></div>
-              <span className="relative inline-block px-4 py-2 text-4xl font-bold text-white/90  rounded-lg">
-                Ping me!
-              </span>
-            </h1> */}
             <InView triggerOnce>
               {({
                 inView: myEmojiElementIsVisible,
@@ -92,8 +86,7 @@ export default function Contact({ pageInfo, socials }: Props) {
             </InView>
           </div>
 
-          {/* TEST TEMP DIV */}
-          <div className="bg-red-400/ ">
+          <div className="">
             <p className="text-white sm:w-2/3 w-3/4 sm:text-base text-sm    ">
               {/* {dummyData.contact.contactText} */}
               If you have an opening or any project that I can contribute to, be

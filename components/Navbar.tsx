@@ -68,7 +68,7 @@ export default function Navbar() {
         </section>
 
         {/* RIGHT div */}
-        <section className="space-x-5  md:flex hidden ">
+        <section className="space-x-6  md:flex hidden ">
           {navData.map((section, i) => (
             <ScrollLink
               to={section}
@@ -80,10 +80,10 @@ export default function Navbar() {
               onSetActive={handleSetActive}
               className={` ${
                 linkActive !== section && styles.hoverAnimation
-              }   border-b border-transparent relative opacity-[0.81] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
+              }  border-b border-transparent relative opacity-[0.81] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
             >
               <span
-                className={` text-xl    transition duration-300 ease-in-out`}
+                className={` text-xl// text-lg    transition duration-300 ease-in-out`}
               >
                 {section}
               </span>
