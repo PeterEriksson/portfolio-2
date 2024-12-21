@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useRef, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 
-import { motion, useScroll, AnimatePresence } from "framer-motion";
+import { motion, useScroll, AnimatePresence, useSpring } from "framer-motion";
 import styles from "../styles/navBar.module.css";
 import { useFullScreenStore, useMenuStore } from "../store/store";
 import { handleClickOutsideMenu } from "../utils/helpers";
@@ -30,6 +30,13 @@ export default function Navbar() {
 
   const ref = useRef<HTMLElement>(null);
   handleClickOutsideMenu(ref, setMenuClose);
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   return (
     <nav
@@ -104,11 +111,11 @@ export default function Navbar() {
         </section>
       </section>
 
-      {/* TEST TEMP horizontal scroll indicator. Looks ok. Maybe use only on mobile screen?... */}
-      {/* <motion.div
-        className={`${styles.progressBar} md:hidden`}
+      {/* TEST TEMP horizontal scroll indicator. Hide on xl:screens when VerticalScrollProgress is visible */}
+      <motion.div
+        className={`${styles.progressBar} xl:hidden`}
         style={{ scaleX }}
-      /> */}
+      />
 
       {/* MOBILE MENU  */}
       <AnimatePresence initial={false}>
