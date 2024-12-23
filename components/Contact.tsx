@@ -137,7 +137,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           }}
           viewport={{ once: true }}
           className="rounded-md xs:max-w-xs w-full xs:w-2/5  max-h-60 object-cover xs:max-h-full xs:object-contain "
-          src={urlFor(pageInfo?.heroImage).url() || undefined}
+          src={urlFor(pageInfo?.contactImage).url() || undefined}
           alt=""
         />
       </div>

@@ -14,8 +14,16 @@ export default {
       type: "string",
     },
     {
+      name: "contactImage",
+      title: "ContactImage",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: "heroImage",
-      title: "Image",
+      title: "HeroImage",
       type: "image",
       options: {
         hotspot: true,

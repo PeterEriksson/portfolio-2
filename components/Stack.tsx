@@ -49,8 +49,8 @@ function Stack({ skills, skillDescription }: Props) {
           .map((skill, i) => {
             /* Make Skill Cards come in from different directions */
             if (i < skills.length / 2) {
-              return <Skill skill={skill} key={i} directionLeft />;
-            } else return <Skill skill={skill} key={i} />;
+              return <Skill skill={skill} key={skill._id} directionLeft />;
+            } else return <Skill skill={skill} key={skill._id} />;
           })}
       </div>
 

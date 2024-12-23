@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { Typewriter } from "react-simple-typewriter";
-import { Social } from "../typings";
+import { PageInfo, Social } from "../typings";
 import { SocialIcon } from "react-social-icons";
 import { useMenuStore } from "../store/store";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import Blob from "./Blob";
+import { urlFor } from "../sanity";
 
 type Props = {
   socials?: Social[];
+  pageInfo?: PageInfo;
 };
 
-export default function Header({ socials }: Props) {
+export default function Hero({ socials, pageInfo }: Props) {
   const [buttonIsPressed, setButtonIsPressed] = useState<boolean>(false);
   const { menuOpen } = useMenuStore();
 
@@ -37,8 +39,8 @@ export default function Header({ socials }: Props) {
             }}
             viewport={{ once: true }}
             className={`xs:rounded-xl rounded-md     `}
-            /* TODO: update schema and fetch this img from sanity database instead. */
-            src="https://user-images.githubusercontent.com/17027312/134349999-06919dce-11f2-42b9-9c0c-2b27d8dcce51.jpeg"
+            //src="https://user-images.githubusercontent.com/17027312/134349999-06919dce-11f2-42b9-9c0c-2b27d8dcce51.jpeg"
+            src={urlFor(pageInfo?.heroImage).url() || undefined}
             alt=""
           />
         </div>

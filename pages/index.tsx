@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Navbar from "../components/Navbar";
-import Header from "../components/Header";
+import Hero from "../components/Hero";
 import Work from "../components/Work";
 import About from "../components/About";
 import Stack from "../components/Stack";
@@ -26,7 +26,7 @@ const Home = () => {
       </Head>
       <Navbar />
       <VerticalScrollProgress />
-      <Header socials={socials} />
+      <Hero socials={socials} pageInfo={pageInfo ?? undefined} />
       <Work projects={projects} />
       <About pageInfo={pageInfo ?? undefined} />
       <Stack skillDescription={skillDescription ?? undefined} skills={skills} />
