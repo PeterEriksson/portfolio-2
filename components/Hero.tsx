@@ -84,7 +84,7 @@ export default function Hero({ socials, pageInfo }: Props) {
             <Typewriter
               words={[
                 " <FrontEndDev ‍💻 />",
-                " <ReactEnthusiast⚛️/>",
+                " <ReactEnthusiast ⚛️ />",
                 " Peter 😎",
               ]}
               //Control how many times to run. 0 | false to run infinitely

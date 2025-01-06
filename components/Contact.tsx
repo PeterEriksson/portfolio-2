@@ -46,17 +46,17 @@ export default function Contact({ pageInfo, socials }: Props) {
         </svg>
       </div> */}
 
-      <div className=" xs:w-10/12 w-[88%] flex items-center justify-between//            xs:flex-row flex-col-reverse justify-center   xxs:justify-between ">
+      <div className=" xs:w-10/12 w-[88%] flex items-center xs:flex-row flex-col-reverse justify-center xxs:justify-between ">
         <motion.div
           initial={{
-            x: -100,
+            y: 100,
             opacity: 0,
-            scale: 0.5,
+            //scale: 0.5,
           }}
           whileInView={{
-            x: 0,
+            y: 0,
             opacity: 1,
-            scale: 1,
+            //scale: 1,
           }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
@@ -115,7 +115,6 @@ export default function Contact({ pageInfo, socials }: Props) {
               <SocialIcon
                 key={i}
                 target="_blank"
-                //url={social}
                 url={social.url}
                 bgColor="transparent"
                 fgColor="white"
