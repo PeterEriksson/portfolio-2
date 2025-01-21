@@ -21,7 +21,9 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Peter Eriksson</title>
+        <title>
+          Peter Eriksson - Frontend developer - Next.js, TS, Tailwind
+        </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
