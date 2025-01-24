@@ -5,3 +5,5 @@ declare module "*.css" {
 }
 
 declare module "react-scroll";
+
+declare module "react-copy-to-clipboard";

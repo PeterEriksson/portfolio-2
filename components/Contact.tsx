@@ -3,6 +3,7 @@ import styles from "../styles/contact-effects.module.css";
 import { motion } from "framer-motion";
 import { InView, useInView } from "react-intersection-observer";
 import {
+  DocumentDuplicateIcon,
   EnvelopeIcon as MailIcon,
   MapPinIcon,
   PhoneIcon,
@@ -13,6 +14,7 @@ import { SocialIcon } from "react-social-icons";
 import { useMenuStore } from "../store/store";
 import { urlFor } from "../sanity";
 import Blob from "./Blob";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -21,8 +23,13 @@ type Props = {
 
 export default function Contact({ pageInfo, socials }: Props) {
   const { ref: myEmojiRef, inView: myEmojiElementIsVisible } = useInView();
-
   const { menuOpen } = useMenuStore();
+  const [copied, setCopied] = React.useState<boolean>(false);
+
+  const handleCopy = () => {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000); // Reset `copied` after 2 seconds
+  };
 
   return (
     <div
@@ -62,7 +69,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           viewport={{ once: true }}
           className="tempfix(veticalscrollline) xl:pl-[72px] pl-0 !z-30      flex flex-col items-center xxs:inline  "
         >
-          <div className={`mb-2 xs:mb-3 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
+          <div className={`mb-2 xs:mb-1.5 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
             <h1 className="sm:text-5xl text-3xl text-white font-bold //text-shadow-glow">
               {" "}
               Ping me!&nbsp;{" "}
@@ -87,7 +94,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           </div>
 
           <div className="">
-            <p className="text-white sm:w-2/3 w-3/4 sm:text-base text-sm    ">
+            <p className="text-white sm:w-2/3 w-3/4 sm:text-lg text-sm    ">
               {/* {dummyData.contact.contactText} */}
               If you have an opening or any project that I can contribute to, be
               sure to reach out.
@@ -105,6 +112,15 @@ export default function Contact({ pageInfo, socials }: Props) {
                 {/* dummyData.contact.mail */}
                 {pageInfo?.email}
               </p>
+              <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
+                <button className=" text-white ">
+                  {copied ? (
+                    <span>Copied!</span>
+                  ) : (
+                    <DocumentDuplicateIcon className="h-4 w-4 hover:opacity-70" />
+                  )}
+                </button>
+              </CopyToClipboard>
             </div>
             <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm">
               <MapPinIcon className="h-5 w-5 text-white" />
