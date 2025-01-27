@@ -92,7 +92,7 @@ export default function Hero({ socials, pageInfo }: Props) {
             <Typewriter
               words={[
                 " <FrontEndDev ‍💻 />",
-                " <ReactEnthusiast ⚛️ />",
+                " <ReactCoder ⚛️ />",
                 " Peter 😎",
               ]}
               //Control how many times to run. 0 | false to run infinitely
@@ -104,7 +104,7 @@ export default function Hero({ socials, pageInfo }: Props) {
             />
           </motion.h2>
           <motion.div
-            className="flex"
+            className="flex justify-center md:justify-start"
             initial={{
               opacity: 0,
               y: 40,
@@ -130,13 +130,15 @@ export default function Hero({ socials, pageInfo }: Props) {
             ))}
 
             <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
-              <div className="ml-2 mt-0.5 flex items-center space-x-1 sm:text-base text-sm opacity-80 group cursor-pointer">
+              <div className="ml-2 mt-0.5 relative flex items-center sm:text-base text-sm opacity-80 group cursor-pointer">
                 <MailIcon className="h-5 w-5 text-white" />
                 <button className=" text-white ">
                   {copied ? (
-                    <span className="text-sm">Mail copied!</span>
+                    <span className="text-sm absolute ml-1 top-2 w-20">
+                      Mail copied!
+                    </span>
                   ) : (
-                    <DocumentDuplicateIcon className="h-3.5 w-3.5 hover:opacity-60 opacity-0 transition duration-150 ease-in group-hover:opacity-80 transform translate-y-2 group-hover:translate-y-0" />
+                    <DocumentDuplicateIcon className="h-3.5 w-3.5 absolute -right-4 hover:opacity-60 opacity-0 top-2.5 transition duration-150 ease-in group-hover:opacity-80 transform translate-y-2 group-hover:translate-y-0" />
                   )}
                 </button>
               </div>
