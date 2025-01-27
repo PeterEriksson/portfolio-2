@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import Blob from "./Blob";
 import { urlFor } from "../sanity";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import useCopyToClipboard from "../hooks/useCopyToClipboard";
 
 type Props = {
   socials?: Social[];
@@ -22,12 +23,8 @@ type Props = {
 export default function Hero({ socials, pageInfo }: Props) {
   const [buttonIsPressed, setButtonIsPressed] = useState<boolean>(false);
   const { menuOpen } = useMenuStore();
-  const [copied, setCopied] = React.useState<boolean>(false);
 
-  const handleCopy = () => {
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000); // Reset `copied` after 2 seconds
-  };
+  const { copied, handleCopy } = useCopyToClipboard();
 
   return (
     <header
@@ -131,18 +128,19 @@ export default function Hero({ socials, pageInfo }: Props) {
                 className="hover:opacity-60 opacity-80 !h-9 !w-9    "
               />
             ))}
-            <div className="ml-2 mt-0.5 flex items-center space-x-1 sm:text-base text-sm opacity-80">
-              <MailIcon className="h-5 w-5 text-white" />
-              <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
+
+            <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
+              <div className="ml-2 mt-0.5 flex items-center space-x-1 sm:text-base text-sm opacity-80 group cursor-pointer">
+                <MailIcon className="h-5 w-5 text-white" />
                 <button className=" text-white ">
                   {copied ? (
                     <span className="text-sm">Mail copied!</span>
                   ) : (
-                    <DocumentDuplicateIcon className="h-3.5 w-3.5 hover:opacity-60" />
+                    <DocumentDuplicateIcon className="h-3.5 w-3.5 hover:opacity-60 opacity-0 transition duration-150 ease-in group-hover:opacity-80 transform translate-y-2 group-hover:translate-y-0" />
                   )}
                 </button>
-              </CopyToClipboard>
-            </div>
+              </div>
+            </CopyToClipboard>
           </motion.div>
           <ScrollLink to="Work" smooth="true" offset={-40}>
             <button

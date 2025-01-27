@@ -15,6 +15,7 @@ import { useMenuStore } from "../store/store";
 import { urlFor } from "../sanity";
 import Blob from "./Blob";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import useCopyToClipboard from "../hooks/useCopyToClipboard";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -24,12 +25,8 @@ type Props = {
 export default function Contact({ pageInfo, socials }: Props) {
   const { ref: myEmojiRef, inView: myEmojiElementIsVisible } = useInView();
   const { menuOpen } = useMenuStore();
-  const [copied, setCopied] = React.useState<boolean>(false);
 
-  const handleCopy = () => {
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000); // Reset `copied` after 2 seconds
-  };
+  const { copied, handleCopy } = useCopyToClipboard();
 
   return (
     <div
