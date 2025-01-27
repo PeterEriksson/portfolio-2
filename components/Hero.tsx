@@ -4,10 +4,15 @@ import { Typewriter } from "react-simple-typewriter";
 import { PageInfo, Social } from "../typings";
 import { SocialIcon } from "react-social-icons";
 import { useMenuStore } from "../store/store";
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import {
+  ChevronDownIcon,
+  DocumentDuplicateIcon,
+  EnvelopeIcon as MailIcon,
+} from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import Blob from "./Blob";
 import { urlFor } from "../sanity";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 type Props = {
   socials?: Social[];
@@ -17,6 +22,12 @@ type Props = {
 export default function Hero({ socials, pageInfo }: Props) {
   const [buttonIsPressed, setButtonIsPressed] = useState<boolean>(false);
   const { menuOpen } = useMenuStore();
+  const [copied, setCopied] = React.useState<boolean>(false);
+
+  const handleCopy = () => {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000); // Reset `copied` after 2 seconds
+  };
 
   return (
     <header
@@ -96,6 +107,7 @@ export default function Hero({ socials, pageInfo }: Props) {
             />
           </motion.h2>
           <motion.div
+            className="flex"
             initial={{
               opacity: 0,
               y: 40,
@@ -116,9 +128,21 @@ export default function Hero({ socials, pageInfo }: Props) {
                 url={social?.url}
                 bgColor="transparent"
                 fgColor="white"
-                className="hover:opacity-70 opacity-80 !h-9 !w-9    "
+                className="hover:opacity-60 opacity-80 !h-9 !w-9    "
               />
             ))}
+            <div className="ml-2 mt-0.5 flex items-center space-x-1 sm:text-base text-sm opacity-80">
+              <MailIcon className="h-5 w-5 text-white" />
+              <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
+                <button className=" text-white ">
+                  {copied ? (
+                    <span className="text-sm">Mail copied!</span>
+                  ) : (
+                    <DocumentDuplicateIcon className="h-3.5 w-3.5 hover:opacity-60" />
+                  )}
+                </button>
+              </CopyToClipboard>
+            </div>
           </motion.div>
           <ScrollLink to="Work" smooth="true" offset={-40}>
             <button
