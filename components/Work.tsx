@@ -137,14 +137,18 @@ export default function Work({ projects, slides, options }: Props) {
       className={`${menuOpen ? "opacity-50" : "opacity-100"}
        md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-[115vh] xs:h-[105vh] flex flex-col relative items-center  justify-center `}
     >
-      <div
+      <motion.div
+        initial={{ y: 30, opacity: 0.2 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
         aria-label="PROJECTS + DOR"
         className={` flex flex-col items-center space-y-2     mb-3`}
       >
         <h1 className="header sm:text-5xl text-3xl font-bold">Projects</h1>
 
         <div
-          //add zIndex so that dot can be clickable
+          //add zIndex -> dot is clickable
           className={`z-[50] ${
             isFullScreen && "!hidden"
           } flex   mt-5 space-x-4 max-w-fit mx-auto    `}
@@ -157,7 +161,7 @@ export default function Work({ projects, slides, options }: Props) {
             />
           ))}
         </div>
-      </div>
+      </motion.div>
 
       <div
         aria-label="styles.embla"

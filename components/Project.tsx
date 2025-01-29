@@ -42,7 +42,7 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.1 }}
+        transition={{ duration: 1 }}
         className="relative "
       >
         <img
@@ -72,7 +72,7 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.1 }}
+        transition={{ duration: 1 }}
         className={`flex flex-col  `}
       >
         <div
