@@ -17,11 +17,16 @@ type ProjectProps = {
 export default function Project({ project, setEffect, index }: ProjectProps) {
   const { toggleFullScreen, isFullScreen } = useFullScreenStore();
 
+  //if user has clicked Show me-btn, disable the subtle animation.
+  const [hasShownDemo, setHasShownDemo] = React.useState<boolean>(false);
+
   const ref = useRef<HTMLDivElement>(null);
 
   const handleShowMe = () => {
-    //enable effect(invinsible on page load)
+    //enable effect/animation (invinsible on page load)
     setEffect(true);
+
+    setHasShownDemo(true);
 
     if (ref.current) {
       ref.current.scrollIntoView({
@@ -61,9 +66,15 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
             onClick={handleShowMe}
             className={`w-fit show-btn ${workStyles.enlargeEffect} ${
               isFullScreen ? "pointer-events-none " : "!pointer-events-auto"
-            }   bg-black rounded-2xl px-3 py-2 text-sm font-semibold `}
+            }  bg-black rounded-2xl px-3 py-2 border border-gray-900/80`}
           >
-            Show me
+            <p
+              className={`${
+                hasShownDemo ? "" : "animate-pulse"
+              } text-sm font-semibold`}
+            >
+              Show me
+            </p>
           </button>
         </div>
       </motion.div>

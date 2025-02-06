@@ -138,7 +138,7 @@ export default function Work({ projects, slides, options }: Props) {
        md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-[115vh] xs:h-[105vh] flex flex-col relative items-center  justify-center `}
     >
       <motion.div
-        initial={{ y: 30, opacity: 0.2 }}
+        initial={{ y: 40, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}

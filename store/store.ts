@@ -1,4 +1,3 @@
-// store.ts
 import { create } from "zustand";
 
 interface MenuStore {
@@ -8,9 +7,7 @@ interface MenuStore {
 }
 
 interface FullScreenStore {
-  //fullScreenGlobal: boolean;
   isFullScreen: boolean;
-  //toggleFullScreenGlobalState: () => void;
   toggleFullScreen: () => void;
 }
 
@@ -21,7 +18,7 @@ export const useMenuStore = create<MenuStore>((set) => ({
 }));
 
 export const useFullScreenStore = create<FullScreenStore>((set) => ({
-  isFullScreen: false, // Initialize fullScreenGlobalState as false
+  isFullScreen: false, // Initialize isFullScreen as false
   toggleFullScreen: () =>
-    set((state) => ({ isFullScreen: !state.isFullScreen })), // Toggle fullScreenGlobalState
+    set((state) => ({ isFullScreen: !state.isFullScreen })), // Toggle fullScreen
 }));
