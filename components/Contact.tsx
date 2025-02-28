@@ -66,7 +66,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           viewport={{ once: true }}
           className="tempfix(veticalscrollline) xl:pl-[72px] pl-0 !z-30      flex flex-col items-center xxs:inline  "
         >
-          <div className={`mb-2 xs:mb-1.5 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
+          <div className={`mb-1.5 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
             <h1 className="sm:text-5xl text-3xl text-white font-bold //text-shadow-glow">
               {" "}
               Ping me!&nbsp;{" "}
@@ -91,26 +91,25 @@ export default function Contact({ pageInfo, socials }: Props) {
           </div>
 
           <div className="">
-            <p className="text-white sm:w-2/3 w-3/4 sm:text-lg text-sm    ">
-              {/* {dummyData.contact.contactText} */}
+            <p className="mb-6 xxs:mb-0  text-white sm:w-2/3 w-3/4 sm:text-lg text-mobile-base xs:text-base   ">
               If you have an opening or any project that I can contribute to, be
               sure to reach out.
             </p>
             <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm ">
-              <PhoneIcon className="h-5 w-5 text-white" />
+              <PhoneIcon className="h-5 w-5 text-white/70" />
               <p className="text-white">
                 {/* dummyData.contact.phone */}
                 {pageInfo?.phoneNumber}
               </p>
             </div>
             <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm">
-              <MailIcon className="h-5 w-5 text-white" />
-              <p className="text-white">
+              <MailIcon className="h-5 w-5 text-white/70" />
+              <p className=" text-white">
                 {/* dummyData.contact.mail */}
                 {pageInfo?.email}
               </p>
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
-                <button className=" text-white ">
+                <button className=" text-white/70 ">
                   {copied ? (
                     <span>Copied!</span>
                   ) : (
@@ -119,8 +118,8 @@ export default function Contact({ pageInfo, socials }: Props) {
                 </button>
               </CopyToClipboard>
             </div>
-            <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm">
-              <MapPinIcon className="h-5 w-5 text-white" />
+            <div className="mb-2.5 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm">
+              <MapPinIcon className="h-5 w-5 text-white/70" />
               <p className="text-white">Stockholm, Sweden</p>
             </div>
 

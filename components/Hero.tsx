@@ -138,7 +138,7 @@ export default function Hero({ socials, pageInfo }: Props) {
                       Mail copied!
                     </span>
                   ) : (
-                    <DocumentDuplicateIcon className="h-3.5 w-3.5 absolute -right-4 hover:opacity-60 opacity-0 top-2.5 transition duration-150 ease-in group-hover:opacity-80 transform translate-y-2 group-hover:translate-y-0" />
+                    <DocumentDuplicateIcon className="h-3.5 w-3.5 hidden xxs:inline absolute -right-[15px] hover:opacity-60 opacity-0 top-2.5 transition duration-150 ease-in group-hover:opacity-80 transform translate-y-2 group-hover:translate-y-0" />
                   )}
                 </button>
               </div>

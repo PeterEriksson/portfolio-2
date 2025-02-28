@@ -66,11 +66,11 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
             onClick={handleShowMe}
             className={`w-fit show-btn ${workStyles.enlargeEffect} ${
               isFullScreen ? "pointer-events-none " : "!pointer-events-auto"
-            }  bg-black rounded-2xl px-3 py-2 border border-gray-900/80`}
+            }  bg-black rounded-2xl px-3 py-2 border border-gray-900/80 `}
           >
             <p
               className={`${
-                hasShownDemo ? "" : "animate-pulse"
+                hasShownDemo ? "" : "animate-pulse-lg"
               } text-sm font-semibold`}
             >
               Show me
