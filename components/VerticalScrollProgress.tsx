@@ -4,6 +4,8 @@ import React from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { useFullScreenStore } from "../store/store";
 
+/* NOT IN USE */
+
 function VerticalScrollProgress() {
   const { isFullScreen } = useFullScreenStore();
 

@@ -64,7 +64,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="tempfix(veticalscrollline) xl:pl-[72px] pl-0 !z-30      flex flex-col items-center xxs:inline  "
+          className="  !z-30      flex flex-col items-center xxs:inline  "
         >
           <div className={`mb-1.5 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
             <h1 className="sm:text-5xl text-3xl text-white font-bold //text-shadow-glow">

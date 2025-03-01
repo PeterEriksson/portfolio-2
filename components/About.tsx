@@ -55,7 +55,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
 
       <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row ">
         {/* LEFT SIDE (TEXT) */}
-        <div className="tempfix(verticalscrollline) xl:pl-[72px]     space-y-1 pl-0   text-center xs:text-start ">
+        <div className="    space-y-1 pl-0   text-center xs:text-start ">
           <motion.h1
             initial={{ y: 200, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}

@@ -27,7 +27,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <VerticalScrollProgress />
+      {/* <VerticalScrollProgress /> */}
       <Hero socials={socials} pageInfo={pageInfo ?? undefined} />
       <Work projects={projects} />
       <About pageInfo={pageInfo ?? undefined} />

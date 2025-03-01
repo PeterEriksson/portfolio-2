@@ -111,11 +111,8 @@ export default function Navbar() {
         </section>
       </section>
 
-      {/* TEST TEMP horizontal scroll indicator. Hide on xl:screens when VerticalScrollProgress is visible */}
-      <motion.div
-        className={`${styles.progressBar} xl:hidden`}
-        style={{ scaleX }}
-      />
+      {/* horizontal scroll indicator.   */}
+      <motion.div className={`${styles.progressBar} `} style={{ scaleX }} />
 
       {/* MOBILE MENU  */}
       <AnimatePresence initial={false}>
