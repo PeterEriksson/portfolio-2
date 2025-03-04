@@ -9,6 +9,7 @@ import VerticalScrollProgress from "../components/VerticalScrollProgress";
 import { PageInfo, Project, Skill, SkillDescription, Social } from "../typings";
 import LoadingScreen from "../components/LoadingScreen";
 import useDataFetch from "../hooks/useDataFetch";
+import ReturnToTopBtn from "../components/ReturnToTopBtn";
 
 const Home = () => {
   const { pageInfo, skills, skillDescription, projects, socials, isLoading } =
@@ -27,12 +28,12 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      {/* <VerticalScrollProgress /> */}
       <Hero socials={socials} pageInfo={pageInfo ?? undefined} />
       <Work projects={projects} />
       <About pageInfo={pageInfo ?? undefined} />
       <Stack skillDescription={skillDescription ?? undefined} skills={skills} />
       <Contact pageInfo={pageInfo ?? undefined} socials={socials} />
+      <ReturnToTopBtn />
     </>
   );
 };

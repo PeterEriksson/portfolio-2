@@ -16,6 +16,7 @@ import { urlFor } from "../sanity";
 import Blob from "./Blob";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import useCopyToClipboard from "../hooks/useCopyToClipboard";
+import ReturnToTopBtn from "./ReturnToTopBtn";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -118,7 +119,7 @@ export default function Contact({ pageInfo, socials }: Props) {
                 </button>
               </CopyToClipboard>
             </div>
-            <div className="mb-2.5 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm">
+            <div className="mb-1 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm">
               <MapPinIcon className="h-5 w-5 text-white/70" />
               <p className="text-white">Stockholm, Sweden</p>
             </div>
