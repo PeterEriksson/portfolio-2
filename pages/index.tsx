@@ -5,7 +5,6 @@ import Work from "../components/Work";
 import About from "../components/About";
 import Stack from "../components/Stack";
 import Contact from "../components/Contact";
-import VerticalScrollProgress from "../components/VerticalScrollProgress";
 import { PageInfo, Project, Skill, SkillDescription, Social } from "../typings";
 import LoadingScreen from "../components/LoadingScreen";
 import useDataFetch from "../hooks/useDataFetch";
