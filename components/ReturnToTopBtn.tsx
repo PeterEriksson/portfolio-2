@@ -1,9 +1,7 @@
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
-import { useScroll, useSpring, motion } from "framer-motion";
+import { useScroll } from "framer-motion";
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
-
-/* NOT IN USE rn */
 
 function ReturnToTopBtn() {
   const { scrollYProgress } = useScroll();

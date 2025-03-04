@@ -92,7 +92,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           </div>
 
           <div className="">
-            <p className="mb-6 xxs:mb-0  text-white sm:w-2/3 w-3/4 sm:text-lg text-mobile-base xs:text-base   ">
+            <p className="mb-4 xxs:mb-0  text-white sm:w-2/3 w-3/4 sm:text-lg text-mobile-base xs:text-base   ">
               If you have an opening or any project that I can contribute to, be
               sure to reach out.
             </p>
