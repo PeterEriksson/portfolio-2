@@ -2,7 +2,6 @@ import React from "react";
 import { PageInfo } from "../typings";
 import { motion, useTransform, useScroll } from "framer-motion";
 import { urlFor } from "../sanity";
-import styles from "../styles/about.module.css";
 import { useMenuStore } from "../store/store";
 
 type Props = {
@@ -37,23 +36,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
         menuOpen ? "opacity-50" : "opacity-100"
       } md:!opacity-100 transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center    overflow-x-hidden         for-shape:-> relative `}
     >
-      {/* SHAPE DIVIDER ...comment out for now. */}
-      {/* <div className={`${styles.customShapeDividerTop}  xxs:inline hidden`}>
-        <svg
-          className={`h-10  xs:h-20 `}
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
-            className={`${styles.shapeFill}`}
-          ></path>
-        </svg>
-      </div> */}
-
-      <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row ">
+      <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row     space-y-4 xs:space-y-0 ">
         {/* LEFT SIDE (TEXT) */}
         <div className="    space-y-1 pl-0   text-center xs:text-start ">
           <motion.h1
@@ -98,7 +81,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
 
         <motion.img
           style={{ x, opacity }}
-          className="hidden xs:inline    rounded-lg max-w-xs w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
+          className="hidden xs:inline   rounded-lg max-w-xs w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
           //for testing ->
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
           src={urlFor(pageInfo?.profilePic).url() || undefined}
