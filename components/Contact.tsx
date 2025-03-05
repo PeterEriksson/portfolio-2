@@ -96,16 +96,16 @@ export default function Contact({ pageInfo, socials }: Props) {
               If you have an opening or any project that I can contribute to, be
               sure to reach out.
             </p>
-            <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm ">
-              <PhoneIcon className="h-5 w-5 text-white/70" />
-              <p className="text-white">
+            <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm text-white/80">
+              <PhoneIcon className="h-5 w-5 " />
+              <p className=" font-bold ">
                 {/* dummyData.contact.phone */}
                 {pageInfo?.phoneNumber}
               </p>
             </div>
-            <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm">
-              <MailIcon className="h-5 w-5 text-white/70" />
-              <p className=" text-white">
+            <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm text-white/80">
+              <MailIcon className="h-5 w-5 " />
+              <p className=" font-bold">
                 {/* dummyData.contact.mail */}
                 {pageInfo?.email}
               </p>
@@ -119,9 +119,9 @@ export default function Contact({ pageInfo, socials }: Props) {
                 </button>
               </CopyToClipboard>
             </div>
-            <div className="mb-1 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm">
-              <MapPinIcon className="h-5 w-5 text-white/70" />
-              <p className="text-white">Stockholm, Sweden</p>
+            <div className="mb-1 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm text-white/80">
+              <MapPinIcon className="h-5 w-5 " />
+              <p className="font-bold">Stockholm, Sweden</p>
             </div>
 
             {socials?.map((social, i) => (
