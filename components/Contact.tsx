@@ -93,8 +93,8 @@ export default function Contact({ pageInfo, socials }: Props) {
 
           <div className="">
             <p className="mb-4  text-white/70 sm:w-2/3 w-3/4 sm:text-lg text-mobile-base xs:text-base   ">
-              If you have an opening or any project that I can contribute to, be
-              sure to reach out.
+              Lets work together. If you have an opening or any project that I
+              can contribute to, be sure to reach out.
             </p>
             <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm text-white/80">
               <PhoneIcon className="h-5 w-5 " />

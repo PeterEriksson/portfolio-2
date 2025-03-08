@@ -11,7 +11,7 @@ function ReturnToTopBtn() {
     scrollYProgress.onChange((number) => setScrollY(number));
     //console.log(scrollY);
   }, [scrollYProgress /* , scrollY */]);
-  const scrollBreakpoint = 0.94;
+  const scrollBreakpoint = 0.95;
 
   return (
     <ScrollLink
