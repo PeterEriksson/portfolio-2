@@ -151,7 +151,7 @@ export default function Work({ projects, slides, options }: Props) {
           //add zIndex -> dot is clickable
           className={`z-[50] ${
             isFullScreen && "!hidden"
-          } flex   mt-5 space-x-4 max-w-fit mx-auto    `}
+          } flex  space-x-4 max-w-fit mx-auto    `}
         >
           {scrollSnaps.map((_, index) => (
             <DotButton

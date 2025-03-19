@@ -91,7 +91,7 @@ export default function Contact({ pageInfo, socials }: Props) {
             </InView>
           </div>
 
-          <div className="">
+          <div className="space-y-1.5">
             <p className="mb-4  text-white/70 sm:w-2/3 w-3/4 sm:text-lg text-mobile-base xs:text-base   ">
               Lets work together. If you have an opening or any project that I
               can contribute to, be sure to reach out.
@@ -124,16 +124,19 @@ export default function Contact({ pageInfo, socials }: Props) {
               <p className="font-bold">Stockholm, Sweden</p>
             </div>
 
-            {socials?.map((social, i) => (
-              <SocialIcon
-                key={i}
-                target="_blank"
-                url={social.url}
-                bgColor="transparent"
-                fgColor="white"
-                className="hover:opacity-70 !h-10 !w-10   "
-              />
-            ))}
+            {/* fix for small alignment issue for socials section */}
+            <div className="-ml-1.5 !mt-2.5">
+              {socials?.map((social, i) => (
+                <SocialIcon
+                  key={i}
+                  target="_blank"
+                  url={social.url}
+                  bgColor="transparent"
+                  fgColor="white"
+                  className="hover:opacity-70 !h-10 !w-10   "
+                />
+              ))}
+            </div>
           </div>
         </motion.div>
         {/* RIGHT SIDE - containing profile pic */}
