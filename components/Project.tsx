@@ -44,14 +44,14 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
       className={` ${styles.embla__slide}  px-2 xs:px-4 min-w-0 relative`}
     >
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.55 }}
         className="relative "
       >
         <img
-          className={`img w-full h-[300px]   lg:h-[330px]   xs:rounded-sm "
+          className={`img w-full h-[260px] xxs:h-[300px] lg:h-[330px] xs:rounded-sm      "
           }`}
           src={urlFor(project?.image).url() || undefined}
           //src={project.image} //testing
@@ -59,6 +59,7 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
         />
 
         <div
+          //show me btn
           //use flex container to avoid positioning issue (-translate-x-1/2 bug..)
           className={` flex absolute bottom-6 w-full justify-center   bg-transparent text-white`}
         >
@@ -80,11 +81,11 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className={`flex flex-col  `}
+        transition={{ duration: 0.55 }}
+        className={`flex flex-col    `}
       >
         <div
           className={`project-info${index}  flex space-x-2.5 items-center justify-between   `}

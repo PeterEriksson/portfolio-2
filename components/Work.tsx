@@ -135,13 +135,13 @@ export default function Work({ projects, slides, options }: Props) {
       ref={scope}
       id="Work"
       className={`${menuOpen ? "opacity-50" : "opacity-100"}
-       md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-[115vh] xs:h-[105vh] flex flex-col relative items-center  justify-center `}
+       md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-[115vh] xs:h-[105vh] flex flex-col relative items-center justify-center `}
     >
       <motion.div
-        initial={{ y: 40, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 1.3 }}
         aria-label="PROJECTS + DOR"
         className={` flex flex-col items-center space-y-2     mb-3`}
       >
@@ -177,7 +177,6 @@ export default function Work({ projects, slides, options }: Props) {
             className="flex flex-row h-auto z-50"
           >
             {projects?.map((project, index) => (
-              /* {projects?.slice(0, 2).map((project, index) => ( */
               <Project
                 key={index}
                 project={project}
