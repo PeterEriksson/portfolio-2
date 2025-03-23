@@ -87,7 +87,8 @@ export default function Navbar() {
               smooth="true"
               key={i}
               activeClass={styles.navSectionActive}
-              offset={section !== "Contact" ? -40 : 0}
+              //offset={section !== "Contact" ? -40 : 0}
+              offset={0}
               spy={true}
               onSetActive={handleSetActive}
               className={` ${

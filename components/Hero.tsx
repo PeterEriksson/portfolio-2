@@ -144,7 +144,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               </div>
             </CopyToClipboard>
           </motion.div>
-          <ScrollLink to="Work" smooth="true" offset={-40}>
+          <ScrollLink to="Work" smooth="true">
             <button
               className={`  ${
                 buttonIsPressed && "!bg-indigo-700/90 "
