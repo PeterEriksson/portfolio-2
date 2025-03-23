@@ -4,7 +4,7 @@ import { Link as ScrollLink } from "react-scroll";
 import { motion, useScroll, AnimatePresence, useSpring } from "framer-motion";
 import styles from "../styles/navBar.module.css";
 import { useFullScreenStore, useMenuStore } from "../store/store";
-import { handleClickOutsideMenu } from "../utils/helpers";
+import useNavbarVisible, { handleClickOutsideMenu } from "../utils/helpers";
 
 export default function Navbar() {
   const navData = ["Work", "About", "Skills", "Contact"];
@@ -38,12 +38,17 @@ export default function Navbar() {
     restDelta: 0.001,
   });
 
+  const { visible } = useNavbarVisible();
+
   return (
     <nav
       ref={ref}
       className={`${
-        isFullScreen && " -translate-y-full pointer-events-none "
-      } transition transform duration-200 ease-in   !fixed !top-0 w-screen z-[60]  bg-mainDarkBlue    flex flex-col       `}
+        // !-translate-y-full makes sure that the whole navbar always moves up, including scroll indicator.
+        isFullScreen && " !-translate-y-full pointer-events-none "
+      } ${
+        visible ? "" : "-translate-y-14 duration-300"
+      }   transition transform duration-200 ease-in !fixed !top-0 w-screen z-[60] bg-mainDarkBlue flex flex-col`}
     >
       <section className="flex items-center  text-white justify-between mx-auto py-3  xs:w-10/12 w-[88%]       !z-30 ">
         {/* LEFT div  (PE-logo) */}
@@ -62,7 +67,7 @@ export default function Navbar() {
             }  transform transition duration-300 ease-in-out  cursor-pointer`}
           >
             <h1
-              className={` text-3xl font-bold  opacity-[0.81] hover:opacity-100 ${
+              className={`text-3xl font-bold  opacity-[0.81] hover:opacity-100 ${
                 linkActive == "header" && "!opacity-100"
               }  tracking-[2px]    transform transition duration-300 ease-in-out`}
             >
@@ -109,8 +114,11 @@ export default function Navbar() {
         </section>
       </section>
 
-      {/* horizontal scroll indicator.   */}
-      <motion.div className={`${styles.progressBar} `} style={{ scaleX }} />
+      {/* horizontal scroll indicator.  */}
+      <motion.div
+        className={`  fixed top-0// top-14 h-[2.2px]// h-[4px] left-0 right-0 bg-white origin-left  `}
+        style={{ scaleX }}
+      />
 
       {/* MOBILE MENU  */}
       <AnimatePresence initial={false}>

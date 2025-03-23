@@ -1,4 +1,5 @@
-import { RefObject, useEffect } from "react";
+import { RefObject, useEffect, useState } from "react";
+import { useFullScreenStore, useMenuStore } from "../store/store";
 
 export const handleClickOutsideMenu = (
   ref: RefObject<HTMLElement>,
@@ -41,3 +42,62 @@ export const setBodyScroll = (isFullScreen: boolean) => {
     }
   }
 };
+
+//debounce helper
+export function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  wait: number,
+  immediate?: boolean
+): (...args: Parameters<T>) => void {
+  let timeout: ReturnType<typeof setTimeout> | null;
+
+  return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
+    const context = this;
+    const later = () => {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+
+    const callNow = immediate && !timeout;
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+
+    if (callNow) func.apply(context, args);
+  };
+}
+
+//navbar show/hide helper
+export default function useNavbarVisible() {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  const { menuOpen } = useMenuStore();
+
+  const handleScroll = debounce(() => {
+    const currentScrollPos = window.scrollY;
+
+    //if hamburger menu active then don't do anything
+    if (menuOpen) return;
+
+    setVisible(
+      (prevState) =>
+        (prevScrollPos > currentScrollPos &&
+          prevScrollPos - currentScrollPos > 30) ||
+        currentScrollPos < 10 ||
+        //if just a little scroll down, keep nav in place.
+        (prevState && currentScrollPos - prevScrollPos < 100)
+    );
+    //console.log("test debounce");
+    setPrevScrollPos(currentScrollPos);
+  }, 200);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos, visible, handleScroll]);
+
+  return {
+    visible,
+  };
+}
