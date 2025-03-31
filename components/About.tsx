@@ -40,7 +40,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
         {/* LEFT SIDE (TEXT) */}
         <div className="    space-y-1 pl-0   text-center xs:text-start ">
           <motion.h1
-            initial={{ y: 200, opacity: 0 }}
+            initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0, duration: 0.5 }}
             viewport={{ once: true }}

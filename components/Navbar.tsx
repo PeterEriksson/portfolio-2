@@ -67,7 +67,7 @@ export default function Navbar() {
             }  transform transition duration-300 ease-in-out  cursor-pointer`}
           >
             <h1
-              className={`text-3xl font-bold  opacity-[0.81] hover:opacity-100 ${
+              className={`text-3xl font-bold  opacity-[0.7] hover:opacity-100 ${
                 linkActive == "header" && "!opacity-100"
               }  tracking-[2px]    transform transition duration-300 ease-in-out`}
             >
@@ -93,7 +93,7 @@ export default function Navbar() {
               onSetActive={handleSetActive}
               className={` ${
                 linkActive !== section && styles.hoverAnimation
-              }  border-b border-transparent relative opacity-[0.81] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
+              }  border-b border-transparent relative opacity-[0.7] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
             >
               <span className={`text-lg transition duration-300 ease-in-out`}>
                 {section}

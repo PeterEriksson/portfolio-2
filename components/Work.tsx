@@ -13,11 +13,7 @@ import { setBodyScroll } from "../utils/helpers";
 import { stagger, useAnimate, motion } from "framer-motion";
 import workStyles from "../styles/work.module.css";
 import { urlFor } from "../sanity";
-import {
-  ComputerDesktopIcon,
-  DevicePhoneMobileIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/solid";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 type Props = {
   projects: ProjectType[];
@@ -138,43 +134,35 @@ export default function Work({ projects, slides, options }: Props) {
        md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-[105vh] flex flex-col relative items-center justify-center `}
     >
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        aria-label="PROJECTS"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.3 }}
-        aria-label="PROJECTS + DOR"
-        className={` flex flex-col items-center space-y-2     mb-3`}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className={` flex flex-col items-center space-y-0.5     mb-2`}
       >
         <h1 className="header sm:text-5xl text-3xl font-bold">Projects</h1>
-
-        <div
-          //add zIndex -> dot is clickable
-          className={`z-[50] ${
-            isFullScreen && "!hidden"
-          } flex  space-x-4 max-w-fit mx-auto    `}
-        >
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              selected={index === selectedIndex}
-              onClick={() => scrollTo(index)}
-            />
-          ))}
-        </div>
+        <h4 className="sm:text-xl xs:text-base xs:font-extralight text-lg font-semibold text-black/60 xs:text-black ">
+          Some of my work
+        </h4>
       </motion.div>
 
       <div
         aria-label="styles.embla"
-        className={`${styles.embla} sm:mx-auto sm:max-w-[640px] lg:max-w-[680px]     xs:w-[88%] w-full      `}
+        className={`${styles.embla} sm:mx-auto sm:max-w-[640px] lg:max-w-[680px] xs:w-[88%] w-full      `}
       >
         <div
           aria-label="styles.embla__viewport"
-          className="overflow-hidden"
+          className="overflow-hidden   "
           ref={emblaRef}
         >
-          <div
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.9 }}
             aria-label="styles.embla__container"
-            className="flex flex-row h-auto z-50"
+            className="flex flex-row h-auto z-50    "
           >
             {projects?.map((project, index) => (
               <Project
@@ -184,17 +172,21 @@ export default function Work({ projects, slides, options }: Props) {
                 setEffect={setEffect}
               />
             ))}
-          </div>
+          </motion.div>
 
           {/* NEXT/PREV ARROW-BUTTONS */}
-          <div
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 1 }}
             className={`${
               isFullScreen && "hidden"
             }  flex justify-between absolute z-30 sm:max-w-[640px] lg:max-w-[680px]        xs:w-[88%] w-full      `}
           >
             <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
             <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -229,23 +221,33 @@ export default function Work({ projects, slides, options }: Props) {
           Close
           <XMarkIcon className="w-4 h-4 text-white ml-1" />
         </button>
-
-        {/* Testing dekstop+mobile icons */}
-        {/* <div
-          className={`flex absolute top-12 space-x-4 mt-6 p-3 bg-gray-100 rounded-2xl ${
-            !isFullScreen && "hidden"
-          }  ${effect ? "" : "invisible"} `}
-        >
-          <ComputerDesktopIcon
-            onClick={() => setIsDemoDesktopView(true)}
-            className={`h-6 w-6 cursor-pointer `}
-          />
-          <DevicePhoneMobileIcon
-            onClick={() => setIsDemoDesktopView(false)}
-            className={`h-6 w-6 cursor-pointer opacity-60 `}
-          />
-        </div> */}
       </div>
+
+      {/* DOTS */}
+      <motion.div
+        className={`z-[50] ${
+          isFullScreen ? "hidden" : ""
+        } flex space-x-4 max-w-fit mx-auto mt-[10px] shadow-md shadow-gray-400/80 p-2 rounded-xl  `}
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.55, delay: 0.9 }} // 1.5s delay before animation starts
+      >
+        {scrollSnaps.map((_, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.25, delay: index * 0.13 }} // stagger effect
+          >
+            <DotButton
+              selected={index === selectedIndex}
+              onClick={() => scrollTo(index)}
+            />
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   );
 }

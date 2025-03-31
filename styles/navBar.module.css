@@ -61,7 +61,7 @@
 
 .navSectionActive {
   opacity: 1;
-  border-color: white;
+  /* border-color: white; */
 }
 
 .hoverAnimation {

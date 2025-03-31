@@ -18,6 +18,7 @@ module.exports = {
         smaller: "549px",
       },
       fontSize: {
+        "xs-plus": ["0.95rem", { lineHeight: "1.6rem" }], // (approx between sm and base)
         xxs: "0.625rem", // 10px, typically small for mobile like Facebook
         "mobile-small": [
           "0.875rem",
@@ -53,11 +54,27 @@ module.exports = {
       },
       animation: {
         "pulse-lg": "pulse-lg 1.25s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "pulse-sm": "pulse-sm 1.25s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        scaleInOut: "scaleInOut 0.65s ease-in-out forwards",
+        "show-me-pulse": "show-me-pulse 4.3s ease-in-out infinite",
       },
       keyframes: {
         "pulse-lg": {
           "0%, 100%": { opacity: 1 },
-          "50%": { opacity: 0.5 /* transform: "scale(1.01)" */ },
+          "50%": { opacity: 0.5 },
+        },
+        "pulse-sm": {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0.8 },
+        },
+        scaleInOut: {
+          "0% ": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.2)" },
+          "100%": { transform: "scale(1)" },
+        },
+        "show-me-pulse": {
+          "0%,40%, 60%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.042)" },
         },
       },
     },

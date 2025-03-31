@@ -92,40 +92,35 @@ export default function Contact({ pageInfo, socials }: Props) {
           </div>
 
           <div className="space-y-1.5">
-            <p className="mb-4  text-white/70 sm:w-2/3 w-3/4 sm:text-lg text-mobile-base xs:text-base   ">
-              Lets work together. If you have an opening or any project that I
-              can contribute to, be sure to reach out.
-            </p>
-            <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm text-white/80">
+            <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm text-white/75">
               <PhoneIcon className="h-5 w-5 " />
-              <p className=" font-bold ">
-                {/* dummyData.contact.phone */}
-                {pageInfo?.phoneNumber}
-              </p>
+              <p className=" font-bold ">{pageInfo?.phoneNumber}</p>
             </div>
-            <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm text-white/80">
+            <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm text-white/75">
               <MailIcon className="h-5 w-5 " />
-              <p className=" font-bold">
-                {/* dummyData.contact.mail */}
-                {pageInfo?.email}
-              </p>
+              <p className=" font-bold">{pageInfo?.email}</p>
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
                 <button className=" text-white/70 ">
                   {copied ? (
                     <span>Copied!</span>
                   ) : (
-                    <DocumentDuplicateIcon className="h-4 w-4 hover:opacity-70" />
+                    <DocumentDuplicateIcon className="h-4 w-4 hover:opacity-75" />
                   )}
                 </button>
               </CopyToClipboard>
             </div>
-            <div className="mb-1 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm text-white/80">
+            <div className="mb-1 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm text-white/70">
               <MapPinIcon className="h-5 w-5 " />
               <p className="font-bold">Stockholm, Sweden</p>
             </div>
 
-            {/* fix for small alignment issue for socials section */}
-            <div className="-ml-1.5 !mt-2.5">
+            <div
+              //div for fixing alignment
+              className="-ml-1.5 !mt-1.5 xs:!mt-0.5"
+            >
+              {/* <h3 className="ml-1.5  text-white/50 font-bold -mb-1 mt-2.5 tracking-widest uppercase text-sm">
+                Socials
+              </h3> */}
               {socials?.map((social, i) => (
                 <SocialIcon
                   key={i}
@@ -133,10 +128,19 @@ export default function Contact({ pageInfo, socials }: Props) {
                   url={social.url}
                   bgColor="transparent"
                   fgColor="white"
-                  className="hover:opacity-70 !h-10 !w-10   "
+                  className="hover:opacity-60 opacity-80 !h-10 !w-10   "
                 />
               ))}
             </div>
+            <hr
+              className={`!mt-1.5 !mb-2 h-[1px] sm:w-2/3 w-3/4  bg-gray-300/30 border-0 `}
+            />
+            <p className="text-white/60 sm:w-2/3 w-3/4  text-mobile-base xs:text-xs-plus   ">
+              Let's{" "}
+              <span className="font-semibold text-white/90">work together</span>
+              . If you have an opening or any project that I can contribute to,
+              be sure to reach out.
+            </p>
           </div>
         </motion.div>
         {/* RIGHT SIDE - containing profile pic */}

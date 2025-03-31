@@ -65,7 +65,8 @@ function Stack({ skills, skillDescription }: Props) {
       <AnimatePresence initial={false}>
         {showMore && (
           <motion.p
-            className="origin-top max-w-[75%] md:max-w-2xl text-center sm:text-lg text-mobile-base"
+            onClick={() => setShowMore(false)}
+            className="cursor-pointer origin-top max-w-[75%] md:max-w-2xl text-center sm:text-lg text-mobile-base"
             variants={item}
             style={{ originY: 0 }}
             initial={{ height: 0, opacity: 0 }}
