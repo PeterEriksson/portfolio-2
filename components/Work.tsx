@@ -228,7 +228,7 @@ export default function Work({ projects, slides, options }: Props) {
         className={`z-[50] ${
           isFullScreen ? "hidden" : ""
         } flex space-x-4 max-w-fit mx-auto mt-[8px] shadow-md shadow-gray-400/80 p-2 rounded-xl  `}
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.55, delay: 0.9 }} // 1.5s delay before animation starts
@@ -236,10 +236,10 @@ export default function Work({ projects, slides, options }: Props) {
         {scrollSnaps.map((_, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.25, delay: index * 0.13 }} // stagger effect
+            transition={{ duration: 0.25, delay: index * 0.15 }} // stagger effect
           >
             <DotButton
               selected={index === selectedIndex}
