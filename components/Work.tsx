@@ -139,10 +139,10 @@ export default function Work({ projects, slides, options }: Props) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.6 }}
-        className={` flex flex-col items-center space-y-0.5     mb-2`}
+        className={` flex flex-col items-center mb-1.5`}
       >
         <h1 className="header sm:text-5xl text-3xl font-bold">Projects</h1>
-        <h4 className="sm:text-xl xs:text-base xs:font-extralight text-lg font-semibold text-black/60 xs:text-black ">
+        <h4 className="sm:text-lg xs:text-base xs:font-extralight text-lg font-semibold text-black/60 xs:text-black ">
           Some of my work
         </h4>
       </motion.div>

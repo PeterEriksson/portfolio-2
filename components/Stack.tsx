@@ -37,7 +37,7 @@ function Stack({ skills, skillDescription }: Props) {
       <h4 className="xs:hidden text-lg font-semibold text-black/60  mb-2 ">
         Tap for current proficiency
       </h4>
-      <h4 className="hidden xs:inline sm:text-xl text-base font-extralight mb-2 ">
+      <h4 className="hidden xs:inline sm:text-lg text-base font-extralight mb-2 ">
         Hover for current proficiency
       </h4>
 

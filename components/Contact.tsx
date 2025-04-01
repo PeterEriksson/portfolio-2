@@ -67,7 +67,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           viewport={{ once: true }}
           className="  !z-30      flex flex-col items-center xxs:inline  "
         >
-          <div className={`mb-1.5 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
+          <div className={`mb-2 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
             <h1 className="sm:text-5xl text-3xl text-white font-bold //text-shadow-glow">
               {" "}
               Ping me!&nbsp;{" "}
@@ -92,10 +92,6 @@ export default function Contact({ pageInfo, socials }: Props) {
           </div>
 
           <div className="space-y-1.5">
-            <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm text-white/75">
-              <PhoneIcon className="h-5 w-5 " />
-              <p className=" font-bold ">{pageInfo?.phoneNumber}</p>
-            </div>
             <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm text-white/75">
               <MailIcon className="h-5 w-5 " />
               <p className=" font-bold">{pageInfo?.email}</p>
@@ -109,11 +105,16 @@ export default function Contact({ pageInfo, socials }: Props) {
                 </button>
               </CopyToClipboard>
             </div>
+            <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm text-white/75">
+              <PhoneIcon className="h-5 w-5 " />
+              <p className=" font-bold ">{pageInfo?.phoneNumber}</p>
+            </div>
             <div className="mb-1 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm text-white/70">
               <MapPinIcon className="h-5 w-5 " />
               <p className="font-bold">Stockholm, Sweden</p>
             </div>
 
+            {/* SOCIALS */}
             <div
               //div for fixing alignment
               className="-ml-1.5 !mt-1.5 xs:!mt-0.5"
