@@ -31,7 +31,7 @@ export default function Hero({ socials, pageInfo }: Props) {
         id="header"
         className={`for-blurry-blob: relative  ${
           menuOpen ? "opacity-50" : "opacity-100"
-        }   md:!opacity-100 transition duration-200 ease-in min-h-screen//  h-[98vh]       flex items-center justify-center bg-mainDarkBlue       blob-no-interfere: !overflow-hidden `}
+        }   md:!opacity-100 transition duration-200 ease-in min-h-screen//  h-[98.5vh]       flex items-center justify-center bg-mainDarkBlue       blob-no-interfere: !overflow-hidden `}
       >
         <div className=" xs:w-10/12 w-[88%] flex flex-col sm:flex-row-reverse //md:flex-row-reverse items-center justify-between ">
           <div className="md:w-2/5 sm:w-1/2 w-full    above-blob: z-30">
@@ -168,7 +168,7 @@ export default function Hero({ socials, pageInfo }: Props) {
         </div>
       </header>
       <div
-        className={`w-screen  h-[2vh] bg-gradient-to-b from-mainDarkBlue to-white`}
+        className={`w-screen  h-[1.5vh] bg-gradient-to-b from-mainDarkBlue to-white`}
       />
     </>
   );

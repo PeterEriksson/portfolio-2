@@ -33,9 +33,6 @@ export default function Work({ projects, slides, options }: Props) {
   const { isFullScreen, toggleFullScreen } = useFullScreenStore();
   const [scope, animate] = useAnimate();
 
-  /* testing desktop+mobile icons */
-  const [isDemoDesktopView, setIsDemoDesktopView] = useState<boolean>(true);
-
   const scrollPrev = useCallback(
     () => emblaApi && emblaApi.scrollPrev(),
     [emblaApi]
@@ -199,15 +196,13 @@ export default function Work({ projects, slides, options }: Props) {
         className={`demo ${effect ? "" : "invisible"}  ${
           isFullScreen ? "" : "pointer-events-none "
         } object-cover fixed inset-0 mx-auto    h-[100%]  `}
-        //src={projects[selectedIndex]?.demo}
         src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
         alt=""
       />
-
-      {/* BACK button */}
       <div
+        //BACK btn
         //use flex container to avoid positioning issue for button
-        className="    w-full flex justify-center absolute z-50    bottom-24 xs:bottom-12"
+        className="    w-full flex justify-center absolute z-50    bottom-24 xs:bottom-20 lg:bottom-28"
       >
         <button
           onClick={handleBack}
