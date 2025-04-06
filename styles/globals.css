@@ -4,6 +4,9 @@
 
 @layer components {
   .arrowButtonEmbla {
-    @apply -translate-y-[400px] xxs:-translate-y-[355px] xs:-translate-y-[385px] smaller:-translate-y-[335px] lg:-translate-y-[370px]  transition duration-150 ease-in hover:opacity-[0.57]  text-black z-30 flex items-center justify-center cursor-pointer rounded-full bg-gray-500;
+    @apply transition duration-150 ease-in hover:opacity-[0.57] z-30 flex items-center justify-center cursor-pointer rounded-full bg-gray-500;
+  }
+  .projectTechItemSize {
+    @apply w-[44px] h-[44px] xxs:w-[60px] xxs:h-[60px] sm:w-[70px] sm:h-[70px] md:h-[80px] md:w-[80px] lg:md:h-[88px] lg:w-[88px];
   }
 }

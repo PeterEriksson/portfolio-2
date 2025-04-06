@@ -40,12 +40,14 @@ export const PrevButton: React.FC<PrevNextButtonPropType> = (props) => {
       onMouseUpCapture={() => setButtonIsPressed(false)}
       onMouseLeave={() => setButtonIsPressed(false)}
       className={`${
-        enabled ? " cursor-pointer opacity-70 " : "!opacity-0 !cursor-default"
+        enabled
+          ? " cursor-pointer opacity-30 "
+          : "!opacity-0/ !cursor-default/ invisible"
       } ${buttonIsPressed && "!opacity-40"}   arrowButtonEmbla `}
       onClick={onClick}
       disabled={!enabled}
     >
-      <ChevronLeftIcon className=" text-white  w-8 h-8" />
+      <ChevronLeftIcon className=" text-white  w-7 h-7" />
     </button>
   );
 };
@@ -60,12 +62,14 @@ export const NextButton: React.FC<PrevNextButtonPropType> = (props) => {
       onMouseUpCapture={() => setButtonIsPressed(false)}
       onMouseLeave={() => setButtonIsPressed(false)}
       className={`${
-        enabled ? " cursor-pointer opacity-70 " : "!opacity-0 !cursor-default"
+        enabled
+          ? " cursor-pointer opacity-30 "
+          : "!opacity-0/ !cursor-default/ invisible"
       } ${buttonIsPressed && "!opacity-40"}      arrowButtonEmbla `}
       onClick={onClick}
       disabled={!enabled}
     >
-      <ChevronRightIcon className=" text-white w-8 h-8 " />
+      <ChevronRightIcon className=" text-white w-7 h-7 " />
     </button>
   );
 };

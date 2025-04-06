@@ -19,7 +19,7 @@ function ReturnToTopBtn() {
       smooth={true}
       spy={true}
       offset={-40}
-      className={`group cursor-pointer fixed right-8 xxs:right-auto bottom-8  xxs:left-1/2 xxs:-translate-x-1/2 flex items-center justify-center w-12 h-12 border-2 border-gray-700 bg-gray-8/ bg-transparent00 bg-opacity-75 rounded-full transition transform opacity ease-in-out duration-500 ${
+      className={`group cursor-pointer fixed right-6   bottom-6      flex items-center justify-center w-12 h-12 border-2 border-gray-700 bg-gray-8/ bg-transparent00 bg-opacity-75 rounded-full transition transform opacity ease-in-out duration-500 ${
         scrollY > scrollBreakpoint
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-6 pointer-events-none"

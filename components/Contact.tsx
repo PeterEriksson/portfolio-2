@@ -92,7 +92,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           </div>
 
           <div className="space-y-1.5">
-            <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm text-white/75">
+            <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm lg:text-xl text-white/75">
               <MailIcon className="h-5 w-5 " />
               <p className=" font-bold">{pageInfo?.email}</p>
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
@@ -105,11 +105,11 @@ export default function Contact({ pageInfo, socials }: Props) {
                 </button>
               </CopyToClipboard>
             </div>
-            <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm text-white/75">
+            <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm lg:text-xl text-white/75">
               <PhoneIcon className="h-5 w-5 " />
               <p className=" font-bold ">{pageInfo?.phoneNumber}</p>
             </div>
-            <div className="mb-1 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm text-white/70">
+            <div className="mb-1 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm lg:text-xl text-white/70">
               <MapPinIcon className="h-5 w-5 " />
               <p className="font-bold">Stockholm, Sweden</p>
             </div>
@@ -134,9 +134,9 @@ export default function Contact({ pageInfo, socials }: Props) {
               ))}
             </div>
             <hr
-              className={`!mt-1.5 !mb-2 h-[1px] sm:w-2/3 w-3/4  bg-gray-300/30 border-0 `}
+              className={`!mt-1.5 !mb-2 h-[1px] w-3/4 sm:w-2/3 lg:w-2/5  bg-gray-300/30 border-0 `}
             />
-            <p className="text-white/60 sm:w-2/3 w-3/4  text-mobile-base xs:text-xs-plus   ">
+            <p className="text-white/60 w-3/4 sm:w-2/3 lg:w-2/5 text-mobile-base xs:text-xs-plus lg:text-lg ">
               Let's{" "}
               <span className="font-semibold text-white/90">work together</span>
               . If you have an opening or any project that I can contribute to,
@@ -163,6 +163,12 @@ export default function Contact({ pageInfo, socials }: Props) {
       </div>
 
       <Blob bottomCornerLeft />
+      <footer className="absolute bottom-0.5 text-center text-xs w-4/5 xs:text-sm text-gray-500 py-6">
+        © 2025 Peter Eriksson.{" "}
+        <span className="inline-block">
+          Next.js · Typescript · Sanity · Framer
+        </span>
+      </footer>
     </div>
   );
 }

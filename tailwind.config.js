@@ -10,6 +10,9 @@ module.exports = {
       colors: {
         mainDarkBlue: "#091c29",
         darkerblue: "#04111d",
+        spotifyGreen: "#1DB954",
+        spotifyBlack: "#191414",
+        twitterBlue: "#1D9BF0",
       },
       screens: {
         xxxs: "377px",
@@ -18,7 +21,7 @@ module.exports = {
         smaller: "549px",
       },
       fontSize: {
-        "xs-plus": ["0.95rem", { lineHeight: "1.6rem" }], // (approx between sm and base)
+        "xs-plus": ["0.95rem", { lineHeight: "1.5rem" }], // (approx between sm and base)
         xxs: "0.625rem", // 10px, typically small for mobile like Facebook
         "mobile-small": [
           "0.875rem",
@@ -79,5 +82,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar"), require("tailwindcss-textshadow")],
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+    require("tailwind-scrollbar"),
+    require("tailwindcss-textshadow"),
+  ],
 };

@@ -34,7 +34,7 @@ function Stack({ skills, skillDescription }: Props) {
       } md:!opacity-100 transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden    overflow-hidden`}
     >
       <h1 className="text-3xl sm:text-5xl font-bold  ">Tech I use</h1>
-      <h4 className="xs:hidden text-lg font-semibold text-black/60  mb-2 ">
+      <h4 className="xs:hidden text-lg font-semibold text-black/40  mb-2 ">
         Tap for current proficiency
       </h4>
       <h4 className="hidden xs:inline sm:text-lg text-base font-extralight mb-2 ">
@@ -66,11 +66,11 @@ function Stack({ skills, skillDescription }: Props) {
         {showMore && (
           <motion.p
             onClick={() => setShowMore(false)}
-            className="cursor-pointer origin-top max-w-[75%] md:max-w-2xl text-center sm:text-lg text-mobile-base"
+            className="cursor-pointer origin-top max-w-[75%]  md:max-w-2xl text-center text-xs-plus "
             variants={item}
             style={{ originY: 0 }}
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
+            animate={{ height: "auto", opacity: 0.65 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
             exit={{ height: 0, opacity: 0 }}
           >

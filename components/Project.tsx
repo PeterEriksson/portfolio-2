@@ -10,14 +10,30 @@ import { urlFor } from "../sanity";
 import styles from "../styles/embla.module.css";
 import { useFullScreenStore } from "../store/store";
 import workStyles from "../styles/work.module.css";
+import { NextButton, PrevButton } from "./EmblaCarouselArrowsDotsButtons";
 
-type ProjectProps = {
+type Props = {
   project: ProjectType;
   setEffect: React.Dispatch<React.SetStateAction<boolean>>;
   index: number;
+
+  scrollPrev?: () => void;
+  scrollNext?: () => void;
+  prevBtnEnabled?: boolean;
+  nextBtnEnabled?: boolean;
 };
 
-export default function Project({ project, setEffect, index }: ProjectProps) {
+export default function Project({
+  project,
+  setEffect,
+  index,
+  scrollPrev,
+  scrollNext,
+  prevBtnEnabled,
+  nextBtnEnabled,
+}: Props) {
+  const [showFullSummary, setShowFullSummary] = React.useState<boolean>(false);
+
   const { toggleFullScreen, isFullScreen } = useFullScreenStore();
 
   //if user has clicked Show me-btn, disable the subtle animation.
@@ -41,31 +57,103 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
     toggleFullScreen();
   };
 
+  const getGradientClass = (index: number) => {
+    switch (index) {
+      case 0:
+        return "from-spotifyGreen to-spotifyBlack";
+      case 1:
+        return "from-green-500 to-green-200";
+      case 2:
+        return "from-twitterBlue to-blue-200";
+      default:
+        return "from-gray-400 to-gray-200"; // Fallback gradient
+    }
+  };
+
   return (
     <div
       ref={ref}
-      //pb-2 makes room for shadow at bottom (can remove px-2 and px-4 and edit img max-w...)
-      className={` ${styles.embla__slide}  px-2 xs:px-4.5 min-w-0 relative   pb-2 `}
+      className={` ${styles.embla__slide}  px-3.5 //xs:px-0  min-w-0   relative   `}
     >
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.55 }}
-        className="relative "
+        className="relative   flex justify-between items-center  border border-gray-200/95 xxs:border-gray-200/90 rounded-sm     upper-div-card"
       >
-        <img
-          className={`img w-full h-[260px] xxs:h-[300px] lg:h-[330px]       rounded-t-lg  "
-          }`}
-          src={urlFor(project?.image).url() || undefined}
-          //src={project.image} //testing
-          alt="motion_img"
-        />
+        {/* NEXT+PREV BTNs */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="absolute -left-[14px] top-1/2 -translate-y-1/2 pointer-events-auto z-50 "
+        >
+          <PrevButton
+            onClick={scrollPrev ?? (() => {})}
+            enabled={!!prevBtnEnabled}
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="absolute -right-[14px] top-1/2 -translate-y-1/2 pointer-events-auto z-50"
+        >
+          <NextButton
+            onClick={scrollNext ?? (() => {})}
+            enabled={!!nextBtnEnabled}
+          />
+        </motion.div>
+
+        <div
+          className={`relative bg-gradient-to-br ${getGradientClass(index)}  
+    w-[57%] xxs:w-[50%] aspect-[1/1] rounded-sm overflow-visible`}
+        >
+          <img
+            src={urlFor(project?.image).url() || undefined}
+            alt="project_img"
+            className="absolute w-full xxs:aspect-auto aspect-[12/10]  xxs:top-[17%] top-[9%]   translate-x-[7%] xxs:translate-x-[22%] lg:translate-x-[25%] rounded-sm"
+          />
+        </div>
+
+        <div className="mr-3 sm:mr-4 lg:mr-5">
+          <h1 className="uppercase tracking-widest text-xs xs:text-base md:text-lg font-bold opacity-25 mb-1  ">
+            tech stack
+          </h1>
+          <div
+            className={`grid grid-cols-2 md:grid-cols-3 gap-1.5 xs:gap-2.5 md:gap-3.5 opacity-70 `}
+          >
+            {project?.technologies?.map((tech, i) => (
+              <div
+                key={i}
+                className={`group relative flex cursor-pointer  rounded-full `}
+              >
+                <img
+                  className="projectTechItemSize object-cover rounded-full       filter group-hover:grayscale transition duration-300 ease-in-out"
+                  src={urlFor(tech?.image).url() || undefined}
+                  alt=""
+                />
+
+                {/* skill info - showing on hover */}
+                <div className="projectTechItemSize absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white  rounded-full">
+                  <div className="flex items-center justify-center h-full relative      ">
+                    <p className="text-xs xs:text-base tracking-wide   ">
+                      {tech?.title}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div
           //show me btn
           //use flex container to avoid positioning issue (-translate-x-1/2 bug..)
-          className={`flex absolute bottom-6 w-full justify-center text-white`}
+          className={`flex absolute -bottom-2 w-full justify-center text-white    z-50`}
         >
           <button
             //minor css-bug after hovering, barely noticable. Bug disappears after demo-show
@@ -89,69 +177,91 @@ export default function Project({ project, setEffect, index }: ProjectProps) {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 /* y: 50 here is the weird bug */ }}
+        whileInView={{ opacity: 1 /*  y: 0 */ }}
         viewport={{ once: true }}
         transition={{ duration: 0.55 }}
-        className={`flex flex-col  -mt-1 xxs:-mt-0.5     shadowRemoved: xxs:px-[16px]/// ///xxs:pb-2.5   `}
+        className={`flex  mt-1    project-info${index}         `}
       >
-        <div
-          className={`project-info${index}  flex space-x-2.5 items-center justify-between   `}
+        <h3
+          className={`text-xl sm:text-2xl text-black/70 opacity-90 cursor-default ${
+            showFullSummary ? "line-clamp-none" : "xs:line-clamp-1 line-clamp-3"
+          }`}
         >
-          <h3 className=" text-xl sm:text-2xl font-bold cursor-default opacity-[0.88]">
+          <span className="text-xl xs:text-2xl font-semibold text-black">
             {project?.title}
-          </h3>
-          <div className=" flex items-center space-x-1.5  ">
-            <SocialIcon
-              target="_blank"
-              url={project?.linkToGithub}
-              bgColor="transparent"
-              fgColor="#555555"
-              className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-11 sm:!h-11 transition duration-150 ease-in"
-            />
-            <a
-              href={project?.linkToBuild}
-              target="_blank"
-              className="hover:opacity-70 !z-40 text-[#555555] cursor-pointer !h-6 !w-6 sm:!h-7 sm:!w-7 transition duration-150 ease-in"
-            >
-              <ArrowTopRightOnSquareIcon />
-            </a>
-          </div>
-        </div>
+          </span>
 
-        {/* TECH used */}
+          <span
+            onClick={() => {
+              if (!showFullSummary) {
+                setShowFullSummary(true);
+              }
+            }}
+            className={`ml-2.5 text-lg font-normal text-black/70 ${
+              !showFullSummary && "hover:opacity-75 cursor-pointer"
+            }
+           relative   `}
+          >
+            {project?.summary}
+            {showFullSummary ? (
+              <span
+                onClick={() => setShowFullSummary(false)}
+                className="font-semibold tracking-wide text-sm px-2 py-3 opacity-[0.5] cursor-pointer"
+              >
+                show less
+              </span>
+            ) : (
+              <span
+                //todo: 'more' position on mobile
+                onClick={() => setShowFullSummary(true)}
+                className="absolute   tracking-wide top-5 -left-2 font-semibold text-sm ml-2.5 opacity-[0.5]"
+              >
+                more
+              </span>
+            )}
+          </span>
+        </h3>
+
         <div
-          className={`project-info${index} flex -mt-1.5 flex-wrap  gap-x-2.5 sm:gap-x-4 gap-y-1 `}
+          //LINKS on desktop (github+ livebuild)
+          className={`items-center space-x-1.5 hidden xxs:flex  `}
         >
-          {project?.technologies?.map((tech, i) => (
-            <div
-              key={i}
-              className="space-x-1 mt-1  rounded-full cursor-default flex items-center"
-            >
-              <img
-                className="xs:h-7 xs:w-7 h-6 w-6 object-cover rounded-lg"
-                src={urlFor(tech?.image).url() || undefined}
-                alt=""
-              />
-              <p className=" text-mobile-small font-medium xs:font-extralight text-black/60 xs:text-black/80">
-                {tech?.title}
-              </p>
-            </div>
-          ))}
+          <SocialIcon
+            target="_blank"
+            url={project?.linkToGithub}
+            bgColor="transparent"
+            fgColor="#555555CC"
+            className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-11 sm:!h-11 transition duration-150 ease-in bg-gray-200 rounded-full p-1"
+          />
+          <a
+            href={project?.linkToBuild}
+            target="_blank"
+            className="hover:opacity-70 !z-40  cursor-pointer transition duration-150 ease-in bg-gray-200 rounded-full p-1 flex items-center justify-center !h-10 !w-10  "
+          >
+            <ArrowTopRightOnSquareIcon className="text-[#555555]/80" />
+          </a>
         </div>
-
-        <hr
-          className={`w-full mt-1.5 bg-gray-400/30 h-[2px] ${
-            isFullScreen ? "invisible" : ""
-          }  `}
-        />
-
-        <p
-          className={`project-info${index}  text-black/70 mt-1 text-mobile-base xs:text-xs-plus cursor-default`}
-        >
-          {project?.summary}
-        </p>
       </motion.div>
+      <div
+        //LINKS on mobile (github+ livebuild)
+        className={`items-center space-x-1.5 -ml-2 mt-1  flex xxs:hidden`}
+      >
+        <SocialIcon
+          target="_blank"
+          url={project?.linkToGithub}
+          bgColor="transparent"
+          fgColor="#555555CC"
+          className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-11 sm:!h-11 transition duration-150 ease-in bg-gray-200 rounded-full p-1"
+        />
+        <a
+          href={project?.linkToBuild}
+          target="_blank"
+          className="hover:opacity-70 !z-40  cursor-pointer transition duration-150 ease-in bg-gray-200 rounded-full p-1 flex items-center justify-center !h-10 !w-10  "
+        >
+          <ArrowTopRightOnSquareIcon className="text-[#555555]/80" />
+        </a>
+      </div>
     </div>
   );
 }

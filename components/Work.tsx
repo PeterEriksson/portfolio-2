@@ -88,21 +88,16 @@ export default function Work({ projects, slides, options }: Props) {
   React.useEffect(() => {
     if (!isFullScreen) {
       animate([
-        [
-          ".demo",
-          { opacity: 0, scale: 0.3 },
-          { /* duration: 0.2 */ duration: 0.35, at: 0 },
-        ],
+        [".header", { opacity: 1 }, { at: 0.2 }],
+        [".demo", { opacity: 0, scale: 0.3 }, { duration: 0.44, at: 0 }],
         [
           `.project-info${selectedIndex}`,
           { opacity: 1, x: "-0px" },
-          { duration: 0.25, delay: stagger(0.05), /* at: 0 */ at: 0.2 },
+          { duration: 0.25, delay: stagger(0.05), at: 0.2 },
         ],
-        [".img", { opacity: 1, scale: 1 }, { at: 0.2 }],
-
         [".show-btn", { opacity: 1, scale: 1 }, { at: ">" }],
         [".back-btn", { opacity: 0, scale: 0 }, { at: 0 }],
-        [".header", { opacity: 1 }, { at: 0 }],
+        [".upper-div-card", { opacity: 1 }, { at: 0.25, duration: 0.9 }],
       ]);
     } else {
       animate([
@@ -116,12 +111,10 @@ export default function Work({ projects, slides, options }: Props) {
           { opacity: 0, x: "-150px" },
           { duration: 0.2, delay: stagger(0.05), at: 0 },
         ],
-
-        [".img", { opacity: 0, scale: 0.5 }, { duration: 0.3, at: 0 }],
-
         [".show-btn", { opacity: 0, scale: 0 }, { duration: 0.25, at: 0 }],
         [".back-btn", { opacity: 1, scale: 1 }, { at: 0.1 }],
-        [".header", { opacity: 0 }, { at: 0 }],
+        [".header ", { opacity: 0 }, { at: 0 }],
+        [".upper-div-card", { opacity: 0 }, { at: 0.15 }],
       ]);
     }
   }, [animate, isFullScreen]);
@@ -130,8 +123,9 @@ export default function Work({ projects, slides, options }: Props) {
     <div
       ref={scope}
       id="Work"
+      // minor h-issue, show less, on sm screens, non clickable on bottom of text..
       className={`${menuOpen ? "opacity-50" : "opacity-100"}
-       md:!opacity-100 transition duration-200 ease-in bg-gray-100 h-[105vh] flex flex-col relative items-center justify-center `}
+       md:!opacity-100 transition duration-200 ease-in bg-gray-100 min-h-[105vh]  sm:min-h-[109vh] lg:min-h-[120vh]  flex flex-col relative items-center justify-center   `}
     >
       <motion.div
         aria-label="PROJECTS"
@@ -139,21 +133,23 @@ export default function Work({ projects, slides, options }: Props) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.6 }}
-        className={` flex flex-col items-center mb-1.5`}
+        //  -mt -> move up on lg screens -> make room for dots after cta button-click
+        className={`header flex flex-col items-center mb-1.5  lg:-mt-14`}
       >
-        <h1 className="header sm:text-5xl text-3xl font-bold">Projects</h1>
-        <h4 className="sm:text-lg xs:text-base xs:font-extralight text-lg font-semibold text-black/60 xs:text-black ">
+        <h1 className=" sm:text-5xl text-3xl font-bold">Projects</h1>
+        <h4 className="sm:text-lg xs:text-base xs:font-extralight text-lg font-semibold text-black/40 xs:text-black ">
           Some of my work
         </h4>
       </motion.div>
 
       <div
         aria-label="styles.embla"
-        className={`${styles.embla} sm:mx-auto sm:max-w-[640px] lg:max-w-[680px] xs:w-[88%] w-full      `}
+        //increase w slightly to compensate px in embla__slide (in Project) (in order for prev+next-btns to be overlayed)
+        className={`w-full xs:w-10/12//   xs:w-[89%] sm:w-[87%] lg:w-[86%]          ${styles.embla} sm:mx-auto          `}
       >
         <div
           aria-label="styles.embla__viewport"
-          className="overflow-hidden   "
+          className="overflow-hidden         "
           ref={emblaRef}
         >
           <motion.div
@@ -162,7 +158,8 @@ export default function Work({ projects, slides, options }: Props) {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.9 }}
             aria-label="styles.embla__container"
-            className="flex flex-row h-auto z-50    "
+            //add spacing between projects here:
+            className="flex flex-row h-auto z-50 xs:gap-x-14 lg:gap-x-20      "
           >
             {projects?.map((project, index) => (
               <Project
@@ -170,23 +167,28 @@ export default function Work({ projects, slides, options }: Props) {
                 project={project}
                 index={index}
                 setEffect={setEffect}
+                /* test */
+                scrollPrev={scrollPrev ?? (() => {})}
+                scrollNext={scrollNext ?? (() => {})}
+                prevBtnEnabled={prevBtnEnabled}
+                nextBtnEnabled={nextBtnEnabled}
               />
             ))}
           </motion.div>
 
-          {/* NEXT/PREV ARROW-BUTTONS */}
-          <motion.div
+          {/* NEXT/PREV ARROW-BUTTONS (old...prioritize symmetrical -> place in Project) */}
+          {/*  <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 1 }}
             className={`${
               isFullScreen && "hidden"
-            }  flex justify-between absolute z-30 sm:max-w-[640px] lg:max-w-[680px]        xs:w-[88%] w-full      `}
+            }  flex justify-between absolute z-30    xs:w-[88%] w-full       `}
           >
             <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
             <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
 
@@ -227,7 +229,7 @@ export default function Work({ projects, slides, options }: Props) {
       <motion.div
         className={`z-[50] ${
           isFullScreen ? "hidden" : ""
-        } flex space-x-4 max-w-fit mx-auto mt-[8px] shadow-md shadow-gray-400/80 p-2 rounded-xl  `}
+        } flex space-x-4 max-w-fit mx-auto mt-[10px] shadow-md shadow-gray-400/80 p-2 rounded-xl  `}
         initial={{ opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
