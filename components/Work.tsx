@@ -120,9 +120,10 @@ export default function Work({ projects, slides, options }: Props) {
     <div
       ref={scope}
       id="Work"
-      // minor h-issue, show less, on sm screens, non clickable on bottom of text..
+      // more + show less bug, h issue, non clickable on bottom of text..try increase -> ->
+      //h-[105vh]/// xs:h-[110vh]/// sm:h-[115vh]///  lg:h-[125vh]/// ->use padding instead. solves show+less bug.
       className={`${menuOpen ? "opacity-50" : "opacity-100"}
-       md:!opacity-100 transition duration-200 ease-in bg-gray-100 min-h-[105vh]  sm:min-h-[109vh] lg:min-h-[120vh]  flex flex-col relative items-center justify-center   `}
+       md:!opacity-100 transition duration-200 ease-in bg-gray-100 py-14 xs:py-24 lg:py-28            flex flex-col relative items-center justify-center   `}
     >
       <motion.div
         aria-label="PROJECTS"
@@ -130,11 +131,10 @@ export default function Work({ projects, slides, options }: Props) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.6 }}
-        //  -mt -> move up on lg screens -> make room for dots after cta button-click
-        className={`header flex flex-col items-center mb-1.5  lg:-mt-14`}
+        className={`header flex flex-col items-center mb-1.5   `}
       >
-        <h1 className=" sm:text-5xl text-3xl font-bold">Projects</h1>
-        <h4 className="sm:text-lg xs:text-base xs:font-extralight text-lg font-semibold text-black/40 xs:text-black ">
+        <h1 className=" sm:text-5xl text-3xl font-bold  ">Projects</h1>
+        <h4 className="  sm:text-lg xs:text-base xs:font-extralight text-lg font-semibold text-black/40 xs:text-black ">
           Some of my work
         </h4>
       </motion.div>
@@ -142,7 +142,9 @@ export default function Work({ projects, slides, options }: Props) {
       <div
         aria-label="styles.embla"
         //increase w slightly to compensate px in embla__slide (in Project) (in order for prev+next-btns to be overlayed)
-        className={`w-full xs:w-10/12//   xs:w-[89%] sm:w-[87%] lg:w-[86%]          ${styles.embla} sm:mx-auto          `}
+        //h-auto solves-show+less-bug..not on md and smaller...
+        //mx-auto necessary?
+        className={`w-full xs:w-[89%] sm:w-[87%] lg:w-[86%]  ${styles.embla} sm:mx-auto//       h-auto///   `}
       >
         <div
           aria-label="styles.embla__viewport"
@@ -156,7 +158,7 @@ export default function Work({ projects, slides, options }: Props) {
             transition={{ duration: 0.7, delay: 0.9 }}
             aria-label="styles.embla__container"
             //add spacing between projects here:
-            className="flex flex-row h-auto z-50 xs:gap-x-14 lg:gap-x-20      "
+            className="flex flex-row  z-50 xs:gap-x-14 lg:gap-x-20      "
           >
             {projects?.map((project, index) => (
               <Project
@@ -202,7 +204,7 @@ export default function Work({ projects, slides, options }: Props) {
       <div
         //BACK btn
         //use flex container to avoid positioning issue for button
-        className="    w-full flex justify-center absolute z-50    bottom-24 xs:bottom-20 lg:bottom-28"
+        className="w-full flex justify-center absolute z-50      handle-resizing-screenheight: bottom-1 xs:bottom-20 lg:bottom-28 xl:bottom-36 "
       >
         <button
           onClick={handleBack}
@@ -213,10 +215,10 @@ export default function Work({ projects, slides, options }: Props) {
           ${
             //scale down effect isn't interrupted by hover
             isFullScreen ? "" : "pointer-events-none"
-          } flex items-center     bg-black rounded-2xl text-sm px-3 py-2 font-semibold text-white `}
+          } flex items-center     bg-black rounded-2xl text-sm px-3 py-2 text-white font-semibold `}
         >
           Close
-          <XMarkIcon className="w-4 h-4 text-white ml-1" />
+          <XMarkIcon className="w-[18px] h-[18px] text-white ml-1 " />
         </button>
       </div>
 

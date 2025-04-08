@@ -124,7 +124,7 @@ export default function Project({
             tech stack
           </h1>
           <div
-            className={`grid grid-cols-2 md:grid-cols-3 gap-1.5 xs:gap-2.5 md:gap-3.5 opacity-70 `}
+            className={`grid grid-cols-2 lg:grid-cols-3 gap-1.5 xs:gap-2.5 md:gap-3.5 opacity-70 `}
           >
             {project?.technologies?.map((tech, i) => (
               <div
@@ -177,51 +177,46 @@ export default function Project({
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0 /* y: 50 here is the weird bug */ }}
+        initial={{ opacity: 0 /* y: 50 , weird bug */ }}
         whileInView={{ opacity: 1 /*  y: 0 */ }}
         viewport={{ once: true }}
         transition={{ duration: 0.55 }}
         className={`flex  mt-1    project-info${index}         `}
       >
-        <h3
+        <h2
           className={`text-xl sm:text-2xl text-black/70 opacity-90 cursor-default ${
-            showFullSummary ? "line-clamp-none" : "xs:line-clamp-1 line-clamp-3"
-          }`}
+            showFullSummary
+              ? "line-clamp-none"
+              : " line-clamp-3 xxs:line-clamp-2 sm:line-clamp-1"
+          } `}
         >
           <span className="text-xl xs:text-2xl font-semibold text-black">
             {project?.title}
           </span>
 
           <span
-            onClick={() => {
-              if (!showFullSummary) {
-                setShowFullSummary(true);
-              }
-            }}
-            className={`ml-2.5 text-lg font-normal text-black/70 ${
-              !showFullSummary && "hover:opacity-75 cursor-pointer"
-            }
+            className={`ml-2.5 text-lg font-normal text-black/70  
            relative   `}
           >
             {project?.summary}
             {showFullSummary ? (
               <span
+                //padding added for clicking/touching on mobile
                 onClick={() => setShowFullSummary(false)}
-                className="font-semibold tracking-wide text-sm px-2 py-3 opacity-[0.5] cursor-pointer"
+                className="font-semibold tracking-wider text-sm px-2 py-3 opacity-[0.5] hover:opacity-30 cursor-pointer"
               >
                 show less
               </span>
             ) : (
               <span
-                //todo: 'more' position on mobile
                 onClick={() => setShowFullSummary(true)}
-                className="absolute   tracking-wide top-5 -left-2 font-semibold text-sm ml-2.5 opacity-[0.5]"
+                className=" absolute top-5 -left-2 hidden xxs:inline  hover:opacity-30 cursor-pointer         tracking-wider font-semibold text-sm ml-2.5 opacity-[0.5]"
               >
                 more
               </span>
             )}
           </span>
-        </h3>
+        </h2>
 
         <div
           //LINKS on desktop (github+ livebuild)
@@ -244,9 +239,20 @@ export default function Project({
         </div>
       </motion.div>
       <div
-        //LINKS on mobile (github+ livebuild)
-        className={`items-center space-x-1.5 -ml-2 mt-1  flex xxs:hidden`}
+        //LINKS on mobile + more (mobile screen)
+        //
+        className={`relative  items-center justify-end  space-x-1.5 -ml-2 mt-1  flex xxs:hidden`}
       >
+        <p
+          //temp solution, 'more' on mobile
+          //padding added for larger clickable area
+          onClick={() => setShowFullSummary(true)}
+          className={`${
+            showFullSummary && "hidden"
+          } absolute -left-1.5 -top-2 xxs:hidden !z-50 p-2 tracking-wider font-semibold text-sm ml-2.5 opacity-[0.3]`}
+        >
+          show more
+        </p>
         <SocialIcon
           target="_blank"
           url={project?.linkToGithub}

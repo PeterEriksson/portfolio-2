@@ -60,7 +60,6 @@ export default function Navbar() {
             smooth="true"
             activeClass={styles.navSectionActive}
             spy={true}
-            offset={-40}
             onSetActive={handleSetActive}
             className={`relative  border-b border-transparent    ${
               linkActive !== "header" && styles.hoverAnimation
@@ -87,7 +86,6 @@ export default function Navbar() {
               smooth="true"
               key={i}
               activeClass={styles.navSectionActive}
-              //offset={section !== "Contact" ? -40 : 0}
               offset={0}
               spy={true}
               onSetActive={handleSetActive}
@@ -148,6 +146,7 @@ export default function Navbar() {
                   key={i}
                   to={section}
                   smooth="true"
+                  offset={section == "Work" ? 30 : 0}
                   activeClass={styles.navSectionActive}
                   spy={true}
                   onSetActive={handleSetActive}

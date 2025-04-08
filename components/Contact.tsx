@@ -92,7 +92,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           </div>
 
           <div className="space-y-1.5">
-            <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm lg:text-xl text-white/75">
+            <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm xl:text-xl text-white/75 ">
               <MailIcon className="h-5 w-5 " />
               <p className=" font-bold">{pageInfo?.email}</p>
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
@@ -105,11 +105,11 @@ export default function Contact({ pageInfo, socials }: Props) {
                 </button>
               </CopyToClipboard>
             </div>
-            <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm lg:text-xl text-white/75">
+            <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm xl:text-xl text-white/75">
               <PhoneIcon className="h-5 w-5 " />
               <p className=" font-bold ">{pageInfo?.phoneNumber}</p>
             </div>
-            <div className="mb-1 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm lg:text-xl text-white/70">
+            <div className="mb-1 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm xl:text-xl text-white/70">
               <MapPinIcon className="h-5 w-5 " />
               <p className="font-bold">Stockholm, Sweden</p>
             </div>

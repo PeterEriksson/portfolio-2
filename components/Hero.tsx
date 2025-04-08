@@ -31,7 +31,7 @@ export default function Hero({ socials, pageInfo }: Props) {
         id="header"
         className={`for-blurry-blob: relative  ${
           menuOpen ? "opacity-50" : "opacity-100"
-        }   md:!opacity-100 transition duration-200 ease-in min-h-screen//  h-[98.5vh]       flex items-center justify-center bg-mainDarkBlue       blob-no-interfere: !overflow-hidden `}
+        }   md:!opacity-100 transition duration-200 ease-in     h-[103vh] xxs:h-[98.5vh]       flex items-center justify-center bg-mainDarkBlue       blob-no-interfere: !overflow-hidden `}
       >
         <div className=" xs:w-10/12 w-[88%] flex flex-col sm:flex-row-reverse //md:flex-row-reverse items-center justify-between ">
           <div className="md:w-2/5 sm:w-1/2 w-full    above-blob: z-30">
@@ -147,7 +147,15 @@ export default function Hero({ socials, pageInfo }: Props) {
                 </div>
               </CopyToClipboard>
             </motion.div>
-            <ScrollLink to="Work" smooth="true">
+            <ScrollLink
+              //MOBILE (less offset) ->
+              //integrate <button> into ScrollLink
+              //remove/change offset for mobile screens. create new element..?
+              offset={-20}
+              to="Work"
+              smooth="true"
+              className="inline xxs:hidden "
+            >
               <button
                 className={`  ${
                   buttonIsPressed && "!bg-indigo-700/90 "
@@ -157,7 +165,29 @@ export default function Hero({ socials, pageInfo }: Props) {
                 onMouseLeave={() => setButtonIsPressed(false)}
               >
                 <p className=" text-lg uppercase tracking-wide">
-                  {/* discover more */} view projects
+                  view projects
+                </p>
+              </button>
+            </ScrollLink>
+            <ScrollLink
+              //DESKTOP (xxs +) ->
+              //integrate <button> into ScrollLink
+              //remove/change offset for mobile screens. create new element..?
+              offset={50}
+              to="Work"
+              smooth="true"
+              className="hidden xxs:inline "
+            >
+              <button
+                className={`  ${
+                  buttonIsPressed && "!bg-indigo-700/90 "
+                } mt-3.5 mb-3 group relative hover:bg-indigo-600 bg-indigo-700 transition duration-200 ease-in py-3 px-10 rounded-xl focus:outline-none`}
+                onMouseDown={() => setButtonIsPressed(true)}
+                onMouseUpCapture={() => setButtonIsPressed(false)}
+                onMouseLeave={() => setButtonIsPressed(false)}
+              >
+                <p className=" text-lg uppercase tracking-wide">
+                  view projects
                 </p>
                 <ChevronDownIcon
                   className={`h-[22px] w-[22px] absolute top-0 right-2.5 group-hover:opacity-100 group-hover:translate-y-4 sm:inline hidden opacity-0  !transition !duration-500 transform ease-in-out `}
@@ -168,7 +198,7 @@ export default function Hero({ socials, pageInfo }: Props) {
         </div>
       </header>
       <div
-        className={`w-screen  h-[1.5vh] bg-gradient-to-b from-mainDarkBlue to-white`}
+        className={`w-screen h-[0vh] xxs:h-[1.5vh] bg-gradient-to-b from-mainDarkBlue to-white`}
       />
     </>
   );
