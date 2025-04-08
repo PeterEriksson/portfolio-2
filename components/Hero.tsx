@@ -173,7 +173,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               //DESKTOP (xxs +) ->
               //integrate <button> into ScrollLink
               //remove/change offset for mobile screens. create new element..?
-              offset={50}
+              offset={75}
               to="Work"
               smooth="true"
               className="hidden xxs:inline "
