@@ -116,6 +116,19 @@ export default function Work({ projects, slides, options }: Props) {
     }
   }, [animate, isFullScreen]);
 
+  const getGradientClass = (index: number) => {
+    switch (index) {
+      case 0:
+        return "from-spotifyBlack to-spotifyGreen";
+      case 1:
+        return "from-green-500 to-green-200";
+      case 2:
+        return "from-twitterBlue to-blue-200";
+      default:
+        return "from-gray-400 to-gray-200"; // Fallback gradient
+    }
+  };
+
   return (
     <div
       ref={scope}
@@ -166,7 +179,6 @@ export default function Work({ projects, slides, options }: Props) {
                 project={project}
                 index={index}
                 setEffect={setEffect}
-                /* test */
                 scrollPrev={scrollPrev ?? (() => {})}
                 scrollNext={scrollNext ?? (() => {})}
                 prevBtnEnabled={prevBtnEnabled}
@@ -191,20 +203,47 @@ export default function Work({ projects, slides, options }: Props) {
         </div>
       </div>
 
-      {/* DEMO. placed here in Work instead of Project in order to avoid max-w constraints */}
+      {/* DEMO desktop */}
       <img
         // fix for hiding on page load..(effect)
-        //disable pointer events to avoid issue when swiping projects (isFullScreen)
-        className={`demo ${effect ? "" : "invisible"}  ${
+        //(isFullScreen): disable pointer events to avoid issue when swiping projects..and show me btn(2nd time click)
+        className={`test: hidden xxs:inline         demo ${
+          effect ? "" : "invisible"
+        }  ${
           isFullScreen ? "" : "pointer-events-none "
         } object-cover fixed inset-0 mx-auto    h-[100%]  `}
         src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
-        alt=""
+        alt="demo desktop"
       />
+      {/* DEMO mobile test */}
       <div
-        //BACK btn
+        className={` xxs:hidden    fixed inset-0 h-[100%] bg-gradient-to-br  ${getGradientClass(
+          selectedIndex
+        )}    demo ${effect ? "" : "invisible"}
+        ${isFullScreen ? "" : "pointer-events-none "}
+        `}
+      >
+        <div className="absolute top-[25%]">
+          <h1
+            className={`text-center font-semibold text-4xl text-black mb-2 ${
+              isFullScreen
+                ? "translate-y-0 opacity-50"
+                : "translate-y-3 opacity-0"
+            } transform duration-[450ms]  ease-in delay-[600ms]   `}
+          >
+            {projects[selectedIndex]?.title}
+          </h1>
+          <img
+            className="absolute// top-[30%]//  "
+            src={urlFor(projects[selectedIndex]?.image).url() || undefined}
+            alt="demo mobile"
+          />
+        </div>
+      </div>
+      <div
+        //Back/Close btn
         //use flex container to avoid positioning issue for button
-        className="w-full flex justify-center absolute z-50      handle-resizing-screenheight: bottom-1 xs:bottom-20 lg:bottom-28 xl:bottom-36 "
+        className="w-full flex justify-center absolute z-50      handle-resizing-screenheight: bottom-1// -bottom-1 xxs:bottom-1 xs:bottom-20 lg:bottom-28 xl:bottom-36 "
       >
         <button
           onClick={handleBack}
@@ -215,10 +254,10 @@ export default function Work({ projects, slides, options }: Props) {
           ${
             //scale down effect isn't interrupted by hover
             isFullScreen ? "" : "pointer-events-none"
-          } flex items-center     bg-black rounded-2xl text-sm px-3 py-2 text-white font-semibold `}
+          }   border border-white xxs:border-hidden    flex items-center  bg-black rounded-2xl text-sm px-3 py-2 text-white font-semibold `}
         >
           Close
-          <XMarkIcon className="w-[18px] h-[18px] text-white ml-1 " />
+          <XMarkIcon className="w-[18px] h-[18px] text-white ml-1  " />
         </button>
       </div>
 

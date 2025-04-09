@@ -2,7 +2,7 @@ import React from "react";
 import { PageInfo } from "../typings";
 import { motion, useTransform, useScroll } from "framer-motion";
 import { urlFor } from "../sanity";
-import { useMenuStore } from "../store/store";
+import { useFullScreenStore, useMenuStore } from "../store/store";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -11,6 +11,8 @@ type Props = {
 
 export default function About({ backgroundInformation, pageInfo }: Props) {
   const { menuOpen } = useMenuStore();
+  //'About' interrupts slightly on mobile, show-me-animate in Work
+  const { isFullScreen } = useFullScreenStore();
 
   const scrollRef = React.useRef(null);
   // Track scroll progress of the target element (scrollRef)
@@ -44,7 +46,10 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0, duration: 0.5 }}
             viewport={{ once: true }}
-            className="font-bold  sm:text-5xl text-3xl"
+            //isFullScreen: avoid 'About' interference when show-me-animate,
+            className={`font-bold  sm:text-5xl text-3xl  ${
+              isFullScreen && "!opacity-0"
+            } transition duration-100 ease-in-out `}
           >
             About
           </motion.h1>

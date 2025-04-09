@@ -187,7 +187,7 @@ export default function Project({
           className={`text-xl sm:text-2xl text-black/70 opacity-90 cursor-default ${
             showFullSummary
               ? "line-clamp-none"
-              : " line-clamp-3 xxs:line-clamp-2 sm:line-clamp-1"
+              : " line-clamp-3  sm:line-clamp-1"
           } `}
         >
           <span className="text-xl xs:text-2xl font-semibold text-black">
@@ -210,7 +210,7 @@ export default function Project({
             ) : (
               <span
                 onClick={() => setShowFullSummary(true)}
-                className=" absolute top-5 -left-2 hidden xxs:inline  hover:opacity-30 cursor-pointer         tracking-wider font-semibold text-sm ml-2.5 opacity-[0.5]"
+                className="hidden xxs:inline/// sm:inline  absolute  top-5 -left-2                hover:opacity-30 cursor-pointer tracking-wider font-semibold text-sm ml-2.5 opacity-[0.5]"
               >
                 more
               </span>
@@ -219,8 +219,8 @@ export default function Project({
         </h2>
 
         <div
-          //LINKS on desktop (github+ livebuild)
-          className={`items-center space-x-1.5 hidden xxs:flex  `}
+          //LINKS on desktop (github + livebuild)
+          className={`items-center space-x-1.5 hidden sm:flex  `}
         >
           <SocialIcon
             target="_blank"
@@ -232,16 +232,16 @@ export default function Project({
           <a
             href={project?.linkToBuild}
             target="_blank"
-            className="hover:opacity-70 !z-40  cursor-pointer transition duration-150 ease-in bg-gray-200 rounded-full p-1 flex items-center justify-center !h-10 !w-10  "
+            className="hover:opacity-70 h-11 w-11 p-2 cursor-pointer transition duration-150 ease-in bg-gray-200 z-40 rounded-full flex items-center justify-center   "
           >
             <ArrowTopRightOnSquareIcon className="text-[#555555]/80" />
           </a>
         </div>
       </motion.div>
       <div
-        //LINKS on mobile + more (mobile screen)
-        //
-        className={`relative  items-center justify-end  space-x-1.5 -ml-2 mt-1  flex xxs:hidden`}
+        //LINKS on mobile + more (mobile screen, up to sm)
+        //sm and above screens -> line-clamp-3...
+        className={`flex xxs:hidden// sm:hidden      project-info${index} relative items-center justify-end  space-x-1.5 -ml-2 mt-[1px]  `}
       >
         <p
           //temp solution, 'more' on mobile
@@ -249,10 +249,11 @@ export default function Project({
           onClick={() => setShowFullSummary(true)}
           className={`${
             showFullSummary && "hidden"
-          } absolute -left-1.5 -top-2 xxs:hidden !z-50 p-2 tracking-wider font-semibold text-sm ml-2.5 opacity-[0.3]`}
+          } absolute -left-1.5 -top-1.5 sm:hidden cursor-pointer               z-50 p-2 tracking-wider font-semibold text-sm ml-2.5 opacity-[0.3]`}
         >
           show more
         </p>
+
         <SocialIcon
           target="_blank"
           url={project?.linkToGithub}

@@ -34,7 +34,7 @@ export default function Contact({ pageInfo, socials }: Props) {
       id="Contact"
       className={`${
         menuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in   bg-mainDarkBlue h-screen flex justify-center             for-shape(and blob):-> relative ForRocket: overflow-hidden `}
+      } md:!opacity-100 transition duration-200 ease-in   bg-mainDarkBlue h-[102vh] xxs:h-screen  flex justify-center             for-shape(and blob):-> relative ForRocket: overflow-hidden `}
     >
       {/* SHAPE DIVIDER */}
       {/* <div className={`${styles.customShapeDividerTop}`}>
