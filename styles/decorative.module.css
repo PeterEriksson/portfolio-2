@@ -1,0 +1,8 @@
+@media (min-width: 640px) {
+  .glowingImage {
+    position: relative;
+    display: block;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 40px 10px rgba(40, 70, 95, 0.8);
+  }
+}

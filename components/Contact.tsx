@@ -166,7 +166,7 @@ export default function Contact({ pageInfo, socials }: Props) {
       <footer className="absolute bottom-0.5 text-center text-xs w-4/5 xs:text-sm text-gray-500 py-6">
         © 2025 Peter Eriksson.{" "}
         <span className="inline-block">
-          Next.js · Typescript · Sanity · Framer Motion
+          Next · Typescript · Sanity · Framer Motion
         </span>
       </footer>
     </div>

@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import { urlFor } from "../sanity";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import useCopyToClipboard from "../hooks/useCopyToClipboard";
+import styles from "../styles/decorative.module.css";
 
 type Props = {
   socials?: Social[];
@@ -29,12 +30,12 @@ export default function Hero({ socials, pageInfo }: Props) {
     <>
       <header
         id="header"
-        className={`for-blurry-blob: relative  ${
+        className={`   ${
           menuOpen ? "opacity-50" : "opacity-100"
-        }   md:!opacity-100 transition duration-200 ease-in     h-[102vh] xxs:h-[98.5vh]       flex items-center justify-center bg-mainDarkBlue       blob-no-interfere: !overflow-hidden `}
+        }   md:!opacity-100 transition duration-200 ease-in     h-[102vh] xxs:h-[98.5vh]       flex items-center justify-center bg-mainDarkBlue         `}
       >
-        <div className=" xs:w-10/12 w-[88%] flex flex-col sm:flex-row-reverse //md:flex-row-reverse items-center justify-between ">
-          <div className="md:w-2/5 sm:w-1/2 w-full    above-blob: z-30">
+        <div className=" xs:w-10/12 w-[88%] flex flex-col sm:flex-row-reverse  items-center justify-between ">
+          <div className="md:w-2/5 sm:w-1/2 w-full  ">
             <motion.img
               initial={{
                 opacity: 0,
@@ -46,7 +47,7 @@ export default function Hero({ socials, pageInfo }: Props) {
                 opacity: 1,
               }}
               viewport={{ once: true }}
-              className={`xs:rounded-xl rounded-md     `}
+              className={`xs:rounded-xl rounded-md  ${styles.glowingImage}   `}
               //src="https://user-images.githubusercontent.com/17027312/134349999-06919dce-11f2-42b9-9c0c-2b27d8dcce51.jpeg"
               src={urlFor(pageInfo?.heroImage).url() || undefined}
               alt=""
@@ -157,7 +158,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               className="inline xxs:hidden "
             >
               <button
-                className={`  ${
+                className={` ${
                   buttonIsPressed && "!bg-indigo-700/90 "
                 } mt-3.5 mb-3 group relative hover:bg-indigo-600 bg-indigo-700 transition duration-200 ease-in py-3 px-10 rounded-xl focus:outline-none`}
                 onMouseDown={() => setButtonIsPressed(true)}
@@ -179,7 +180,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               className="hidden xxs:inline "
             >
               <button
-                className={`  ${
+                className={`z-20  ${
                   buttonIsPressed && "!bg-indigo-700/90 "
                 } mt-3.5 mb-3 group relative hover:bg-indigo-600 bg-indigo-700 transition duration-200 ease-in py-3 px-10 rounded-xl focus:outline-none`}
                 onMouseDown={() => setButtonIsPressed(true)}
