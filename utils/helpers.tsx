@@ -1,5 +1,6 @@
-import { RefObject, useEffect, useState } from "react";
+import React, { RefObject, useEffect, useState } from "react";
 import { useFullScreenStore, useMenuStore } from "../store/store";
+import decorativeStyles from "../styles/decorative.module.css";
 
 export const handleClickOutsideMenu = (
   ref: RefObject<HTMLElement>,
@@ -105,4 +106,39 @@ export default function useNavbarVisible() {
   return {
     visible,
   };
+}
+
+//this function highlights a specific word/string within a block of text
+//by wrapping the first occurrence
+//in a <span> with a provided click handler and optional styling.
+//Used in `About.tsx` to attach a confetti-triggering `onClick` event
+//to the phrase "stand out" inside `pageInfo.backgroundInformation`.
+export function renderAboutText(
+  text: string,
+  target: string,
+  onClick: () => void,
+  hasClicked: boolean
+): React.ReactNode {
+  if (!text || !target) return text;
+
+  const index = text.toLowerCase().indexOf(target.toLowerCase());
+
+  if (index === -1) return text;
+
+  const before = text.slice(0, index);
+  const matched = text.slice(index, index + target.length);
+  const after = text.slice(index + target.length);
+
+  return (
+    <>
+      {before}
+      <span
+        onClick={onClick}
+        className={`${!hasClicked && decorativeStyles.stringHighlighted}  `}
+      >
+        {matched}
+      </span>
+      {after}
+    </>
+  );
 }

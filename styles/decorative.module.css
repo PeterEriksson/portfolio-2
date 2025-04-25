@@ -6,3 +6,22 @@
     box-shadow: 0 0 40px 10px rgba(40, 70, 95, 0.8);
   }
 }
+
+/* ----------------------------------------------- */
+
+.stringHighlighted {
+  animation: pulseEnhanced 1.5s ease-in-out infinite;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 8px rgba(255, 77, 79, 0.6);
+}
+
+@keyframes pulseEnhanced {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

@@ -70,7 +70,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           <div className={`mb-2 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
             <h1 className="sm:text-5xl text-3xl text-white font-bold //text-shadow-glow">
               {" "}
-              Ping me!&nbsp;{" "}
+              Contact Me&nbsp;{" "}
             </h1>
 
             <InView triggerOnce>
@@ -115,13 +115,7 @@ export default function Contact({ pageInfo, socials }: Props) {
             </div>
 
             {/* SOCIALS */}
-            <div
-              //div for fixing alignment
-              className="-ml-1.5 !mt-1.5 xs:!mt-0.5"
-            >
-              {/* <h3 className="ml-1.5  text-white/50 font-bold -mb-1 mt-2.5 tracking-widest uppercase text-sm">
-                Socials
-              </h3> */}
+            <div className="!my-3.5 space-x-3">
               {socials?.map((social, i) => (
                 <SocialIcon
                   key={i}
@@ -129,7 +123,7 @@ export default function Contact({ pageInfo, socials }: Props) {
                   url={social.url}
                   bgColor="transparent"
                   fgColor="white"
-                  className="hover:opacity-60 opacity-80 !h-10 !w-10   "
+                  className="hover:opacity-50 opacity-[0.6] !h-9 !w-9  border border-white/25 rounded-md"
                 />
               ))}
             </div>
@@ -150,6 +144,7 @@ export default function Contact({ pageInfo, socials }: Props) {
             opacity: 0,
           }}
           transition={{
+            delay: 0.8,
             duration: 1.2,
           }}
           whileInView={{

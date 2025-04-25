@@ -3,6 +3,8 @@ import { PageInfo } from "../typings";
 import { motion, useTransform, useScroll } from "framer-motion";
 import { urlFor } from "../sanity";
 import { useFullScreenStore, useMenuStore } from "../store/store";
+import JSConfetti from "js-confetti";
+import { renderAboutText } from "../utils/helpers";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -10,6 +12,8 @@ type Props = {
 };
 
 export default function About({ backgroundInformation, pageInfo }: Props) {
+  //prevent multiple confetti triggers
+  const [hasClicked, setHasClicked] = React.useState(false);
   const { menuOpen } = useMenuStore();
   //'About' interrupts slightly on mobile, show-me-animate in Work
   const { isFullScreen } = useFullScreenStore();
@@ -29,6 +33,16 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
   // Animate opacity based on scroll progress. Starts at 0.2 opacity at 10% scroll, increases to 0.9 at 40%, and reaches full opacity (1) at 70% scroll progress.
   const opacity = useTransform(scrollYProgress, [0.1, 0.4, 0.7], [0.2, 0.9, 1]);
 
+  const jsConfetti = new JSConfetti();
+  const handleClick = () => {
+    if (hasClicked) return; // prevent multiple triggers
+    jsConfetti.addConfetti({
+      emojis: ["🤩", "🎉", "⭐"],
+      emojiSize: 30,
+      confettiNumber: 50,
+    });
+    setHasClicked(true);
+  };
   return (
     <div
       /* introducing scrollRef got rid of weird bug (not working placing About below Projects. Now works.) */
@@ -42,6 +56,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
         {/* LEFT SIDE (TEXT) */}
         <div className="    space-y-1 pl-0   text-center xs:text-start ">
           <motion.h1
+            onClick={handleClick}
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0, duration: 0.5 }}
@@ -73,7 +88,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
             background
           </motion.h4>
 
-          <motion.p
+          {/* <motion.p
             initial={{ y: 0, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.7 }}
@@ -81,6 +96,22 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
             className="text-black sm:!mt-1 text-mobile-base xs:text-base sm:text-lg lg:text-xl sm:w-2/3 xs:w-3/4 w-full"
           >
             {pageInfo?.backgroundInformation}
+          </motion.p> */}
+          {/* testing confetti click (on part of the info-string) */}
+          <motion.p
+            initial={{ y: 0, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.7 }}
+            viewport={{ once: true }}
+            className="text-black sm:!mt-1 text-mobile-base xs:text-base sm:text-lg lg:text-xl sm:w-2/3 xs:w-3/4 w-full"
+          >
+            {pageInfo?.backgroundInformation &&
+              renderAboutText(
+                pageInfo.backgroundInformation,
+                "stand out",
+                handleClick,
+                hasClicked
+              )}
           </motion.p>
         </div>
 

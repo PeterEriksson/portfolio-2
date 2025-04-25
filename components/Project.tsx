@@ -120,7 +120,7 @@ export default function Project({
         </div>
 
         <div className="mr-3 sm:mr-4 lg:mr-5">
-          <h1 className="uppercase tracking-widest text-xs xs:text-base md:text-lg font-bold opacity-25 mb-1  ">
+          <h1 className="uppercase text-center tracking-widest text-xs xs:text-base md:text-xl lg:text-2xl font-extrabold opacity-20 mb-1  ">
             tech stack
           </h1>
           <div
