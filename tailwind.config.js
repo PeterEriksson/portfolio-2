@@ -13,6 +13,7 @@ module.exports = {
         spotifyGreen: "#1DB954",
         spotifyBlack: "#191414",
         twitterBlue: "#1D9BF0",
+        react: "#61DAFB",
       },
       screens: {
         xxxs: "377px",

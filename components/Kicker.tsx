@@ -1,15 +1,29 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Kicker() {
   return (
-    <p
+    <motion.p
+      initial={{
+        opacity: 0,
+        y: 10,
+      }}
+      transition={{
+        duration: 0.7,
+        delay: 1.2,
+      }}
+      whileInView={{
+        opacity: 0.7,
+        y: 0,
+      }}
+      viewport={{ once: true }}
       className="hidden sm:inline whitespace-nowrap absolute -top-12 text-kicker
-                 font-bold text-[#61DAFB]/90 tracking-wide"
+                 font-bold text-react/90 tracking-wide"
     >
       React
       <span className="text-white/40">
         ing to Your UI Needs with
-        <div className="inline-flex items-center space-x-2 opacity-70 ml-2 alignHorizontal: transform translate-y-1">
+        <div className="inline-flex items-center space-x-2 ml-2 alignHorizontal: transform translate-y-1">
           <div className="relative group">
             <Image
               src="/react.png"
@@ -66,6 +80,6 @@ export default function Kicker() {
           </div>
         </div>
       </span>
-    </p>
+    </motion.p>
   );
 }

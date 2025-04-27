@@ -99,10 +99,10 @@ export default function Hero({ socials, pageInfo }: Props) {
               viewport={{ once: true }}
               className="text-3xl font-bold md:text-5xl"
             >
-              Hi!{" "}
+              Hi{" "}
               <span className="inline-block animate-wave opacity-70">👋</span>
               <br />
-              It's me Peter
+              It's me <span className="text-react">Peter</span>
             </motion.h1>
 
             <motion.h2
@@ -123,7 +123,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               I am
               <Typewriter
                 words={[
-                  " <FrontEndDev ⚛️ />",
+                  " <FrontEndDev 💻 />",
                   " <ResponsiveMaster 📱 />",
                   " <CreativeCoder ✨ />",
                 ]}
