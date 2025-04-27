@@ -85,7 +85,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               className="hidden sm:inline -top-10 absolute text-kicker
              font-bold text-white/70 tracking-wide"
             >
-              {/* ⚛️ */} React
+              React
               <span className="text-white/40">ing to Your UI Needs</span>
             </p>
             <motion.h1
