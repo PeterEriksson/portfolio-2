@@ -78,7 +78,16 @@ export default function Hero({ socials, pageInfo }: Props) {
               ))}
             </motion.div>
           </div>
-          <div className="text-white text-center sm:text-left   pt-4 xs:pt-0  ">
+          {/* change div to motion.div and remove motion.h... */}
+          <div className="text-white text-center sm:text-left   pt-4 xs:pt-0  relative">
+            {/* KICKER */}
+            <p
+              className="hidden sm:inline -top-10 absolute text-kicker
+             font-bold text-white/70 tracking-wide"
+            >
+              {/* ⚛️ */} React
+              <span className="text-white/40">ing to Your UI Needs</span>
+            </p>
             <motion.h1
               initial={{
                 opacity: 0,
@@ -117,9 +126,9 @@ export default function Hero({ socials, pageInfo }: Props) {
               I am
               <Typewriter
                 words={[
-                  " <FrontEndDev ‍💻 />",
-                  " <ReactCoder ⚛️ />",
-                  " Peter 😎",
+                  " <FrontEndDev ⚛️ />",
+                  " <ResponsiveMaster 📱 />",
+                  " <CreativeCoder ✨ />",
                 ]}
                 //Control how many times to run. 0 | false to run infinitely
                 loop={false}
