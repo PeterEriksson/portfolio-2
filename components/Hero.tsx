@@ -14,6 +14,7 @@ import { urlFor } from "../sanity";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import useCopyToClipboard from "../hooks/useCopyToClipboard";
 import styles from "../styles/decorative.module.css";
+import Kicker from "./Kicker";
 
 type Props = {
   socials?: Social[];
@@ -79,15 +80,10 @@ export default function Hero({ socials, pageInfo }: Props) {
             </motion.div>
           </div>
           {/* change div to motion.div and remove motion.h... */}
-          <div className="text-white text-center sm:text-left   pt-4 xs:pt-0  relative">
-            {/* KICKER */}
-            <p
-              className="hidden sm:inline -top-10 absolute text-kicker
-             font-bold text-white/70 tracking-wide"
-            >
-              React
-              <span className="text-white/40">ing to Your UI Needs</span>
-            </p>
+          <div className="text-white text-center sm:text-left   pt-4 xs:pt-0   forKicker: relative">
+            {/* KICKER  */}
+            <Kicker />
+
             <motion.h1
               initial={{
                 opacity: 0,
@@ -103,9 +99,10 @@ export default function Hero({ socials, pageInfo }: Props) {
               viewport={{ once: true }}
               className="text-3xl font-bold md:text-5xl"
             >
-              Hi!
+              Hi!{" "}
+              <span className="inline-block animate-wave opacity-70">👋</span>
               <br />
-              It's me Peter.
+              It's me Peter
             </motion.h1>
 
             <motion.h2

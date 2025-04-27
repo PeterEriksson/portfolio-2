@@ -60,6 +60,7 @@ module.exports = {
         "pulse-sm": "pulse-sm 1.25s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         scaleInOut: "scaleInOut 0.65s ease-in-out forwards",
         "show-me-pulse": "show-me-pulse 4.3s ease-in-out infinite",
+        wave: "wave 10s ease-in-out infinite",
       },
       keyframes: {
         "pulse-lg": {
@@ -78,6 +79,13 @@ module.exports = {
         "show-me-pulse": {
           "0%,40%, 60%, 100%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.042)" },
+        },
+        wave: {
+          "0%, 5%, 100%": { transform: "rotate(0deg)" },
+          "1%": { transform: "rotate(6deg)" },
+          "2%": { transform: "rotate(-4deg)" },
+          "3%": { transform: "rotate(6deg)" },
+          "4%": { transform: "rotate(-2deg)" },
         },
       },
     },

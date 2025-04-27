@@ -98,7 +98,7 @@ export default function Contact({ pageInfo, socials }: Props) {
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
                 <button className=" text-white/70 ">
                   {copied ? (
-                    <span>Copied!</span>
+                    <span>copied ✓</span>
                   ) : (
                     <DocumentDuplicateIcon className="h-4 w-4 hover:opacity-75" />
                   )}
