@@ -102,7 +102,13 @@ export default function Hero({ socials, pageInfo }: Props) {
               Hi{" "}
               <span className="inline-block animate-wave opacity-70">👋</span>
               <br />
-              It's me <span className="text-react">Peter</span>
+              It's me{" "}
+              <span
+                //text-gradient
+                className="bg-gradient-to-r from-white to-react bg-clip-text text-transparent"
+              >
+                Peter
+              </span>
             </motion.h1>
 
             <motion.h2
@@ -123,9 +129,9 @@ export default function Hero({ socials, pageInfo }: Props) {
               I am
               <Typewriter
                 words={[
-                  " <FrontEndDev 💻 />",
-                  " <ResponsiveMaster 📱 />",
-                  " <CreativeCoder ✨ />",
+                  " <FrontEndDev />",
+                  " <ReactCoder />",
+                  " <CreativeCrafter ✨ />",
                 ]}
                 //Control how many times to run. 0 | false to run infinitely
                 loop={false}

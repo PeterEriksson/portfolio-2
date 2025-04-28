@@ -13,7 +13,6 @@ import { setBodyScroll } from "../utils/helpers";
 import { stagger, useAnimate, motion } from "framer-motion";
 import workStyles from "../styles/work.module.css";
 import { urlFor } from "../sanity";
-import { XMarkIcon } from "@heroicons/react/24/solid";
 
 type Props = {
   projects: ProjectType[];
@@ -254,10 +253,17 @@ export default function Work({ projects, slides, options }: Props) {
           ${
             //scale down effect isn't interrupted by hover
             isFullScreen ? "" : "pointer-events-none"
-          }   border border-white xxs:border-hidden    flex items-center  bg-black rounded-2xl text-sm px-3 py-2 text-white font-semibold `}
+          }   border border-white xxs:border-hidden    flex items-center  bg-black rounded-2xl text-sm px-3.5 py-2 text-white font-semibold// `}
         >
           Close
-          <XMarkIcon className="w-[18px] h-[18px] text-white ml-1  " />
+          {/* x icon using css: (bolder) */}
+          <div className="relative w-[18px] h-[18px] ml-1">
+            <span
+              //adjuste h-[..] on both span for boldness
+              className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 rotate-45 rounded-full"
+            ></span>
+            <span className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 -rotate-45 rounded-full"></span>
+          </div>
         </button>
       </div>
 
