@@ -22,7 +22,7 @@ module.exports = {
         smaller: "549px",
       },
       fontSize: {
-        "xs-plus": ["0.95rem", { lineHeight: "1.5rem" }], // (approx between sm and base)
+        "xs-plus": ["0.9rem", { lineHeight: "1.5rem" }], // (approx between sm and base)
         kicker: "0.7rem",
         "mobile-small": [
           "0.875rem",

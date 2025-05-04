@@ -120,11 +120,11 @@ export default function Project({
         </div>
 
         <div className="mr-3 sm:mr-4 lg:mr-5">
-          <h1 className="uppercase text-center tracking-widest text-xs xs:text-base md:text-xl lg:text-2xl font-extrabold opacity-20 mb-1  ">
+          <h1 className=" uppercase text-center sm:text-start tracking-widest text-xs sm:text-sm sm:mb-2 mb-1 font-bold opacity-25   ">
             tech stack
           </h1>
           <div
-            className={`grid grid-cols-2 lg:grid-cols-3 gap-1.5 xs:gap-2.5 md:gap-3.5 opacity-70 `}
+            className={`grid grid-cols-2 lg:grid-cols-3 gap-1 xs:gap-2 md:gap-3.5 opacity-70 `}
           >
             {project?.technologies?.map((tech, i) => (
               <div
@@ -140,7 +140,7 @@ export default function Project({
                 {/* skill info - showing on hover */}
                 <div className="projectTechItemSize absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white  rounded-full">
                   <div className="flex items-center justify-center h-full relative      ">
-                    <p className="text-xs xs:text-base tracking-wide   ">
+                    <p className="text-xs-plus tracking-wide  ">
                       {tech?.title}
                     </p>
                   </div>

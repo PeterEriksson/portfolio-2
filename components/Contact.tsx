@@ -123,7 +123,7 @@ export default function Contact({ pageInfo, socials }: Props) {
                   url={social.url}
                   bgColor="transparent"
                   fgColor="white"
-                  className="hover:opacity-50 opacity-[0.6] !h-9 !w-9  border border-white/25 rounded-md"
+                  className="hover:opacity-50 opacity-[0.6] !h-9 !w-9  border border-gray-200/20 rounded-md"
                 />
               ))}
             </div>
