@@ -48,7 +48,7 @@ export default function Navbar() {
         isFullScreen && " !-translate-y-full pointer-events-none "
       } ${
         visible ? "" : "-translate-y-14 duration-300"
-      }   transition transform duration-200 ease-in !fixed !top-0 w-screen z-[60] bg-mainDarkBlue flex flex-col`}
+      }   transition transform duration-200 ease-in !fixed !top-0 w-screen z-[60] bg-mainDarkBlue/95 flex flex-col`}
     >
       <section className="flex items-center  text-white justify-between mx-auto py-3  xs:w-10/12 w-[88%]       !z-30 ">
         {/* LEFT div  (PE-logo) */}
@@ -72,7 +72,7 @@ export default function Navbar() {
             >
               PE
               <span
-                className={` w-2 h-2 bg-red-500 inline-block rounded-full ml-2 mb-1.5`}
+                className={` w-2 h-2 bg-react bg-red-500// inline-block rounded-full ml-2 mb-1.5`}
               ></span>
             </h1>
           </ScrollLink>
@@ -132,7 +132,7 @@ export default function Navbar() {
             exit="exit"
             className={`md:hidden ${
               !menuOpen && "pointer-events-none"
-            }  flex flex-col items-center justify-center bg-mainDarkBlue text-white space-y-12 `}
+            }  flex flex-col items-center justify-center bg-transparent bg-mainDarkBlue/95//  text-white space-y-12 `}
           >
             {navData.map((section, i) => (
               <motion.h2

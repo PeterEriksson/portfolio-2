@@ -120,8 +120,8 @@ export default function Project({
         </div>
 
         <div className="mr-3 sm:mr-4 lg:mr-5">
-          <h1 className=" uppercase text-center sm:text-start tracking-widest text-xs sm:text-sm sm:mb-2 mb-1 font-bold opacity-25   ">
-            tech stack
+          <h1 className=" text-center sm:text-start tracking-wider text-xs sm:text-base sm:mb-2 mb-1 font-bold opacity-25   ">
+            Tech Stack
           </h1>
           <div
             className={`grid grid-cols-2 lg:grid-cols-3 gap-1 xs:gap-2 md:gap-3.5 opacity-70 `}
@@ -239,7 +239,7 @@ export default function Project({
         </div>
       </motion.div>
       <div
-        //LINKS on mobile + more (mobile screen, up to sm)
+        //LINKS (github + livebuild) on mobile + more (mobile screen, up to sm)
         //sm and above screens -> line-clamp-3...
         className={`flex xxs:hidden// sm:hidden      project-info${index} relative items-center justify-end  space-x-1.5 -ml-2 mt-[1px]  `}
       >
@@ -264,9 +264,9 @@ export default function Project({
         <a
           href={project?.linkToBuild}
           target="_blank"
-          className="hover:opacity-70 !z-40  cursor-pointer transition duration-150 ease-in bg-gray-200 rounded-full p-1 flex items-center justify-center !h-10 !w-10  "
+          className="hover:opacity-70 h-10 w-10 p-1 z-40//  cursor-pointer transition duration-150 ease-in bg-gray-200 rounded-full flex items-center justify-center  "
         >
-          <ArrowTopRightOnSquareIcon className="text-[#555555]/80" />
+          <ArrowTopRightOnSquareIcon className="text-[#555555]/75" />
         </a>
       </div>
     </div>

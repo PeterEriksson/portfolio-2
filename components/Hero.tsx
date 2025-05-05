@@ -184,7 +184,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               </ScrollLink>
               {/* SECONDARY CTA mobile (mail) */}
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
-                <button className="mt-2 flex items-center justify-center sm:text-base text-sm opacity-[0.55] cursor-pointer border rounded-xl border-white py-2 w-[220px]   ">
+                <button className="mt-3 flex items-center justify-center sm:text-base text-sm opacity-[0.55] cursor-pointer border rounded-xl border-white py-3 w-[220px]   ">
                   <MailIcon className="h-[18px] w-[18px] text-white" />
                   {copied ? (
                     <p className="text-sm ml-1 font-semibold">copied ✓</p>
