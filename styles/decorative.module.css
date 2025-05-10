@@ -13,7 +13,7 @@
   animation: pulseEnhanced 1.5s ease-in-out infinite;
   cursor: pointer;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 8px rgba(255, 77, 79, 0.6);
+  text-shadow: 0 0 8px rgba(97, 219, 251, 0.7);
 }
 
 @keyframes pulseEnhanced {

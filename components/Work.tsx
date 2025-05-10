@@ -85,7 +85,11 @@ export default function Work({ projects, slides, options }: Props) {
     if (!isFullScreen) {
       animate([
         [".header", { opacity: 1 }, { at: 0.2 }],
-        [".demo", { opacity: 0, scale: 0.3 }, { duration: 0.44, at: 0 }],
+        [
+          ".demo",
+          { opacity: 0, scale: /* 0.3 */ 0 },
+          { duration: /* 0.44 */ 0.55, at: 0 },
+        ],
         [
           `.project-info${selectedIndex}`,
           { opacity: 1, x: "-0px" },
@@ -93,7 +97,11 @@ export default function Work({ projects, slides, options }: Props) {
         ],
         [".show-btn", { opacity: 1, scale: 1 }, { at: ">" }],
         [".back-btn", { opacity: 0, scale: 0 }, { at: 0 }],
-        [".upper-div-card", { opacity: 1 }, { at: 0.25, duration: 0.9 }],
+        [
+          ".upper-div-card",
+          { opacity: 1 },
+          { at: /* 0.25 */ 0, duration: /* 0.9 */ 0.85 },
+        ],
       ]);
     } else {
       animate([

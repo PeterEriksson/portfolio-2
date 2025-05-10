@@ -54,7 +54,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
     >
       <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row     space-y-4 xs:space-y-0 ">
         {/* LEFT SIDE (TEXT) */}
-        <div className="    space-y-1 pl-0   text-center xs:text-start ">
+        <div className=" space-y-1 pl-0   text-center xs:text-start ">
           <motion.h1
             onClick={handleClick}
             initial={{ y: 50, opacity: 0 }}
@@ -81,23 +81,14 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.7 }}
               viewport={{ once: true }}
-              className="xs:underline  xs:decoration-red-500"
+              //className="xs:underline  xs:decoration-mainDarkBlue"
+              className="relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-mainDarkBlue/70 after:to-react after:opacity-70"
             >
               little
             </motion.span>{" "}
             background
           </motion.h4>
 
-          {/* <motion.p
-            initial={{ y: 0, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.7 }}
-            viewport={{ once: true }}
-            className="text-black sm:!mt-1 text-mobile-base xs:text-base sm:text-lg lg:text-xl sm:w-2/3 xs:w-3/4 w-full"
-          >
-            {pageInfo?.backgroundInformation}
-          </motion.p> */}
-          {/* testing confetti click (on part of the info-string) */}
           <motion.p
             initial={{ y: 0, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}

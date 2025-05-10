@@ -4,7 +4,7 @@ function LoadingScreen() {
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-mainDarkBlue">
       <h1
-        className={`text-8xl xs:text-9xl font-bold tracking-[2px] mb-4 flex items-center text-white`}
+        className={`text-8xl xs:text-9xl font-bold tracking-[2px] mb-6 flex items-center text-white`}
       >
         PE
         <span

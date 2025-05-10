@@ -17,7 +17,7 @@ export default function Navbar() {
   };
 
   //https://github.com/devamitjha/framer_motion_animated_nav
-  const item = {
+  const menuItem = {
     exit: {
       opacity: 0,
       height: 0,
@@ -66,13 +66,13 @@ export default function Navbar() {
             }  transform transition duration-300 ease-in-out  cursor-pointer`}
           >
             <h1
-              className={`text-3xl font-bold  opacity-[0.7] hover:opacity-100 ${
+              className={`text-3xl font-bold  opacity-[0.5] hover:opacity-100 ${
                 linkActive == "header" && "!opacity-100"
               }  tracking-[2px]    transform transition duration-300 ease-in-out`}
             >
               PE
               <span
-                className={` w-2 h-2 bg-react bg-red-500// inline-block rounded-full ml-2 mb-1.5`}
+                className={` w-2 h-2 bg-react inline-block rounded-full ml-2 mb-1.5`}
               ></span>
             </h1>
           </ScrollLink>
@@ -91,7 +91,7 @@ export default function Navbar() {
               onSetActive={handleSetActive}
               className={` ${
                 linkActive !== section && styles.hoverAnimation
-              }  border-b border-transparent relative opacity-[0.7] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
+              }  border-b border-transparent relative opacity-[0.5] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
             >
               <span
                 className={`text-base text-lg// transition duration-300 ease-in-out`}
@@ -125,7 +125,7 @@ export default function Navbar() {
       <AnimatePresence initial={false}>
         {menuOpen && (
           <motion.nav
-            variants={item}
+            variants={menuItem}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "60vh", opacity: 1 }}
             transition={{ duration: 0.3 }}
@@ -154,7 +154,7 @@ export default function Navbar() {
                   onSetActive={handleSetActive}
                   className={` ${
                     linkActive !== section && styles.hoverAnimation
-                  } border-b-[1px] border-transparent opacity-80 hover:opacity-100  transition duration-200 ease-in`}
+                  } border-b-[1px] border-transparent opacity-30 hover:opacity-100  transition duration-200 ease-in`}
                 >
                   {section}
                 </ScrollLink>

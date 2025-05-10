@@ -70,18 +70,35 @@ export default function Project({
     }
   };
 
+  const techContainerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 0.7,
+      transition: {
+        delayChildren: 0.01, // Delay before first child animation starts
+        staggerChildren: 0.15, // Stagger between each child
+      },
+    },
+  };
+
+  const techItemVariants = {
+    hidden: { opacity: 0 /* y: 10 */ },
+    show: {
+      opacity: 1,
+      /* y: 0, */
+      transition: {
+        duration: 0.4,
+        ease: "easeIn",
+      },
+    },
+  };
+
   return (
     <div
       ref={ref}
       className={` ${styles.embla__slide}  px-3.5 //xs:px-0  min-w-0   relative   `}
     >
-      <motion.div
-        initial={{ opacity: 0, y: -50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.55 }}
-        className="relative   flex justify-between items-center  border border-gray-200/95 xxs:border-gray-200/90 rounded-sm     upper-div-card"
-      >
+      <div className="relative  flex justify-between items-center  border border-gray-200 xxs:border-gray-200/90 rounded-sm     upper-div-card">
         {/* NEXT+PREV BTNs */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -110,44 +127,68 @@ export default function Project({
 
         <div
           className={`relative bg-gradient-to-br ${getGradientClass(index)}  
-    w-[57%] xxs:w-[50%] aspect-[1/1] rounded-sm overflow-visible`}
+             w-[50%] aspect-[1/1] rounded-sm overflow-visible`}
         >
-          <img
+          {/* MOBILE */}
+          <motion.img
+            //use translate-y in motion properties instead. (bug if mixing..)
+            initial={{ opacity: 0, x: "5%", y: "5%" }}
+            whileInView={{ opacity: 1, x: /* "10%" */ "12%", y: 0 }}
+            //viewport={{ once: true }}
+            transition={{ duration: 0.45 }}
             src={urlFor(project?.image).url() || undefined}
             alt="project_img"
-            className="absolute w-full xxs:aspect-auto aspect-[12/10]  xxs:top-[17%] top-[9%]   translate-x-[7%] xxs:translate-x-[22%] lg:translate-x-[25%] rounded-sm"
+            className="xxs:hidden absolute w-full rounded-sm aspect-[12/10] top-[9%] "
+          />
+          {/* DESKTOP */}
+          <motion.img
+            //use translate-x in inital(below) instead. (bug if mixing xxs:!translate-x-[22%]..)
+            initial={{ opacity: 0, x: "10%", y: "10%" }}
+            whileInView={{ opacity: 1, x: "20%", y: 0 }}
+            //viewport={{ once: true }}
+            transition={{ duration: 0.48 }}
+            src={urlFor(project?.image).url() || undefined}
+            alt="project_img"
+            className="hidden xxs:block absolute w-full rounded-sm aspect-auto top-[17%]   "
           />
         </div>
 
-        <div className="mr-3 sm:mr-4 lg:mr-5">
-          <h1 className=" text-center sm:text-start tracking-wider text-xs sm:text-base sm:mb-2 mb-1 font-bold opacity-25   ">
+        <div className="mr-5 sm:mr-4 lg:mr-5">
+          <motion.h1
+            initial={{ opacity: 0, y: 2 }}
+            whileInView={{ opacity: 0.2, y: 0 }}
+            //viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 1.15 }}
+            className="uppercase text-center lg:text-start tracking-wider text-xs sm:text-sm md:text-base xl:text-xl mb-1 font-bold  "
+          >
             Tech Stack
-          </h1>
-          <div
-            className={`grid grid-cols-2 lg:grid-cols-3 gap-1 xs:gap-2 md:gap-3.5 opacity-70 `}
+          </motion.h1>
+          <motion.div
+            className="grid grid-cols-2 lg:grid-cols-3 gap-1 xs:gap-2 md:gap-3.5 "
+            variants={techContainerVariants}
+            initial="hidden"
+            whileInView="show"
+            //viewport={{ once: true }}
           >
             {project?.technologies?.map((tech, i) => (
-              <div
+              <motion.div
+                variants={techItemVariants}
                 key={i}
-                className={`group relative flex cursor-pointer  rounded-full `}
+                className="group relative flex cursor-pointer rounded-full"
               >
                 <img
-                  className="projectTechItemSize object-cover rounded-full       filter group-hover:grayscale transition duration-300 ease-in-out"
+                  className="projectTechItemSize object-cover rounded-full filter group-hover:grayscale transition duration-300 ease-in-out"
                   src={urlFor(tech?.image).url() || undefined}
                   alt=""
                 />
-
-                {/* skill info - showing on hover */}
-                <div className="projectTechItemSize absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white  rounded-full">
-                  <div className="flex items-center justify-center h-full relative      ">
-                    <p className="text-xs-plus tracking-wide  ">
-                      {tech?.title}
-                    </p>
+                <div className="projectTechItemSize absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white rounded-full">
+                  <div className="flex items-center justify-center h-full relative">
+                    <p className="text-xs-plus tracking-wide">{tech?.title}</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         <div
@@ -174,13 +215,13 @@ export default function Project({
             />
           </button>
         </div>
-      </motion.div>
+      </div>
 
       <motion.div
         initial={{ opacity: 0 /* y: 50 , weird bug */ }}
         whileInView={{ opacity: 1 /*  y: 0 */ }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.55 }}
+        //viewport={{ once: true }}
+        transition={{ duration: 0.9 /* delay: index == 0 ? 0.7 : 0  */ }}
         className={`flex  mt-1    project-info${index}         `}
       >
         <h2
@@ -226,22 +267,22 @@ export default function Project({
             target="_blank"
             url={project?.linkToGithub}
             bgColor="transparent"
-            fgColor="#555555CC"
-            className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-11 sm:!h-11 transition duration-150 ease-in bg-gray-200 rounded-full p-1"
+            fgColor="#555555B3"
+            className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-11 sm:!h-11 transition duration-150 ease-in bg-gray-200/95 rounded-full p-1"
           />
           <a
             href={project?.linkToBuild}
             target="_blank"
-            className="hover:opacity-70 h-11 w-11 p-2 cursor-pointer transition duration-150 ease-in bg-gray-200 z-40 rounded-full flex items-center justify-center   "
+            className="hover:opacity-70 h-11 w-11 p-2 cursor-pointer transition duration-150 ease-in   bg-gray-200/95 rounded-full flex items-center justify-center   "
           >
-            <ArrowTopRightOnSquareIcon className="text-[#555555]/80" />
+            <ArrowTopRightOnSquareIcon className="text-[#555555]/70 w-9 h-9" />
           </a>
         </div>
       </motion.div>
       <div
         //LINKS (github + livebuild) on mobile + more (mobile screen, up to sm)
         //sm and above screens -> line-clamp-3...
-        className={`flex xxs:hidden// sm:hidden      project-info${index} relative items-center justify-end  space-x-1.5 -ml-2 mt-[1px]  `}
+        className={`flex sm:hidden      project-info${index} relative items-center justify-end  space-x-1.5 -ml-2 mt-[1px]  `}
       >
         <p
           //temp solution, 'more' on mobile
@@ -264,9 +305,9 @@ export default function Project({
         <a
           href={project?.linkToBuild}
           target="_blank"
-          className="hover:opacity-70 h-10 w-10 p-1 z-40//  cursor-pointer transition duration-150 ease-in bg-gray-200 rounded-full flex items-center justify-center  "
+          className="hover:opacity-70 h-10 w-10 p-2 cursor-pointer transition duration-150 ease-in   bg-gray-200/95 rounded-full flex items-center justify-center   "
         >
-          <ArrowTopRightOnSquareIcon className="text-[#555555]/75" />
+          <ArrowTopRightOnSquareIcon className="text-[#555555]/70 w-9 h-9" />
         </a>
       </div>
     </div>

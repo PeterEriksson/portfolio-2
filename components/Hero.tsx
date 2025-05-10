@@ -163,7 +163,6 @@ export default function Hero({ socials, pageInfo }: Props) {
             >
               <ScrollLink
                 //MOBILE CTA
-                //remove/change offset for mobile screens. create new element..?
                 offset={-20}
                 to="Work"
                 smooth="true"
@@ -172,26 +171,30 @@ export default function Hero({ socials, pageInfo }: Props) {
                 <button
                   className={` ${
                     buttonIsPressed && "!bg-indigo-700/90 "
-                  }   group relative hover:bg-indigo-600 bg-indigo-700 transition duration-200 ease-in py-2.5 w-[220px] rounded-xl focus:outline-none`}
+                  }   group relative hover:bg-indigo-600 bg-indigo-700 transition duration-200 ease-in py-3 w-[220px] rounded-xl focus:outline-none`}
                   onMouseDown={() => setButtonIsPressed(true)}
                   onMouseUpCapture={() => setButtonIsPressed(false)}
                   onMouseLeave={() => setButtonIsPressed(false)}
                 >
-                  <p className=" text-lg uppercase tracking-wide">
-                    view projects
+                  <p className=" text-base font-semibold tracking-wide">
+                    View Projects
                   </p>
                 </button>
               </ScrollLink>
               {/* SECONDARY CTA mobile (mail) */}
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
-                <button className="mt-3 flex items-center justify-center sm:text-base text-sm opacity-[0.55] cursor-pointer border rounded-xl border-white py-3 w-[220px]   ">
-                  <MailIcon className="h-[18px] w-[18px] text-white" />
+                <button className="relative mt-3 flex items-center justify-center sm:text-base text-sm opacity-[0.55] cursor-pointer border rounded-xl border-white/80 py-2.5 w-[220px]   ">
+                  <MailIcon className="h-[23px] w-[23px]  absolute left-12 opacity-90" />
                   {copied ? (
-                    <p className="text-sm ml-1 font-semibold">copied ✓</p>
+                    <p className="ml-1 text-base opacity-80 transform -translate-y-[2px]">
+                      copied ✓
+                    </p>
                   ) : (
-                    <div className="flex items-center ml-1">
-                      <p className="text-sm font-semibold ml-1 ">copy mail</p>
-                      <DocumentDuplicateIcon className="h-3 w-3 opacity-80 ml-0.5" />
+                    <div className="flex items-center ml-[24px] space-x-0.5 transform -translate-y-[2px]">
+                      <p className="text-base opacity-80 tracking-wide ">
+                        copy mail
+                      </p>
+                      <DocumentDuplicateIcon className="h-3 w-3 opacity-80" />
                     </div>
                   )}
                 </button>
@@ -203,7 +206,6 @@ export default function Hero({ socials, pageInfo }: Props) {
             >
               <ScrollLink
                 //integrate <button> into ScrollLink
-                //remove/change offset for mobile screens. create new element..?
                 offset={90}
                 to="Work"
                 smooth="true"
@@ -228,7 +230,7 @@ export default function Hero({ socials, pageInfo }: Props) {
 
               {/* SECONDARY CTA (mail) */}
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
-                <div className="relative flex items-center sm:text-base text-sm opacity-[0.55] group cursor-pointer border rounded-xl border-white px-2.5  ">
+                <div className="relative flex items-center sm:text-base text-sm opacity-[0.55] group cursor-pointer border rounded-xl border-white/70 px-2.5  ">
                   <MailIcon className="h-[18px] w-[18px] text-white" />
                   {copied ? (
                     <p className="text-xs ml-1 font-semibold">copied ✓</p>

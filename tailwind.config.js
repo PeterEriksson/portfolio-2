@@ -61,7 +61,7 @@ module.exports = {
         "pulse-sm": "pulse-sm 1.25s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         scaleInOut: "scaleInOut 0.65s ease-in-out forwards",
         "show-me-pulse": "show-me-pulse 4.3s ease-in-out infinite",
-        wave: "wave 10s ease-in-out infinite",
+        wave: "wave 8s ease-in-out infinite",
       },
       keyframes: {
         "pulse-lg": {
