@@ -79,7 +79,7 @@ export default function Navbar() {
         </section>
 
         {/* RIGHT div */}
-        <section className="space-x-6  md:flex hidden ">
+        <section className="space-x-6  mdPlus:flex hidden ">
           {navData.map((section, i) => (
             <ScrollLink
               to={section}
@@ -93,9 +93,7 @@ export default function Navbar() {
                 linkActive !== section && styles.hoverAnimation
               }  border-b border-transparent relative opacity-[0.5] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
             >
-              <span
-                className={`text-base text-lg// transition duration-300 ease-in-out`}
-              >
+              <span className={`text-base transition duration-300 ease-in-out`}>
                 {section}
               </span>
             </ScrollLink>
@@ -104,11 +102,11 @@ export default function Navbar() {
         {/* HAMBURGER-icon. Toggle between hamburger and cross  */}
         <section
           onClick={() => toggleMenu()}
-          className={`md:!hidden  ${styles.menuBtn}   opacity-80 hover:opacity-100    z-40`}
+          className={`mdPlus:!hidden  ${styles.menuBtn}   opacity-80 hover:opacity-100    z-40`}
         >
           {/* CROSS */}
           <section
-            className={`md:hidden  ${menuOpen && styles.burgerAnimation} ${
+            className={`mdPlus:hidden  ${menuOpen && styles.burgerAnimation} ${
               styles.burger
             }`}
           ></section>
@@ -130,7 +128,7 @@ export default function Navbar() {
             animate={{ height: "60vh", opacity: 1 }}
             transition={{ duration: 0.3 }}
             exit="exit"
-            className={`md:hidden ${
+            className={`mdPlus:hidden ${
               !menuOpen && "pointer-events-none"
             }  flex flex-col items-center justify-center bg-transparent bg-mainDarkBlue/95//  text-white space-y-12 `}
           >

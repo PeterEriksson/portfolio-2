@@ -8,7 +8,6 @@ import Contact from "../components/Contact";
 import { PageInfo, Project, Skill, SkillDescription, Social } from "../typings";
 import LoadingScreen from "../components/LoadingScreen";
 import useDataFetch from "../hooks/useDataFetch";
-import ReturnToTopBtn from "../components/ReturnToTopBtn";
 
 const Home = () => {
   const { pageInfo, skills, skillDescription, projects, socials, isLoading } =
@@ -22,7 +21,7 @@ const Home = () => {
     <>
       <Head>
         <title>
-          Peter Eriksson - Frontend developer - Next.js, TS, Tailwind
+          Peter Eriksson - Frontend developer - React · Next · TS · Tailwind
         </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -32,7 +31,6 @@ const Home = () => {
       <About pageInfo={pageInfo ?? undefined} />
       <Stack skillDescription={skillDescription ?? undefined} skills={skills} />
       <Contact pageInfo={pageInfo ?? undefined} socials={socials} />
-      <ReturnToTopBtn />
     </>
   );
 };

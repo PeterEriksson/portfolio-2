@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         mainDarkBlue: "#091c29",
+        //mainDarkBlue: "#1e1e1e", experimenting
         darkerblue: "#04111d",
         spotifyGreen: "#1DB954",
         spotifyBlack: "#191414",
@@ -20,6 +21,7 @@ module.exports = {
         xxs: "420px",
         xs: "500px",
         smaller: "549px",
+        mdPlus: "880px",
       },
       fontSize: {
         "xs-plus": ["0.9rem", { lineHeight: "1.5rem" }], // (approx between sm and base)
@@ -52,10 +54,7 @@ module.exports = {
           },
         ],
       },
-      textShadow: {
-        //test in Contact
-        glow: "0 0 6px rgba(255, 255, 255, 0.4), 0 0 12px rgba(255, 255, 255, 0.2), 0 0 18px rgba(0, 176, 255, 0.1)",
-      },
+
       animation: {
         "pulse-lg": "pulse-lg 1.25s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "pulse-sm": "pulse-sm 1.25s cubic-bezier(0.4, 0, 0.6, 1) infinite",

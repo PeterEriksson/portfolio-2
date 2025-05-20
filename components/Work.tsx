@@ -85,11 +85,7 @@ export default function Work({ projects, slides, options }: Props) {
     if (!isFullScreen) {
       animate([
         [".header", { opacity: 1 }, { at: 0.2 }],
-        [
-          ".demo",
-          { opacity: 0, scale: /* 0.3 */ 0 },
-          { duration: /* 0.44 */ 0.55, at: 0 },
-        ],
+        [".demo", { opacity: 0, scale: 0 }, { duration: 0.55, at: 0 }],
         [
           `.project-info${selectedIndex}`,
           { opacity: 1, x: "-0px" },
@@ -97,11 +93,7 @@ export default function Work({ projects, slides, options }: Props) {
         ],
         [".show-btn", { opacity: 1, scale: 1 }, { at: ">" }],
         [".back-btn", { opacity: 0, scale: 0 }, { at: 0 }],
-        [
-          ".upper-div-card",
-          { opacity: 1 },
-          { at: /* 0.25 */ 0, duration: /* 0.9 */ 0.85 },
-        ],
+        [".upper-div-card", { opacity: 1 }, { at: 0, duration: 0.85 }],
       ]);
     } else {
       animate([
@@ -147,10 +139,10 @@ export default function Work({ projects, slides, options }: Props) {
     >
       <motion.div
         aria-label="PROJECTS"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.6 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.7 }}
+        transition={{ duration: 0.5 /* delay: 0.6 */ }}
         className={`header flex flex-col items-center mb-1.5   `}
       >
         <h1 className=" sm:text-5xl text-3xl font-bold  ">Projects</h1>
@@ -171,11 +163,7 @@ export default function Work({ projects, slides, options }: Props) {
           className="overflow-hidden         "
           ref={emblaRef}
         >
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.9 }}
+          <div
             aria-label="styles.embla__container"
             //add spacing between projects here:
             className="flex flex-row  z-50 xs:gap-x-14 lg:gap-x-20      "
@@ -192,21 +180,7 @@ export default function Work({ projects, slides, options }: Props) {
                 nextBtnEnabled={nextBtnEnabled}
               />
             ))}
-          </motion.div>
-
-          {/* NEXT/PREV ARROW-BUTTONS (old...prioritize symmetrical -> place in Project) */}
-          {/*  <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className={`${
-              isFullScreen && "hidden"
-            }  flex justify-between absolute z-30    xs:w-[88%] w-full       `}
-          >
-            <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-            <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-          </motion.div> */}
+          </div>
         </div>
       </div>
 
@@ -222,7 +196,7 @@ export default function Work({ projects, slides, options }: Props) {
         src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
         alt="demo desktop"
       />
-      {/* DEMO mobile test */}
+      {/* DEMO mobile */}
       <div
         className={` xxs:hidden    fixed inset-0 h-[100%] bg-gradient-to-br  ${getGradientClass(
           selectedIndex
@@ -264,7 +238,7 @@ export default function Work({ projects, slides, options }: Props) {
           }   border border-white xxs:border-hidden    flex items-center  bg-black rounded-2xl text-sm px-3.5 py-2 text-white font-semibold// `}
         >
           Close
-          {/* x icon using css: (bolder) */}
+          {/* X icon using css (bolder) */}
           <div className="relative w-[18px] h-[18px] ml-1">
             <span
               //adjuste h-[..] on both span for boldness

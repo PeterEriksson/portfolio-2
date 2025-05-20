@@ -25,7 +25,7 @@ function ReturnToTopBtn() {
           : "opacity-0 translate-y-6 pointer-events-none"
       }`}
     >
-      <ChevronUpIcon className="text-white/60 w-7 h-7 transition-transform ease-in-out duration-300 group-hover:-translate-y-2" />
+      <ChevronUpIcon className="text-white/40 w-7 h-7 transition-transform ease-in-out duration-300 group-hover:-translate-y-2" />
     </ScrollLink>
   );
 }

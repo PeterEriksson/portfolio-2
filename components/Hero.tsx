@@ -205,6 +205,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               className="hidden sm:flex xs:space-x-3 w-fit mt-4   "
             >
               <ScrollLink
+                //Desktop
                 //integrate <button> into ScrollLink
                 offset={90}
                 to="Work"
@@ -213,17 +214,17 @@ export default function Hero({ socials, pageInfo }: Props) {
               >
                 <button
                   className={`z-50 shadow-md  shadow-indigo-500/30  ${
-                    buttonIsPressed && "!bg-indigo-700/90 shadow-sm"
-                  }  group relative hover:bg-indigo-600 bg-indigo-700 transition duration-200 ease-in py-3 px-6 rounded-xl focus:outline-none`}
+                    buttonIsPressed && "shadow-sm scale-[0.97]"
+                  }  group relative  bg-gradient-to-br from-indigo-700 to-react/80   transition duration-200 ease-in py-3 px-6 rounded-xl focus:outline-none`}
                   onMouseDown={() => setButtonIsPressed(true)}
                   onMouseUpCapture={() => setButtonIsPressed(false)}
                   onMouseLeave={() => setButtonIsPressed(false)}
                 >
-                  <p className=" text-sm font-semibold  tracking-wider opacity-90">
-                    View projects
+                  <p className="text-gray-900     text-sm font-bold tracking-wide opacity-90">
+                    View Projects
                   </p>
                   <ChevronDownIcon
-                    className={`h-[17px] w-[17px] absolute -top-0.5 right-1 group-hover:opacity-90 group-hover:translate-y-4 sm:inline hidden opacity-0  !transition !duration-500 transform ease-in-out `}
+                    className={`text-black   h-[17px] w-[17px] absolute -top-0.5 right-1 group-hover:opacity-90 group-hover:translate-y-4 sm:inline hidden opacity-0  !transition !duration-500 transform ease-in-out `}
                   />
                 </button>
               </ScrollLink>

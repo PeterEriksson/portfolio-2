@@ -100,30 +100,18 @@ export default function Project({
     >
       <div className="relative  flex justify-between items-center  border border-gray-200 xxs:border-gray-200/90 rounded-sm     upper-div-card">
         {/* NEXT+PREV BTNs */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="absolute -left-[14px] top-1/2 -translate-y-1/2 pointer-events-auto z-50 "
-        >
+        <div className="absolute -left-[14px] top-1/2 -translate-y-1/2 pointer-events-auto z-50 ">
           <PrevButton
             onClick={scrollPrev ?? (() => {})}
             enabled={!!prevBtnEnabled}
           />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="absolute -right-[14px] top-1/2 -translate-y-1/2 pointer-events-auto z-50"
-        >
+        </div>
+        <div className="absolute -right-[14px] top-1/2 -translate-y-1/2 pointer-events-auto z-50">
           <NextButton
             onClick={scrollNext ?? (() => {})}
             enabled={!!nextBtnEnabled}
           />
-        </motion.div>
+        </div>
 
         <div
           className={`relative bg-gradient-to-br ${getGradientClass(index)}  
@@ -134,8 +122,8 @@ export default function Project({
             //use translate-y in motion properties instead. (bug if mixing..)
             initial={{ opacity: 0, x: "5%", y: "5%" }}
             whileInView={{ opacity: 1, x: /* "10%" */ "12%", y: 0 }}
-            //viewport={{ once: true }}
-            transition={{ duration: 0.45 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             src={urlFor(project?.image).url() || undefined}
             alt="project_img"
             className="xxs:hidden absolute w-full rounded-sm aspect-[12/10] top-[9%] "
@@ -145,36 +133,37 @@ export default function Project({
             //use translate-x in inital(below) instead. (bug if mixing xxs:!translate-x-[22%]..)
             initial={{ opacity: 0, x: "10%", y: "10%" }}
             whileInView={{ opacity: 1, x: "20%", y: 0 }}
-            //viewport={{ once: true }}
-            transition={{ duration: 0.48 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
             src={urlFor(project?.image).url() || undefined}
             alt="project_img"
             className="hidden xxs:block absolute w-full rounded-sm aspect-auto top-[17%]   "
           />
         </div>
 
-        <div className="mr-5 sm:mr-4 lg:mr-5">
+        <div className="mr-5 ">
           <motion.h1
             initial={{ opacity: 0, y: 2 }}
             whileInView={{ opacity: 0.2, y: 0 }}
-            //viewport={{ once: true }}
+            viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 1.15 }}
-            className="uppercase text-center lg:text-start tracking-wider text-xs sm:text-sm md:text-base xl:text-xl mb-1 font-bold  "
+            //try removing. (less is more..)
+            className="hidden      uppercase text-center mdPlus:text-start tracking-wider text-xs sm:text-sm md:text-base lg:text-xl mb-1 font-bold  "
           >
             Tech Stack
           </motion.h1>
           <motion.div
-            className="grid grid-cols-2 lg:grid-cols-3 gap-1 xs:gap-2 md:gap-3.5 "
+            className="grid grid-cols-2 mdPlus:grid-cols-3 gap-1 xs:gap-2 md:gap-3.5 "
             variants={techContainerVariants}
             initial="hidden"
             whileInView="show"
-            //viewport={{ once: true }}
+            viewport={{ once: true }}
           >
             {project?.technologies?.map((tech, i) => (
               <motion.div
                 variants={techItemVariants}
                 key={i}
-                className="group relative flex cursor-pointer rounded-full"
+                className="group relative flex cursor-pointer rounded-full border border-gray-200/90"
               >
                 <img
                   className="projectTechItemSize object-cover rounded-full filter group-hover:grayscale transition duration-300 ease-in-out"
@@ -220,8 +209,8 @@ export default function Project({
       <motion.div
         initial={{ opacity: 0 /* y: 50 , weird bug */ }}
         whileInView={{ opacity: 1 /*  y: 0 */ }}
-        //viewport={{ once: true }}
-        transition={{ duration: 0.9 /* delay: index == 0 ? 0.7 : 0  */ }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9 }}
         className={`flex  mt-1    project-info${index}         `}
       >
         <h2

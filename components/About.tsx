@@ -43,6 +43,30 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
     });
     setHasClicked(true);
   };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+
+      transition: {
+        duration: 0.55, //...?
+        ease: "easeOut",
+        staggerChildren: 0.35, // increase stagger delay
+        delayChildren: 0.2, // delay before first child starts
+      },
+    },
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0 /* y: 10 */ },
+    visible: {
+      opacity: 1,
+      /* y: 0, */
+      transition: { duration: 0.5, ease: "easeIn" },
+    },
+  };
+
   return (
     <div
       /* introducing scrollRef got rid of weird bug (not working placing About below Projects. Now works.) */
@@ -54,46 +78,35 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
     >
       <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row     space-y-4 xs:space-y-0 ">
         {/* LEFT SIDE (TEXT) */}
-        <div className=" space-y-1 pl-0   text-center xs:text-start ">
+        <motion.div
+          className="xs:space-y-1 pl-0 text-center xs:text-start"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+        >
           <motion.h1
-            onClick={handleClick}
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0, duration: 0.5 }}
-            viewport={{ once: true }}
-            //isFullScreen: avoid 'About' interference when show-me-animate,
-            className={`font-bold  sm:text-5xl text-3xl  ${
+            variants={childVariants}
+            className={`font-bold sm:text-5xl text-3xl ${
               isFullScreen && "!opacity-0"
-            } transition duration-100 ease-in-out `}
+            } transition duration-100 ease-in-out`}
           >
             About
           </motion.h1>
+
           <motion.h4
-            initial={{ y: 0, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.7 }}
-            viewport={{ once: true }}
-            className="hidden xs:inline  sm:text-2xl text-lg font-semibold xs:font-bold text-black/60 xs:text-black"
+            variants={childVariants}
+            className="hidden// xs:inline// sm:text-2xl text-lg font-semibold xs:font-bold text-black/60 xs:text-black"
           >
             Here is a{" "}
-            <motion.span
-              initial={{ y: 0, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.15, duration: 0.7 }}
-              viewport={{ once: true }}
-              //className="xs:underline  xs:decoration-mainDarkBlue"
-              className="relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-mainDarkBlue/70 after:to-react after:opacity-70"
-            >
+            <span className="relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 xs:after:w-full after:h-[2px] after:bg-gradient-to-r after:from-mainDarkBlue/70 after:to-react after:opacity-70">
               little
-            </motion.span>{" "}
+            </span>{" "}
             background
           </motion.h4>
 
           <motion.p
-            initial={{ y: 0, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.7 }}
-            viewport={{ once: true }}
+            variants={childVariants}
             className="text-black sm:!mt-1 text-mobile-base xs:text-base sm:text-lg lg:text-xl sm:w-2/3 xs:w-3/4 w-full"
           >
             {pageInfo?.backgroundInformation &&
@@ -104,7 +117,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
                 hasClicked
               )}
           </motion.p>
-        </div>
+        </motion.div>
 
         <motion.img
           style={{ x, opacity }}

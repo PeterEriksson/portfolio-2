@@ -5,43 +5,27 @@ import { urlFor } from "../sanity";
 
 type Props = {
   skill: SkillType;
-  directionLeft?: boolean;
 };
 
-export default function Skill({ skill, directionLeft }: Props) {
-  return (
-    <div className={`group relative flex cursor-pointer  rounded-full `}>
-      <motion.img
-        initial={{
-          x: directionLeft ? -100 : 100,
-          opacity: 0.3,
-        }}
-        transition={{
-          duration: 1,
-        }}
-        whileInView={{
-          opacity: 1,
-          x: 0,
-        }}
-        viewport={{ once: true }}
-        src={urlFor(skill?.image).url() || undefined}
-        className="hidden xs:inline rounded-full border  border-gray-500 object-cover h-24 w-24   sm:w-28 sm:h-28 md:w-[136px] md:h-[136px] filter group-hover:grayscale transition duration-300 ease-in-out"
-      />
+export default function Skill({ skill }: Props) {
+  const skillVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
 
-      {/* mobile view, only opacity effect */}
-      <motion.img
-        initial={{
-          opacity: 0,
-        }}
-        transition={{
-          duration: 1,
-        }}
-        whileInView={{
-          opacity: 1,
-        }}
-        viewport={{ once: true }}
+  return (
+    <motion.div
+      className={`group relative flex cursor-pointer  rounded-full `}
+      variants={skillVariants}
+    >
+      <img
+        alt={skill?.title}
         src={urlFor(skill?.image).url() || undefined}
-        className="inline xs:hidden rounded-full border border-gray-500 object-cover h-24 w-24   sm:w-28 sm:h-28 md:w-[136px] md:h-[136px] filter group-hover:grayscale transition duration-300 ease-in-out"
+        className="rounded-full border  border-gray-500 object-cover h-24 w-24   sm:w-28 sm:h-28 md:w-[136px] md:h-[136px] filter group-hover:grayscale transition duration-300 ease-in-out"
       />
 
       {/* skill info - showing on hover */}
@@ -55,6 +39,6 @@ export default function Skill({ skill, directionLeft }: Props) {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

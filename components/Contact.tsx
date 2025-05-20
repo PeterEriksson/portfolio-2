@@ -36,39 +36,22 @@ export default function Contact({ pageInfo, socials }: Props) {
         menuOpen ? "opacity-50" : "opacity-100"
       } md:!opacity-100 transition duration-200 ease-in   bg-mainDarkBlue h-[102vh] xxs:h-screen  flex justify-center             for-shape(and blob):-> relative ForRocket: overflow-hidden `}
     >
-      {/* SHAPE DIVIDER */}
-      {/* <div className={`${styles.customShapeDividerTop}`}>
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-            className={`${styles.shapeFill}`}
-          ></path>
-        </svg>
-      </div> */}
-
       <div className=" xs:w-10/12 w-[88%] flex items-center xs:flex-row flex-col-reverse justify-center xxs:justify-between ">
         <motion.div
           initial={{
-            y: 100,
+            y: 20,
             opacity: 0,
-            //scale: 0.5,
           }}
           whileInView={{
             y: 0,
             opacity: 1,
-            //scale: 1,
           }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.7 }}
           className="  !z-30      flex flex-col items-center xxs:inline  "
         >
           <div className={`mb-2 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
-            <h1 className="sm:text-5xl text-3xl text-white font-bold //text-shadow-glow">
+            <h1 className="sm:text-5xl text-3xl text-white font-bold ">
               {" "}
               Contact Me&nbsp;{" "}
             </h1>
@@ -144,8 +127,8 @@ export default function Contact({ pageInfo, socials }: Props) {
             opacity: 0,
           }}
           transition={{
-            delay: 0.8,
-            duration: 1.2,
+            delay: 0.5,
+            duration: 0.8,
           }}
           whileInView={{
             opacity: 1,
@@ -164,6 +147,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           Next · Typescript · Sanity · Framer Motion
         </span>
       </footer>
+      <ReturnToTopBtn />
     </div>
   );
 }
