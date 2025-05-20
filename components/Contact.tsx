@@ -47,7 +47,7 @@ export default function Contact({ pageInfo, socials }: Props) {
             opacity: 1,
           }}
           transition={{ duration: 0.7 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true /* amount: 0.2 */ }}
           className="  !z-30      flex flex-col items-center xxs:inline  "
         >
           <div className={`mb-2 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
