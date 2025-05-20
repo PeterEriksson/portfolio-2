@@ -39,15 +39,15 @@ export default function Contact({ pageInfo, socials }: Props) {
       <div className=" xs:w-10/12 w-[88%] flex items-center xs:flex-row flex-col-reverse justify-center xxs:justify-between ">
         <motion.div
           initial={{
-            y: 20,
+            y: 30,
             opacity: 0,
           }}
           whileInView={{
             y: 0,
             opacity: 1,
           }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, amount: 0.7 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true, amount: 0.2 }}
           className="  !z-30      flex flex-col items-center xxs:inline  "
         >
           <div className={`mb-2 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
