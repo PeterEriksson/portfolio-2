@@ -33,8 +33,8 @@ export default function Contact({ pageInfo, socials }: Props) {
     <div
       id="Contact"
       className={`${
-        menuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in   bg-mainDarkBlue h-[102vh] xxs:h-screen  flex justify-center             for-shape(and blob):-> relative ForRocket: overflow-hidden `}
+        menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
+      }   transition duration-200 ease-in   bg-mainDarkBlue h-[102vh] xxs:h-screen  flex justify-center             for-shape(and blob):-> relative ForRocket: overflow-hidden `}
     >
       <div className=" xs:w-10/12 w-[88%] flex items-center xs:flex-row flex-col-reverse justify-center xxs:justify-between ">
         <motion.div
@@ -77,7 +77,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           <div className="space-y-1.5">
             <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm xl:text-xl text-white/75 ">
               <MailIcon className="h-5 w-5 " />
-              <p className=" font-bold">{pageInfo?.email}</p>
+              <p className="font-semibold">{pageInfo?.email}</p>
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
                 <button className=" text-white/70 ">
                   {copied ? (
@@ -90,11 +90,11 @@ export default function Contact({ pageInfo, socials }: Props) {
             </div>
             <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm xl:text-xl text-white/75">
               <PhoneIcon className="h-5 w-5 " />
-              <p className=" font-bold ">{pageInfo?.phoneNumber}</p>
+              <p className="font-semibold">{pageInfo?.phoneNumber}</p>
             </div>
             <div className="mb-1 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm xl:text-xl text-white/70">
               <MapPinIcon className="h-5 w-5 " />
-              <p className="font-bold">Stockholm, Sweden</p>
+              <p className="font-semibold">Stockholm, Sweden</p>
             </div>
 
             {/* SOCIALS */}

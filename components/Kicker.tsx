@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+//techIcons with transparent bg
 const techIcons = [
   {
     src: "/kicker-tech-icons/react.png",
@@ -43,8 +44,8 @@ export default function Kicker() {
               <Image
                 src={src}
                 alt={alt}
-                width={20}
-                height={20}
+                width={18}
+                height={18}
                 objectFit="contain"
                 className={"rounded-full"}
               />

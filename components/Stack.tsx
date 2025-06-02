@@ -33,38 +33,36 @@ function Stack({ skills, skillDescription }: Props) {
     <div
       id="Skills"
       className={`${
-        menuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden    overflow-hidden`}
+        menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
+      }   transition duration-200 ease-in  h-screen bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden    overflow-hidden`}
     >
-      <motion.h1
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 /* delay: 0.5 */ }}
-        className="text-3xl sm:text-5xl font-bold  "
+      <motion.div
+        //MOBILE ('Tap' subheader)
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.75 }}
+        transition={{ duration: 0.6 }}
+        className="xs:hidden"
       >
-        Tech I use
-      </motion.h1>
-      <motion.h4
-        //Mobile subheader
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="xs:hidden text-lg font-semibold text-black/40  mb-2 "
+        <h1 className="text-3xl sm:text-5xl font-bold  ">Tech I use</h1>
+        <h4 className=" text-lg font-semibold text-black/40  mb-2 ">
+          Tap for current proficiency
+        </h4>
+      </motion.div>
+
+      <motion.div
+        //DESKTOP ('Hover' subheader)
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.75 }}
+        transition={{ duration: 0.6 }}
+        className="hidden xs:inline"
       >
-        Tap for current proficiency
-      </motion.h4>
-      <motion.h4
-        //Desktop subheader
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="hidden xs:inline sm:text-lg text-base font-extralight mb-2 "
-      >
-        Hover for current proficiency
-      </motion.h4>
+        <h1 className="text-3xl sm:text-5xl font-bold  ">Tech I use</h1>
+        <h4 className="sm:text-lg text-base font-extralight mb-2 ">
+          Hover for current proficiency
+        </h4>
+      </motion.div>
 
       {/* SKILLS - sort by progress */}
       <motion.div

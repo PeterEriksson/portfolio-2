@@ -134,15 +134,15 @@ export default function Work({ projects, slides, options }: Props) {
       id="Work"
       // more + show less bug, h issue, non clickable on bottom of text..try increase -> ->
       //h-[105vh]/// xs:h-[110vh]/// sm:h-[115vh]///  lg:h-[125vh]/// ->use padding instead. solves show+less bug.
-      className={`${menuOpen ? "opacity-50" : "opacity-100"}
-       md:!opacity-100 transition duration-200 ease-in bg-gray-100 py-14 xs:py-24 lg:py-28            flex flex-col relative items-center justify-center   `}
+      className={`${menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "}
+         transition duration-200 ease-in bg-gray-100 py-14 xs:py-24 lg:py-28            flex flex-col relative items-center justify-center   `}
     >
       <motion.div
         aria-label="PROJECTS"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.7 }}
-        transition={{ duration: 0.5 /* delay: 0.6 */ }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.8 }}
+        transition={{ duration: 0.5 }}
         className={`header flex flex-col items-center mb-1.5   `}
       >
         <h1 className=" sm:text-5xl text-3xl font-bold  ">Projects</h1>

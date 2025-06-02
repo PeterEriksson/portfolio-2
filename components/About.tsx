@@ -73,8 +73,8 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
       ref={scrollRef}
       id="About"
       className={` ${
-        menuOpen ? "opacity-50" : "opacity-100"
-      } md:!opacity-100 transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center    overflow-x-hidden         for-shape:-> relative `}
+        menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
+      }  transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center    overflow-x-hidden         for-shape:-> relative `}
     >
       <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row     space-y-4 xs:space-y-0 ">
         {/* LEFT SIDE (TEXT) */}

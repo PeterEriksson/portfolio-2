@@ -32,8 +32,8 @@ export default function Hero({ socials, pageInfo }: Props) {
       <header
         id="header"
         className={`   ${
-          menuOpen ? "opacity-50" : "opacity-100"
-        }   md:!opacity-100 transition duration-200 ease-in   h-auto pb-4 sm:pb-0 sm:h-[98.5vh]   flex items-center justify-center bg-mainDarkBlue         `}
+          menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
+        }    transition duration-200 ease-in   h-auto pb-4 sm:pb-0 sm:h-[97vh]   flex items-center justify-center bg-mainDarkBlue         `}
       >
         <div className=" xs:w-10/12 w-[88%] flex flex-col sm:flex-row-reverse  items-center justify-between ">
           <div className="md:w-2/5 sm:w-1/2 w-full relative  ">
@@ -131,7 +131,7 @@ export default function Hero({ socials, pageInfo }: Props) {
                 words={[
                   " <FrontEndDev />",
                   " <ReactCoder />",
-                  " <CreativeCrafter ✨ />",
+                  " <CreativeCrafter />",
                 ]}
                 //Control how many times to run. 0 | false to run infinitely
                 loop={false}
@@ -158,7 +158,7 @@ export default function Hero({ socials, pageInfo }: Props) {
             ></motion.div>
 
             <div
-              //MOBILE cta:s (less offset)
+              //MOBILE cta:s (less offset for main cta)
               className="mt-4 sm:hidden   inline-block"
             >
               <ScrollLink
@@ -183,7 +183,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               </ScrollLink>
               {/* SECONDARY CTA mobile (mail) */}
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
-                <button className="relative mt-3 flex items-center justify-center sm:text-base text-sm opacity-[0.55] cursor-pointer border rounded-xl border-white/80 py-2.5 w-[220px]   ">
+                <button className="relative mt-3 flex items-center justify-center sm:text-base text-sm opacity-[0.55] cursor-pointer border rounded-xl border-white/50 py-2.5 w-[220px]   ">
                   <MailIcon className="h-[23px] w-[23px]  absolute left-12 opacity-90" />
                   {copied ? (
                     <p className="ml-1 text-base opacity-80 transform -translate-y-[2px]">
@@ -200,12 +200,12 @@ export default function Hero({ socials, pageInfo }: Props) {
                 </button>
               </CopyToClipboard>
             </div>
+
             <div
-              //DESKTOP ctas
-              className="hidden sm:flex xs:space-x-3 w-fit mt-4   "
+              //Desktop CTAs (more offset for for main cta)
+              className="hidden sm:flex sm:space-x-3 w-fit mt-4   "
             >
               <ScrollLink
-                //Desktop
                 //integrate <button> into ScrollLink
                 offset={90}
                 to="Work"
@@ -215,33 +215,33 @@ export default function Hero({ socials, pageInfo }: Props) {
                 <button
                   className={`z-50 shadow-md  shadow-indigo-500/30  ${
                     buttonIsPressed && "shadow-sm scale-[0.97]"
-                  }  group relative  bg-gradient-to-br from-indigo-700 to-react/80   transition duration-200 ease-in py-3 px-6 rounded-xl focus:outline-none`}
+                  }  group relative  bg-gradient-to-br from-indigo-500/60 to-react/80   transition duration-200 ease-in py-3 px-6 rounded-xl focus:outline-none`}
                   onMouseDown={() => setButtonIsPressed(true)}
                   onMouseUpCapture={() => setButtonIsPressed(false)}
                   onMouseLeave={() => setButtonIsPressed(false)}
                 >
-                  <p className="text-gray-900     text-sm font-bold tracking-wide opacity-90">
+                  <p className="text-black text-sm font-bold opacity-90">
                     View Projects
                   </p>
                   <ChevronDownIcon
-                    className={`text-black   h-[17px] w-[17px] absolute -top-0.5 right-1 group-hover:opacity-90 group-hover:translate-y-4 sm:inline hidden opacity-0  !transition !duration-500 transform ease-in-out `}
+                    className={`text-black   h-[17px] w-[17px] absolute -top-0.5 right-1 group-hover:opacity-90 group-hover:translate-y-4 inline opacity-0  !transition !duration-500 transform ease-in-out `}
                   />
                 </button>
               </ScrollLink>
 
-              {/* SECONDARY CTA (mail) */}
+              {/* SECONDARY CTA (Desktop) (mail) */}
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
-                <div className="relative flex items-center sm:text-base text-sm opacity-[0.55] group cursor-pointer border rounded-xl border-white/70 px-2.5  ">
+                <div className="relative flex items-center sm:text-base text-sm opacity-[0.55] group cursor-pointer border rounded-xl border-white/50 px-2.5  ">
                   <MailIcon className="h-[18px] w-[18px] text-white" />
                   {copied ? (
-                    <p className="text-xs ml-1 font-semibold">copied ✓</p>
+                    <p className="text-xs ml-1 ">copied ✓</p>
                   ) : (
                     <div className="">
-                      <p className="text-sm font-semibold ml-1 transition duration-500 ease-in-out group-hover:opacity-0">
+                      <p className="text-sm  ml-1 transition duration-500 ease-in-out group-hover:opacity-0">
                         Ping me
                       </p>
-                      <div className="absolute flex items-center left-[32px] translate-y-1 group-hover:translate-y-0 top-3 group-hover:opacity-100 opacity-0 transform transition duration-300 ease-in-out delay-200">
-                        <p className="text-xs font-semibold ">copy mail</p>
+                      <div className="absolute flex items-center left-[32px] translate-y-0.5 group-hover:translate-y-0 top-3 group-hover:opacity-100 opacity-0 transform transition duration-300 ease-in-out delay-200">
+                        <p className="text-xs  ">copy mail</p>
                       </div>
                     </div>
                   )}
@@ -252,7 +252,9 @@ export default function Hero({ socials, pageInfo }: Props) {
         </div>
       </header>
       <div
-        className={`w-screen h-[2vh] sm:h-[1.5vh] bg-gradient-to-b from-mainDarkBlue to-white`}
+        className={`w-screen h-[2vh] sm:h-[3vh] bg-gray-100 sm:bg-gradient-to-b from-mainDarkBlue to-gray-100 transition duration-200 ease-in ${
+          menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
+        }`}
       />
     </>
   );

@@ -79,7 +79,7 @@ export default function Navbar() {
         </section>
 
         {/* RIGHT div */}
-        <section className="space-x-6  mdPlus:flex hidden ">
+        <section className="space-x-6  mdPlus:flex// lg:flex hidden ">
           {navData.map((section, i) => (
             <ScrollLink
               to={section}
@@ -102,13 +102,13 @@ export default function Navbar() {
         {/* HAMBURGER-icon. Toggle between hamburger and cross  */}
         <section
           onClick={() => toggleMenu()}
-          className={`mdPlus:!hidden  ${styles.menuBtn}   opacity-80 hover:opacity-100    z-40`}
+          className={`mdPlus:!hidden// lg:!hidden  ${styles.menuBtn}   opacity-80 hover:opacity-100    z-40`}
         >
           {/* CROSS */}
           <section
-            className={`mdPlus:hidden  ${menuOpen && styles.burgerAnimation} ${
-              styles.burger
-            }`}
+            className={`mdPlus:hidden// lg:hidden  ${
+              menuOpen && styles.burgerAnimation
+            } ${styles.burger}`}
           ></section>
         </section>
       </section>
@@ -128,9 +128,9 @@ export default function Navbar() {
             animate={{ height: "60vh", opacity: 1 }}
             transition={{ duration: 0.3 }}
             exit="exit"
-            className={`mdPlus:hidden ${
+            className={` lg:hidden ${
               !menuOpen && "pointer-events-none"
-            }  flex flex-col items-center justify-center bg-transparent bg-mainDarkBlue/95//  text-white space-y-12 `}
+            }  flex flex-col items-center justify-center bg-transparent  text-white space-y-12 `}
           >
             {navData.map((section, i) => (
               <motion.h2
@@ -152,7 +152,7 @@ export default function Navbar() {
                   onSetActive={handleSetActive}
                   className={` ${
                     linkActive !== section && styles.hoverAnimation
-                  } border-b-[1px] border-transparent opacity-30 hover:opacity-100  transition duration-200 ease-in`}
+                  } border-b-[1px] border-transparent opacity-[0.35] hover:opacity-100  transition duration-200 ease-in`}
                 >
                   {section}
                 </ScrollLink>
