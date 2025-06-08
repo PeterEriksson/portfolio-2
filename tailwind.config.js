@@ -21,7 +21,7 @@ module.exports = {
         xxs: "420px",
         xs: "500px",
         smaller: "549px",
-        mdPlus: "880px",
+        "md-plus": "880px",
       },
       fontSize: {
         "xs-plus": ["0.9rem", { lineHeight: "1.5rem" }], // (approx between sm and base)
@@ -90,9 +90,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/line-clamp"),
-    require("tailwind-scrollbar"),
-    require("tailwindcss-textshadow"),
-  ],
+  plugins: [require("tailwind-scrollbar"), require("tailwindcss-textshadow")],
 };

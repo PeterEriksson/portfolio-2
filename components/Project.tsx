@@ -141,19 +141,13 @@ export default function Project({
           />
         </div>
 
-        <div className="mr-5 ">
-          <motion.h1
-            initial={{ opacity: 0, y: 2 }}
-            whileInView={{ opacity: 0.2, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 1.15 }}
-            //try removing. (less is more..)
-            className="hidden      uppercase text-center mdPlus:text-start tracking-wider text-xs sm:text-sm md:text-base lg:text-xl mb-1 font-bold  "
-          >
-            Tech Stack
-          </motion.h1>
+        {/* PROJECT-TECH div */}
+        <div className="mr-5 group/parent">
+          <h1 className="cursor-default opacity-0 translate-y-2 group-hover/parent:opacity-25 group-hover/parent:delay-[600ms]  group-hover/parent:translate-y-0 transform transition duration-500 ease-in     text-center md-plus:text-start tracking-wider text-xs sm:text-sm md:text-base lg:text-xl mb-1 font-bold  ">
+            TECH STACK
+          </h1>
           <motion.div
-            className="grid grid-cols-2 mdPlus:grid-cols-3 gap-1 xs:gap-2 md:gap-3.5 "
+            className="grid grid-cols-2 md-plus:grid-cols-3 gap-1 xs:gap-2 md:gap-3.5 "
             variants={techContainerVariants}
             initial="hidden"
             whileInView="show"
