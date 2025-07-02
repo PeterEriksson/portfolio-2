@@ -42,10 +42,12 @@ function Stack({ skills, skillDescription }: Props) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.75 }}
         transition={{ duration: 0.6 }}
-        className="xs:hidden"
+        className="xs:hidden "
       >
-        <h1 className="text-3xl sm:text-5xl font-bold  ">Tech I use</h1>
-        <h4 className=" text-lg font-semibold text-black/40  mb-2 ">
+        <h1 className="text-3xl sm:text-5xl font-bold text-center">
+          Tech I use
+        </h1>
+        <h4 className="text-lg font-semibold text-black/40 mb-2 text-center ">
           Tap for current proficiency
         </h4>
       </motion.div>

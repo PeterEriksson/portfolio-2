@@ -9,6 +9,7 @@ import {
   DocumentDuplicateIcon,
   EnvelopeIcon as MailIcon,
 } from "@heroicons/react/24/solid";
+import { EnvelopeIcon as MailIconOutline } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import { urlFor } from "../sanity";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -171,7 +172,7 @@ export default function Hero({ socials, pageInfo }: Props) {
                 <button
                   className={` ${
                     buttonIsPressed && "!bg-indigo-700/90 "
-                  }   group relative hover:bg-indigo-600 bg-indigo-700 transition duration-200 ease-in py-3 w-[220px] rounded-xl focus:outline-none`}
+                  }   group relative hover:bg-indigo-600 bg-indigo-700  transition duration-200 ease-in py-3 w-[220px] rounded-xl focus:outline-none   flex items-center justify-center`}
                   onMouseDown={() => setButtonIsPressed(true)}
                   onMouseUpCapture={() => setButtonIsPressed(false)}
                   onMouseLeave={() => setButtonIsPressed(false)}
@@ -179,12 +180,13 @@ export default function Hero({ socials, pageInfo }: Props) {
                   <p className=" text-base font-semibold tracking-wide">
                     View Projects
                   </p>
+                  <ChevronDownIcon className="w-4 h-4 opacity-60 text-white ml-2" />
                 </button>
               </ScrollLink>
               {/* SECONDARY CTA mobile (mail) */}
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
                 <button className="relative mt-3 flex items-center justify-center sm:text-base text-sm opacity-[0.55] cursor-pointer border rounded-xl border-white/50 py-2.5 w-[220px]   ">
-                  <MailIcon className="h-[23px] w-[23px]  absolute left-12 opacity-90" />
+                  <MailIconOutline className="h-[23px] w-[23px]  absolute left-12 opacity-90" />
                   {copied ? (
                     <p className="ml-1 text-base opacity-80 transform -translate-y-[2px]">
                       copied ✓
@@ -232,7 +234,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               {/* SECONDARY CTA (Desktop) (mail) */}
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
                 <div className="relative flex items-center sm:text-base text-sm opacity-[0.55] group cursor-pointer border rounded-xl border-white/50 px-2.5  ">
-                  <MailIcon className="h-[18px] w-[18px] text-white" />
+                  <MailIconOutline className="h-[18px] w-[18px] text-white" />
                   {copied ? (
                     <p className="text-xs ml-1 ">copied ✓</p>
                   ) : (

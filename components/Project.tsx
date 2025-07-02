@@ -126,7 +126,7 @@ export default function Project({
             transition={{ duration: 0.5 }}
             src={urlFor(project?.image).url() || undefined}
             alt="project_img"
-            className="xxs:hidden absolute w-full rounded-sm aspect-[12/10] top-[9%] "
+            className="xxs:hidden absolute w-full rounded-sm aspect-auto aspect-[12/10]// top-[17%] "
           />
           {/* DESKTOP */}
           <motion.img
