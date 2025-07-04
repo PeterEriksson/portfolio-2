@@ -68,6 +68,7 @@ export function debounce<T extends (...args: any[]) => any>(
 }
 
 //navbar show/hide helper
+//move to hooks folder.
 export default function useNavbarVisible() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -95,7 +96,7 @@ export default function useNavbarVisible() {
     );
 
     setPrevScrollPos(currentScrollPos);
-  }, 200);
+  }, /* 200 */ 320); //mobile bug when scrolling, experiment with larger values
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
