@@ -29,7 +29,7 @@ export default function useNavbarVisible() {
     );
 
     setPrevScrollPos(currentScrollPos);
-  }, /* 200 */ 370); //mobile bug when scrolling, try larger values
+  }, /* 200 */ 320);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);

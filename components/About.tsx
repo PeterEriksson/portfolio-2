@@ -128,31 +128,32 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
 
         <motion.img
           style={{ x, opacity }}
-          className="rounded-lg w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
+          className="hidden xs:inline rounded-lg w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
           //for testing ->
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
           src={urlFor(pageInfo?.profilePic).url() || undefined}
-          alt=""
+          alt="desktop about img"
         />
 
-        {/* mobile view, (avoid slide in) */}
-        {/* <motion.img
+        {/* mobile view, avoid slide in, causes reload on mobile..? */}
+        <motion.img
           initial={{
             opacity: 0,
           }}
           transition={{
-            duration: 1.2,
+            duration: 0.9,
+            delay: 0.9,
           }}
           whileInView={{
             opacity: 1,
           }}
           viewport={{ once: true }}
-          className=" inline   xs:hidden   rounded-md xs:w-2/5 object-cover w-full max-h-72   "
+          className="inline xs:hidden rounded-md object-cover w-full max-h-72"
           src={urlFor(pageInfo?.profilePic).url() || undefined}
           //for testing ->
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
-          alt=""
-        /> */}
+          alt="mobile about img"
+        />
       </div>
     </div>
   );
