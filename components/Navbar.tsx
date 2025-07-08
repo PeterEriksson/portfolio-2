@@ -4,7 +4,8 @@ import { Link as ScrollLink } from "react-scroll";
 import { motion, useScroll, AnimatePresence, useSpring } from "framer-motion";
 import styles from "../styles/navBar.module.css";
 import { useFullScreenStore, useMenuStore } from "../store/store";
-import useNavbarVisible, { handleClickOutsideMenu } from "../utils/helpers";
+import useNavbarVisible from "../hooks/useNavbarVisible";
+import { useClickOutside } from "../hooks/useClickOutside";
 
 export default function Navbar() {
   const navData = ["Work", "About", "Skills", "Contact"];
@@ -29,7 +30,7 @@ export default function Navbar() {
   };
 
   const ref = useRef<HTMLElement>(null);
-  handleClickOutsideMenu(ref, setMenuClose);
+  useClickOutside(ref, setMenuClose);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {

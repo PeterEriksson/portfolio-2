@@ -98,7 +98,7 @@ export default function Project({
       ref={ref}
       className={` ${styles.embla__slide}  px-3.5 //xs:px-0  min-w-0   relative   `}
     >
-      <div className="relative  flex justify-between items-center  border border-gray-200 xxs:border-gray-200/90 rounded-sm     upper-div-card">
+      <div className="relative  flex justify-between items-center  border border-gray-300/60  rounded-md     upper-div-card">
         {/* NEXT+PREV BTNs */}
         <div className="absolute -left-[14px] top-1/2 -translate-y-1/2 pointer-events-auto z-50 ">
           <PrevButton
@@ -115,7 +115,7 @@ export default function Project({
 
         <div
           className={`relative bg-gradient-to-br ${getGradientClass(index)}  
-             w-[50%] aspect-[1/1] rounded-sm overflow-visible`}
+             w-[50%] aspect-[1/1] rounded-md rounded-tr-sm overflow-visible`}
         >
           {/* MOBILE */}
           <motion.img
@@ -126,7 +126,7 @@ export default function Project({
             transition={{ duration: 0.5 }}
             src={urlFor(project?.image).url() || undefined}
             alt="project_img"
-            className="xxs:hidden absolute w-full rounded-sm aspect-auto aspect-[12/10]// top-[17%] "
+            className="xxs:hidden absolute w-full rounded-md aspect-auto aspect-[12/10]// top-[17%] "
           />
           {/* DESKTOP */}
           <motion.img
@@ -137,7 +137,7 @@ export default function Project({
             transition={{ duration: 0.55 }}
             src={urlFor(project?.image).url() || undefined}
             alt="project_img"
-            className="hidden xxs:block absolute w-full rounded-sm aspect-auto top-[17%]   "
+            className="hidden xxs:block absolute w-full rounded-md aspect-auto top-[17%]   "
           />
         </div>
 
@@ -186,7 +186,7 @@ export default function Project({
               hasShownDemo ? "" : "animate-show-me-pulse hover:animate-none"
             }   ${
               isFullScreen ? "pointer-events-none " : "!pointer-events-auto"
-            }  bg-black rounded-2xl px-3 py-2 border border-gray-900/80      group flex space-x-1.5 items-center`}
+            } shadow-md shadow-gray-500 shadow-gray-400/80//     bg-black rounded-2xl px-3.5 py-2.5 border border-gray-900/80      group flex space-x-1.5 items-center`}
           >
             <p
               className={`opacity-80 group-hover:opacity-100  text-sm font-semibold transition duration-200 ease-in-out `}

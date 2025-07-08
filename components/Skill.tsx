@@ -25,7 +25,7 @@ export default function Skill({ skill }: Props) {
       <img
         alt={skill?.title}
         src={urlFor(skill?.image).url() || undefined}
-        className="rounded-full border  border-gray-500 object-cover h-24 w-24   sm:w-28 sm:h-28 md:w-[136px] md:h-[136px] filter group-hover:grayscale transition duration-300 ease-in-out"
+        className="rounded-full border  border-gray-200/90 object-cover h-24 w-24   sm:w-28 sm:h-28 md:w-[136px] md:h-[136px] filter group-hover:grayscale transition duration-300 ease-in-out"
       />
 
       {/* skill info - showing on hover */}

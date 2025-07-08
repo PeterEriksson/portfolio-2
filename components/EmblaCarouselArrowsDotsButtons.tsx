@@ -16,7 +16,7 @@ export const DotButton: React.FC<DotButtonPropType> = (props) => {
         ${
           selected
             ? "bg-black cursor-default"
-            : "bg-gray-300 xs:hover:scale-125"
+            : "bg-gray-300 xs:hover:scale-[1.35]"
         }
         transition duration-200 ease-in transform `}
       type="button"

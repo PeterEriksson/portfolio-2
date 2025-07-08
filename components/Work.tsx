@@ -138,25 +138,33 @@ export default function Work({ projects, slides, options }: Props) {
          transition duration-200 ease-in bg-gray-100 py-14 xs:py-24 lg:py-28            flex flex-col relative items-center justify-center   `}
     >
       <motion.div
-        aria-label="PROJECTS"
+        aria-label="PROJECTS-div h1 + h4"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.8 }}
         transition={{ duration: 0.5 }}
-        className={`header flex flex-col items-center mb-1.5   `}
+        //w- tempsol...centralize instead?
+        className={`header  w-[92%] xs:w-fit flex flex-col items-start xs:items-center mb-3.5 xs:mb-2   `}
       >
-        <h1 className=" sm:text-5xl text-3xl font-bold  ">Projects</h1>
+        {/* <h1 className=" sm:text-5xl text-3xl font-bold  ">Projects</h1> */}
+        {/* blue vertical line on mobile */}
+        <div className="flex items-center">
+          <div className="block xs:hidden w-1 h-[24px] bg-react mr-2"></div>
+          <h1 className="sm:text-5xl text-3xl font-bold   text-black/60 xs:text-black  ">
+            Projects
+          </h1>
+        </div>
         <h4 className="  sm:text-lg xs:text-base xs:font-extralight text-lg font-semibold text-black/40 xs:text-black ">
           Some of my work
         </h4>
       </motion.div>
 
       <div
-        aria-label="styles.embla"
+        aria-label="styles.embla   "
         //increase w slightly to compensate px in embla__slide (in Project) (in order for prev+next-btns to be overlayed)
         //h-auto solves-show+less-bug..not on md and smaller...
-        //mx-auto necessary?
-        className={`w-full xs:w-[89%] sm:w-[87%] lg:w-[86%]  ${styles.embla} sm:mx-auto//       h-auto///   `}
+
+        className={`w-full xs:w-[89%] sm:w-[87%] lg:w-[86%]  ${styles.embla}   `}
       >
         <div
           aria-label="styles.embla__viewport"
@@ -235,7 +243,7 @@ export default function Work({ projects, slides, options }: Props) {
           ${
             //scale down effect isn't interrupted by hover
             isFullScreen ? "" : "pointer-events-none"
-          }   border border-white xxs:border-hidden    flex items-center  bg-black rounded-2xl text-sm px-3.5 py-2 text-white font-semibold// `}
+          } shadow-md shadow-gray-500   ///border ///border-white ///xxs:border-hidden    flex items-center  bg-black rounded-2xl text-sm px-4 py-2.5 text-white font-semibold// `}
         >
           Close
           {/* X icon using css (bolder) */}
@@ -253,7 +261,7 @@ export default function Work({ projects, slides, options }: Props) {
       <motion.div
         className={`z-[50] ${
           isFullScreen ? "hidden" : ""
-        } flex space-x-4 max-w-fit mx-auto mt-[10px] shadow-md shadow-gray-400/80 p-2 rounded-xl  `}
+        } flex space-x-4 max-w-fit mx-auto mt-[12px] border// border-gray-300 //shadow-md //shadow-gray-400/80 px-3.5 py-2.5 rounded-2xl  `}
         initial={{ opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

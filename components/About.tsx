@@ -38,7 +38,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
     if (hasClicked) return; // prevent multiple triggers
     jsConfetti.addConfetti({
       emojis: ["🤩", "🎉", "⭐"],
-      emojiSize: 30,
+      emojiSize: 40,
       confettiNumber: 50,
     });
     setHasClicked(true);
@@ -53,16 +53,16 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
         duration: 0.55, //...?
         ease: "easeOut",
         staggerChildren: 0.35, // increase stagger delay
-        delayChildren: 0.2, // delay before first child starts
+        /* delayChildren: 0.2, */ // delay before first child starts
       },
     },
   };
 
   const childVariants = {
-    hidden: { opacity: 0 /* y: 10 */ },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
-      /* y: 0, */
+      y: 0,
       transition: { duration: 0.5, ease: "easeIn" },
     },
   };
@@ -77,29 +77,36 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
       }  transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center    overflow-x-hidden         for-shape:-> relative `}
     >
       <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row     space-y-4 xs:space-y-0 ">
-        {/* LEFT SIDE (TEXT) */}
+        {/* Text container  */}
         <motion.div
-          className="xs:space-y-1 pl-0 text-center xs:text-start"
+          className="  ///text-start"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
+          // for when testing, toggle once below
           viewport={{ once: true, amount: 0.6 }}
         >
-          <motion.h1
+          {/* <motion.h1
             variants={childVariants}
-            className={`font-bold sm:text-5xl text-3xl ${
+            className={`sm:text-5xl text-3xl font-bold ${
               isFullScreen && "!opacity-0"
-            } transition duration-100 ease-in-out`}
+            }  `}
           >
             About
-          </motion.h1>
+          </motion.h1> */}
+
+          {/* blue vertical line on mobile */}
+          <motion.div variants={childVariants} className="flex items-center">
+            <div className="block xs:hidden w-1 h-[24px] bg-mainDarkBlue// bg-react mr-2"></div>
+            <h1 className="sm:text-5xl text-3xl font-bold">About</h1>
+          </motion.div>
 
           <motion.h4
             variants={childVariants}
-            className="hidden// xs:inline// sm:text-2xl text-lg font-semibold xs:font-bold text-black/60 xs:text-black"
+            className=" sm:text-2xl text-lg font-semibold xs:font-bold text-black/60 xs:text-black"
           >
             Here is a{" "}
-            <span className="relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 xs:after:w-full after:h-[2px] after:bg-gradient-to-r after:from-mainDarkBlue/70 after:to-react after:opacity-70">
+            <span className="relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 removeForNow: //after:w-full after:h-[2px] after:bg-gradient-to-r after:from-mainDarkBlue/70 after:to-react after:opacity-70">
               little
             </span>{" "}
             background
@@ -107,7 +114,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
 
           <motion.p
             variants={childVariants}
-            className="text-black sm:!mt-1 text-mobile-base xs:text-base sm:text-lg lg:text-xl sm:w-2/3 xs:w-3/4 w-full"
+            className="mt-1 text-black text-mobile-base xs:text-base sm:text-lg lg:text-xl sm:w-2/3 xs:w-3/4 w-full"
           >
             {pageInfo?.backgroundInformation &&
               renderAboutText(
@@ -121,7 +128,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
 
         <motion.img
           style={{ x, opacity }}
-          className="hidden xs:inline   rounded-lg max-w-xs w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
+          className="rounded-lg w-full xs:w-2/5  max-h-64 object-cover xs:max-h-full xs:object-contain "
           //for testing ->
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
           src={urlFor(pageInfo?.profilePic).url() || undefined}
@@ -129,7 +136,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
         />
 
         {/* mobile view, (avoid slide in) */}
-        <motion.img
+        {/* <motion.img
           initial={{
             opacity: 0,
           }}
@@ -145,7 +152,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
           //for testing ->
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"
           alt=""
-        />
+        /> */}
       </div>
     </div>
   );

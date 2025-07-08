@@ -53,7 +53,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           <div className={`mb-2 flex mr-auto xxs:mr-0 mt-3 xxs:mt-0`}>
             <h1 className="sm:text-5xl text-3xl text-white font-bold ">
               {" "}
-              Contact Me&nbsp;{" "}
+              Contact me&nbsp;{" "}
             </h1>
 
             <InView triggerOnce>

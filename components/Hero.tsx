@@ -82,8 +82,7 @@ export default function Hero({ socials, pageInfo }: Props) {
           </div>
           {/* change div to motion.div and remove motion.h... */}
           <div className="text-white text-center sm:text-left   pt-4 xs:pt-0   forKicker: relative">
-            {/* KICKER  */}
-            <Kicker />
+            {/* <Kicker /> */}
 
             <motion.h1
               initial={{
@@ -178,23 +177,23 @@ export default function Hero({ socials, pageInfo }: Props) {
                   onMouseLeave={() => setButtonIsPressed(false)}
                 >
                   <p className=" text-base font-semibold tracking-wide">
-                    View Projects
+                    View projects
                   </p>
                   <ChevronDownIcon className="w-4 h-4 opacity-60 text-white ml-2" />
                 </button>
               </ScrollLink>
               {/* SECONDARY CTA mobile (mail) */}
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
-                <button className="relative mt-3 flex items-center justify-center sm:text-base text-sm opacity-[0.55] cursor-pointer border rounded-xl border-white/50 py-2.5 w-[220px]   ">
+                <button className="relative mt-3 flex items-center justify-center sm:text-base text-sm opacity-[0.55] cursor-pointer rounded-xl //border //border-white/50 py-2.5 w-[220px]   ">
                   <MailIconOutline className="h-[23px] w-[23px]  absolute left-12 opacity-90" />
                   {copied ? (
                     <p className="ml-1 text-base opacity-80 transform -translate-y-[2px]">
-                      copied ✓
+                      Copied ✓
                     </p>
                   ) : (
-                    <div className="flex items-center ml-[24px] space-x-0.5 transform -translate-y-[2px]">
+                    <div className="flex items-center ml-[24px] space-x-0.5 transform -translate-y-[1px]">
                       <p className="text-base opacity-80 tracking-wide ">
-                        copy mail
+                        Copy mail
                       </p>
                       <DocumentDuplicateIcon className="h-3 w-3 opacity-80" />
                     </div>
@@ -223,7 +222,7 @@ export default function Hero({ socials, pageInfo }: Props) {
                   onMouseLeave={() => setButtonIsPressed(false)}
                 >
                   <p className="text-black text-sm font-bold opacity-90">
-                    View Projects
+                    View projects
                   </p>
                   <ChevronDownIcon
                     className={`text-black   h-[17px] w-[17px] absolute -top-0.5 right-1 group-hover:opacity-90 group-hover:translate-y-4 inline opacity-0  !transition !duration-500 transform ease-in-out `}
@@ -233,17 +232,20 @@ export default function Hero({ socials, pageInfo }: Props) {
 
               {/* SECONDARY CTA (Desktop) (mail) */}
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
-                <div className="relative flex items-center sm:text-base text-sm opacity-[0.55] group cursor-pointer border rounded-xl border-white/50 px-2.5  ">
+                <div className="relative flex items-center sm:text-base text-sm opacity-[0.55] group cursor-pointer border// rounded-xl border-white/50 px-2.5  ">
                   <MailIconOutline className="h-[18px] w-[18px] text-white" />
                   {copied ? (
-                    <p className="text-xs ml-1 ">copied ✓</p>
+                    <p className="text-xs ml-1 ">Copied ✓</p>
                   ) : (
                     <div className="">
                       <p className="text-sm  ml-1 transition duration-500 ease-in-out group-hover:opacity-0">
                         Ping me
                       </p>
-                      <div className="absolute flex items-center left-[32px] translate-y-0.5 group-hover:translate-y-0 top-3 group-hover:opacity-100 opacity-0 transform transition duration-300 ease-in-out delay-200">
-                        <p className="text-xs  ">copy mail</p>
+                      <div className="absolute flex items-center left-[32px] translate-y-0.5 group-hover:translate-y-0 top-3/ top-3.5 group-hover:opacity-100 opacity-0 transform transition duration-300 ease-in-out delay-200">
+                        <p className="flex items-center text-xs whitespace-nowrap">
+                          Copy mail
+                          <DocumentDuplicateIcon className="w-3 h-3 ml-1 shrink-0" />
+                        </p>
                       </div>
                     </div>
                   )}
