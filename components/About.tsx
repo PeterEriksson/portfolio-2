@@ -50,7 +50,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
       opacity: 1,
 
       transition: {
-        duration: 0.55, //...?
+        //duration: 0.55, //...?
         ease: "easeOut",
         staggerChildren: 0.35, // increase stagger delay
         /* delayChildren: 0.2, */ // delay before first child starts

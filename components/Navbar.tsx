@@ -115,8 +115,9 @@ export default function Navbar() {
       </section>
 
       {/* horizontal scroll indicator.  */}
+      {/* try hiding on mobile, bug.. */}
       <motion.div
-        className={`  fixed top-0// top-14 h-[2.2px]// h-[4px] left-0 right-0 bg-white origin-left  `}
+        className={`hidden xs:inline fixed top-14 h-[4px] left-0 right-0 bg-white origin-left  `}
         style={{ scaleX }}
       />
 
