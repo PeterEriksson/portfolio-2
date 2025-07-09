@@ -39,15 +39,13 @@ export const PrevButton: React.FC<PrevNextButtonPropType> = (props) => {
       onMouseDown={() => setButtonIsPressed(true)}
       onMouseUpCapture={() => setButtonIsPressed(false)}
       onMouseLeave={() => setButtonIsPressed(false)}
-      className={`${
-        enabled
-          ? " cursor-pointer opacity-30 "
-          : "!opacity-0/ !cursor-default/ invisible"
-      } ${buttonIsPressed && "!opacity-40"}   arrowButtonEmbla `}
+      className={`${enabled ? "cursor-pointer opacity-30 " : "invisible"} ${
+        buttonIsPressed && "!opacity-40"
+      }   arrowButtonEmbla `}
       onClick={onClick}
       disabled={!enabled}
     >
-      <ChevronLeftIcon className=" text-white  w-7 h-7" />
+      <ChevronLeftIcon className=" text-black/70 xs:text-white  w-7 h-7" />
     </button>
   );
 };
