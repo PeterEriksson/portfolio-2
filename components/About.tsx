@@ -59,11 +59,11 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
   };
 
   const childVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 25 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: "easeIn" },
+      transition: { duration: 0.6, ease: "easeIn" },
     },
   };
 

@@ -174,7 +174,7 @@ export default function Work({ projects, slides, options }: Props) {
           <div
             aria-label="styles.embla__container"
             //add spacing between projects here:
-            className="flex flex-row  z-50 xs:gap-x-14 lg:gap-x-20      "
+            className="flex flex-row z-50 gap-7 xs:gap-x-14 lg:gap-x-20      "
           >
             {projects?.map((project, index) => (
               <Project

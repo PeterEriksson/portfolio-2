@@ -45,7 +45,7 @@ export const PrevButton: React.FC<PrevNextButtonPropType> = (props) => {
       onClick={onClick}
       disabled={!enabled}
     >
-      <ChevronLeftIcon className=" text-black/70 xs:text-white  w-7 h-7" />
+      <ChevronLeftIcon className=" text-black/90 xs:text-white  w-7 h-7" />
     </button>
   );
 };
@@ -67,7 +67,7 @@ export const NextButton: React.FC<PrevNextButtonPropType> = (props) => {
       onClick={onClick}
       disabled={!enabled}
     >
-      <ChevronRightIcon className=" text-white w-7 h-7 " />
+      <ChevronRightIcon className="text-black/90 xs:text-white w-7 h-7 " />
     </button>
   );
 };
