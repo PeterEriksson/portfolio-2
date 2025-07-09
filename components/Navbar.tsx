@@ -48,8 +48,7 @@ export default function Navbar() {
         // !-translate-y-full makes sure that the whole navbar always moves up, including scroll indicator.
         isFullScreen && " !-translate-y-full pointer-events-none "
       } ${
-        //yscroll indicator hidden on mobile, hence: -translate-y-full xs:-translate-y-14
-        visible ? "" : "-translate-y-full   xs:-translate-y-14    duration-300"
+        visible ? "" : "-translate-y-14    duration-300"
       }   transition transform duration-200 ease-in !fixed !top-0 w-screen z-[60] bg-mainDarkBlue/95 flex flex-col`}
     >
       <section className="flex items-center  text-white justify-between mx-auto py-3  xs:w-10/12 w-[88%]       !z-30 ">
@@ -116,9 +115,9 @@ export default function Navbar() {
       </section>
 
       {/* horizontal scroll indicator.  */}
-      {/* try hiding on mobile, bug.. */}
+
       <motion.div
-        className={`hidden xs:inline fixed top-14 h-[4px] left-0 right-0 bg-white origin-left  `}
+        className={` fixed top-14 h-[4px] left-0 right-0 bg-white origin-left  `}
         style={{ scaleX }}
       />
 
