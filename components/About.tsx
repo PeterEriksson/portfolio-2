@@ -52,18 +52,24 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
       transition: {
         //duration: 0.55, //...?
         ease: "easeOut",
-        staggerChildren: 0.35, // increase stagger delay
+        staggerChildren: 0.6, // increase stagger delay
         /* delayChildren: 0.2, */ // delay before first child starts
       },
     },
   };
 
   const childVariants = {
-    hidden: { opacity: 0, y: 25 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeIn" },
+      //transition: { duration: 0.45, ease: "easeOut" },
+      //bouncy effect:
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+      },
     },
   };
 
@@ -79,22 +85,13 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
       <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row     space-y-4 xs:space-y-0 ">
         {/* Text container  */}
         <motion.div
-          className="  ///text-start"
+          className=""
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           // for when testing, toggle once below
           viewport={{ once: true, amount: 0.6 }}
         >
-          {/* <motion.h1
-            variants={childVariants}
-            className={`sm:text-5xl text-3xl font-bold ${
-              isFullScreen && "!opacity-0"
-            }  `}
-          >
-            About
-          </motion.h1> */}
-
           {/* blue vertical line on mobile */}
           <motion.div variants={childVariants} className="flex items-center">
             <div className="block xs:hidden w-1 h-[24px] bg-mainDarkBlue// bg-react mr-2"></div>

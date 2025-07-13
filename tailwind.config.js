@@ -61,6 +61,7 @@ module.exports = {
         scaleInOut: "scaleInOut 0.65s ease-in-out forwards",
         "show-me-pulse": "show-me-pulse 4.3s ease-in-out infinite",
         wave: "wave 8s ease-in-out infinite",
+        "wave-click": "waveClick 1s ease-in-out",
       },
       keyframes: {
         "pulse-lg": {
@@ -80,12 +81,24 @@ module.exports = {
           "0%,40%, 60%, 100%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.042)" },
         },
+
         wave: {
-          "0%, 5%, 100%": { transform: "rotate(0deg)" },
-          "1%": { transform: "rotate(6deg)" },
-          "2%": { transform: "rotate(-4deg)" },
-          "3%": { transform: "rotate(6deg)" },
-          "4%": { transform: "rotate(-2deg)" },
+          "0%, 45%, 100%": { transform: "rotate(0deg)" },
+          "46%": { transform: "rotate(6deg)" },
+          "47%": { transform: "rotate(-4deg)" },
+          "48%": { transform: "rotate(6deg)" },
+          "49%": { transform: "rotate(-2deg)" },
+          "50%": { transform: "rotate(0deg)" },
+        },
+
+        waveClick: {
+          "0%": { transform: "rotate(0deg)" },
+          "15%": { transform: "rotate(14deg)" },
+          "30%": { transform: "rotate(-8deg)" },
+          "45%": { transform: "rotate(14deg)" },
+          "60%": { transform: "rotate(-4deg)" },
+          "75%": { transform: "rotate(10deg)" },
+          "100%": { transform: "rotate(0deg)" },
         },
       },
     },

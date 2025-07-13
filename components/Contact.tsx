@@ -127,8 +127,8 @@ export default function Contact({ pageInfo, socials }: Props) {
             opacity: 0,
           }}
           transition={{
-            delay: 0.5,
-            duration: 0.8,
+            delay: 0.6,
+            duration: 1.2,
           }}
           whileInView={{
             opacity: 1,

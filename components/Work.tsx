@@ -132,7 +132,6 @@ export default function Work({ projects, slides, options }: Props) {
     <div
       ref={scope}
       id="Work"
-      // more + show less bug, h issue, non clickable on bottom of text..try increase -> ->
       //h-[105vh]/// xs:h-[110vh]/// sm:h-[115vh]///  lg:h-[125vh]/// ->use padding instead. solves show+less bug.
       className={`${menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "}
          transition duration-200 ease-in bg-gray-100 py-14 xs:py-24 lg:py-28            flex flex-col relative items-center justify-center   `}
@@ -144,7 +143,7 @@ export default function Work({ projects, slides, options }: Props) {
         viewport={{ once: true, amount: 0.8 }}
         transition={{ duration: 0.5 }}
         //w- tempsol...centralize instead?
-        className={`header  w-[92%] xs:w-fit flex flex-col items-start xs:items-center mb-3.5 xs:mb-2   `}
+        className={`header  w-[88%] xs:w-fit flex flex-col items-start xs:items-center mb-3.5 xs:mb-2   `}
       >
         {/* <h1 className=" sm:text-5xl text-3xl font-bold  ">Projects</h1> */}
         {/* blue vertical line on mobile */}
@@ -162,9 +161,8 @@ export default function Work({ projects, slides, options }: Props) {
       <div
         aria-label="styles.embla   "
         //increase w slightly to compensate px in embla__slide (in Project) (in order for prev+next-btns to be overlayed)
-        //h-auto solves-show+less-bug..not on md and smaller...
 
-        className={`w-full xs:w-[89%] sm:w-[87%] lg:w-[86%]  ${styles.embla}   `}
+        className={`w-full/ w-[90%]      xs:w-[89%] sm:w-[87%] lg:w-[86%]  ${styles.embla}   `}
       >
         <div
           aria-label="styles.embla__viewport"
@@ -174,7 +172,7 @@ export default function Work({ projects, slides, options }: Props) {
           <div
             aria-label="styles.embla__container"
             //add spacing between projects here:
-            className="flex flex-row z-50 gap-7 xs:gap-x-14 lg:gap-x-20      "
+            className="flex flex-row z-40 gap-12 xs:gap-x-14 lg:gap-x-20      "
           >
             {projects?.map((project, index) => (
               <Project

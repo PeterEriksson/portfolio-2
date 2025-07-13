@@ -25,7 +25,7 @@ const Home = () => {
         </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Navbar /> */}
+      <Navbar />
       <Hero socials={socials} pageInfo={pageInfo ?? undefined} />
       <Work projects={projects} />
       <About pageInfo={pageInfo ?? undefined} />
