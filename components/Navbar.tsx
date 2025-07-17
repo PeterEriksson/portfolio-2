@@ -49,7 +49,7 @@ export default function Navbar() {
         isFullScreen && " !-translate-y-full pointer-events-none "
       } ${
         visible ? "" : "-translate-y-14    duration-300"
-      }   transition transform duration-200 ease-in !fixed !top-0 w-screen z-[60] bg-mainDarkBlue/95 flex flex-col`}
+      } hidden xs:flex flex-col   transition transform duration-200 ease-in !fixed !top-0 w-screen z-[60] bg-mainDarkBlue/95 `}
     >
       <section className="flex items-center  text-white justify-between mx-auto py-3  xs:w-10/12 w-[88%]       !z-30 ">
         {/* LEFT div  (PE-logo) */}
