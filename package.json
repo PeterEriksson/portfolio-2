@@ -5,6 +5,9 @@
     "build": "next build",
     "start": "next start"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "dependencies": {
     "@heroicons/react": "2.0.0",
     "@sanity/client": "^2.23.2",

@@ -245,7 +245,7 @@ export default function Project({
         {/* TESTING tooltip: */}
         <div
           //LINKS on desktop (github + livebuild)
-          className="items-center space-x-1.5// hidden sm:flex"
+          className="items-center space-x-1.5 hidden sm:flex"
         >
           {/* GitHub Icon with Tooltip */}
           <div className="relative group">
@@ -254,7 +254,7 @@ export default function Project({
               url={project?.linkToGithub}
               bgColor="transparent"
               fgColor="#555555B3"
-              className="hover:opacity-100 opacity-80 cursor-pointer !h-10 !w-10 sm:!w-11 sm:!h-11 transition duration-150 ease-in //border rounded-full p-1"
+              className="hover:opacity-100 opacity-80 cursor-pointer !h-10 !w-10 sm:!w-11 sm:!h-11 transition duration-150 ease-in //border bg-gray-200/80 rounded-full p-1"
             />
             <div className="absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150 bg-black text-white text-xs rounded px-2 py-1 -top-6 whitespace-nowrap">
               GitHub Repo
@@ -266,7 +266,7 @@ export default function Project({
             <a
               href={project?.linkToBuild}
               target="_blank"
-              className="hover:opacity-100 opacity-80 h-11 w-11 p-2 cursor-pointer transition duration-150 ease-in border// rounded-full flex items-center justify-center"
+              className="hover:opacity-100 opacity-80 h-11 w-11 p-2 cursor-pointer transition duration-150 ease-in border// bg-gray-200/80 rounded-full flex items-center justify-center"
             >
               <ArrowTopRightOnSquareIcon className="text-[#555555]/70 w-9 h-9" />
             </a>
