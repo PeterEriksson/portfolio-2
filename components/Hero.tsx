@@ -271,7 +271,7 @@ export default function Hero({ socials, pageInfo }: Props) {
             >
               <ScrollLink
                 //integrate <button> into ScrollLink
-                offset={90}
+                offset={/* 90 */ 50}
                 to="Work"
                 smooth="true"
                 className="  "
@@ -280,17 +280,17 @@ export default function Hero({ socials, pageInfo }: Props) {
                   variants={childVariants}
                   className={`z-50 shadow-md  shadow-indigo-500/30  ${
                     buttonIsPressed &&
-                    "shadow-none !scale-[0.96] transition duration-200 ease-out "
-                  }  group relative  bg-gradient-to-br from-indigo-500/70 to-react/80 py-3 px-6 rounded-xl focus:outline-none`}
+                    "shadow-none !scale-[0.98] transition duration-200 ease-out "
+                  }  group relative bg-indigo-700 //bg-gradient-to-br from-indigo-500/70 to-react/80 py-3 px-6 rounded-xl focus:outline-none`}
                   onMouseDown={() => setButtonIsPressed(true)}
                   onMouseUpCapture={() => setButtonIsPressed(false)}
                   onMouseLeave={() => setButtonIsPressed(false)}
                 >
-                  <p className="text-black text-sm font-bold opacity-90">
+                  <p className="text-white tracking-wide text-sm font-semibold opacity-90">
                     View projects
                   </p>
                   <ChevronDownIcon
-                    className={`text-black   h-[17px] w-[17px] absolute -top-0.5 right-1 group-hover:opacity-90 group-hover:translate-y-4 inline opacity-0  !transition !duration-500 transform ease-in-out `}
+                    className={`text-white h-[17px] w-[17px] absolute top-3.5 right-1 group-hover:opacity-60 group-hover:animate-cta-arrow-bounce-down inline opacity-0  !transition !duration-500 transform ease-in-out `}
                   />
                 </motion.button>
               </ScrollLink>

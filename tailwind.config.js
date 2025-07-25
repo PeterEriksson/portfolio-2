@@ -62,6 +62,7 @@ module.exports = {
         "show-me-pulse": "show-me-pulse 4.3s ease-in-out infinite",
         wave: "wave 8s ease-in-out infinite",
         "wave-click": "waveClick 1s ease-in-out",
+        "cta-arrow-bounce-down": "ctaArrowBounceDown 0.9s ease-out",
       },
       keyframes: {
         "pulse-lg": {
@@ -99,6 +100,13 @@ module.exports = {
           "60%": { transform: "rotate(-4deg)" },
           "75%": { transform: "rotate(10deg)" },
           "100%": { transform: "rotate(0deg)" },
+        },
+        ctaArrowBounceDown: {
+          "0%": { transform: "translateY(0)" },
+          "20%": { transform: "translateY(0)" }, // pause
+          "50%": { transform: "translateY(6px)" },
+          "80%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(0)" },
         },
       },
     },
