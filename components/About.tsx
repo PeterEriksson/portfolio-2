@@ -78,9 +78,9 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
       /* introducing scrollRef got rid of weird bug (not working placing About below Projects. Now works.) */
       ref={scrollRef}
       id="About"
-      className={` ${
+      className={`hidden xs:flex  ${
         menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
-      }  transition duration-200 ease-in  bg-gray-200 h-screen flex justify-center    overflow-x-hidden         for-shape:-> relative `}
+      }  transition duration-200 ease-in  bg-gray-200 h-screen  justify-center    overflow-x-hidden         for-shape:-> relative `}
     >
       <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row     space-y-4 xs:space-y-0 ">
         {/* Text container  */}
@@ -132,7 +132,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
           alt="desktop about img"
         />
 
-        {/* mobile view, avoid slide in, causes reload on mobile..? */}
+        {/* mobile view, avoid slide in  */}
         <motion.img
           initial={{
             opacity: 0,
