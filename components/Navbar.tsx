@@ -72,9 +72,11 @@ export default function Navbar() {
               }  tracking-[2px]    transform transition duration-300 ease-in-out`}
             >
               PE
-              <span
+              {/* <span
                 className={` w-2 h-2 bg-react inline-block rounded-full ml-2 mb-1.5`}
-              ></span>
+              ></span> */}
+              {/* testing more vibrant react-dot */}
+              <span className="w-2 h-2 inline-block rounded-full ml-2 mb-1.5 react-dot-color"></span>
             </h1>
           </ScrollLink>
         </section>
@@ -103,13 +105,13 @@ export default function Navbar() {
         {/* HAMBURGER-icon. Toggle between hamburger and cross  */}
         <section
           onClick={() => toggleMenu()}
-          className={`mdPlus:!hidden// lg:!hidden  ${styles.menuBtn}   opacity-80 hover:opacity-100    z-40`}
+          className={`  lg:!hidden  ${styles.menuBtn}   opacity-80 hover:opacity-100    z-40`}
         >
           {/* CROSS */}
           <section
-            className={`mdPlus:hidden// lg:hidden  ${
-              menuOpen && styles.burgerAnimation
-            } ${styles.burger}`}
+            className={`  lg:hidden  ${menuOpen && styles.burgerAnimation} ${
+              styles.burger
+            }`}
           ></section>
         </section>
       </section>

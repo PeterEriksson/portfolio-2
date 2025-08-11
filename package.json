@@ -26,6 +26,8 @@
     "tailwind-scrollbar": "^2.0.1",
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss-textshadow": "^2.1.3",
+    "tsparticles-engine": "^2.12.0",
+    "tsparticles-preset-stars": "^2.12.0",
     "zustand": "^4.4.7"
   },
   "devDependencies": {

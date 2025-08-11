@@ -16,6 +16,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import useCopyToClipboard from "../hooks/useCopyToClipboard";
 import styles from "../styles/decorative.module.css";
 import Kicker from "./Kicker";
+import StarsBackground from "./StarsBackground";
 
 type Props = {
   socials?: Social[];
@@ -83,39 +84,38 @@ export default function Hero({ socials, pageInfo }: Props) {
     <>
       <header
         id="header"
+        // on desktop sizes using stars bg
         className={`   ${
           menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
-        }    transition duration-200 ease-in   h-auto pb-4 sm:pb-0 sm:h-[97vh]   flex items-center justify-center bg-mainDarkBlue         `}
+        }    transition duration-200 ease-in   h-auto pb-4 sm:pb-0 sm:h-[97vh]   flex items-center justify-center bg-mainDarkBlue xs:bg-transparent         `}
       >
+        <StarsBackground />
         <div className=" xs:w-10/12 w-[88%] flex flex-col sm:flex-row-reverse  items-center justify-between ">
-          <div className="md:w-2/5 sm:w-1/2 w-full relative  ">
+          <div className="md:w-2/5 sm:w-1/2 w-full relative group">
             <motion.img
-              initial={{
-                opacity: 0,
-              }}
-              transition={{
-                duration: 1.5,
-              }}
-              whileInView={{
-                opacity: 1,
-              }}
+              initial={{ opacity: 0 }}
+              transition={{ duration: 1.5 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className={`xs:rounded-xl rounded-md   ${styles.glowingImage}   `}
-              //src="https://user-images.githubusercontent.com/17027312/134349999-06919dce-11f2-42b9-9c0c-2b27d8dcce51.jpeg"
+              className={`xs:rounded-xl rounded-md ${styles.glowingImage}`}
               src={urlFor(pageInfo?.heroImage).url() || undefined}
               alt=""
             />
+
+            {/* Tooltip */}
+            <div
+              className="absolute top-[25%] left-[18%] lg:left-[20%] xl:left-[23%] -translate-y-1/2 
+               bg-black/75 text-white text-sm px-3 py-1.5 rounded-lg 
+               opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in delay-300
+               pointer-events-none whitespace-nowrap z-10    hidden sm:inline"
+            >
+              That's me 😎
+            </div>
+
             <motion.div
-              initial={{
-                opacity: 0,
-              }}
-              transition={{
-                duration: 1,
-                delay: 1,
-              }}
-              whileInView={{
-                opacity: 1,
-              }}
+              initial={{ opacity: 0 }}
+              transition={{ duration: 1, delay: 1 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="absolute bottom-1.5 left-1/2 -translate-x-1/2 bg-black/70 px-5 py-2.5 rounded-2xl flex justify-center items-center space-x-3"
             >
@@ -126,11 +126,12 @@ export default function Hero({ socials, pageInfo }: Props) {
                   url={social?.url}
                   bgColor="transparent"
                   fgColor="white"
-                  className="hover:opacity-60 opacity-80 !h-6 !w-6 "
+                  className="hover:opacity-60 opacity-80 !h-6 !w-6"
                 />
               ))}
             </motion.div>
           </div>
+
           {/* change div to motion.div and remove motion.h... */}
           <div className="text-white text-center sm:text-left   pt-4 xs:pt-0   forKicker: relative">
             {/* <Kicker /> */}
@@ -280,17 +281,17 @@ export default function Hero({ socials, pageInfo }: Props) {
                   variants={childVariants}
                   className={`z-50 shadow-md  shadow-indigo-500/30  ${
                     buttonIsPressed &&
-                    "shadow-none !scale-[0.98] transition duration-200 ease-out "
+                    "shadow-none !scale-[0.99] transition duration-200 ease-out "
                   }  group relative bg-indigo-700 //bg-gradient-to-br from-indigo-500/70 to-react/80 py-3 px-6 rounded-xl focus:outline-none`}
                   onMouseDown={() => setButtonIsPressed(true)}
                   onMouseUpCapture={() => setButtonIsPressed(false)}
                   onMouseLeave={() => setButtonIsPressed(false)}
                 >
-                  <p className="text-white tracking-wide text-sm font-semibold opacity-90">
+                  <p className="text-white tracking-wider text-sm font-semibold opacity-90">
                     View projects
                   </p>
                   <ChevronDownIcon
-                    className={`text-white h-[17px] w-[17px] absolute top-3.5 right-1 group-hover:opacity-60 group-hover:animate-cta-arrow-bounce-down inline opacity-0  !transition !duration-500 transform ease-in-out `}
+                    className={`text-white h-[17px] w-[17px] absolute top-3.5 right-1 group-hover:opacity-90 group-hover:animate-cta-arrow-bounce-down inline opacity-0  !transition !duration-500 transform ease-in-out `}
                   />
                 </motion.button>
               </ScrollLink>
@@ -326,8 +327,10 @@ export default function Hero({ socials, pageInfo }: Props) {
 
       {/* Scroll down signifier */}
       <div
-        className={`w-screen h-[2vh] sm:h-[3vh] bg-gray-100 sm:bg-gradient-to-b from-mainDarkBlue to-gray-100 transition duration-200 ease-in ${
-          menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
+        className={`w-screen h-[1vh] sm:h-[3vh] bg-gray-100 sm:bg-gradient-to-b from-mainDarkBlue to-gray-100 transition duration-200 ease-in ${
+          menuOpen
+            ? "opacity-50 lg:!opacity-100"
+            : "opacity-100 md:bg-gradient-to-b"
         }`}
       />
     </>

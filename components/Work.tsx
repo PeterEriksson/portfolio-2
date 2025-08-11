@@ -13,6 +13,8 @@ import { setBodyScroll } from "../utils/helpers";
 import { stagger, useAnimate, motion } from "framer-motion";
 import workStyles from "../styles/work.module.css";
 import { urlFor } from "../sanity";
+import { SocialIcon } from "react-social-icons";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
 
 type Props = {
   projects: ProjectType[];
@@ -128,6 +130,53 @@ export default function Work({ projects, slides, options }: Props) {
     }
   };
 
+  const mobileTechContainerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 0.7,
+      transition: {
+        delayChildren: 1, // Delay before first child animation starts
+        staggerChildren: 0.15, // Stagger between each child
+      },
+    },
+  };
+
+  const mobileTechItemVariants = {
+    hidden: { opacity: 0 /* y: 10 */ },
+    show: {
+      opacity: 1,
+      /* y: 0, */
+      transition: {
+        duration: 0.4,
+        ease: "easeIn",
+      },
+    },
+  };
+
+  /* TESTING with no bg */
+  const techIcons = [
+    {
+      image: "/kicker-tech-icons/react.png",
+      alt: "React.js icon",
+      title: "React.js",
+    },
+    {
+      image: "/kicker-tech-icons/next.png",
+      alt: "Next.js icon",
+      title: "Next.js",
+    },
+    {
+      image: "/kicker-tech-icons/typescript.png",
+      alt: "TypeScript icon",
+      title: "TypeScript",
+    },
+    {
+      image: "/kicker-tech-icons/tw.png",
+      alt: "Tailwind CSS icon",
+      title: "Tailwind CSS",
+    },
+  ];
+
   return (
     <div
       ref={scope}
@@ -142,10 +191,8 @@ export default function Work({ projects, slides, options }: Props) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.8 }}
         transition={{ duration: 0.5 }}
-        //w- tempsol...centralize instead?
         className={`header  w-[88%] xs:w-fit flex flex-col items-start xs:items-center mb-3.5 xs:mb-2   `}
       >
-        {/* <h1 className=" sm:text-5xl text-3xl font-bold  ">Projects</h1> */}
         {/* blue vertical line on mobile */}
         <div className="flex items-center">
           <div className="block xs:hidden w-1 h-[24px] bg-react mr-2"></div>
@@ -162,7 +209,7 @@ export default function Work({ projects, slides, options }: Props) {
         aria-label="styles.embla   "
         //increase w slightly to compensate px in embla__slide (in Project) (in order for prev+next-btns to be overlayed)
 
-        className={`w-full/ w-[90%]      xs:w-[89%] sm:w-[87%] lg:w-[86%]  ${styles.embla}   `}
+        className={`w-full /w-[90%]      xs:w-[89%] sm:w-[87%] lg:w-[86%]  ${styles.embla}   `}
       >
         <div
           aria-label="styles.embla__viewport"
@@ -204,24 +251,81 @@ export default function Work({ projects, slides, options }: Props) {
       />
       {/* DEMO mobile */}
       <div
-        className={` xxs:hidden    fixed inset-0 h-[100%] bg-gradient-to-br  ${getGradientClass(
+        className={`demo xxs:hidden    fixed inset-0 h-[100%] bg-gradient-to-br  ${getGradientClass(
           selectedIndex
-        )}    demo ${effect ? "" : "invisible"}
+        )}     ${effect ? "" : "invisible"}
         ${isFullScreen ? "" : "pointer-events-none "}
         `}
       >
-        <div className="absolute top-[25%]">
-          <h1
-            className={`text-center font-semibold text-4xl text-black mb-2 ${
-              isFullScreen
-                ? "translate-y-0 opacity-50"
-                : "translate-y-3 opacity-0"
-            } transform duration-[450ms]  ease-in delay-[600ms]   `}
+        <div className="absolute top-[25%]// top-[21%]">
+          <motion.div
+            className="flex mx-2 space-x-3"
+            variants={mobileTechContainerVariants}
+            initial="hidden"
+            animate={isFullScreen ? "show" : "hidden"}
           >
-            {projects[selectedIndex]?.title}
-          </h1>
+            {/* {projects[selectedIndex]?.technologies?.map((tech, i) => (
+              <h1 key={i}>{tech.title}</h1>
+            ))} */}
+            {/* {techIcons.map((tech, i) => ( */}
+            {projects[selectedIndex]?.technologies?.map((tech, i) => (
+              <motion.div
+                variants={mobileTechItemVariants}
+                key={i}
+                className="group relative flex cursor-pointer rounded-full"
+              >
+                <img
+                  className="projectTechItemSize opacity-70 object-cover rounded-full filter group-hover:grayscale transition duration-300 ease-in-out"
+                  src={urlFor(tech?.image).url() || undefined}
+                  //src={tech?.image}
+                  alt={tech?.title || ""}
+                />
+
+                {/* Tooltip */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 bg-black text-white text-xs rounded px-2 py-1 -top-8 whitespace-nowrap">
+                  {tech?.title}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+          <div className="flex items-center justify-between mx-2">
+            <h1
+              className={`font-semibold text-4xl text-black mb-2 ${
+                isFullScreen
+                  ? "translate-y-0 opacity-50"
+                  : "translate-y-3 opacity-0"
+              } transform duration-[450ms]  ease-in delay-[600ms]   `}
+            >
+              {projects[selectedIndex]?.title}
+            </h1>
+            <div
+              className={`flex space-x-1.5
+              ${
+                isFullScreen
+                  ? "translate-y-0 opacity-[0.8]"
+                  : "translate-y-3 opacity-0"
+              } transform duration-[450ms]  ease-in delay-[600ms] 
+              `}
+            >
+              <SocialIcon
+                target="_blank"
+                url={projects[selectedIndex]?.linkToGithub}
+                bgColor="rgba(0,0,0,0.6)"
+                fgColor="#ffffffb3" // b3 = 70% opacity
+                className="!h-9 !w-9 rounded-full"
+              />
+              <a
+                href={projects[selectedIndex]?.linkToBuild}
+                target="_blank"
+                className="h-9 w-9 p-2 bg-black/60 rounded-full flex items-center justify-center"
+              >
+                <ArrowTopRightOnSquareIcon className="text-[#ffffff]/70 w-9 h-9" />
+              </a>
+            </div>
+          </div>
+
           <img
-            className="absolute// top-[30%]//  "
+            className="mt-1.5 "
             src={urlFor(projects[selectedIndex]?.image).url() || undefined}
             alt="demo mobile"
           />

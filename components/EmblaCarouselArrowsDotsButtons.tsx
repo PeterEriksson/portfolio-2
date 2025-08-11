@@ -59,11 +59,9 @@ export const NextButton: React.FC<PrevNextButtonPropType> = (props) => {
       onMouseDown={() => setButtonIsPressed(true)}
       onMouseUpCapture={() => setButtonIsPressed(false)}
       onMouseLeave={() => setButtonIsPressed(false)}
-      className={`${
-        enabled
-          ? " cursor-pointer opacity-30 "
-          : "!opacity-0/ !cursor-default/ invisible"
-      } ${buttonIsPressed && "!opacity-40"}      arrowButtonEmbla `}
+      className={`${enabled ? " cursor-pointer opacity-30 " : " invisible"} ${
+        buttonIsPressed && "!opacity-40"
+      }      arrowButtonEmbla `}
       onClick={onClick}
       disabled={!enabled}
     >

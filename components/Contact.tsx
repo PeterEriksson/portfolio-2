@@ -75,9 +75,9 @@ export default function Contact({ pageInfo, socials }: Props) {
           </div>
 
           <div className="space-y-1.5">
-            <div className="mt-1 flex items-center space-x-2 sm:text-base text-sm xl:text-xl text-white/75 ">
+            <div className="mt-1 contactItem ">
               <MailIcon className="h-5 w-5 " />
-              <p className="font-semibold">{pageInfo?.email}</p>
+              <p className=" ">{pageInfo?.email}</p>
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
                 <button className=" text-white/70 ">
                   {copied ? (
@@ -88,13 +88,13 @@ export default function Contact({ pageInfo, socials }: Props) {
                 </button>
               </CopyToClipboard>
             </div>
-            <div className="flex items-center space-x-2 mt-2 sm:text-base text-sm xl:text-xl text-white/75">
+            <div className="mt-2 contactItem">
               <PhoneIcon className="h-5 w-5 " />
-              <p className="font-semibold">{pageInfo?.phoneNumber}</p>
+              <p className=" ">{pageInfo?.phoneNumber}</p>
             </div>
-            <div className="mb-1 xxs:mb-0 mt-1 flex items-center space-x-2 sm:text-base text-sm xl:text-xl text-white/70">
+            <div className="mb-1 xxs:mb-0 mt-1 contactItem">
               <MapPinIcon className="h-5 w-5 " />
-              <p className="font-semibold">Stockholm, Sweden</p>
+              <p className=" ">Stockholm, Sweden</p>
             </div>
 
             {/* SOCIALS */}
@@ -106,7 +106,7 @@ export default function Contact({ pageInfo, socials }: Props) {
                   url={social.url}
                   bgColor="transparent"
                   fgColor="white"
-                  className="hover:opacity-50 opacity-[0.6] !h-9 !w-9  border border-gray-200/20 rounded-md"
+                  className="hover:opacity-50 opacity-[0.6] !h-9 !w-9 rounded-md shadow-gray-200/25 shadow-md"
                 />
               ))}
             </div>

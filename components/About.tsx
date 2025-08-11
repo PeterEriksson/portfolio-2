@@ -100,7 +100,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
 
           <motion.h4
             variants={childVariants}
-            className=" sm:text-2xl text-lg font-semibold xs:font-bold text-black/60 xs:text-black"
+            className=" sm:text-2xl text-lg font-semibold xs:font-bold text-black/40 xs:text-black"
           >
             Here is a{" "}
             <span className="relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 removeForNow: //after:w-full after:h-[2px] after:bg-gradient-to-r after:from-mainDarkBlue/70 after:to-react after:opacity-70">

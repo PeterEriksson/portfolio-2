@@ -7,8 +7,9 @@ function LoadingScreen() {
         className={`text-8xl xs:text-9xl font-bold tracking-[2px] mb-6 flex items-center text-white`}
       >
         PE
+        {/* testing more vibrant react dot */}
         <span
-          className={`w-[18px] h-[18px] xs:w-[22px] xs:h-[22px] bg-react bg-red-500// inline-block rounded-full ml-[18px] `}
+          className={`w-[18px] h-[18px] xs:w-[22px] xs:h-[22px] react-dot-color bg-react/ inline-block rounded-full ml-[18px] `}
         ></span>
       </h1>
       <div className={styles.loadingWrapper}>

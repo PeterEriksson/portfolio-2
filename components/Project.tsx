@@ -96,11 +96,11 @@ export default function Project({
   return (
     <div
       ref={ref}
-      className={` ${styles.embla__slide}  px-1 xs:px-3.5      min-w-0 relative`}
+      className={` ${styles.embla__slide}  px-1/ xs:px-3.5      min-w-0 relative`}
     >
-      <div className="relative  flex justify-between items-center  border border-gray-300/60  rounded-md     upper-div-card">
+      <div className="relative  flex justify-between items-center  xs:border border-gray-300/60  rounded-md     upper-div-card">
         {/* NEXT+PREV BTNs */}
-        <div className="absolute -left-[14px] top-1/2 -translate-y-1/2 pointer-events-auto z-50 ">
+        <div className="absolute -left-[14px] top-1/2 -translate-y-1/2 pointer-events-auto z-50        ">
           <PrevButton
             onClick={scrollPrev ?? (() => {})}
             enabled={!!prevBtnEnabled}
@@ -113,21 +113,31 @@ export default function Project({
           />
         </div>
 
+        {/* MOBILE test*/}
+        <motion.img
+          //use translate-y in motion properties instead. (bug if mixing..)... x:12% originally
+          initial={{ opacity: 0, x: "-5%", y: "5%" }}
+          whileInView={{ opacity: 1, x: "0%", y: "-10%" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          src={urlFor(project?.image).url() || undefined}
+          alt="project_img"
+          className="xs:hidden absolute w-full xs:rounded-md top-[16%] aspect-auto rounded-sm z-30"
+        />
         <div
           className={`relative bg-gradient-to-br ${getGradientClass(index)}  
-             w-[50%] aspect-[1/1] rounded-md rounded-tr-sm overflow-visible`}
+              rounded-md xs:rounded-tr-sm overflow-visible   w-[100%] aspect-[1/0.75] xs:aspect-[1/1] mx-2 xs:mx-0   xs:w-[50%]`}
         >
-          {/* MOBILE */}
-          <motion.img
-            //use translate-y in motion properties instead. (bug if mixing..)
+          {/* <motion.img
+            //use translate-y in motion properties instead. (bug if mixing..)... x:12% originally
             initial={{ opacity: 0, x: "5%", y: "5%" }}
-            whileInView={{ opacity: 1, x: /* "10%" */ "12%", y: 0 }}
+            whileInView={{ opacity: 1, x: "0%", y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             src={urlFor(project?.image).url() || undefined}
             alt="project_img"
-            className="xxs:hidden absolute w-full rounded-md aspect-auto aspect-[12/10]// top-[17%] "
-          />
+            className="xs:hidden absolute w-full xs:rounded-md top-[17%] aspect-auto   aspect-[12/10]//  "
+          /> */}
           {/* DESKTOP */}
           <motion.img
             //use translate-x in inital(below) instead. (bug if mixing xxs:!translate-x-[22%]..)
@@ -137,12 +147,12 @@ export default function Project({
             transition={{ duration: 0.55 }}
             src={urlFor(project?.image).url() || undefined}
             alt="project_img"
-            className="hidden xxs:block absolute w-full rounded-md aspect-auto top-[17%]   "
+            className="hidden xs:block absolute w-full rounded-md aspect-auto top-[17%]   "
           />
         </div>
 
         {/* PROJECT-TECH div */}
-        <div className="mr-5 group/parent">
+        <div className="mr-5 group/parent   hidden xs:inline">
           <h1 className="cursor-default opacity-0 translate-y-2 group-hover/parent:opacity-25 group-hover/parent:delay-[600ms]  group-hover/parent:translate-y-0 transform transition duration-500 ease-in     text-center md-plus:text-start tracking-wider text-xs sm:text-sm md:text-base lg:text-xl mb-1 font-bold  ">
             TECH STACK
           </h1>
@@ -205,7 +215,7 @@ export default function Project({
         whileInView={{ opacity: 1 /*  y: 0 */ }}
         viewport={{ once: true }}
         transition={{ duration: 0.9 }}
-        className={`flex  mt-1    project-info${index}         `}
+        className={`flex  mt-1    project-info${index}     mx-[16px] xs:mx-0    `}
       >
         <h2
           className={`text-xl sm:text-2xl text-black/70 opacity-90 cursor-default ${
@@ -245,7 +255,7 @@ export default function Project({
         {/* TESTING tooltip: */}
         <div
           //LINKS on desktop (github + livebuild)
-          className="items-center space-x-1.5 hidden sm:flex"
+          className="items-center space-x-1.5 hidden xs:flex"
         >
           {/* GitHub Icon with Tooltip */}
           <div className="relative group">
@@ -277,9 +287,9 @@ export default function Project({
         </div>
       </motion.div>
       <div
-        //LINKS (github + livebuild) on mobile + more (mobile screen, up to sm)
+        //LINKS (github + livebuild) on MOBILE + more (mobile screen, up to sm)
         //sm and above screens -> line-clamp-3...
-        className={`flex sm:hidden      project-info${index} relative items-center justify-end  space-x-1.5 -ml-2 mt-[1px]  `}
+        className={`flex sm:hidden      project-info${index} relative items-center justify-end  space-x-1.5 -ml-2 mt-[1px] mr-4 `}
       >
         <p
           //temp solution, 'more' on mobile
@@ -287,7 +297,7 @@ export default function Project({
           onClick={() => setShowFullSummary(true)}
           className={`${
             showFullSummary && "hidden"
-          } absolute -left-1.5 -top-1.5 sm:hidden cursor-pointer               z-50 p-2 tracking-wider font-semibold text-sm ml-2.5 opacity-[0.3]`}
+          } absolute -left-1.5// left-2  -top-1.5 sm:hidden cursor-pointer               z-50 p-2 tracking-wider font-semibold text-sm ml-2.5 opacity-[0.3]`}
         >
           show more
         </p>
@@ -297,12 +307,12 @@ export default function Project({
           url={project?.linkToGithub}
           bgColor="transparent"
           fgColor="#555555CC"
-          className="hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-11 sm:!h-11 transition duration-150 ease-in bg-gray-200 rounded-full p-1"
+          className="testing !opacity-0 pointer-events-none      hover:opacity-70 cursor-pointer !h-10 !w-10 sm:!w-11 sm:!h-11 transition duration-150 ease-in bg-gray-200 rounded-full p-1"
         />
         <a
           href={project?.linkToBuild}
           target="_blank"
-          className="hover:opacity-70 h-10 w-10 p-2 cursor-pointer transition duration-150 ease-in   bg-gray-200/95 rounded-full flex items-center justify-center   "
+          className="testing !opacity-0 pointer-events-none      hover:opacity-70 h-10 w-10 p-2 cursor-pointer transition duration-150 ease-in   bg-gray-200/95 rounded-full flex items-center justify-center   "
         >
           <ArrowTopRightOnSquareIcon className="text-[#555555]/70 w-9 h-9" />
         </a>
