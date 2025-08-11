@@ -75,10 +75,11 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
 
   return (
     <div
-      /* introducing scrollRef got rid of weird bug (not working placing About below Projects. Now works.) */
+      // introducing scrollRef got rid of weird bug (not working placing About below Projects. Now works.)
+     
       ref={scrollRef}
       id="About"
-      className={`hidden xs:flex  ${
+      className={`flex  ${
         menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
       }  transition duration-200 ease-in  bg-gray-200 h-screen  justify-center    overflow-x-hidden         for-shape:-> relative `}
     >

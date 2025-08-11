@@ -182,8 +182,11 @@ export default function Work({ projects, slides, options }: Props) {
       ref={scope}
       id="Work"
       //h-[105vh]/// xs:h-[110vh]/// sm:h-[115vh]///  lg:h-[125vh]/// ->use padding instead. solves show+less bug.
-      className={`${menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "}
-         transition duration-200 ease-in bg-gray-100 py-14 xs:py-24 lg:py-28            flex flex-col relative items-center justify-center   `}
+      //TEST hide on mobile
+      className={`hidden xs:flex  ${
+        menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
+      }
+         transition duration-200 ease-in bg-gray-100 py-14 xs:py-24 lg:py-28             flex-col relative items-center justify-center   `}
     >
       <motion.div
         aria-label="PROJECTS-div h1 + h4"

@@ -96,7 +96,7 @@ export default function Project({
   return (
     <div
       ref={ref}
-      className={` ${styles.embla__slide}  px-1/ xs:px-3.5      min-w-0 relative`}
+      className={` ${styles.embla__slide}  xs:px-3.5      min-w-0 relative`}
     >
       <div className="relative  flex justify-between items-center  xs:border border-gray-300/60  rounded-md     upper-div-card">
         {/* NEXT+PREV BTNs */}
