@@ -27,7 +27,7 @@ const Home = () => {
       </Head>
       <Navbar />
       <Hero socials={socials} pageInfo={pageInfo ?? undefined} />
-      {/* <Work projects={projects} /> */}
+      <Work projects={projects} />
       <About pageInfo={pageInfo ?? undefined} />
       <Stack skillDescription={skillDescription ?? undefined} skills={skills} />
       <Contact pageInfo={pageInfo ?? undefined} socials={socials} />
