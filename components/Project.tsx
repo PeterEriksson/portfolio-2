@@ -185,9 +185,10 @@ export default function Project({
         </div>
 
         <div
+          //TEST hide for now on mobile
           //show me btn
           //use flex container to avoid positioning issue (-translate-x-1/2 bug..)
-          className={`flex absolute -bottom-2 w-full justify-center text-white    z-50`}
+          className={`hidden xs:flex absolute -bottom-2 w-full justify-center text-white    z-50`}
         >
           <button
             //minor css-bug after hovering, barely noticable. Bug disappears after demo-show
