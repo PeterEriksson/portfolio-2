@@ -254,7 +254,7 @@ export default function Work({ projects, slides, options }: Props) {
       />
       {/* DEMO mobile */}
       <div
-        className={`demo xxs:hidden    fixed inset-0 h-[100%] bg-gradient-to-br  ${getGradientClass(
+        className={`demo xs:hidden    fixed inset-0 h-[100%] bg-gradient-to-br  ${getGradientClass(
           selectedIndex
         )}     ${effect ? "" : "invisible"}
         ${isFullScreen ? "" : "pointer-events-none "}

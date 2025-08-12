@@ -13,13 +13,13 @@ export const setBodyScroll = (isFullScreen: boolean) => {
     document.body.style.overflow = isFullScreen ? "hidden" : "auto";
 
     // mobile touch scrolling
-    /* if (isFullScreen) {
+    if (isFullScreen) {
       // Disable touch-based scrolling by adding 'touchmove' listener
       document.addEventListener("touchmove", preventScroll, { passive: false });
     } else {
       // Re-enable touch-based scrolling by removing 'touchmove' listener
       document.removeEventListener("touchmove", preventScroll);
-    } */
+    }
   }
 };
 
