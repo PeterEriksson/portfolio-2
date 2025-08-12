@@ -48,27 +48,22 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-
       transition: {
-        //duration: 0.55, //...?
         ease: "easeOut",
-        staggerChildren: 0.6, // increase stagger delay
-        /* delayChildren: 0.2, */ // delay before first child starts
+        staggerChildren: 0.55,
+        duration: 0.45,
       },
     },
   };
 
   const childVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 8 },
     visible: {
       opacity: 1,
       y: 0,
-      //transition: { duration: 0.45, ease: "easeOut" },
-      //bouncy effect:
       transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12,
+        duration: 0.4, // smooth and quick
+        ease: "easeOut", // no spring bounce
       },
     },
   };
@@ -76,7 +71,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
   return (
     <div
       // introducing scrollRef got rid of weird bug (not working placing About below Projects. Now works.)
-     
+
       ref={scrollRef}
       id="About"
       className={`flex  ${
@@ -84,7 +79,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
       }  transition duration-200 ease-in  bg-gray-200 h-screen  justify-center    overflow-x-hidden         for-shape:-> relative `}
     >
       <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row     space-y-4 xs:space-y-0 ">
-        {/* Text container  */}
+        {/* container headers + text  */}
         <motion.div
           className=""
           variants={containerVariants}
@@ -93,22 +88,23 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
           // for when testing, toggle once below
           viewport={{ once: true, amount: 0.6 }}
         >
-          {/* blue vertical line on mobile */}
+          {/* blue vertical line on mobile - TEST cover both h1 + h4*/}
           <motion.div variants={childVariants} className="flex items-center">
-            <div className="block xs:hidden w-1 h-[24px] bg-mainDarkBlue// bg-react mr-2"></div>
-            <h1 className="sm:text-5xl text-3xl font-bold">About</h1>
+            <div className="block xs:hidden w-1 h-[24px]// h-[56px] bg-react mr-2"></div>
+            <div>
+              <h1 className="sm:text-5xl text-3xl font-bold">About</h1>
+              <h4 className=" sm:text-2xl text-lg font-semibold xs:font-bold text-black/40 xs:text-black">
+                Here is a{" "}
+                <span
+                  //find suitable styling for highlighting 'little'
+                  className="relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 removeForNow: //after:w-full after:h-[2px] after:bg-gradient-to-r after:from-mainDarkBlue/70 after:to-react after:opacity-70"
+                >
+                  little
+                </span>{" "}
+                background
+              </h4>
+            </div>
           </motion.div>
-
-          <motion.h4
-            variants={childVariants}
-            className=" sm:text-2xl text-lg font-semibold xs:font-bold text-black/40 xs:text-black"
-          >
-            Here is a{" "}
-            <span className="relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 removeForNow: //after:w-full after:h-[2px] after:bg-gradient-to-r after:from-mainDarkBlue/70 after:to-react after:opacity-70">
-              little
-            </span>{" "}
-            background
-          </motion.h4>
 
           <motion.p
             variants={childVariants}

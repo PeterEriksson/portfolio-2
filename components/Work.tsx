@@ -64,13 +64,15 @@ export default function Work({ projects, slides, options }: Props) {
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, setScrollSnaps, onSelect]);
 
-  //turn off scroll while viewing demo
+  //handle scroll while viewing demo
   React.useEffect(() => {
-    //helper file (also handles mobile-touch-scroll)
+    //helper for disabling/enabling scroll (also handles mobile-touch-scroll)
     setBodyScroll(isFullScreen);
-    return () => {
+
+    //TEST remove ->
+    /* return () => {
       setBodyScroll(false); // Reset scrolling when unmounting or when changing states
-    };
+    }; */
   }, [isFullScreen]);
 
   const handleBack = () => {

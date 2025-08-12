@@ -238,7 +238,7 @@ export default function Hero({ socials, pageInfo }: Props) {
                   <p className=" text-base font-semibold tracking-wide">
                     View projects
                   </p>
-                  <ChevronDownIcon className="w-4 h-4 opacity-60 text-white ml-2" />
+                  <ChevronDownIcon className="w-4 h-4 opacity-70 text-white ml-2 group-hover:translate-y-2 transition duration-300 ease-in-out" />
                 </button>
               </ScrollLink>
               {/* SECONDARY CTA mobile (mail) */}

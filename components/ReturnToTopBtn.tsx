@@ -1,16 +1,22 @@
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
 import { useScroll } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 
-function ReturnToTopBtn() {
+function ReturnToTopBtn(): JSX.Element {
   const { scrollYProgress } = useScroll();
+  const [scrollY, setScrollY] = useState<number>(0);
 
-  const [scrollY, setScrollY] = React.useState(0);
-  React.useEffect(() => {
-    scrollYProgress.onChange((number) => setScrollY(number));
-    //console.log(scrollY);
-  }, [scrollYProgress /* , scrollY */]);
+  useEffect(() => {
+    // Subscribe to changes in scroll progress
+    const unsubscribe = scrollYProgress.on("change", (value: number) => {
+      setScrollY(value);
+    });
+
+    // Cleanup subscription on unmount
+    return unsubscribe;
+  }, [scrollYProgress]);
+
   const scrollBreakpoint = 0.95;
 
   return (
@@ -19,8 +25,7 @@ function ReturnToTopBtn() {
       smooth={true}
       spy={true}
       offset={-40}
-      //Test hide on mobile (framer hook causing problem??)
-      className={`hidden xs:flex   z-50 group cursor-pointer fixed right-6   bottom-6       items-center justify-center w-12 h-12 border-2 border-gray-700 bg-gray-8/ bg-transparent00 bg-opacity-75 rounded-full transition transform opacity ease-in-out duration-500 ${
+      className={`flex z-50 group cursor-pointer fixed right-6 bottom-6 items-center justify-center w-12 h-12 border-2 border-gray-700 bg-gray-8/ bg-transparent00 bg-opacity-75 rounded-full transition transform opacity ease-in-out duration-500 ${
         scrollY > scrollBreakpoint
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-6 pointer-events-none"
