@@ -246,9 +246,7 @@ export default function Work({ projects, slides, options }: Props) {
       <img
         // fix for hiding on page load..(effect)
         //(isFullScreen): disable pointer events to avoid issue when swiping projects..and show me btn(2nd time click)
-        className={`test: hidden xxs:inline         demo ${
-          effect ? "" : "invisible"
-        }  ${
+        className={` hidden xs:inline  demo ${effect ? "" : "invisible"}  ${
           isFullScreen ? "" : "pointer-events-none "
         } object-cover fixed inset-0 mx-auto    h-[100%]  `}
         src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
@@ -263,21 +261,27 @@ export default function Work({ projects, slides, options }: Props) {
         `}
       >
         <div className="absolute top-[25%]// top-[21%]">
-          <motion.div
+          <div
             className="flex mx-2 space-x-3"
-            variants={mobileTechContainerVariants}
-            initial="hidden"
-            animate={isFullScreen ? "show" : "hidden"}
+            //variants={mobileTechContainerVariants}
+            //initial="hidden"
+            //animate={isFullScreen ? "show" : "hidden"}
           >
             {/* {projects[selectedIndex]?.technologies?.map((tech, i) => (
               <h1 key={i}>{tech.title}</h1>
             ))} */}
             {/* {techIcons.map((tech, i) => ( */}
             {projects[selectedIndex]?.technologies?.map((tech, i) => (
-              <motion.div
-                variants={mobileTechItemVariants}
+              <div
+                //variants={mobileTechItemVariants}
                 key={i}
-                className="group relative flex cursor-pointer rounded-full"
+                className={`group relative flex cursor-pointer rounded-full
+                  ${
+                    isFullScreen
+                      ? "translate-y-0 opacity-50"
+                      : "translate-y-2 opacity-0"
+                  } transform duration-[450ms]  ease-in delay-[1100ms]
+                  `}
               >
                 <img
                   className="projectTechItemSize opacity-70 object-cover rounded-full filter group-hover:grayscale transition duration-300 ease-in-out"
@@ -290,9 +294,9 @@ export default function Work({ projects, slides, options }: Props) {
                 <div className="absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 bg-black text-white text-xs rounded px-2 py-1 -top-8 whitespace-nowrap">
                   {tech?.title}
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
           <div className="flex items-center justify-between mx-2">
             <h1
               className={`font-semibold text-4xl text-black mb-2 ${
