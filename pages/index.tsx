@@ -8,6 +8,7 @@ import Contact from "../components/Contact";
 import { PageInfo, Project, Skill, SkillDescription, Social } from "../typings";
 import LoadingScreen from "../components/LoadingScreen";
 import useDataFetch from "../hooks/useDataFetch";
+import { MotionConfig } from "framer-motion";
 
 const Home = () => {
   const { pageInfo, skills, skillDescription, projects, socials, isLoading } =
@@ -18,7 +19,7 @@ const Home = () => {
   }
 
   return (
-    <>
+    <MotionConfig reducedMotion="always">
       <Head>
         <title>
           Peter Eriksson - Frontend developer - React · Next · TS · Tailwind
@@ -31,7 +32,7 @@ const Home = () => {
       <About pageInfo={pageInfo ?? undefined} />
       <Stack skillDescription={skillDescription ?? undefined} skills={skills} />
       <Contact pageInfo={pageInfo ?? undefined} socials={socials} />
-    </>
+    </MotionConfig>
   );
 };
 
