@@ -252,9 +252,9 @@ export default function Work({ projects, slides, options }: Props) {
         src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
         alt="demo desktop"
       />
-      {/* DEMO mobile, TEST hide for now */}
+      {/* DEMO mobile */}
       <div
-        className={`hidden     demo xs:hidden    fixed inset-0 h-[100%] bg-gradient-to-br  ${getGradientClass(
+        className={`hidden///     demo xs:hidden    fixed inset-0 h-[100%] bg-gradient-to-br  ${getGradientClass(
           selectedIndex
         )}     ${effect ? "" : "invisible"}
         ${isFullScreen ? "" : "pointer-events-none "}
