@@ -10,8 +10,8 @@
     @apply w-[20px] h-[20px] xxs:w-[50px] xxs:h-[50px] sm:w-[60px] sm:h-[60px] md:h-[80px] md:w-[80px];
   }
 
-  .contactItem {
-    @apply flex items-center space-x-2 sm:text-base text-sm xl:text-xl text-white/75 font-light;
+  .contactItemDiv {
+    @apply flex items-center space-x-3 sm:text-base text-sm xl:text-xl font-light;
   }
 
   .react-dot-color {

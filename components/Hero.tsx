@@ -97,7 +97,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               transition={{ duration: 1.5 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className={`xs:rounded-xl rounded-md ${styles.glowingImage}`}
+              className={`xs:rounded-full rounded-full border-2 xs:border-1 border-white xs:border-gray-700 ${styles.glowingImage}`}
               src={urlFor(pageInfo?.heroImage).url() || undefined}
               alt=""
             />
@@ -106,18 +106,19 @@ export default function Hero({ socials, pageInfo }: Props) {
             <div
               className="absolute top-[25%] left-[18%] lg:left-[20%] xl:left-[23%] -translate-y-1/2 
                bg-black/75 text-white text-sm px-3 py-1.5 rounded-lg 
-               opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in delay-300
+               opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in delay-500
                pointer-events-none whitespace-nowrap z-10    hidden sm:inline"
             >
               That's me 😎
             </div>
 
+            {/* SOCIALS container */}
             <motion.div
               initial={{ opacity: 0 }}
               transition={{ duration: 1, delay: 1 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="absolute bottom-1.5 left-1/2 -translate-x-1/2 bg-black/70 px-5 py-2.5 rounded-2xl flex justify-center items-center space-x-3"
+              className="absolute bottom-10 xs:bottom-5 left-1/2 -translate-x-1/2 bg-black/60 px-[18px] xs:px-2.5 py-2.5 rounded-2xl flex justify-center items-center space-x-3"
             >
               {socials?.map((social, i) => (
                 <SocialIcon
@@ -126,13 +127,28 @@ export default function Hero({ socials, pageInfo }: Props) {
                   url={social?.url}
                   bgColor="transparent"
                   fgColor="white"
-                  className="hover:opacity-60 opacity-80 !h-6 !w-6"
+                  className="hover:opacity-60 opacity-70 !h-8 !w-8  sm:!h-6 sm:!w-6"
                 />
               ))}
+              {/* test include mail-copy on mobile */}
+              <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
+                <button className="xs:hidden flex items-center opacity-70   ">
+                  <MailIcon
+                    className={`h-[20px] w-[20px] text-white ${
+                      copied ? "hidden" : ""
+                    }`}
+                  />
+                  {copied ? (
+                    <p className="ml-3 text-base text-white ">Mail copied</p>
+                  ) : (
+                    <DocumentDuplicateIcon className="absolute right-3 top-2   h-[11px] w-[11px] opacity-80 text-white" />
+                  )}
+                </button>
+              </CopyToClipboard>
             </motion.div>
           </div>
 
-          {/* change div to motion.div and remove motion.h... */}
+          {/* TEXT DIV */}
           <div className="text-white text-center sm:text-left   pt-4 xs:pt-0   forKicker: relative">
             {/* <Kicker /> */}
 
@@ -149,24 +165,34 @@ export default function Hero({ socials, pageInfo }: Props) {
                 y: 0,
               }}
               viewport={{ once: true }}
-              className="text-3xl font-bold md:text-5xl"
+              className="text-4xl sm:text-start text-center font-bold md:text-5xl "
             >
-              Hi{" "}
+              Hey{" "}
               <span
-                className="inline-block animate-wave opacity-70 cursor-pointer"
+                //mobile wave emoji
+                ref={emojiRef}
+                onClick={handleEmojiClick}
+                onAnimationEnd={handleAnimationEnd}
+                className="xs:hidden mr-1.5 inline-block  "
+              >
+                👋
+              </span>
+              <span
+                //desktop wave emoji
+                className="hidden ml-1  xs:inline-block animate-wave opacity-70 cursor-pointer"
                 ref={emojiRef}
                 onClick={handleEmojiClick}
                 onAnimationEnd={handleAnimationEnd}
               >
                 👋
               </span>
-              <br />
-              It's me{" "}
+              <br className="hidden xs:inline" />
+              {/* It's me{" "} */} I'm{" "}
               <span
                 //text-gradient
                 className="bg-gradient-to-r from-white to-react bg-clip-text text-transparent"
               >
-                Peter
+                Peter{" "}
               </span>
             </motion.h1>
 
@@ -183,7 +209,7 @@ export default function Hero({ socials, pageInfo }: Props) {
                 y: 0,
               }}
               viewport={{ once: true }}
-              className="text-gray-500 text-xl xs:text-2xl"
+              className="text-gray-500 text-xl xs:text-2xl     hidden sm:inline"
             >
               I am
               <Typewriter
@@ -200,6 +226,32 @@ export default function Hero({ socials, pageInfo }: Props) {
                 delaySpeed={1000}
               />
             </motion.h2>
+
+            {/* mobile subheader + lines + subtext */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              transition={{ duration: 0.8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="xs:hidden w-full flex flex-col items-center mt-1"
+            >
+              {/* Left line + Title + Right line */}
+              <div className="w-full flex items-center justify-center space-x-2.5">
+                <div className="flex-grow border-t border-react// border-gray-300" />
+
+                <h2 className="text-gray-500 font-light text-lg tracking-wide  xs:hidden">
+                  Frontend developer
+                </h2>
+
+                <div className="flex-grow border-t border-react// border-gray-300" />
+              </div>
+
+              {/* Subtext */}
+              <p className="text-gray-500 text-xs font-light text-center -mt-1">
+                React · TS · Tailwind
+              </p>
+            </motion.div>
+
             <motion.div
               className="flex justify-center sm:justify-start"
               initial={{
@@ -217,50 +269,29 @@ export default function Hero({ socials, pageInfo }: Props) {
             ></motion.div>
 
             <div
-              //MOBILE cta:s (less offset for main cta)
-              className="mt-4 sm:hidden   inline-block"
+              //MOBILE scroll signifier
+              className="mt-3 sm:hidden   inline-block"
             >
-              <ScrollLink
-                //MOBILE CTA
-                offset={-20}
-                to="Work"
-                smooth="true"
-                className="inline sm:hidden "
-              >
-                <button
-                  className={` ${
-                    buttonIsPressed && "!bg-indigo-700/90 "
-                  }   group relative hover:bg-indigo-600 bg-indigo-700  transition duration-200 ease-in py-3 w-[220px] rounded-xl focus:outline-none   flex items-center justify-center`}
-                  onMouseDown={() => setButtonIsPressed(true)}
-                  onMouseUpCapture={() => setButtonIsPressed(false)}
-                  onMouseLeave={() => setButtonIsPressed(false)}
+              <div className="w-full text-center pt-6 bg-mainDarkBlue///">
+                <p
+                  className="
+      bg-gradient-to-b from-gray-400/70 via-gray-700 to-gray-400/70
+      bg-[length:100%_200%] animate-shimmer
+      bg-clip-text text-transparent font-medium text-xl  tracking-wide "
                 >
-                  <p className=" text-base font-semibold tracking-wide">
-                    View projects
-                  </p>
-                  <ChevronDownIcon className="w-4 h-4 opacity-70 text-white ml-2 group-hover:translate-y-2 transition duration-300 ease-in-out" />
-                </button>
-              </ScrollLink>
-              {/* SECONDARY CTA mobile (mail) */}
-              <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
-                <button className="relative mt-3 flex items-center justify-center sm:text-base text-sm opacity-[0.55] cursor-pointer rounded-xl //border //border-white/50 py-2.5 w-[220px]   ">
-                  <MailIconOutline className="h-[23px] w-[23px]  absolute left-12 opacity-90" />
-                  {copied ? (
-                    <p className="ml-1 text-base opacity-80 transform -translate-y-[1px]">
-                      Copied ✓
-                    </p>
-                  ) : (
-                    <div className="flex items-center ml-[24px] space-x-0.5 transform -translate-y-[1px]">
-                      <p className="text-base opacity-80 tracking-wide ">
-                        Copy mail
-                      </p>
-                      <DocumentDuplicateIcon className="h-3 w-3 opacity-80" />
-                    </div>
-                  )}
-                </button>
-              </CopyToClipboard>
+                  {/* SCROLL FOR PROJECTS */}
+                  DISCOVER MORE
+                </p>
+                <p
+                  className="
+      bg-gradient-to-b from-gray-400/80 via-gray-800 to-gray-400/80
+      bg-[length:100%_200%] animate-shimmerArrow
+      bg-clip-text text-transparent text-2xl  -mt-1"
+                >
+                  ↓
+                </p>
+              </div>
             </div>
-
             <motion.div
               //Desktop CTAs (more offset for for main cta)
               className="hidden sm:flex sm:space-x-3 w-fit mt-4   "

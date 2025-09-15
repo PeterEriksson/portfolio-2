@@ -9,7 +9,7 @@ function LoadingScreen() {
         PE
         {/* testing more vibrant react dot */}
         <span
-          className={`w-[18px] h-[18px] xs:w-[22px] xs:h-[22px] react-dot-color bg-react/ inline-block rounded-full ml-[18px] `}
+          className={`w-[18px] h-[18px] xs:w-[22px] xs:h-[22px] react-dot-color inline-block rounded-full ml-[18px] `}
         ></span>
       </h1>
       <div className={styles.loadingWrapper}>

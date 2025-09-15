@@ -63,8 +63,22 @@ module.exports = {
         wave: "wave 8s ease-in-out infinite",
         "wave-click": "waveClick 1s ease-in-out",
         "cta-arrow-bounce-down": "ctaArrowBounceDown 0.9s ease-out",
+        shimmer: "shimmer 2.5s ease-in-out infinite",
+        shimmerArrow: "shimmerArrow 2.5s ease-in-out infinite",
       },
       keyframes: {
+        shimmer: {
+          //experimenting
+          "0%": { backgroundPosition: "0 100%" }, // start below
+          "50%": { backgroundPosition: "0 -50%" },
+          "100%": { backgroundPosition: "0 -100%" },
+        },
+        shimmerArrow: {
+          "0%": { backgroundPosition: "0 100%" },
+          "10%": { backgroundPosition: "0 100%" },
+          "100%": { backgroundPosition: "0 -100%" },
+        },
+
         "pulse-lg": {
           "0%, 100%": { opacity: 1 },
           "50%": { opacity: 0.5 },

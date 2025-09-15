@@ -258,7 +258,7 @@ export default function Project({
           //LINKS on desktop (github + livebuild)
           className="items-center space-x-1.5 hidden xs:flex"
         >
-          {/* GitHub Icon with Tooltip */}
+          {/* Github icon with Tooltip */}
           <div className="relative group">
             <SocialIcon
               target="_blank"
@@ -268,11 +268,11 @@ export default function Project({
               className="hover:opacity-100 opacity-80 cursor-pointer !h-10 !w-10 sm:!w-11 sm:!h-11 transition duration-150 ease-in //border bg-gray-200/80 rounded-full p-1"
             />
             <div className="absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150 bg-black text-white text-xs rounded px-2 py-1 -top-6 whitespace-nowrap">
-              GitHub Repo
+              Github repo
             </div>
           </div>
 
-          {/* Live Build Icon with Tooltip */}
+          {/* Live build Icon with Tooltip */}
           <div className="relative group">
             <a
               href={project?.linkToBuild}
@@ -282,7 +282,7 @@ export default function Project({
               <ArrowTopRightOnSquareIcon className="text-[#555555]/70 w-9 h-9" />
             </a>
             <div className="absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150 bg-black text-white text-xs rounded px-2 py-1 -top-6 whitespace-nowrap">
-              Live Build
+              Live build
             </div>
           </div>
         </div>

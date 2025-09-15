@@ -1,24 +1,15 @@
 //https://www.fffuel.co/bbblurry/
 //blob hex generate
-//the hex color used here is #1b3448 . changed to slightly darker.
+//"hsla(212, 59%, 30%, 0.45)
 
-//className="pointer-events-none opacity-80 absolute top-1/2 transform  -translate-y-[60%] scale-x-[2]   md:scale-[] scale-y-[1.5] md:scale-y-100  "
-
-type Props = {
-  bottomCornerLeft?: boolean;
-  bottomCornerRight?: boolean;
-};
-
-export default function Blob({ bottomCornerLeft, bottomCornerRight }: Props) {
+export default function Blob() {
   return (
     <svg
+      className=" absolute transform top-14 sm:-top-9    hidden md:inline"
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 800 800"
-      className={`hidden md:inline pointer-events-none opacity-80 absolute top-1/2 transform  ${
-        bottomCornerRight && "translate-x-1/2"
-      } ${bottomCornerLeft && "-translate-x-1/2"}   `}
     >
       <defs>
         <filter
@@ -29,10 +20,11 @@ export default function Blob({ bottomCornerLeft, bottomCornerRight }: Props) {
           height="400%"
           filterUnits="objectBoundingBox"
           primitiveUnits="userSpaceOnUse"
+          //color-interpolation-filters="sRGB"
           colorInterpolationFilters="sRGB"
         >
           <feGaussianBlur
-            stdDeviation="43"
+            stdDeviation="40"
             x="0%"
             y="0%"
             width="100%"
@@ -45,12 +37,12 @@ export default function Blob({ bottomCornerLeft, bottomCornerRight }: Props) {
       </defs>
       <g filter="url(#bbblurry-filter)">
         <ellipse
-          rx="196"
-          ry="196"
-          cx="421.2134149509241"
-          cy="321.130118810338"
-          //fill="hsla(212, 44%, 27%, 1.00)" (opacity fix)
-          fill="hsla(212, 44%, 22%, 1.00)"
+          rx="277.5"
+          ry="277.5"
+          cx="106.39933337466255"
+          cy="371.5369515144388"
+          //fill="hsla(212, 59%, 40%, 0.21)"
+          fill="hsla(212, 73%, 18%, 0.59)"
         ></ellipse>
       </g>
     </svg>
@@ -64,6 +56,7 @@ export default function Blob({ bottomCornerLeft, bottomCornerRight }: Props) {
 	<feGaussianBlur stdDeviation="43" x="0%" y="0%" width="100%" height="100%" in="SourceGraphic" edgeMode="none" result="blur"></feGaussianBlur></filter></defs><g filter="url(#bbblurry-filter)"><ellipse rx="196" ry="196" cx="421.2134149509241" cy="321.130118810338" fill="hsla(212, 44%, 27%, 1.00)"></ellipse></g></svg> */
 }
 <svg
+  className="absolute"
   xmlns="http://www.w3.org/2000/svg"
   version="1.1"
   xmlnsXlink="http://www.w3.org/1999/xlink"

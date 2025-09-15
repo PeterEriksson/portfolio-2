@@ -90,7 +90,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
         >
           {/* blue vertical line on mobile - TEST cover both h1 + h4*/}
           <motion.div variants={childVariants} className="flex items-center">
-            <div className="block xs:hidden w-1 h-[24px]// h-[56px] bg-react mr-2"></div>
+            <div className="block xs:hidden w-1 h-[56px] bg-react mr-3.5"></div>
             <div>
               <h1 className="sm:text-5xl text-3xl font-bold">About</h1>
               <h4 className=" sm:text-2xl text-lg font-semibold xs:font-bold text-black/40 xs:text-black">
@@ -129,7 +129,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
           alt="desktop about img"
         />
 
-        {/* mobile view, avoid slide in  */}
+        {/* mobile, avoid slide in  */}
         <motion.img
           initial={{
             opacity: 0,
@@ -142,7 +142,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
             opacity: 1,
           }}
           viewport={{ once: true }}
-          className="inline xs:hidden rounded-md object-cover w-full max-h-72"
+          className="inline  xs:hidden rounded-full aspect-square object-cover border border-white "
           src={urlFor(pageInfo?.profilePic).url() || undefined}
           //for testing ->
           //src="https://cdn.sanity.io/images/jnlncnhq/production/3930c81b37cc27edaabe4f67459336c4d28b52fb-401x522.png"

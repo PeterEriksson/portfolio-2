@@ -17,10 +17,10 @@ export default function StarsBackground() {
         },
         particles: {
           number: {
-            value: /* 50 */ 20,
+            value: /* 50 */ 10,
           },
           size: {
-            value: /* 0.75 */ 1.5,
+            value: /* 0.75 */ 1.3,
           },
           /* color: {
             value: "rgba(97, 218, 251, 0.1)", //react blue lower opacity
