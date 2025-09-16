@@ -17,7 +17,6 @@ const Home = () => {
     return <LoadingScreen />;
   }
 
-  //else()..?
   return (
     <>
       <Head>
