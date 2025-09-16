@@ -17,7 +17,7 @@ import { SocialIcon } from "react-social-icons";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
 
 type Props = {
-  projects?: ProjectType[];
+  projects: ProjectType[];
   slides?: number[];
   options?: EmblaOptionsType;
 };
