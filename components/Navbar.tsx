@@ -96,7 +96,9 @@ export default function Navbar() {
                 linkActive !== section && styles.hoverAnimation
               }  border-b border-transparent relative opacity-[0.5] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
             >
-              <span className={`text-base transition duration-300 ease-in-out`}>
+              <span
+                className={`text-sm uppercase tracking-wide transition duration-300 ease-in-out`}
+              >
                 {section}
               </span>
             </ScrollLink>
