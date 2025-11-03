@@ -44,7 +44,7 @@ export default function Hero({ socials, pageInfo }: Props) {
   };
 
   const childVariants = {
-    hidden: { opacity: 0, scale: 0.4 },
+    hidden: { opacity: 0, scale: 0.6 },
     visible: {
       opacity: 1,
       scale: 1,
@@ -54,14 +54,14 @@ export default function Hero({ socials, pageInfo }: Props) {
 
   //for the mail cta (lower opacity)
   const secondaryChildVariants = {
-    hidden: { opacity: 0, scale: 0.4 },
+    hidden: { opacity: 0, scale: 0.6 },
     visible: {
       opacity: 0.5,
       scale: 1,
       transition: { duration: 0.5, ease: "easeOut" },
     },
   };
-  /* testing */
+
   const emojiRef = React.useRef<HTMLSpanElement>(null);
   const handleEmojiClick = () => {
     const emoji = emojiRef.current;
@@ -97,7 +97,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               transition={{ duration: 1.5 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className={`xs:rounded-full rounded-full border-2 xs:border-1 border-white xs:border-gray-700 ${styles.glowingImage}`}
+              className={`xs:rounded-full rounded-full border-2 xs:border-1 border-white  $//{styles.glowingImage}`}
               src={urlFor(pageInfo?.heroImage).url() || undefined}
               alt=""
             />
@@ -165,7 +165,7 @@ export default function Hero({ socials, pageInfo }: Props) {
                 y: 0,
               }}
               viewport={{ once: true }}
-              className="text-4xl sm:text-start text-center font-bold md:text-5xl "
+              className="text-4xl sm:text-start text-center font-bold md:text-5xl  xs:mb-1 "
             >
               Hey{" "}
               <span
@@ -209,14 +209,15 @@ export default function Hero({ socials, pageInfo }: Props) {
                 y: 0,
               }}
               viewport={{ once: true }}
-              className="text-gray-500 text-xl xs:text-2xl     hidden sm:inline"
+              className="text-gray-500 text-xl xs:text-2xl hidden sm:inline   "
             >
               I am
               <Typewriter
                 words={[
                   " <FrontEndDev />",
                   " <ReactCoder />",
-                  " <CreativeCrafter />",
+                  //" <CreativeCrafter />",
+                  " <ResponsiveDesigner📱/>",
                 ]}
                 //Control how many times to run. 0 | false to run infinitely
                 loop={false}
@@ -294,7 +295,7 @@ export default function Hero({ socials, pageInfo }: Props) {
             </div>
             <motion.div
               //Desktop CTAs (more offset for for main cta)
-              className="hidden sm:flex sm:space-x-3 w-fit mt-4   "
+              className="hidden sm:flex sm:space-x-5 w-fit mt-4// mt-8   "
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
