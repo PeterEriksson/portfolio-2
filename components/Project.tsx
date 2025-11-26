@@ -57,6 +57,7 @@ export default function Project({
     toggleFullScreen();
   };
 
+  //temp solution. Add background color to the database schema instead.
   const getGradientClass = (index: number) => {
     switch (index) {
       case 0:
@@ -64,9 +65,9 @@ export default function Project({
       case 1:
         return "from-green-500 to-green-200";
       case 2:
-        return "from-twitterBlue to-blue-200";
+        return "from-black to-purple-700";
       default:
-        return "from-gray-400 to-gray-200"; // Fallback gradient
+        return "from-twitterBlue to-blue-200"; // Fallback gradient
     }
   };
 
