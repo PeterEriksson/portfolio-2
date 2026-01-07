@@ -87,7 +87,7 @@ export default function Hero({ socials, pageInfo }: Props) {
         // on desktop sizes using stars bg
         className={`   ${
           menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
-        }    transition duration-200 ease-in    h-screen  pb-4 sm:pb-0 sm:h-[97vh]   flex justify-center items-center bg-mainDarkBlue xs:bg-transparent        h-auto// `}
+        } relative   transition duration-200 ease-in    h-screen  pb-4 sm:pb-0 sm:h-[97vh]   flex justify-center items-center bg-mainDarkBlue xs:bg-transparent        h-auto// `}
       >
         <div
           //MOBILE scroll signifier
