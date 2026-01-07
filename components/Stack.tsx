@@ -43,17 +43,22 @@ function Stack({ skills, skillDescription }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.75 }}
           transition={{ duration: 0.6 }}
-          className="xs:hidden "
+          className="xs:hidden mb-5"
         >
-          {/* <h1 className="sm:text-5xl text-3xl font-bold  ">Tech I use</h1> */}
-          {/* blue vertical line on mobile */}
-          <div className="flex items-center">
-            <div className="block xs:hidden w-1 h-[24px] bg-mainDarkBlue// bg-react mr-2"></div>
-            <h1 className="sm:text-5xl text-3xl font-bold">Tech I use</h1>
+          <div className="flex items-start">
+            <div
+              // blue vertical line on mobile
+              className="block xs:hidden w-1 bg-react mr-3 self-stretch"
+            ></div>
+            <div className="flex flex-col">
+              <h1 className="sm:text-5xl text-5xl text-black/60 xs:text-black font-bold">
+                Tech I use
+              </h1>
+              <h4 className="text-lg font-semibold text-black/40">
+                Tap for current proficiency
+              </h4>
+            </div>
           </div>
-          <h4 className="text-lg font-semibold text-black/40    ">
-            Tap for current proficiency
-          </h4>
         </motion.div>
 
         <motion.div

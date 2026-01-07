@@ -87,11 +87,35 @@ export default function Hero({ socials, pageInfo }: Props) {
         // on desktop sizes using stars bg
         className={`   ${
           menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
-        }    transition duration-200 ease-in   h-auto pb-4 sm:pb-0 sm:h-[97vh]   flex items-center justify-center bg-mainDarkBlue xs:bg-transparent         `}
+        }    transition duration-200 ease-in    h-screen  pb-4 sm:pb-0 sm:h-[97vh]   flex justify-center items-center bg-mainDarkBlue xs:bg-transparent        h-auto// `}
       >
+        <div
+          //MOBILE scroll signifier
+          className="mt-3 sm:hidden  absolute bottom-4  inline-block"
+        >
+          <div className="w-full text-center pt-6  ">
+            <p
+              className="
+      bg-gradient-to-b from-gray-400/70 via-gray-700 to-gray-400/70
+      bg-[length:100%_200%] animate-shimmer
+      bg-clip-text text-transparent font-medium text-xl  tracking-wide "
+            >
+              DISCOVER MORE
+            </p>
+            <p
+              className="
+      bg-gradient-to-b from-gray-400/80 via-gray-800 to-gray-400/80
+      bg-[length:100%_200%] animate-shimmerArrow
+      bg-clip-text text-transparent text-2xl  -mt-1"
+            >
+              ↓
+            </p>
+          </div>
+        </div>
+
         <StarsBackground />
         <div className=" xs:w-10/12 w-[88%] flex flex-col sm:flex-row-reverse  items-center justify-between ">
-          <div className="md:w-2/5 sm:w-1/2 w-full relative group">
+          <div className="md:w-2/5 sm:w-1/2  w-full relative group">
             <motion.img
               initial={{ opacity: 0 }}
               transition={{ duration: 1.5 }}
@@ -102,8 +126,8 @@ export default function Hero({ socials, pageInfo }: Props) {
               alt=""
             />
 
-            {/* Tooltip */}
             <div
+              //TOOLTIP
               className="absolute top-[25%] left-[18%] lg:left-[20%] xl:left-[23%] -translate-y-1/2 
                bg-black/75 text-white text-sm px-3 py-1.5 rounded-lg 
                opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in delay-500
@@ -213,12 +237,7 @@ export default function Hero({ socials, pageInfo }: Props) {
             >
               I am
               <Typewriter
-                words={[
-                  " <FrontEndDev />",
-                  " <ReactCoder />",
-                  //" <CreativeCrafter />",
-                  " <ResponsiveDesigner📱/>",
-                ]}
+                words={[" <FrontEndDev />", " <ReactCoder />"]}
                 //Control how many times to run. 0 | false to run infinitely
                 loop={false}
                 cursor
@@ -269,30 +288,6 @@ export default function Hero({ socials, pageInfo }: Props) {
               viewport={{ once: true }}
             ></motion.div>
 
-            <div
-              //MOBILE scroll signifier
-              className="mt-3 sm:hidden   inline-block"
-            >
-              <div className="w-full text-center pt-6 bg-mainDarkBlue///">
-                <p
-                  className="
-      bg-gradient-to-b from-gray-400/70 via-gray-700 to-gray-400/70
-      bg-[length:100%_200%] animate-shimmer
-      bg-clip-text text-transparent font-medium text-xl  tracking-wide "
-                >
-                  {/* SCROLL FOR PROJECTS */}
-                  DISCOVER MORE
-                </p>
-                <p
-                  className="
-      bg-gradient-to-b from-gray-400/80 via-gray-800 to-gray-400/80
-      bg-[length:100%_200%] animate-shimmerArrow
-      bg-clip-text text-transparent text-2xl  -mt-1"
-                >
-                  ↓
-                </p>
-              </div>
-            </div>
             <motion.div
               //Desktop CTAs (more offset for for main cta)
               className="hidden sm:flex sm:space-x-5 w-fit mt-4// mt-8   "
@@ -357,8 +352,8 @@ export default function Hero({ socials, pageInfo }: Props) {
         </div>
       </header>
 
-      {/* Scroll down signifier */}
       <div
+        // Scroll down signifier (desktop)
         className={`w-screen h-[1vh] sm:h-[3vh] bg-gray-100 sm:bg-gradient-to-b from-mainDarkBlue to-gray-100 transition duration-200 ease-in ${
           menuOpen
             ? "opacity-50 lg:!opacity-100"

@@ -76,7 +76,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
       id="About"
       className={`flex  ${
         menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
-      }  transition duration-200 ease-in  bg-gray-200 h-screen  justify-center    overflow-x-hidden         for-shape:-> relative `}
+      }  transition duration-200 ease-in  bg-gray-200 h-[110vh] xs:h-screen  justify-center    overflow-x-hidden         for-shape:-> relative `}
     >
       <div className="xs:w-10/12 w-[88%] flex flex-col items-center justify-center  xs:justify-between xs:flex-row     space-y-4 xs:space-y-0 ">
         {/* container headers + text  */}
@@ -89,10 +89,12 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
           viewport={{ once: true, amount: 0.6 }}
         >
           {/* blue vertical line on mobile - TEST cover both h1 + h4*/}
-          <motion.div variants={childVariants} className="flex items-center">
-            <div className="block xs:hidden w-1 h-[56px] bg-react mr-3.5"></div>
+          <motion.div variants={childVariants} className="flex items-center ">
+            <div className="block xs:hidden w-1 self-stretch bg-react mr-3.5"></div>
             <div>
-              <h1 className="sm:text-5xl text-3xl font-bold">About</h1>
+              <h1 className="sm:text-5xl text-5xl text-black/60 xs:text-black font-bold">
+                About
+              </h1>
               <h4 className=" sm:text-2xl text-lg font-semibold xs:font-bold text-black/40 xs:text-black">
                 Here is a{" "}
                 <span
@@ -108,7 +110,7 @@ export default function About({ backgroundInformation, pageInfo }: Props) {
 
           <motion.p
             variants={childVariants}
-            className="mt-1 text-black text-mobile-base xs:text-base sm:text-lg lg:text-xl sm:w-2/3 xs:w-3/4 w-full"
+            className="mt-5 xs:mt-1 text-black text-mobile-base xs:text-base sm:text-lg lg:text-xl sm:w-2/3 xs:w-3/4 w-full"
           >
             {pageInfo?.backgroundInformation &&
               renderAboutText(

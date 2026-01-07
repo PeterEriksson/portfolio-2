@@ -189,7 +189,7 @@ export default function Work({ projects, slides, options }: Props) {
       className={`flex  ${
         menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
       }
-         transition duration-200 ease-in bg-gray-100 py-14 xs:py-24 lg:py-28             flex-col relative items-center justify-center   `}
+         transition duration-200 ease-in bg-gray-100 py-20 xs:py-24 lg:py-28             flex-col relative items-center justify-center   `}
     >
       <motion.div
         aria-label="PROJECTS-div h1 + h4"
@@ -197,18 +197,23 @@ export default function Work({ projects, slides, options }: Props) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.8 }}
         transition={{ duration: 0.5 }}
-        className={`header  w-[88%] xs:w-fit flex flex-col items-start xs:items-center mb-3.5 xs:mb-2   `}
+        className="header w-[88%] xs:w-fit flex items-start xs:items-center mb-8 xs:mb-4"
       >
-        {/* blue vertical line on mobile */}
-        <div className="flex items-center">
-          <div className="block xs:hidden w-1 h-[24px] bg-react mr-2"></div>
-          <h1 className="sm:text-5xl text-3xl font-bold   text-black/60 xs:text-black  ">
-            Projects
-          </h1>
+        {/* Mobile layout: line + text */}
+        <div className="flex items-start">
+          {/* blue vertical line */}
+          <div className="block xs:hidden w-1 bg-react mr-3 self-stretch"></div>
+
+          {/* text column */}
+          <div className="flex flex-col">
+            <h1 className="text-5xl font-bold text-black/60 xs:text-black">
+              Projects
+            </h1>
+            <h4 className="text-lg font-semibold text-black/40 xs:text-large xs:font-extralight xs:text-black xs:text-center">
+              Some of my work
+            </h4>
+          </div>
         </div>
-        <h4 className="  sm:text-lg xs:text-base xs:font-extralight text-lg font-semibold text-black/40 xs:text-black ">
-          Some of my work
-        </h4>
       </motion.div>
 
       <div

@@ -55,7 +55,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           className=" !z-30 flex/ flex-col items-center xs:inline  "
         >
           <div className={` flex mr-auto xxs:mr-0 ml-auto    -mt-8 sm:-mt-0`}>
-            <h1 className="ml-4 xs:ml-0 sm:text-5xl text-3xl text-white font-bold    ">
+            <h1 className="ml-4 xs:ml-0 sm:text-5xl text-5xl text-white font-bold    ">
               Contact me&nbsp;{" "}
             </h1>
 
@@ -76,9 +76,9 @@ export default function Contact({ pageInfo, socials }: Props) {
               )}
             </InView>
           </div>
-          <h2
+          <h4
             //text-[#dbdee3] - between gray-200 and gray-300
-            className="ml-4 xs:ml-0 mb-5 xs:mb-2 font-thin  text-[#dbdee3] sm:mb-[18px] xs:max-w-[270px]  xs:text-start"
+            className="ml-4 mt-3 xs:mt-0  xs:ml-0 mb-10 xs:mb-2 font-thin  text-[#dbdee3] sm:mb-[18px] xs:max-w-[270px]  xs:text-start"
           >
             Let's
             <span className="text-gray-200  font-medium tracking-wide xs:tracking-normal   ">
@@ -87,7 +87,7 @@ export default function Contact({ pageInfo, socials }: Props) {
             </span>
             If you have an opening or any project that I can contribute to, be
             sure to reach out.
-          </h2>
+          </h4>
 
           <div className="space-y-2 ml-4 xs:ml-0">
             <div className="mt-1 contactItemDiv ">
@@ -119,7 +119,7 @@ export default function Contact({ pageInfo, socials }: Props) {
             </div>
           </div>
 
-          <h2 className="xs:hidden ml-4 tracking-wider text-gray-400 mt-4">
+          <h2 className="opacity-0 xs:hidden ml-4 tracking-wider text-gray-400 mt-4">
             Socials
           </h2>
           <div className="flex ml-3 xs:hidden space-x-2">
