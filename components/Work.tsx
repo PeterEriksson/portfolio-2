@@ -10,7 +10,7 @@ import styles from "../styles/embla.module.css";
 import { useFullScreenStore, useMenuStore } from "../store/store";
 import Project from "./Project";
 import { setBodyScroll } from "../utils/helpers";
-import { stagger, useAnimate, motion } from "framer-motion";
+import { stagger, useAnimate, motion, AnimatePresence } from "framer-motion";
 import workStyles from "../styles/work.module.css";
 import { urlFor } from "../sanity";
 import { SocialIcon } from "react-social-icons";
@@ -29,8 +29,6 @@ export default function Work({ projects, slides, options }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
   const { menuOpen } = useMenuStore();
-  // Hide demo-effect on pageload
-  const [effect, setEffect] = useState(false);
   const { isFullScreen, toggleFullScreen } = useFullScreenStore();
   const [scope, animate] = useAnimate();
 
@@ -68,14 +66,10 @@ export default function Work({ projects, slides, options }: Props) {
   React.useEffect(() => {
     //helper for disabling/enabling scroll (also handles mobile-touch-scroll)
     setBodyScroll(isFullScreen);
-
-    //TEST remove ->
-    /* return () => {
-      setBodyScroll(false); // Reset scrolling when unmounting or when changing states
-    }; */
   }, [isFullScreen]);
 
-  const handleBack = () => {
+  //handle click back to main page (from fullscren)
+  const handleClose = () => {
     if (scope.current) {
       scope.current.scrollIntoView({
         behavior: "smooth", // Smooth scrolling
@@ -132,53 +126,6 @@ export default function Work({ projects, slides, options }: Props) {
         return "from-twitterBlue to-blue-200"; // Fallback gradient
     }
   };
-
-  const mobileTechContainerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 0.7,
-      transition: {
-        delayChildren: 1, // Delay before first child animation starts
-        staggerChildren: 0.15, // Stagger between each child
-      },
-    },
-  };
-
-  const mobileTechItemVariants = {
-    hidden: { opacity: 0 /* y: 10 */ },
-    show: {
-      opacity: 1,
-      /* y: 0, */
-      transition: {
-        duration: 0.4,
-        ease: "easeIn",
-      },
-    },
-  };
-
-  /* TESTING with no bg */
-  const techIcons = [
-    {
-      image: "/kicker-tech-icons/react.png",
-      alt: "React.js icon",
-      title: "React.js",
-    },
-    {
-      image: "/kicker-tech-icons/next.png",
-      alt: "Next.js icon",
-      title: "Next.js",
-    },
-    {
-      image: "/kicker-tech-icons/typescript.png",
-      alt: "TypeScript icon",
-      title: "TypeScript",
-    },
-    {
-      image: "/kicker-tech-icons/tw.png",
-      alt: "Tailwind CSS icon",
-      title: "Tailwind CSS",
-    },
-  ];
 
   return (
     <div
@@ -237,7 +184,6 @@ export default function Work({ projects, slides, options }: Props) {
                 key={index}
                 project={project}
                 index={index}
-                setEffect={setEffect}
                 scrollPrev={scrollPrev ?? (() => {})}
                 scrollNext={scrollNext ?? (() => {})}
                 prevBtnEnabled={prevBtnEnabled}
@@ -249,130 +195,158 @@ export default function Work({ projects, slides, options }: Props) {
       </div>
 
       {/* DEMO desktop */}
-      <img
+
+      {/* <img
         // fix for hiding on page load..(effect)
         //(isFullScreen): disable pointer events to avoid issue when swiping projects..and show me btn(2nd time click)
-        className={` hidden xs:inline  demo ${effect ? "" : "invisible"}  ${
+        className={`hidden xs:inline  demo ${effect ? "" : "invisible"}  ${
           isFullScreen ? "" : "pointer-events-none "
-        } object-cover fixed inset-0 mx-auto    h-[100%]  `}
+        } object-cover fixed inset-0 mx-auto    h-[100%] `}
         src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
         alt="demo desktop"
-      />
+      /> */}
+
+      <AnimatePresence
+        //avoid animation on page load
+        mode="wait"
+      >
+        <motion.img
+          src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
+          alt="demo desktop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          //transition={{ duration: 0.3, ease: "easeOut" }} remove?
+          className={`
+        hidden xs:inline demo
+        object-cover fixed inset-0 mx-auto h-full
+        ${isFullScreen ? "" : "pointer-events-none"}
+      `}
+        />
+      </AnimatePresence>
+
       {/* DEMO mobile */}
-      <div
-        className={`hidden///     demo xs:hidden    fixed inset-0 h-[100%] bg-gradient-to-br  ${getGradientClass(
-          selectedIndex
-        )}     ${effect ? "" : "invisible"}
+      <AnimatePresence
+        //avoid animation on page load
+        mode="wait"
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className={`    demo xs:hidden    fixed inset-0 h-[100%] bg-gradient-to-br  ${getGradientClass(
+            selectedIndex
+          )}     
         ${isFullScreen ? "" : "pointer-events-none "}
         `}
-      >
-        <div className="absolute top-[25%]// top-[21%]">
-          <div
-            className="flex mx-2 space-x-3"
-            //variants={mobileTechContainerVariants}
-            //initial="hidden"
-            //animate={isFullScreen ? "show" : "hidden"}
-          >
-            {/* {projects[selectedIndex]?.technologies?.map((tech, i) => (
-              <h1 key={i}>{tech.title}</h1>
-            ))} */}
-            {/* {techIcons.map((tech, i) => ( */}
-            {projects[selectedIndex]?.technologies?.map((tech, i) => (
-              <div
-                //variants={mobileTechItemVariants}
-                key={i}
-                className={`group relative flex cursor-pointer rounded-full
+        >
+          <div className="absolute top-[21%]">
+            {/* TECH USED (mobile)...remove for now, cleaner. */}
+            {/* <div className="flex mx-2 space-x-3 bg-black/40 p-2 rounded-xl w-fit  ">
+              {projects[selectedIndex]?.technologies?.map((tech, i) => (
+                <div
+                  key={i}
+                  className={`group relative flex cursor-pointer rounded-full
                   ${
                     isFullScreen
                       ? "translate-y-0 opacity-50"
                       : "translate-y-2 opacity-0"
                   } transform duration-[450ms]  ease-in delay-[1100ms]
                   `}
-              >
-                <img
-                  className="projectTechItemSize opacity-70 object-cover rounded-full filter group-hover:grayscale transition duration-300 ease-in-out"
-                  src={urlFor(tech?.image).url() || undefined}
-                  //src={tech?.image}
-                  alt={tech?.title || ""}
-                />
+                >
+                  <img
+                    className="projectTechItemSize opacity-70 object-cover rounded-full filter group-hover:grayscale transition duration-300 ease-in-out"
+                    src={urlFor(tech?.image).url() || undefined}
+                    //src={tech?.image}
+                    alt={tech?.title || ""}
+                  />
 
-                {/* Tooltip */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 bg-black text-white text-xs rounded px-2 py-1 -top-8 whitespace-nowrap">
-                  {tech?.title}
+                  
+                  <div
+                  //TOOLTIP
+                  className="absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 bg-black text-white text-xs rounded px-2 py-1 -top-8 whitespace-nowrap">
+                    {tech?.title}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-          <div className="flex items-center justify-between mx-2">
-            <h1
-              className={`font-semibold text-4xl text-black mb-2 ${
-                isFullScreen
-                  ? "translate-y-0 opacity-50"
-                  : "translate-y-3 opacity-0"
-              } transform duration-[450ms]  ease-in delay-[600ms]   `}
-            >
-              {projects[selectedIndex]?.title}
-            </h1>
-            <div
-              className={`flex space-x-1.5
+              ))}
+            </div> */}
+            <div className="flex items-center justify-between mx-2">
+              <h1
+                className={`font-semibold text-4xl text-black mb-2 ${
+                  isFullScreen
+                    ? "translate-y-0 opacity-50"
+                    : "translate-y-3 opacity-0"
+                } transform duration-[450ms]  ease-in delay-[600ms]   `}
+              >
+                {projects[selectedIndex]?.title}
+              </h1>
+              <div
+                className={`flex space-x-1.5
               ${
                 isFullScreen
                   ? "translate-y-0 opacity-[0.8]"
                   : "translate-y-3 opacity-0"
               } transform duration-[450ms]  ease-in delay-[600ms] 
               `}
-            >
-              <SocialIcon
-                target="_blank"
-                url={projects[selectedIndex]?.linkToGithub}
-                bgColor="rgba(0,0,0,0.6)"
-                fgColor="#ffffffb3" // b3 = 70% opacity
-                className="!h-9 !w-9 rounded-full"
-              />
-              <a
-                href={projects[selectedIndex]?.linkToBuild}
-                target="_blank"
-                className="h-9 w-9 p-2 bg-black/60 rounded-full flex items-center justify-center"
               >
-                <ArrowTopRightOnSquareIcon className="text-[#ffffff]/70 w-9 h-9" />
-              </a>
+                <SocialIcon
+                  target="_blank"
+                  url={projects[selectedIndex]?.linkToGithub}
+                  bgColor="rgba(0,0,0,0.6)"
+                  fgColor="#ffffffb3" // b3 = 70% opacity
+                  className="!h-9 !w-9 rounded-full"
+                />
+                <a
+                  href={projects[selectedIndex]?.linkToBuild}
+                  target="_blank"
+                  className="h-9 w-9 p-2 bg-black/60 rounded-full flex items-center justify-center"
+                >
+                  <ArrowTopRightOnSquareIcon className="text-[#ffffff]/70 w-9 h-9" />
+                </a>
+              </div>
             </div>
-          </div>
 
-          <img
-            className="mt-1.5 "
-            src={urlFor(projects[selectedIndex]?.image).url() || undefined}
-            alt="demo mobile"
-          />
-        </div>
-      </div>
-      <div
-        //Back/Close btn
-        //use flex container to avoid positioning issue for button
-        className="w-full flex justify-center absolute z-50      handle-resizing-screenheight: bottom-1// -bottom-1 xxs:bottom-1 xs:bottom-20 lg:bottom-28 xl:bottom-36 "
+            <img
+              className="mt-1.5 "
+              src={urlFor(projects[selectedIndex]?.image).url() || undefined}
+              alt="demo mobile"
+            />
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+      <AnimatePresence
+        //avoid animation on page load
+        mode="wait"
       >
-        <button
-          onClick={handleBack}
-          //fix for hiding element-effect on page load..(effect)
-          className={`back-btn ${effect ? "" : "invisible"}  ${
-            workStyles.shrinkEffect
-          } 
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          //Close btn
+          //use flex container to avoid positioning issue for button
+          className="w-full flex justify-center absolute z-50  handle-resizing-screenheight: -bottom-1 xxs:bottom-1 xs:bottom-20 lg:bottom-28 xl:bottom-36 "
+        >
+          <button
+            onClick={handleClose}
+            className={`back-btn   ${workStyles.shrinkEffect} 
           ${
             //scale down effect isn't interrupted by hover
             isFullScreen ? "" : "pointer-events-none"
-          } shadow-md shadow-gray-500   ///border ///border-white ///xxs:border-hidden    flex items-center  bg-black rounded-2xl text-sm px-4 py-2.5 text-white font-semibold// `}
-        >
-          Close
-          {/* X icon using css (bolder) */}
-          <div className="relative w-[18px] h-[18px] ml-1">
-            <span
-              //adjuste h-[..] on both span for boldness
-              className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 rotate-45 rounded-full"
-            ></span>
-            <span className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 -rotate-45 rounded-full"></span>
-          </div>
-        </button>
-      </div>
+          } shadow-md shadow-gray-500 flex items-center bg-black rounded-2xl text-sm px-4 py-2.5 text-white  `}
+          >
+            Close
+            {/* X icon using css (bolder) */}
+            <div className="relative w-[18px] h-[18px] ml-1">
+              <span
+                //adjuste h-[..] on both span for boldness
+                className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 rotate-45 rounded-full"
+              ></span>
+              <span className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 -rotate-45 rounded-full"></span>
+            </div>
+          </button>
+        </motion.div>
+      </AnimatePresence>
 
       {/* DOTS */}
       <motion.div

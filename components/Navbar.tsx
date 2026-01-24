@@ -72,54 +72,62 @@ export default function Navbar() {
               }  tracking-[2px]    transform transition duration-300 ease-in-out`}
             >
               PE
-              {/* <span
-                className={` w-2 h-2 bg-react inline-block rounded-full ml-2 mb-1.5`}
-              ></span> */}
-              {/* testing more vibrant react-dot */}
               <span className="w-2 h-2 inline-block rounded-full ml-2 mb-1.5 react-dot-color"></span>
             </h1>
           </ScrollLink>
         </section>
 
         {/* RIGHT div */}
-        <section className="space-x-6  mdPlus:flex// lg:flex hidden ">
+        <section className="space-x-6 lg-plus:flex hidden ">
           {navData.map((section, i) => (
-            <ScrollLink
-              to={section}
-              smooth="true"
+            <div
               key={i}
-              activeClass={styles.navSectionActive}
-              offset={0}
-              spy={true}
-              onSetActive={handleSetActive}
-              className={` ${
-                linkActive !== section && styles.hoverAnimation
-              }  border-b border-transparent relative opacity-[0.5] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
+              //div added for a vertical line (further down)
+              className="relative"
             >
-              <span
-                className={`text-sm uppercase tracking-wide transition duration-300 ease-in-out`}
+              <ScrollLink
+                to={section}
+                smooth="true"
+                //key={i}
+                activeClass={styles.navSectionActive}
+                offset={0}
+                spy={true}
+                onSetActive={handleSetActive}
+                className={` ${
+                  linkActive !== section && styles.hoverAnimation
+                }  border-b border-transparent relative opacity-[0.5] hover:opacity-100 transition duration-300 ease-in-out cursor-pointer`}
               >
-                {section}
-              </span>
-            </ScrollLink>
+                <span
+                  className={`text-sm font-light tracking-wide transition duration-300 ease-in-out  relative`}
+                >
+                  {section}
+                </span>
+              </ScrollLink>
+
+              <div
+                //vertical divider to subtly connect and separate nav sections
+                className={`${
+                  i + 1 == navData.length && "hidden"
+                } absolute -right-[13px] top-[7px] w-px h-3 bg-white/30 pointer-events-none`}
+              />
+            </div>
           ))}
         </section>
         {/* HAMBURGER-icon. Toggle between hamburger and cross  */}
         <section
           onClick={() => toggleMenu()}
-          className={`  lg:!hidden  ${styles.menuBtn}   opacity-80 hover:opacity-100    z-40`}
+          className={`  lg-plus:!hidden  ${styles.menuBtn}   opacity-80 hover:opacity-100    z-40`}
         >
           {/* CROSS */}
           <section
-            className={`  lg:hidden  ${menuOpen && styles.burgerAnimation} ${
-              styles.burger
-            }`}
+            className={`  lg-plus:hidden  ${
+              menuOpen && styles.burgerAnimation
+            } ${styles.burger}`}
           ></section>
         </section>
       </section>
 
-      {/* horizontal scroll indicator.  */}
-
+      {/* horizontal white line, scroll-y indicator.  */}
       <motion.div
         className={` fixed top-14 h-[4px] left-0 right-0 bg-white origin-left  `}
         style={{ scaleX }}
@@ -134,9 +142,9 @@ export default function Navbar() {
             animate={{ height: "60vh", opacity: 1 }}
             transition={{ duration: 0.3 }}
             exit="exit"
-            className={` lg:hidden ${
+            className={` lg-plus:hidden ${
               !menuOpen && "pointer-events-none"
-            }  flex flex-col items-center justify-center bg-transparent  text-white space-y-12 `}
+            }  flex flex-col items-center justify-center bg-transparent  text-white space-y-12   shadow-xl shadow-black/10  `}
           >
             {navData.map((section, i) => (
               <motion.h2

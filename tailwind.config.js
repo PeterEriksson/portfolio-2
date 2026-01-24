@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       colors: {
         mainDarkBlue: "#091c29",
-        //mainDarkBlue: "#1e1e1e", experimenting
+        //mainDarkBlue: "#0F172A",
         darkerblue: "#04111d",
         spotifyGreen: "#1DB954",
         spotifyBlack: "#191414",
@@ -22,6 +22,7 @@ module.exports = {
         xs: "500px",
         smaller: "549px",
         "md-plus": "880px",
+        "lg-plus": "1150px",
       },
       fontSize: {
         "xs-plus": ["0.9rem", { lineHeight: "1.5rem" }], // (approx between sm and base)
@@ -60,7 +61,10 @@ module.exports = {
         "pulse-sm": "pulse-sm 1.25s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         scaleInOut: "scaleInOut 0.65s ease-in-out forwards",
         "show-me-pulse": "show-me-pulse 4.3s ease-in-out infinite",
-        wave: "wave 8s ease-in-out infinite",
+
+        // delay added
+        wave: "wave 0.8s ease-in-out 0.8s ",
+
         "wave-click": "waveClick 1s ease-in-out",
         "cta-arrow-bounce-down": "ctaArrowBounceDown 0.9s ease-out",
         shimmer: "shimmer 2.5s ease-in-out infinite",
@@ -98,12 +102,13 @@ module.exports = {
         },
 
         wave: {
-          "0%, 45%, 100%": { transform: "rotate(0deg)" },
-          "46%": { transform: "rotate(6deg)" },
-          "47%": { transform: "rotate(-4deg)" },
-          "48%": { transform: "rotate(6deg)" },
-          "49%": { transform: "rotate(-2deg)" },
-          "50%": { transform: "rotate(0deg)" },
+          "0%": { transform: "rotate(0deg)" },
+          "15%": { transform: "rotate(14deg)" },
+          "30%": { transform: "rotate(-8deg)" },
+          "45%": { transform: "rotate(14deg)" },
+          "60%": { transform: "rotate(-4deg)" },
+          "75%": { transform: "rotate(10deg)" },
+          "100%": { transform: "rotate(0deg)" },
         },
 
         waveClick: {

@@ -14,9 +14,7 @@ import { NextButton, PrevButton } from "./EmblaCarouselArrowsDotsButtons";
 
 type Props = {
   project: ProjectType;
-  setEffect: React.Dispatch<React.SetStateAction<boolean>>;
   index: number;
-
   scrollPrev?: () => void;
   scrollNext?: () => void;
   prevBtnEnabled?: boolean;
@@ -25,7 +23,6 @@ type Props = {
 
 export default function Project({
   project,
-  setEffect,
   index,
   scrollPrev,
   scrollNext,
@@ -36,15 +33,13 @@ export default function Project({
 
   const { toggleFullScreen, isFullScreen } = useFullScreenStore();
 
-  //if user has clicked Show me-btn, disable the subtle animation.
+  //if user has clicked Show me-btn, disable the scale animation that invites user to click show me (runs every x seconds)
   const [hasShownDemo, setHasShownDemo] = React.useState<boolean>(false);
 
   const ref = useRef<HTMLDivElement>(null);
 
   const handleShowMe = () => {
-    //enable effect/animation (invinsible on page load)
-    setEffect(true);
-
+    //when true turns off 'show me' scaling that invites user to click
     setHasShownDemo(true);
 
     if (ref.current) {
@@ -114,7 +109,7 @@ export default function Project({
           />
         </div>
 
-        {/* MOBILE test*/}
+        {/* MOBILE project img*/}
         <motion.img
           //use translate-y in motion properties instead. (bug if mixing..)... x:12% originally
           initial={{ opacity: 0, x: "-5%", y: "5%" }}
@@ -129,17 +124,7 @@ export default function Project({
           className={`relative bg-gradient-to-br ${getGradientClass(index)}  
               rounded-md xs:rounded-tr-sm overflow-visible   w-[100%] aspect-[1/0.75] xs:aspect-[1/1] mx-2 xs:mx-0   xs:w-[50%]`}
         >
-          {/* <motion.img
-            //use translate-y in motion properties instead. (bug if mixing..)... x:12% originally
-            initial={{ opacity: 0, x: "5%", y: "5%" }}
-            whileInView={{ opacity: 1, x: "0%", y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            src={urlFor(project?.image).url() || undefined}
-            alt="project_img"
-            className="xs:hidden absolute w-full xs:rounded-md top-[17%] aspect-auto   aspect-[12/10]//  "
-          /> */}
-          {/* DESKTOP */}
+          {/* DESKTOP project img */}
           <motion.img
             //use translate-x in inital(below) instead. (bug if mixing xxs:!translate-x-[22%]..)
             initial={{ opacity: 0, x: "10%", y: "10%" }}
@@ -153,12 +138,15 @@ export default function Project({
         </div>
 
         {/* PROJECT-TECH div */}
-        <div className="mr-5 group/parent   hidden xs:inline">
-          <h1 className="cursor-default opacity-0 translate-y-2 group-hover/parent:opacity-25 group-hover/parent:delay-[600ms]  group-hover/parent:translate-y-0 transform transition duration-500 ease-in     text-center md-plus:text-start tracking-wider text-xs sm:text-sm md:text-base lg:text-xl mb-1 font-bold  ">
-            TECH STACK
+        <div className="mr-5 group/parent relative  hidden xs:inline">
+          <h1
+            //make this h1 absolute so that the techitems are centered
+            className="cursor-default absolute -top-[30px] md:-top-[34px] opacity-0 group-hover/parent:opacity-25 group-hover/parent:delay-[600ms]  group-hover/parent:-translate-y-1 transform transition duration-[400ms] ease-in   text-start tracking-wider text-xs sm:text-base md:text-xl lg:text-2xl font-semibold  "
+          >
+            Tech Stack
           </h1>
           <motion.div
-            className="grid grid-cols-2 md-plus:grid-cols-3 gap-1 xs:gap-2 md:gap-3.5 "
+            className="grid grid-cols-2 md:grid-cols-3 gap-1 xs:gap-2 md:gap-3.5 "
             variants={techContainerVariants}
             initial="hidden"
             whileInView="show"
@@ -168,16 +156,18 @@ export default function Project({
               <motion.div
                 variants={techItemVariants}
                 key={i}
-                className="group relative flex cursor-pointer rounded-full border border-gray-200/90"
+                className="group relative flex cursor-pointer rounded-full border border-gray-200"
               >
                 <img
-                  className="projectTechItemSize object-cover rounded-full filter group-hover:grayscale transition duration-300 ease-in-out"
+                  className="projectTechItemSize opacity-75 object-cover rounded-full filter group-hover:grayscale transition duration-300 ease-in-out"
                   src={urlFor(tech?.image).url() || undefined}
                   alt=""
                 />
-                <div className="projectTechItemSize absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white rounded-full">
+                <div className="projectTechItemSize absolute opacity-0 group-hover:opacity-80  transition duration-500 ease-in-out group-hover:bg-white rounded-full">
                   <div className="flex items-center justify-center h-full relative">
-                    <p className="text-xs-plus tracking-wide">{tech?.title}</p>
+                    <p className="text-xs-plus tracking-wide font-medium">
+                      {tech?.title}
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -191,7 +181,6 @@ export default function Project({
           className={`hidden/// flex xs:flex absolute -bottom-2 w-full justify-center text-white    z-50`}
         >
           <button
-            //minor css-bug after hovering, barely noticable. Bug disappears after demo-show
             onClick={handleShowMe}
             className={`show-btn w-fit ${
               hasShownDemo ? "" : "animate-show-me-pulse hover:animate-none"
@@ -253,7 +242,6 @@ export default function Project({
           </span>
         </h2>
 
-        {/* TESTING tooltip: */}
         <div
           //LINKS on desktop (github + livebuild)
           className="items-center space-x-1.5 hidden xs:flex"
