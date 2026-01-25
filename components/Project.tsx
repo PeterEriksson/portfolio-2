@@ -23,7 +23,7 @@ type Props = {
 
 export default function Project({
   project,
-  index,
+  index, // used to decide bg for project, temp solution, later update schema instead
   scrollPrev,
   scrollNext,
   prevBtnEnabled,
@@ -52,7 +52,7 @@ export default function Project({
     toggleFullScreen();
   };
 
-  //temp solution. Add background color to the database schema instead.
+  //temp solution. Later add background color to the database schema instead.
   const getGradientClass = (index: number) => {
     switch (index) {
       case 0:
@@ -120,11 +120,12 @@ export default function Project({
           alt="project_img"
           className="xs:hidden absolute w-full xs:rounded-md top-[16%] aspect-auto rounded-sm z-30"
         />
+        {/* DESKTOP project img */}
         <div
+          //background sitting behind project(desktop + mobile)
           className={`relative bg-gradient-to-br ${getGradientClass(index)}  
               rounded-md xs:rounded-tr-sm overflow-visible   w-[100%] aspect-[1/0.75] xs:aspect-[1/1] mx-2 xs:mx-0   xs:w-[50%]`}
         >
-          {/* DESKTOP project img */}
           <motion.img
             //use translate-x in inital(below) instead. (bug if mixing xxs:!translate-x-[22%]..)
             initial={{ opacity: 0, x: "10%", y: "10%" }}
@@ -205,7 +206,7 @@ export default function Project({
         whileInView={{ opacity: 1 /*  y: 0 */ }}
         viewport={{ once: true }}
         transition={{ duration: 0.9 }}
-        className={`flex  mt-1    project-info${index}     mx-[16px] xs:mx-0    `}
+        className={`flex  mt-1    project-info $/{index}     mx-[16px] xs:mx-0    `}
       >
         <h2
           className={`text-xl sm:text-2xl text-black/70 opacity-90 cursor-default ${
@@ -278,7 +279,7 @@ export default function Project({
       <div
         //LINKS (github + livebuild) on MOBILE + more (mobile screen, up to sm)
         //sm and above screens -> line-clamp-3...
-        className={`flex sm:hidden      project-info${index} relative items-center justify-end  space-x-1.5 -ml-2 mt-[1px] mr-4 `}
+        className={`flex sm:hidden      project-info $/{index} relative items-center justify-end  space-x-1.5 -ml-2 mt-[1px] mr-4 `}
       >
         <p
           //temp solution, 'more' on mobile

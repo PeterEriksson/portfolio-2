@@ -22,6 +22,8 @@ type Props = {
   options?: EmblaOptionsType;
 };
 
+//TODO, test remove stagger (below) and edit: project-info${index} -> project-info $/{index} (in Project.tsx)
+
 export default function Work({ projects, slides, options }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
@@ -31,6 +33,43 @@ export default function Work({ projects, slides, options }: Props) {
   const { menuOpen } = useMenuStore();
   const { isFullScreen, toggleFullScreen } = useFullScreenStore();
   const [scope, animate] = useAnimate();
+
+  React.useEffect(() => {
+    if (!isFullScreen) {
+      animate([
+        [".header", { opacity: 1 }, { at: 0.2 }],
+        [".demo", { opacity: 0, scale: 0 }, { duration: 0.55, at: 0 }],
+        [
+          //`.project-info${selectedIndex}`,
+          ".project-info",
+          { opacity: 1, x: "-0px" },
+          { duration: 0.25, /*  delay: stagger(0.05), */ at: 0.2 },
+        ],
+        [".show-btn", { opacity: 1, scale: 1 }, { at: ">" }],
+        [".back-btn", { opacity: 0, scale: 0 }, { at: 0 }],
+        [".upper-div-card", { opacity: 1 }, { at: 0, duration: 0.85 }],
+      ]);
+    } else {
+      animate([
+        [
+          ".demo",
+          { opacity: 1, scale: 1, zIndex: 30 },
+          { duration: 0.25, at: 0.25 },
+        ],
+        [
+          //`.project-info${selectedIndex}`,
+          ".project-info",
+          //{ opacity: 0, x: "-150px" },
+          { opacity: 0, x: "-70px" },
+          { duration: 0.2, /* delay: stagger(0.05), */ at: 0 },
+        ],
+        [".show-btn", { opacity: 0, scale: 0 }, { duration: 0.25, at: 0 }],
+        [".back-btn", { opacity: 1, scale: 1 }, { at: 0.1 }],
+        [".header ", { opacity: 0 }, { at: 0 }],
+        [".upper-div-card", { opacity: 0 }, { at: 0.15 }],
+      ]);
+    }
+  }, [animate, isFullScreen]);
 
   const scrollPrev = useCallback(
     () => emblaApi && emblaApi.scrollPrev(),
@@ -79,40 +118,6 @@ export default function Work({ projects, slides, options }: Props) {
     toggleFullScreen();
   };
 
-  React.useEffect(() => {
-    if (!isFullScreen) {
-      animate([
-        [".header", { opacity: 1 }, { at: 0.2 }],
-        [".demo", { opacity: 0, scale: 0 }, { duration: 0.55, at: 0 }],
-        [
-          `.project-info${selectedIndex}`,
-          { opacity: 1, x: "-0px" },
-          { duration: 0.25, delay: stagger(0.05), at: 0.2 },
-        ],
-        [".show-btn", { opacity: 1, scale: 1 }, { at: ">" }],
-        [".back-btn", { opacity: 0, scale: 0 }, { at: 0 }],
-        [".upper-div-card", { opacity: 1 }, { at: 0, duration: 0.85 }],
-      ]);
-    } else {
-      animate([
-        [
-          ".demo",
-          { opacity: 1, scale: 1, zIndex: 30 },
-          { duration: 0.25, at: 0.25 },
-        ],
-        [
-          `.project-info${selectedIndex}`,
-          { opacity: 0, x: "-150px" },
-          { duration: 0.2, delay: stagger(0.05), at: 0 },
-        ],
-        [".show-btn", { opacity: 0, scale: 0 }, { duration: 0.25, at: 0 }],
-        [".back-btn", { opacity: 1, scale: 1 }, { at: 0.1 }],
-        [".header ", { opacity: 0 }, { at: 0 }],
-        [".upper-div-card", { opacity: 0 }, { at: 0.15 }],
-      ]);
-    }
-  }, [animate, isFullScreen]);
-
   //temp solution. Add background color to the database schema instead.
   const getGradientClass = (index: number) => {
     switch (index) {
@@ -132,7 +137,6 @@ export default function Work({ projects, slides, options }: Props) {
       ref={scope}
       id="Work"
       //h-[105vh]/// xs:h-[110vh]/// sm:h-[115vh]///  lg:h-[125vh]/// ->use padding instead. solves show+less bug.
-
       className={`flex  ${
         menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
       }
@@ -196,16 +200,6 @@ export default function Work({ projects, slides, options }: Props) {
 
       {/* DEMO desktop */}
 
-      {/* <img
-        // fix for hiding on page load..(effect)
-        //(isFullScreen): disable pointer events to avoid issue when swiping projects..and show me btn(2nd time click)
-        className={`hidden xs:inline  demo ${effect ? "" : "invisible"}  ${
-          isFullScreen ? "" : "pointer-events-none "
-        } object-cover fixed inset-0 mx-auto    h-[100%] `}
-        src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
-        alt="demo desktop"
-      /> */}
-
       <AnimatePresence
         //avoid animation on page load
         mode="wait"
@@ -241,35 +235,6 @@ export default function Work({ projects, slides, options }: Props) {
         `}
         >
           <div className="absolute top-[21%]">
-            {/* TECH USED (mobile)...remove for now, cleaner. */}
-            {/* <div className="flex mx-2 space-x-3 bg-black/40 p-2 rounded-xl w-fit  ">
-              {projects[selectedIndex]?.technologies?.map((tech, i) => (
-                <div
-                  key={i}
-                  className={`group relative flex cursor-pointer rounded-full
-                  ${
-                    isFullScreen
-                      ? "translate-y-0 opacity-50"
-                      : "translate-y-2 opacity-0"
-                  } transform duration-[450ms]  ease-in delay-[1100ms]
-                  `}
-                >
-                  <img
-                    className="projectTechItemSize opacity-70 object-cover rounded-full filter group-hover:grayscale transition duration-300 ease-in-out"
-                    src={urlFor(tech?.image).url() || undefined}
-                    //src={tech?.image}
-                    alt={tech?.title || ""}
-                  />
-
-                  
-                  <div
-                  //TOOLTIP
-                  className="absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 bg-black text-white text-xs rounded px-2 py-1 -top-8 whitespace-nowrap">
-                    {tech?.title}
-                  </div>
-                </div>
-              ))}
-            </div> */}
             <div className="flex items-center justify-between mx-2">
               <h1
                 className={`font-semibold text-4xl text-black mb-2 ${
