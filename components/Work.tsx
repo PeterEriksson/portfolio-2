@@ -46,7 +46,7 @@ export default function Work({ projects, slides, options }: Props) {
           { duration: 0.25, /*  delay: stagger(0.05), */ at: 0.2 },
         ],
         [".show-btn", { opacity: 1, scale: 1 }, { at: ">" }],
-        [".back-btn", { opacity: 0, scale: 0 }, { at: 0 }],
+        [".close-btn", { opacity: 0, scale: 0 }, { at: 0 }],
         [".upper-div-card", { opacity: 1 }, { at: 0, duration: 0.85 }],
       ]);
     } else {
@@ -64,7 +64,7 @@ export default function Work({ projects, slides, options }: Props) {
           { duration: 0.2, /* delay: stagger(0.05), */ at: 0 },
         ],
         [".show-btn", { opacity: 0, scale: 0 }, { duration: 0.25, at: 0 }],
-        [".back-btn", { opacity: 1, scale: 1 }, { at: 0.1 }],
+        [".close-btn", { opacity: 1, scale: 1 }, { at: 0.1 }],
         [".header ", { opacity: 0 }, { at: 0 }],
         [".upper-div-card", { opacity: 0 }, { at: 0.15 }],
       ]);
@@ -109,12 +109,12 @@ export default function Work({ projects, slides, options }: Props) {
 
   //handle click back to main page (from fullscren)
   const handleClose = () => {
-    if (scope.current) {
+    /* if (scope.current) {
       scope.current.scrollIntoView({
         behavior: "smooth", // Smooth scrolling
         block: "center", // Scroll to the center of the viewport
       });
-    }
+    } */
     toggleFullScreen();
   };
 
@@ -201,22 +201,52 @@ export default function Work({ projects, slides, options }: Props) {
       {/* DEMO desktop */}
 
       <AnimatePresence
-        //avoid animation on page load
+        //avoid img animation on page load
         mode="wait"
       >
-        <motion.img
-          src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
-          alt="demo desktop"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          //transition={{ duration: 0.3, ease: "easeOut" }} remove?
-          className={`
+        <>
+          <motion.img
+            src={urlFor(projects[selectedIndex]?.demo).url() || undefined}
+            alt="demo desktop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            //transition={{ duration: 0.3, ease: "easeOut" }} remove?
+            className={`
         hidden xs:inline demo
         object-cover fixed inset-0 mx-auto h-full
         ${isFullScreen ? "" : "pointer-events-none"}
       `}
-        />
+          />
+          {/* CLOSE btn (desktop) */}
+          <div
+            //use flex container to avoid positioning issue for button
+            className={`hidden xs:flex w-full justify-center   ${
+              isFullScreen && "fixed" //this fixed back btn animation on page load
+            } //fixed   z-40  bottom-20  `}
+          >
+            <button
+              onClick={handleClose}
+              className={`close-btn ${workStyles.shrinkEffect} 
+          ${
+            //scale down effect isn't interrupted by hover
+            isFullScreen ? "" : "pointer-events-none"
+          } shadow-md shadow-gray-500 flex items-center bg-black rounded-2xl text-sm px-4 py-2.5 text-white  `}
+            >
+              Close
+              <div
+                // X icon using css (bolder)
+                className="relative w-[18px] h-[18px] ml-1"
+              >
+                <span
+                  //adjuste h-[..] on both span for boldness
+                  className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 rotate-45 rounded-full"
+                ></span>
+                <span className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 -rotate-45 rounded-full"></span>
+              </div>
+            </button>
+          </div>
+        </>
       </AnimatePresence>
 
       {/* DEMO mobile */}
@@ -224,63 +254,94 @@ export default function Work({ projects, slides, options }: Props) {
         //avoid animation on page load
         mode="wait"
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className={`    demo xs:hidden    fixed inset-0 h-[100%] bg-gradient-to-br  ${getGradientClass(
-            selectedIndex
-          )}     
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={`    demo xs:hidden    fixed inset-0 h-[100%] bg-gradient-to-br  ${getGradientClass(
+              selectedIndex
+            )}     
         ${isFullScreen ? "" : "pointer-events-none "}
         `}
-        >
-          <div className="absolute top-[21%]">
-            <div className="flex items-center justify-between mx-2">
-              <h1
-                className={`font-semibold text-4xl text-black mb-2 ${
-                  isFullScreen
-                    ? "translate-y-0 opacity-50"
-                    : "translate-y-3 opacity-0"
-                } transform duration-[450ms]  ease-in delay-[600ms]   `}
-              >
-                {projects[selectedIndex]?.title}
-              </h1>
-              <div
-                className={`flex space-x-1.5
+          >
+            <div className="absolute top-[21%]">
+              <div className="flex items-center justify-between mx-2">
+                <h1
+                  className={`font-semibold text-4xl text-black mb-2 ${
+                    isFullScreen
+                      ? "translate-y-0 opacity-50"
+                      : "translate-y-3 opacity-0"
+                  } transform duration-[450ms]  ease-in delay-[600ms]   `}
+                >
+                  {projects[selectedIndex]?.title}
+                </h1>
+                <div
+                  className={`flex space-x-1.5
               ${
                 isFullScreen
                   ? "translate-y-0 opacity-[0.8]"
                   : "translate-y-3 opacity-0"
               } transform duration-[450ms]  ease-in delay-[600ms] 
               `}
-              >
-                <SocialIcon
-                  target="_blank"
-                  url={projects[selectedIndex]?.linkToGithub}
-                  bgColor="rgba(0,0,0,0.6)"
-                  fgColor="#ffffffb3" // b3 = 70% opacity
-                  className="!h-9 !w-9 rounded-full"
-                />
-                <a
-                  href={projects[selectedIndex]?.linkToBuild}
-                  target="_blank"
-                  className="h-9 w-9 p-2 bg-black/60 rounded-full flex items-center justify-center"
                 >
-                  <ArrowTopRightOnSquareIcon className="text-[#ffffff]/70 w-9 h-9" />
-                </a>
+                  <SocialIcon
+                    target="_blank"
+                    url={projects[selectedIndex]?.linkToGithub}
+                    bgColor="rgba(0,0,0,0.6)"
+                    fgColor="#ffffffb3" // b3 = 70% opacity
+                    className="!h-9 !w-9 rounded-full"
+                  />
+                  <a
+                    href={projects[selectedIndex]?.linkToBuild}
+                    target="_blank"
+                    className="h-9 w-9 p-2 bg-black/60 rounded-full flex items-center justify-center"
+                  >
+                    <ArrowTopRightOnSquareIcon className="text-[#ffffff]/70 w-9 h-9" />
+                  </a>
+                </div>
               </div>
-            </div>
 
-            <img
-              className="mt-1.5 "
-              src={urlFor(projects[selectedIndex]?.image).url() || undefined}
-              alt="demo mobile"
-            />
+              <img
+                className="mt-1.5 "
+                src={urlFor(projects[selectedIndex]?.image).url() || undefined}
+                alt="demo mobile"
+              />
+            </div>
+          </motion.div>
+          {/* CLOSE btn (mobile) */}
+          <div
+            //use flex container to avoid positioning issue for button
+            className={` xs:hidden w-full flex justify-center absolute// ${
+              isFullScreen && "fixed"
+            }    z-40 handle-resizing-screenheight: bottom-10    `}
+          >
+            <button
+              onClick={handleClose}
+              className={`close-btn   ${workStyles.shrinkEffect} 
+          ${
+            //scale down effect isn't interrupted by hover
+            isFullScreen ? "" : "pointer-events-none"
+          } shadow-md shadow-gray-500 flex items-center bg-black rounded-2xl text-sm px-4 py-2.5 text-white  `}
+            >
+              Close
+              <div
+                // X icon using css (bolder)
+                className="relative w-[18px] h-[18px] ml-1"
+              >
+                <span
+                  //adjuste h-[..] on both span for boldness
+                  className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 rotate-45 rounded-full"
+                ></span>
+                <span className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 -rotate-45 rounded-full"></span>
+              </div>
+            </button>
           </div>
-        </motion.div>
+        </>
       </AnimatePresence>
 
-      <AnimatePresence
+      {/* close button moved for now... */}
+      {/* <AnimatePresence
         //avoid animation on page load
         mode="wait"
       >
@@ -294,15 +355,17 @@ export default function Work({ projects, slides, options }: Props) {
         >
           <button
             onClick={handleClose}
-            className={`back-btn   ${workStyles.shrinkEffect} 
+            className={`close-btn   ${workStyles.shrinkEffect} 
           ${
             //scale down effect isn't interrupted by hover
             isFullScreen ? "" : "pointer-events-none"
           } shadow-md shadow-gray-500 flex items-center bg-black rounded-2xl text-sm px-4 py-2.5 text-white  `}
           >
             Close
-            {/* X icon using css (bolder) */}
-            <div className="relative w-[18px] h-[18px] ml-1">
+            <div
+              // X icon using css (bolder)
+              className="relative w-[18px] h-[18px] ml-1"
+            >
               <span
                 //adjuste h-[..] on both span for boldness
                 className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 rotate-45 rounded-full"
@@ -311,13 +374,13 @@ export default function Work({ projects, slides, options }: Props) {
             </div>
           </button>
         </motion.div>
-      </AnimatePresence>
+      </AnimatePresence> */}
 
       {/* DOTS */}
       <motion.div
         className={`z-[50] ${
           isFullScreen ? "hidden" : ""
-        } flex space-x-4 max-w-fit mx-auto mt-[12px] border// border-gray-300 //shadow-md //shadow-gray-400/80 px-3.5 py-2.5 rounded-2xl  `}
+        } flex space-x-4 max-w-fit mx-auto -mt-6 mt-[2px]//(close btn taking up space?) px-3.5 py-2.5 rounded-2xl  `}
         initial={{ opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

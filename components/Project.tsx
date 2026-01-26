@@ -39,15 +39,16 @@ export default function Project({
   const ref = useRef<HTMLDivElement>(null);
 
   const handleShowMe = () => {
-    //when true turns off 'show me' scaling that invites user to click
+    //if true then turn off 'show me' scaling that invites user to click
     setHasShownDemo(true);
 
-    if (ref.current) {
+    //todo test remove
+    /* if (ref.current) {
       ref.current.scrollIntoView({
         behavior: "smooth", // Smooth scrolling
         block: "center", // Scroll to the center of the viewport
       });
-    }
+    } */
 
     toggleFullScreen();
   };
