@@ -8,8 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        mainDarkBlue: "#091c29",
-        //mainDarkBlue: "#0F172A",
+        mainDarkBlue: "#08090C",
+        //mainDarkBlue: "#091c29", //original
+
         darkerblue: "#04111d",
         spotifyGreen: "#1DB954",
         spotifyBlack: "#191414",

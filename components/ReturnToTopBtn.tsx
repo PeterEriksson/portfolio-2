@@ -70,7 +70,7 @@ function ReturnToTopBtn(): JSX.Element {
   return (
     <button
       onClick={handleScrollToTop}
-      className={`flex z-50 group cursor-pointer fixed right-4 xs:right-6 bottom-6 items-center justify-center w-12 h-12 border-2 border-gray-700 bg-transparent bg-opacity-75 rounded-full transition transform opacity ease-in-out duration-500 ${
+      className={`flex z-50 group cursor-pointer fixed right-3 bottom-3 items-center justify-center w-12 h-12 border xs:border-2 border-gray-700 bg-transparent bg-opacity-75 rounded-full transition transform opacity ease-in-out duration-500 ${
         scrollY > scrollBreakpoint
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-6 pointer-events-none"

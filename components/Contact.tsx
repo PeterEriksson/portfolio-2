@@ -36,10 +36,10 @@ export default function Contact({ pageInfo, socials }: Props) {
       id="Contact"
       className={`${
         menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
-      }for-shape+blob-> relative ForRocket: overflow-hidden   transition duration-200 ease-in   bg-mainDarkBlue py-28  xs:py-0 h-[102vh]//   xs:h-screen  flex justify-start xs:justify-center              `}
+      }for-shape+blob-> relative ForRocket: overflow-hidden   transition duration-200 ease-in   bg-mainDarkBlue  min-h-screen  xs:min-h-[120vh] sm:min-h-screen   //xs:min-h-screen  flex justify-start xs:justify-center              `}
     >
       <Blob />
-      <div className=" xs:w-10/12 w-[88%] flex items-center xs:flex-row flex-col-reverse justify-center xs:justify-between   ">
+      <div className=" xs:w-10/12 w-[88%] flex items-center sm:flex-row flex-col-reverse justify-center sm:justify-between   ">
         {/* LEFT SIDE (headers + info) */}
         <motion.div
           initial={{
@@ -52,11 +52,11 @@ export default function Contact({ pageInfo, socials }: Props) {
           }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true /* amount: 0.2 */ }}
-          className=" !z-30 flex/ flex-col items-center xs:inline  "
+          className=" !z-30 flex flex-col items-center xs:inline  "
         >
-          <div className={` flex mr-auto xxs:mr-0 ml-auto    -mt-8 sm:-mt-0`}>
+          <div className={` flex mr-auto xxs:mr-0 ml-auto    `}>
             <h1 className="ml-4 xs:ml-0 sm:text-5xl text-5xl text-white font-bold    ">
-              Contact me&nbsp;{" "}
+              Contact <span className="text-react">me</span> &nbsp;{" "}
             </h1>
 
             <InView triggerOnce>
@@ -78,7 +78,7 @@ export default function Contact({ pageInfo, socials }: Props) {
           </div>
           <h4
             //text-[#dbdee3] - between gray-200 and gray-300
-            className="ml-4 mt-3 xs:mt-0  xs:ml-0 mb-10 xs:mb-2 font-thin  text-[#dbdee3] sm:mb-[18px] xs:max-w-[270px]  xs:text-start"
+            className="mb-10 sm:mb-[30px] text-lg xs:text-base mt-1.5 font-thin  text-[#dbdee3]  max-w-[260px] sm:max-w-[290px]   xs:text-start"
           >
             Let's
             <span className="text-gray-200  font-medium tracking-wide xs:tracking-normal   ">
@@ -88,11 +88,14 @@ export default function Contact({ pageInfo, socials }: Props) {
             If you have an opening or any project that I can contribute to, be
             sure to reach out.
           </h4>
+          {/* horizontal line on mobile */}
+          <div className="mb-8 h-px w-[260px] xs:ml-0 bg-gray-400/20 sm:w-[32px] " />
 
-          <div className="space-y-2 ml-4 xs:ml-0">
+          {/* MAIL, NR, LOCATION */}
+          <div className="space-y-3 -ml-8  xs:ml-0   rounded-lg/ /p-3 /sm:p-0 /border /sm:border-none /border-gray-800/10 /sm:bg-transparent /bg-gray-900/20">
             <div className="mt-1 contactItemDiv ">
-              <MailIcon className="h-7 w-7 xs:h-9 xs:w-9 lg:w-8 lg:h-8 text-gray-200" />
-              <p className="text-gray-300/80 text-sm font-extralight lg:text-base lg:font-light">
+              <MailIcon className="h-8 w-8 xs:h-9 xs:w-9 lg:w-8 lg:h-8 text-gray-200" />
+              <p className="text-gray-300/80 text-sm font-extralight  ">
                 {pageInfo?.email}
               </p>
               <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
@@ -106,23 +109,21 @@ export default function Contact({ pageInfo, socials }: Props) {
               </CopyToClipboard>
             </div>
             <div className="mt-2 contactItemDiv">
-              <PhoneIcon className="h-7 w-7 xs:h-9 xs:w-9 lg:w-8 lg:h-8 text-gray-200" />
-              <p className="text-gray-300/80 text-sm font-extralight lg:text-base lg:font-light">
+              <PhoneIcon className="h-8 w-8 xs:h-9 xs:w-9 lg:w-8 lg:h-8 text-gray-200" />
+              <p className="text-gray-300/80 text-sm font-extralight  ">
                 {pageInfo?.phoneNumber}
               </p>
             </div>
             <div className="mb-1 xxs:mb-0 mt-1 contactItemDiv">
-              <MapPinIcon className="h-7 w-7 xs:h-9 xs:w-9 lg:w-8 lg:h-8 text-gray-200" />
-              <p className="text-gray-300/80 text-sm font-extralight lg:text-base lg:font-light">
+              <MapPinIcon className="h-8 w-8 xs:h-9 xs:w-9 lg:w-8 lg:h-8 text-gray-200" />
+              <p className="text-gray-300/80 text-sm font-extralight  ">
                 Stockholm, Sweden
               </p>
             </div>
           </div>
 
-          <h2 className="opacity-0 xs:hidden ml-4 tracking-wider text-gray-400 mt-4">
-            Socials
-          </h2>
-          <div className="flex ml-3 xs:hidden space-x-2">
+          {/* SOCIALS mobile */}
+          <div className="flex -ml-2 mt-8 xs:hidden space-x-6">
             {socials?.map((social, i) => (
               <SocialIcon
                 key={i}
@@ -130,13 +131,13 @@ export default function Contact({ pageInfo, socials }: Props) {
                 url={social?.url}
                 bgColor="transparent"
                 fgColor="white"
-                className=" hover:opacity-60 opacity-70 !h-10 !w-10    "
+                className=" hover:opacity-60 opacity-70 !h-11 !w-11  border border-gray-600 rounded-full  "
               />
             ))}
           </div>
         </motion.div>
         {/* RIGHT SIDE - containing profile pic */}
-        <div className="hidden xs:inline   relative w-[90%] xxs:w-[70%] sm:w-1/2 md:w-2/5 lg:max-w-[400px] lg:max-h-[400px] mb-10 sm:mb-0">
+        <div className="hidden xs:inline   relative w-[90%] xxs:w-[60%] sm:w-1/2 md:w-2/5 lg:max-w-[400px] lg:max-h-[400px] mb-10 sm:mb-0">
           <motion.img
             initial={{ opacity: 0 }}
             transition={{ delay: 0.6, duration: 1.2 }}
@@ -174,14 +175,8 @@ export default function Contact({ pageInfo, socials }: Props) {
         </div>
       </div>
 
-      {/*  <footer className="absolute bottom-0.5 text-center text-xs w-4/5 xs:text-sm text-gray-500 py-6">
-        © 2025 Peter Eriksson.{" "}
-        <span className="inline-block">
-          Next · Typescript · Sanity · Framer Motion
-        </span>
-      </footer> */}
       <footer className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-4/5 text-center text-xs xs:text-sm text-gray-500 py-6">
-        © 2025 Peter Eriksson.{" "}
+        © 2026 Peter Eriksson.{" "}
         <span className="inline-block">
           Next · Typescript · Sanity · Framer Motion
         </span>

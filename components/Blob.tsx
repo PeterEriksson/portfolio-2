@@ -42,7 +42,8 @@ export default function Blob() {
           cx="106.39933337466255"
           cy="371.5369515144388"
           //fill="hsla(212, 59%, 40%, 0.21)"
-          fill="hsla(212, 73%, 18%, 0.59)"
+          //fill="hsla(212, 73%, 18%, 0.59)"
+          fill="hsla(212, 73%, 18%, 0.22)"
         ></ellipse>
       </g>
     </svg>

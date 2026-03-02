@@ -75,26 +75,26 @@ export default function Hero({ socials, pageInfo }: Props) {
         // on desktop sizes using stars bg
         className={`   ${
           menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
-        } relative   transition duration-200 ease-in    h-screen  pb-4 sm:pb-0 sm:h-[97vh]   flex justify-center items-center bg-mainDarkBlue xs:bg-transparent        h-auto// `}
+        } relative   transition duration-200 ease-in    h-[98vh]  pb-4 sm:pb-0 sm:h-[97vh]   flex justify-center items-center bg-mainDarkBlue xs:bg-transparent        h-auto// `}
       >
         <div
           //MOBILE scroll signifier
           className="mt-3 sm:hidden  absolute bottom-4  inline-block"
         >
           <div className="w-full text-center pt-6  ">
-            <p
+            {/* <p
               className="
       bg-gradient-to-b from-gray-400/70 via-gray-700 to-gray-400/70
       bg-[length:100%_200%] animate-shimmer
       bg-clip-text text-transparent font-medium text-xl  tracking-wider "
             >
               DISCOVER MORE
-            </p>
+            </p> */}
             <p
               className="
       bg-gradient-to-b from-gray-400/80 via-gray-800 to-gray-400/80
       bg-[length:100%_200%] animate-shimmerArrow
-      bg-clip-text text-transparent text-2xl  -mt-1"
+      bg-clip-text text-transparent text-4xl text-2xl//   -mt-1 "
             >
               ↓
             </p>
@@ -199,7 +199,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               {/* It's me{" "} */} I'm{" "}
               <span
                 //text-gradient
-                className="bg-gradient-to-r from-white to-react bg-clip-text text-transparent"
+                className="text-react /xs:bg-gradient-to-r /bg-react /from-white /to-react /bg-clip-text /text-transparent"
               >
                 Peter{" "}
               </span>
@@ -223,7 +223,11 @@ export default function Hero({ socials, pageInfo }: Props) {
             >
               I am
               <Typewriter
-                words={[" <FrontEndDev />", " <ReactCoder />"]}
+                words={[
+                  " <FrontEndDev />",
+                  " <CreativeCrafter />",
+                  " <ReactCoder />",
+                ]}
                 //Control how many times to run. 0 | false to run infinitely
                 //loop={false}
                 loop={3}
@@ -243,14 +247,16 @@ export default function Hero({ socials, pageInfo }: Props) {
               className="sm:hidden w-full flex flex-col items-center mt-1"
             >
               {/* Left line + Title + Right line */}
-              <div className="w-full flex items-center justify-center space-x-2.5">
-                <div className="flex-grow border-t   border-gray-300" />
+              <div className="w-full flex items-center justify-center space-x-2 ">
+                {/* Left fading line */}
+                <div className="flex-grow mt-[2px] h-px bg-gradient-to-r from-gray-300/10 via-gray-400 to-gray-400 rounded-3xl/" />
 
-                <h2 className="text-gray-500 font-light text-lg tracking-wide  sm:hidden">
-                  Frontend developer
+                <h2 className="text-gray-500 font-light text-lg tracking-wide sm:hidden">
+                  &lt; FrontendDeveloper &gt;
                 </h2>
 
-                <div className="flex-grow border-t   border-gray-300" />
+                {/* Right fading line */}
+                <div className="flex-grow mt-[2px] h-px bg-gradient-to-r from-gray-400 via-gray-400 to-gray-300/10" />
               </div>
 
               {/* Subtext */}

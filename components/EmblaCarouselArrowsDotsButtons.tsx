@@ -39,13 +39,13 @@ export const PrevButton: React.FC<PrevNextButtonPropType> = (props) => {
       onMouseDown={() => setButtonIsPressed(true)}
       onMouseUpCapture={() => setButtonIsPressed(false)}
       onMouseLeave={() => setButtonIsPressed(false)}
-      className={`${enabled ? "cursor-pointer opacity-30 " : "invisible"} ${
-        buttonIsPressed && "!opacity-40"
-      }   arrowButtonEmbla `}
+      className={`${enabled ? "cursor-pointer   " : "invisible"} ${
+        buttonIsPressed && "!opacity-70"
+      }   arrowButtonContainerEmbla `}
       onClick={onClick}
       disabled={!enabled}
     >
-      <ChevronLeftIcon className=" text-black/90 xs:text-white  w-7 h-7" />
+      <ChevronLeftIcon className="text-white/90 w-7 h-7 transform ease-in transition duration-150 hover:-translate-x-[2px]" />
     </button>
   );
 };
@@ -59,13 +59,13 @@ export const NextButton: React.FC<PrevNextButtonPropType> = (props) => {
       onMouseDown={() => setButtonIsPressed(true)}
       onMouseUpCapture={() => setButtonIsPressed(false)}
       onMouseLeave={() => setButtonIsPressed(false)}
-      className={`${enabled ? " cursor-pointer opacity-30 " : " invisible"} ${
-        buttonIsPressed && "!opacity-40"
-      }      arrowButtonEmbla `}
+      className={`${enabled ? " cursor-pointer   " : " invisible"} ${
+        buttonIsPressed && "!opacity-70"
+      }      arrowButtonContainerEmbla `}
       onClick={onClick}
       disabled={!enabled}
     >
-      <ChevronRightIcon className="text-black/90 xs:text-white w-7 h-7 " />
+      <ChevronRightIcon className="text-white/90 w-7 h-7 transform ease-in transition duration-150 hover:translate-x-[2px]" />
     </button>
   );
 };

@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 @layer components {
-  .arrowButtonEmbla {
-    @apply transition duration-150 ease-in hover:opacity-[0.57] z-30  hidden xs:flex items-center justify-center cursor-pointer rounded-full xs:bg-gray-500;
+  .arrowButtonContainerEmbla {
+    /*  xs:bg-gray-500  hover:opacity-[0.70] */
+    @apply transition duration-150 ease-in border-gray-200 z-30  hidden xs:flex items-center justify-center cursor-pointer rounded-full bg-gray-500/30;
   }
   .projectTechItemSize {
     @apply w-[20px] h-[20px] xxs:w-[50px] xxs:h-[50px] sm:w-[65px] sm:h-[65px] lg:h-[80px] lg:w-[80px];

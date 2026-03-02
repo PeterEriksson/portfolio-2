@@ -7,8 +7,8 @@
     7,
     21,
     33,
-    0.7
-  ); /* Slightly darker than main with 70% opacity */
+    0.5
+  ); /* Slightly darker than main with 50% opacity */
   border-radius: 5px;
   overflow: hidden;
   position: relative;

@@ -22,8 +22,6 @@ type Props = {
   options?: EmblaOptionsType;
 };
 
-//TODO, test remove stagger (below) and edit: project-info${index} -> project-info $/{index} (in Project.tsx)
-
 export default function Work({ projects, slides, options }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
@@ -35,15 +33,15 @@ export default function Work({ projects, slides, options }: Props) {
   const [scope, animate] = useAnimate();
 
   React.useEffect(() => {
+    //experiment with different values. Try achieve similar effect as opening app on iphone.
     if (!isFullScreen) {
       animate([
         [".header", { opacity: 1 }, { at: 0.2 }],
         [".demo", { opacity: 0, scale: 0 }, { duration: 0.55, at: 0 }],
         [
-          //`.project-info${selectedIndex}`,
           ".project-info",
           { opacity: 1, x: "-0px" },
-          { duration: 0.25, /*  delay: stagger(0.05), */ at: 0.2 },
+          { duration: 0.25, at: 0.2 },
         ],
         [".show-btn", { opacity: 1, scale: 1 }, { at: ">" }],
         [".close-btn", { opacity: 0, scale: 0 }, { at: 0 }],
@@ -56,13 +54,7 @@ export default function Work({ projects, slides, options }: Props) {
           { opacity: 1, scale: 1, zIndex: 30 },
           { duration: 0.25, at: 0.25 },
         ],
-        [
-          //`.project-info${selectedIndex}`,
-          ".project-info",
-          //{ opacity: 0, x: "-150px" },
-          { opacity: 0, x: "-70px" },
-          { duration: 0.2, /* delay: stagger(0.05), */ at: 0 },
-        ],
+        [".project-info", { opacity: 0, x: "-70px" }, { duration: 0.2, at: 0 }],
         [".show-btn", { opacity: 0, scale: 0 }, { duration: 0.25, at: 0 }],
         [".close-btn", { opacity: 1, scale: 1 }, { at: 0.1 }],
         [".header ", { opacity: 0 }, { at: 0 }],
@@ -136,11 +128,12 @@ export default function Work({ projects, slides, options }: Props) {
     <div
       ref={scope}
       id="Work"
-      //h-[105vh]/// xs:h-[110vh]/// sm:h-[115vh]///  lg:h-[125vh]/// ->use padding instead. solves show+less bug.
+      //h-[105vh]/// xs:h-[110vh]///... ->use padding instead. solves show+less bug.
+      //try use min-h-screen
       className={`flex  ${
         menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
       }
-         transition duration-200 ease-in bg-gray-100 py-20 xs:py-24 lg:py-28             flex-col relative items-center justify-center   `}
+       transition duration-200 ease-in bg-gray-100 py-20 xs:py-24 lg:py-28             flex-col relative items-center justify-center   `}
     >
       <motion.div
         aria-label="PROJECTS-div h1 + h4"
@@ -181,7 +174,7 @@ export default function Work({ projects, slides, options }: Props) {
           <div
             aria-label="styles.embla__container"
             //add spacing between projects here:
-            className="flex flex-row z-40 gap-12 xs:gap-x-14 lg:gap-x-20      "
+            className="flex flex-row z-40 gap-12 xs:gap-x-14 lg:gap-x-20 "
           >
             {projects?.map((project, index) => (
               <Project
@@ -198,10 +191,9 @@ export default function Work({ projects, slides, options }: Props) {
         </div>
       </div>
 
-      {/* DEMO desktop */}
-
+      {/* DEMO desktop..  */}
       <AnimatePresence
-        //avoid img animation on page load
+        //AnimatePresence: avoid img animation on page load
         mode="wait"
       >
         <>
@@ -218,8 +210,9 @@ export default function Work({ projects, slides, options }: Props) {
         ${isFullScreen ? "" : "pointer-events-none"}
       `}
           />
-          {/* CLOSE btn (desktop) */}
+
           <div
+            //CLOSE btn (desktop)
             //use flex container to avoid positioning issue for button
             className={`hidden xs:flex w-full justify-center   ${
               isFullScreen && "fixed" //this fixed back btn animation on page load
@@ -339,42 +332,6 @@ export default function Work({ projects, slides, options }: Props) {
           </div>
         </>
       </AnimatePresence>
-
-      {/* close button moved for now... */}
-      {/* <AnimatePresence
-        //avoid animation on page load
-        mode="wait"
-      >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          //Close btn
-          //use flex container to avoid positioning issue for button
-          className="w-full flex justify-center absolute z-50  handle-resizing-screenheight: -bottom-1 xxs:bottom-1 xs:bottom-20 lg:bottom-28 xl:bottom-36 "
-        >
-          <button
-            onClick={handleClose}
-            className={`close-btn   ${workStyles.shrinkEffect} 
-          ${
-            //scale down effect isn't interrupted by hover
-            isFullScreen ? "" : "pointer-events-none"
-          } shadow-md shadow-gray-500 flex items-center bg-black rounded-2xl text-sm px-4 py-2.5 text-white  `}
-          >
-            Close
-            <div
-              // X icon using css (bolder)
-              className="relative w-[18px] h-[18px] ml-1"
-            >
-              <span
-                //adjuste h-[..] on both span for boldness
-                className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 rotate-45 rounded-full"
-              ></span>
-              <span className="absolute top-1/2 left-0 w-full h-[3px] bg-current transform -translate-y-1/2 -rotate-45 rounded-full"></span>
-            </div>
-          </button>
-        </motion.div>
-      </AnimatePresence> */}
 
       {/* DOTS */}
       <motion.div

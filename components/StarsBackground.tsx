@@ -10,7 +10,8 @@ export default function StarsBackground() {
       await tsParticles.load("tsparticles", {
         preset: "stars",
         background: {
-          color: "#091c29", // keep dark background
+          //color: "#091c29", //   (main blue original)
+          color: "#08090C",
         },
         fullScreen: {
           zIndex: -1,

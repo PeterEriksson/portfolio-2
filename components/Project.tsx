@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion } from "framer-motion";
+import { /* animate, */ motion } from "framer-motion";
 import { SocialIcon } from "react-social-icons";
 import {
   ArrowsPointingOutIcon,
@@ -42,7 +42,7 @@ export default function Project({
     //if true then turn off 'show me' scaling that invites user to click
     setHasShownDemo(true);
 
-    //todo test remove
+    // test remove
     /* if (ref.current) {
       ref.current.scrollIntoView({
         behavior: "smooth", // Smooth scrolling
@@ -93,9 +93,9 @@ export default function Project({
   return (
     <div
       ref={ref}
-      className={` ${styles.embla__slide}  xs:px-3.5      min-w-0 relative`}
+      className={` ${styles.embla__slide}  xs:px-3.5     min-w-0 relative`}
     >
-      <div className="relative  flex justify-between items-center  xs:border border-gray-300/60  rounded-md     upper-div-card">
+      <div className="relative  flex justify-between items-center  xs:border border-gray-300/50  rounded-md     upper-div-card">
         {/* NEXT+PREV BTNs */}
         <div className="absolute -left-[14px] top-1/2 -translate-y-1/2 pointer-events-auto z-50        ">
           <PrevButton
@@ -110,8 +110,8 @@ export default function Project({
           />
         </div>
 
-        {/* MOBILE project img*/}
         <motion.img
+          //MOBILE project img
           //use translate-y in motion properties instead. (bug if mixing..)... x:12% originally
           initial={{ opacity: 0, x: "-5%", y: "5%" }}
           whileInView={{ opacity: 1, x: "0%", y: "-10%" }}
@@ -121,13 +121,14 @@ export default function Project({
           alt="project_img"
           className="xs:hidden absolute w-full xs:rounded-md top-[16%] aspect-auto rounded-sm z-30"
         />
-        {/* DESKTOP project img */}
+
         <div
           //background sitting behind project(desktop + mobile)
           className={`relative bg-gradient-to-br ${getGradientClass(index)}  
-              rounded-md xs:rounded-tr-sm overflow-visible   w-[100%] aspect-[1/0.75] xs:aspect-[1/1] mx-2 xs:mx-0   xs:w-[50%]`}
+             rounded-md xs:rounded-tr-sm overflow-visible  w-[100%] aspect-[1/0.8] aspect-[1/0.75]// xs:aspect-[1/1] mx-[20px] mx-2/ xs:mx-0   xs:w-[50%]`}
         >
           <motion.img
+            //DESKTOP project img
             //use translate-x in inital(below) instead. (bug if mixing xxs:!translate-x-[22%]..)
             initial={{ opacity: 0, x: "10%", y: "10%" }}
             whileInView={{ opacity: 1, x: "20%", y: 0 }}
@@ -158,10 +159,10 @@ export default function Project({
               <motion.div
                 variants={techItemVariants}
                 key={i}
-                className="group relative flex cursor-pointer rounded-full border border-gray-200"
+                className="group relative flex cursor-pointer rounded-full border border-gray-300/90"
               >
                 <img
-                  className="projectTechItemSize opacity-75 object-cover rounded-full filter group-hover:grayscale transition duration-300 ease-in-out"
+                  className="projectTechItemSize opacity-80 object-cover rounded-full filter group-hover:grayscale transition duration-300 ease-in-out"
                   src={urlFor(tech?.image).url() || undefined}
                   alt=""
                 />
@@ -207,7 +208,7 @@ export default function Project({
         whileInView={{ opacity: 1 /*  y: 0 */ }}
         viewport={{ once: true }}
         transition={{ duration: 0.9 }}
-        className={`flex  mt-1    project-info $/{index}     mx-[16px] xs:mx-0    `}
+        className={`flex  mt-1    project-info $/{index}     mx-[20px] xs:mx-0    `}
       >
         <h2
           className={`text-xl sm:text-2xl text-black/70 opacity-90 cursor-default ${
@@ -288,7 +289,7 @@ export default function Project({
           onClick={() => setShowFullSummary(true)}
           className={`${
             showFullSummary && "hidden"
-          } absolute -left-1.5// left-2  -top-1.5 sm:hidden cursor-pointer               z-50 p-2 tracking-wider font-semibold text-sm ml-2.5 opacity-[0.3]`}
+          } absolute -left-1.5// left-3  -top-1.5 sm:hidden cursor-pointer               z-50 p-2 tracking-wider font-semibold text-sm ml-2.5 opacity-[0.3]`}
         >
           show more
         </p>
