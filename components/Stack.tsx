@@ -33,7 +33,7 @@ function Stack({ skills, skillDescription }: Props) {
     <div
       id="Skills"
       className={`${
-        menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
+        menuOpen ? "opacity-50 md:opacity-50 lg-plus:opacity-100 " : "  "
       }   transition duration-200 ease-in h-screen xs:h-[105vh] bg-white flex flex-col items-center justify-center  (pageNotToBreakOnSkillEffect->) overflow-x-hidden    overflow-hidden`}
     >
       <div className="w-[88%] xs:w-10/12/// xs:w-fit     ">

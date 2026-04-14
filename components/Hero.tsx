@@ -16,7 +16,6 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import useCopyToClipboard from "../hooks/useCopyToClipboard";
 import styles from "../styles/decorative.module.css";
 import Kicker from "./Kicker";
-import StarsBackground from "./StarsBackground";
 
 type Props = {
   socials?: Social[];
@@ -74,8 +73,8 @@ export default function Hero({ socials, pageInfo }: Props) {
         id="header"
         // on desktop sizes using stars bg
         className={`   ${
-          menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
-        } relative   transition duration-200 ease-in    h-[98vh]  pb-4 sm:pb-0 sm:h-[97vh]   flex justify-center items-center bg-mainDarkBlue xs:bg-transparent        h-auto// `}
+          menuOpen ? "opacity-50 md:opacity-50 lg-plus:opacity-100 " : "  "
+        } relative   transition duration-200 ease-in    h-[98vh]  pb-4 sm:pb-0 sm:h-[97vh]   flex justify-center items-center bg-mainDarkBlue    `}
       >
         <div
           //MOBILE scroll signifier
@@ -101,7 +100,6 @@ export default function Hero({ socials, pageInfo }: Props) {
           </div>
         </div>
 
-        <StarsBackground />
         <div className=" xs:w-10/12 w-[88%] flex flex-col sm:flex-row-reverse  items-center justify-between ">
           <div className="md:w-2/5 sm:w-1/2 xs:w-3/4 w-full relative group">
             <motion.img

@@ -35,7 +35,7 @@ export default function Contact({ pageInfo, socials }: Props) {
     <div
       id="Contact"
       className={`${
-        menuOpen ? "opacity-50 lg:!opacity-100" : "opacity-100 "
+        menuOpen ? "opacity-50 md:opacity-50 lg-plus:opacity-100 " : "  "
       }for-shape+blob-> relative ForRocket: overflow-hidden   transition duration-200 ease-in   bg-mainDarkBlue  min-h-screen  xs:min-h-[120vh] sm:min-h-screen   //xs:min-h-screen  flex justify-start xs:justify-center              `}
     >
       <Blob />

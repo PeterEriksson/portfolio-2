@@ -95,7 +95,7 @@ export default function Project({
       ref={ref}
       className={` ${styles.embla__slide}  xs:px-3.5     min-w-0 relative`}
     >
-      <div className="relative  flex justify-between items-center  xs:border border-gray-300/50  rounded-md     upper-div-card">
+      <div className="relative  flex justify-between items-center  xs:border border-gray-300/50  rounded-md     upper-div-card   ">
         {/* NEXT+PREV BTNs */}
         <div className="absolute -left-[14px] top-1/2 -translate-y-1/2 pointer-events-auto z-50        ">
           <PrevButton
