@@ -180,7 +180,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               Hey{" "}
               <span
                 //mobile wave emoji
-                className="xs:hidden mr-1.5/ inline-block  animate-wave"
+                className="xs:hidden inline-block  animate-wave"
               >
                 👋
               </span>
@@ -194,7 +194,7 @@ export default function Hero({ socials, pageInfo }: Props) {
                 👋
               </span>
               <br className="hidden xs:inline" />
-              {/* It's me{" "} */} I'm{" "}
+              {/* It's me{" "} */} It's{" "}
               <span
                 //text-gradient
                 className="text-react /xs:bg-gradient-to-r /bg-react /from-white /to-react /bg-clip-text /text-transparent"
