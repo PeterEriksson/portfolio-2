@@ -197,7 +197,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               {/* It's me{" "} */} It's{" "}
               <span
                 //text-gradient
-                className="text-react /xs:bg-gradient-to-r /bg-react /from-white /to-react /bg-clip-text /text-transparent"
+                className="text-react "
               >
                 Peter{" "}
               </span>
