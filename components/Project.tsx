@@ -222,7 +222,7 @@ export default function Project({
           </span>
 
           <span
-            className={`ml-1.5 text-lg font-normal text-black/70  
+            className={`ml-2 text-lg font-normal text-black/70  
            relative   `}
           >
             {project?.summary}
