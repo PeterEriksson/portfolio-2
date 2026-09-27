@@ -107,11 +107,12 @@ export default function Hero({ socials, pageInfo }: Props) {
               transition={{ duration: 1.5 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className={`xs:rounded-full rounded-full border-2 xs:border-1 border-white  $//{styles.glowingImage}`}
+              className={`xs:rounded-full rounded-full border-2 xs:border-1 border-white  `}
               src={urlFor(pageInfo?.heroImage).url() || undefined}
               alt=""
             />
-
+            {/* DARK FILTER div */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-b from-transparent from-60% via-black via-85% to-black" />
             <div
               //TOOLTIP
               className="absolute top-[25%] left-[18%] lg:left-[20%] xl:left-[23%] -translate-y-1/2 
@@ -121,14 +122,13 @@ export default function Hero({ socials, pageInfo }: Props) {
             >
               That's me 😎
             </div>
-
             {/* SOCIALS container */}
             <motion.div
               initial={{ opacity: 0 }}
               transition={{ duration: 1, delay: 1 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="absolute bottom-10 xs:bottom-5 left-1/2 -translate-x-1/2 bg-black/60 px-[18px] xs:px-2.5 py-2.5 rounded-2xl flex justify-center items-center space-x-3"
+              className="absolute bottom-7 xs:bottom-3 left-1/2 -translate-x-1/2 bg-black/60/// px-[18px] xs:px-2.5 py-2.5 rounded-2xl flex justify-center items-center space-x-3"
             >
               {socials?.map((social, i) => (
                 <SocialIcon

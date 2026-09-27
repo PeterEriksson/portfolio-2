@@ -147,6 +147,8 @@ export default function Contact({ pageInfo, socials }: Props) {
             src={urlFor(pageInfo?.contactImage).url() || undefined}
             alt=""
           />
+          {/* DARK FILTER div */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-b from-transparent from-60% via-black via-85% to-black" />
 
           {/* Socials within pic */}
           <motion.div
@@ -154,7 +156,7 @@ export default function Contact({ pageInfo, socials }: Props) {
             transition={{ duration: 1, delay: 1 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="absolute bottom-7 lg:bottom-8 left-1/2 -translate-x-1/2 bg-black/60 px-3 py-2 rounded-2xl flex justify-center items-center space-x-3"
+            className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/60/// px-3 py-2 rounded-2xl flex justify-center items-center space-x-3"
           >
             {socials?.map((social, i) => (
               <div key={i} className="relative group">

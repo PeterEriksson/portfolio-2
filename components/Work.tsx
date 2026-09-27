@@ -133,7 +133,7 @@ export default function Work({ projects, slides, options }: Props) {
       className={`  ${
         menuOpen ? "opacity-50 md:opacity-50 lg-plus:opacity-100 " : "  "
       }
-     flex  transition duration-200 ease-in bg-gray-100 py-20 xs:py-24 lg:py-28             flex-col relative items-center justify-center   `}
+     flex  transition duration-200 ease-in bg-gray-100/70 py-20 xs:py-24 lg:py-28             flex-col relative items-center justify-center   `}
     >
       <motion.div
         aria-label="PROJECTS-div h1 + h4"
@@ -337,7 +337,7 @@ export default function Work({ projects, slides, options }: Props) {
       <motion.div
         className={`z-[50] ${
           isFullScreen ? "hidden" : ""
-        } flex space-x-4 max-w-fit mx-auto -mt-6 mt-[2px]//(close btn taking up space?) px-3.5 py-2.5 rounded-2xl  `}
+        } flex items-center space-x-4 max-w-fit mx-auto -mt-6 px-3.5 py-2.5 rounded-2xl  shadow-md shadow-gray-300 border border-gray-200/50 `}
         initial={{ opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
