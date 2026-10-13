@@ -27,6 +27,7 @@ module.exports = {
       },
       fontSize: {
         "xs-plus": ["0.9rem", { lineHeight: "1.5rem" }], // (approx between sm and base)
+        xxs: ["0.625rem", { lineHeight: "0.875rem" }], //10px, 14px
         kicker: "0.7rem",
         "mobile-small": [
           "0.875rem",
@@ -58,6 +59,7 @@ module.exports = {
       },
 
       animation: {
+        "bounce-light": "bounce-light 1.5s ease-in-out infinite",
         "pulse-lg": "pulse-lg 1.25s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "pulse-sm": "pulse-sm 1.25s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         scaleInOut: "scaleInOut 0.65s ease-in-out forwards",
@@ -72,6 +74,17 @@ module.exports = {
         shimmerArrow: "shimmerArrow 2.5s ease-in-out infinite",
       },
       keyframes: {
+        "bounce-light": {
+          "0%, 100%": {
+            transform: "translateY(-6px)",
+            animationTimingFunction: "cubic-bezier(0.8, 0, 1, 1)",
+          },
+          "50%": {
+            transform: "translateY(0)",
+            animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+          },
+        },
+
         shimmer: {
           //experimenting
           "0%": { backgroundPosition: "0 100%" }, // start below

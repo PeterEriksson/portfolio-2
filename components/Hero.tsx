@@ -81,81 +81,62 @@ export default function Hero({ socials, pageInfo }: Props) {
           className="mt-3 sm:hidden  absolute bottom-4  inline-block"
         >
           <div className="w-full text-center pt-6  ">
-            {/* <p
-              className="
-      bg-gradient-to-b from-gray-400/70 via-gray-700 to-gray-400/70
-      bg-[length:100%_200%] animate-shimmer
-      bg-clip-text text-transparent font-medium text-xl  tracking-wider "
-            >
-              DISCOVER MORE
-            </p> */}
-            <p
-              className="
-      bg-gradient-to-b from-gray-400/80 via-gray-800 to-gray-400/80
-      bg-[length:100%_200%] animate-shimmerArrow
-      bg-clip-text text-transparent text-4xl text-2xl//   -mt-1 "
-            >
+            <p className=" text-gray-400/80 animate-bounce-light  bg-clip-text text-4xl   -mt-1 ">
               ↓
             </p>
           </div>
         </div>
 
         <div className=" xs:w-10/12 w-[88%] flex flex-col sm:flex-row-reverse  items-center justify-between ">
-          <div className="md:w-2/5 sm:w-1/2 xs:w-3/4 w-full relative group">
-            <motion.img
-              initial={{ opacity: 0 }}
-              transition={{ duration: 1.5 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className={`xs:rounded-full rounded-full border-2 xs:border-1 border-white  `}
-              src={urlFor(pageInfo?.heroImage).url() || undefined}
-              alt=""
-            />
-            {/* DARK FILTER div */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-b from-transparent from-60% via-black via-85% to-black" />
-            <div
-              //TOOLTIP
-              className="absolute top-[25%] left-[18%] lg:left-[20%] xl:left-[23%] -translate-y-1/2 
-               bg-black/75 text-white text-sm px-3 py-1.5 rounded-lg 
-               opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in delay-500
-               pointer-events-none whitespace-nowrap z-10    hidden sm:inline"
-            >
-              That's me 😎
-            </div>
-            {/* SOCIALS container */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              transition={{ duration: 1, delay: 1 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="absolute bottom-7 xs:bottom-3 left-1/2 -translate-x-1/2 bg-black/60/// px-[18px] xs:px-2.5 py-2.5 rounded-2xl flex justify-center items-center space-x-3"
-            >
-              {socials?.map((social, i) => (
-                <SocialIcon
-                  key={i}
-                  target="_blank"
-                  url={social?.url}
-                  bgColor="transparent"
-                  fgColor="white"
-                  className="hover:opacity-60 opacity-70 !h-8 !w-8  sm:!h-6 sm:!w-6"
-                />
-              ))}
-              {/* test include mail-copy on mobile */}
-              <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
-                <button className="xs:hidden flex items-center opacity-70   ">
-                  <MailIcon
-                    className={`h-[20px] w-[20px] text-white ${
-                      copied ? "hidden" : ""
-                    }`}
+          <div className="md:w-2/5 sm:w-1/2 xs:w-3/4 w-full relative group       rounded-full border-2 border-white p-[2px]">
+            <div className="relative rounded-full overflow-hidden">
+              <motion.img
+                initial={{ opacity: 0 }}
+                transition={{ duration: 1.5 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className={`block w-full rounded-full  `}
+                src={urlFor(pageInfo?.heroImage).url() || undefined}
+                alt=""
+              />
+              {/* DARK FILTER */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-transparent from-50% via-black via-75% xs:via-85% to-black pointer-events-none" />
+
+              {/* SOCIALS container */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                transition={{ duration: 1, delay: 1 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="absolute bottom-7 xs:bottom-2.5 left-1/2 -translate-x-1/2 bg-black/60/// px-[18px] xs:px-2.5 py-2.5 rounded-2xl flex justify-center items-center space-x-3"
+              >
+                {socials?.map((social, i) => (
+                  <SocialIcon
+                    key={i}
+                    target="_blank"
+                    url={social?.url}
+                    bgColor="transparent"
+                    fgColor="white"
+                    className="hover:opacity-60 opacity-70 !h-8 !w-8  sm:!h-6 sm:!w-6"
                   />
-                  {copied ? (
-                    <p className="ml-3 text-base text-white ">Mail copied</p>
-                  ) : (
-                    <DocumentDuplicateIcon className="absolute right-3 top-2   h-[11px] w-[11px] opacity-80 text-white" />
-                  )}
-                </button>
-              </CopyToClipboard>
-            </motion.div>
+                ))}
+                {/* test include mail-copy on mobile */}
+                <CopyToClipboard text={pageInfo?.email} onCopy={handleCopy}>
+                  <button className="xs:hidden flex items-center opacity-70   ">
+                    <MailIcon
+                      className={`h-[20px] w-[20px] text-white ${
+                        copied ? "hidden" : ""
+                      }`}
+                    />
+                    {copied ? (
+                      <p className="ml-3 text-base text-white ">Mail copied</p>
+                    ) : (
+                      <DocumentDuplicateIcon className="absolute right-3 top-2 hidden h-[11px] w-[11px] opacity-80 text-white" />
+                    )}
+                  </button>
+                </CopyToClipboard>
+              </motion.div>
+            </div>
           </div>
 
           {/* TEXT DIV */}
@@ -258,7 +239,7 @@ export default function Hero({ socials, pageInfo }: Props) {
               </div>
 
               {/* Subtext */}
-              <p className="text-gray-500 text-xs font-light text-center -mt-1">
+              <p className="text-gray-500 text-xxs font-light text-center -mt-1">
                 React · TS · Tailwind
               </p>
             </motion.div>

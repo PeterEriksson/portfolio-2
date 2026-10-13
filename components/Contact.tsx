@@ -137,47 +137,49 @@ export default function Contact({ pageInfo, socials }: Props) {
           </div>
         </motion.div>
         {/* RIGHT SIDE - containing profile pic */}
-        <div className="hidden xs:inline   relative w-[90%] xxs:w-[60%] sm:w-1/2 md:w-2/5 lg:max-w-[400px] lg:max-h-[400px] mb-10 sm:mb-0">
-          <motion.img
-            initial={{ opacity: 0 }}
-            transition={{ delay: 0.6, duration: 1.2 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="rounded-full border border-white w-full h-full aspect-square object-cover "
-            src={urlFor(pageInfo?.contactImage).url() || undefined}
-            alt=""
-          />
-          {/* DARK FILTER div */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-b from-transparent from-60% via-black via-85% to-black" />
+        <div className="hidden xs:inline relative w-[90%] xxs:w-[60%] sm:w-1/2 md:w-2/5 lg:max-w-[400px] lg:max-h-[400px] mb-10 sm:mb-0 rounded-full border border-white p-[1px]">
+          <div className="relative w-full aspect-square rounded-full overflow-hidden">
+            <motion.img
+              initial={{ opacity: 0 }}
+              transition={{ delay: 0.6, duration: 1.2 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="block w-full h-full rounded-full object-cover"
+              src={urlFor(pageInfo?.contactImage).url() || undefined}
+              alt=""
+            />
+            {/* DARK FILTER  */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-b from-transparent from-60% via-black via-85% to-black pointer-events-none" />
 
-          {/* Socials within pic */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/60/// px-3 py-2 rounded-2xl flex justify-center items-center space-x-3"
-          >
-            {socials?.map((social, i) => (
-              <div key={i} className="relative group">
-                <SocialIcon
-                  target="_blank"
-                  url={social?.url}
-                  bgColor="transparent"
-                  fgColor="white"
-                  className="hover:opacity-60 opacity-70 !h-7 !w-7 sm:!h-6 sm:!w-6 lg:!h-10 lg:!w-10  "
-                />
-                {/* Tooltip */}
-                <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded-md bg-black text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300 ease-in whitespace-nowrap shadow-lg">
-                  {social?.title || "Social"}
-                </span>
-              </div>
-            ))}
-          </motion.div>
+            {/* Socials within pic */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              transition={{ duration: 1, delay: 1 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="absolute bottom-2.5 left-1/2 -translate-x-1/2 bg-black/60/// px-3 py-2 rounded-2xl flex justify-center items-center space-x-3"
+            >
+              {socials?.map((social, i) => (
+                <div key={i} className="relative group">
+                  <SocialIcon
+                    target="_blank"
+                    url={social?.url}
+                    bgColor="transparent"
+                    fgColor="white"
+                    className="hover:opacity-60 opacity-70 !h-7 !w-7 sm:!h-6 sm:!w-6 lg:!h-10 lg:!w-10  "
+                  />
+                  {/* Tooltip */}
+                  <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded-md bg-black text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300 ease-in whitespace-nowrap shadow-lg">
+                    {social?.title || "Social"}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
 
-      <footer className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-4/5 text-center text-xs xs:text-sm text-gray-500 py-6">
+      <footer className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-4/5 xs:text-center text-xs xs:text-sm text-gray-500 py-6">
         © 2026 Peter Eriksson.{" "}
         <span className="inline-block">
           Next · Typescript · Sanity · Framer Motion
